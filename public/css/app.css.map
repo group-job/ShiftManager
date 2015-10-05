@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.less","app.css"],"names":[],"mappings":"AAEA;EACE,WAAA;CCDD","file":"app.css","sourcesContent":["@title-color: red;\n\nh1 {\n  color: @title-color;\n}\n","h1 {\n  color: red;\n}\n"],"sourceRoot":"/source/"}
