@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="container"><!-- ② 追加 -->
+    <div class="container">
         @yield('content')
     </div>
 </body>
