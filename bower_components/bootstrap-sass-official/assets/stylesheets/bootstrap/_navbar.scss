@@ -528,9 +528,12 @@
 
 // Inverse navbar
 
-.navbar-inverse {
-  background-color: $navbar-inverse-bg;
-  border-color: $navbar-inverse-border;
+.navbar-inverse{
+  // background-color: $navbar-inverse-bg;
+  @include gradient-top-lighten(#EEE, 3%);
+  // background-color: #FF7F50;
+  // background-color: #e41b1b;
+  border-color: #FF7F50;
 
   .navbar-brand {
     color: $navbar-inverse-brand-color;

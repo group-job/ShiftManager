@@ -1,10 +1,17 @@
 @title-color: red;
 
 h1 {
-  color: @title-color;
+  color: #000012;
 }
 
-navbar-inverse navbar-inner{
-  background-color: @title-color;
-  
+navbar-inverse navbar-inner {
+  background-color: #1b1b1b;
+  background-image: -moz-linear-gradient(top, #0000cd, #0000ff);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0000cd), to(#0000ff));
+  background-image: -webkit-linear-gradient(top, #0000cd, #0000ff);
+  background-image: -o-linear-gradient(top, #0000cd, #0000ff);
+  background-image: linear-gradient(to bottom, #0000cd, #0000ff);
+  background-repeat: repeat-x;
+  border-color: #006400;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0000cd', endColorstr='#ff0000ff', GradientType=0);
 }

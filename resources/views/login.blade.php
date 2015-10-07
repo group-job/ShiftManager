@@ -6,6 +6,7 @@
   <colgroup class="col-md-2"></colgroup>
   <colgroup class="col-md-2"></colgroup>
 <tbody>
+  <h1>aaaaadfadsfsa</h1>
 {!! Form::open() !!}
 {{-- メールアドレス --}}
     <tr>

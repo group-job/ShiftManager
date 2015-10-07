@@ -396,8 +396,13 @@ $navbar-default-toggle-border-color:       #ddd !default;
 //=== Inverted navbar
 // Reset inverted navbar basics
 $navbar-inverse-color:                      lighten($gray-light, 15%) !default;
-$navbar-inverse-bg:                         #222 !default;
+$navbar-inverse-bg:                         desaturate(darken(#F00, 30.5%), 75%)  !default;
 $navbar-inverse-border:                     darken($navbar-inverse-bg, 10%) !default;
+//add
+// @mixin gradient-top-lighten($color:#E8E8E8, $lighten:7%){
+// background-color: $color;
+// @include background-image(linear-gradient(lighten($color, $lighten) 0%, $color 100%));
+// }
 
 // Inverted navbar links
 $navbar-inverse-link-color:                 lighten($gray-light, 15%) !default;
