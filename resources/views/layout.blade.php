@@ -59,8 +59,13 @@
       </nav>
 </nav>
 </nav>
-    <div class="container">
-        @yield('content')
-    </div>
+<div class="col-md-3">
+  ここにメニュー
+</div>
+<div class="col-md-9">
+  @yield('content')
+  内容
+</div>
+
 </body>
 </html>
