@@ -11,4 +11,5 @@
 |
 */
 
-Route::get('/', 'IndexController@login');
+Route::get('/login', 'IndexController@login');
+Route::get('/', 'IndexController@index');
