@@ -6,65 +6,71 @@
 
     <!-- CSSを追加 --><!-- ① 追加 -->
     <link rel="stylesheet" href="../public/css/app.css">
+    <script type="text/javascript" src="../public/js/app.js"></script>
 </head>
 
 <body>
   <nav class="navbar navbar-default navbar-inverse" role="navigation">
-        <div class="container-fluid">
-
+        <div class="container-fluid top-menu">
           <!-- スマートフォンサイズで表示されるメニューボタンとテキスト -->
           <div class="navbar-header">
 
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-menu-4">
+            <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-menu-4">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
-            </button>
+            </button> -->
 
             <!-- タイトルなどのテキスト -->
-            <a class="navbar-brand" href="#">Designup.jp</a>
-
+            <a class="navbar-brand" href="#">ロゴ</a>
+          </div>
+          <div class="navbar-right">
+          <span class="badge">0</span>
+          ここ画像！！！！！画像
           </div>
 
-          <!-- グローバルナビの中身 -->
-          <div class="collapse navbar-collapse" id="nav-menu-4">
-
-            <!-- 各ナビゲーションメニュー -->
-            <ul class="nav navbar-nav">
-
-              <!-- 通常のリンク -->
-              <li class="active"><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-
-              <!-- ドロップダウンのメニューも配置可能 -->
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">One more separated link</a></li>
-                </ul>
-              </li>
-
-            </ul>
-
-
-          </div>
         </div>
       </nav>
 </nav>
 </nav>
-<div class="col-md-3">
-  ここにメニュー
+<div class="col-md-3 sidebar">
+  <ul class="nav nav-sidebar navbar-inner">
+    <!-- マイメニュー -->
+    <li data-toggle="collapse" href="#collapse-mymenu">
+      <a href="#"><span class="caret"></span>マイメニュー</a>
+    </li>
+    <ul id="collapse-mymenu" class="collapse" style="list-style-type:none;">
+      <li><a href="A-1"><span class="fa fa-angle-double-right fa-fw"></span><span class="glyphicon glyphicon-stop">A-1</a>
+    </ul>
+    <br>
+    <!-- 参加グループ -->
+    <li data-toggle="collapse" href="#collapse-joingroup">
+      <a href="#"><span class="caret"></span>参加グループ</a>
+    </li>
+    <ul id="collapse-joingroup" class="collapse" style="list-style-type:none;">
+      <li><a href="A-1"><span class="fa fa-angle-double-right fa-fw"></span><span class="glyphicon glyphicon-stop">A-1</a>
+      <li><a href="A-2"><span class="fa fa-angle-double-right fa-fw"></span><span class="glyphicon glyphicon-stop">A-2</a>
+    </ul>
+    <br>
+      <!-- 管理グループ -->
+      <li data-toggle="collapse" href="#collapse-admingroup">
+      <a href="#"><span class="caret"></span>管理グループ</a>
+    </li>
+    <ul id="collapse-admingroup" class="collapse" style="list-style-type:none;">
+      <li><a href="A-1"><span class="fa fa-angle-double-right fa-fw"></span> A-1</a>
+      <li><a href="A-2"><span class="fa fa-angle-double-right fa-fw"></span> A-2</a>
+      <li><a href="A-3"><span class="fa fa-angle-double-right fa-fw"></span> A-3</a>
+    </ul>
+    <br>
+      <!-- グループ追加 -->
+      <li>
+      <a href ="#"><span class="glyphicon glyphicon-plus"></span>グループ追加</a>
+    </li>
+  </ul>
 </div>
 <div class="col-md-9">
   @yield('content')
-  内容
 </div>
 
 </body>
