@@ -1,3 +1,5 @@
+<!DOCTYPE HTML>
+<html lang="ja">
 {{-- //ヘッダー --}}
 @include('common.header')
 
@@ -11,8 +13,10 @@
 
 {{-- メインコンテツ --}}
 <div class="col-md-9">
-@yield('content')  
+@yield('content')
 </div>
 
 {{-- フッター --}}
 @include('common.footer')
+
+</html>
