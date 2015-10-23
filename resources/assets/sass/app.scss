@@ -1,5 +1,42 @@
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
 @import "bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
 // @import "node_modules/laravel-elixir-compass";
 // @import "compass/css3";
+
+*{
+  margin: 0;
+  padding: 0;
+
+}
+body{
+
+}
+.side-menu{
+  background-color: rgb(246, 165, 91);
+  position: relative;
+  top: -20px;
+  left: -15px;
+  height: 1000px;
+}
+.side-menu-content {
+  position: relative;
+  top: 100px;
+  margin-left: 10px;
+
+  li{
+    font-size: 1.3em;
+    color: black;
+    margin-bottom: 20px;
+    list-style-type: none;
+    // border-bottom:1px solid rgb(237, 130, 42);
+    >ul>li:hover{
+      background-color: rgb(237, 130, 42);
+    }
+    >ul>li{
+      margin-bottom: 0;
+      list-style-type: square;
+    }
+  }
+}

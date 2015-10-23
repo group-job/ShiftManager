@@ -17,3 +17,8 @@ Route::get('/', 'IndexController@index');
 // プロフィール
 Route::get('/profile_view', 'ProfileController@view');
 Route::get('/profile_edit', 'ProfileController@edit');
+
+// Route::get('/test1', function()
+// {
+//     return view('test1');
+// });

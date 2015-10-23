@@ -1,9 +1,6 @@
-<!DOCTYPE HTML>
-<html lang="ja">
-
 <head>
   <meta charset="UTF-8">
-  <title>My Blog</title>
+  <title>@yield('title','名前はまだない')</title>
 
   <!-- CSSを追加 -->
   <!-- ① 追加 -->
