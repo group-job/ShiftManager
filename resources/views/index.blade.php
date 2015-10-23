@@ -1,6 +1,4 @@
 @extends('common.layout')
-<<<<<<< HEAD
-
 @section('side_menu')
 @overwrite
 
@@ -43,9 +41,4 @@
 </ul>
 </li>
 </div>
-
-=======
-@section('content')
-chgvjbknlkml
->>>>>>> origin/master
 @endsection

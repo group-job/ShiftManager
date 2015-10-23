@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-{{-- ヘッダー --}}
-=======
 <!DOCTYPE HTML>
 <html lang="ja">
 {{-- //ヘッダー --}}
->>>>>>> origin/master
 @include('common.header')
 
 {{-- ナビゲーションメニュー --}}
@@ -16,11 +12,7 @@
 </div>
 
 {{-- メインコンテツ --}}
-<<<<<<< HEAD
-<div class="col-md-9">
-=======
 <div class="col-md-10">
->>>>>>> origin/master
 @yield('content')
 </div>
 
