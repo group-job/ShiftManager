@@ -1,4 +1,4 @@
-{{-- //ヘッダー --}}
+{{-- ヘッダー --}}
 @include('common.header')
 
 {{-- ナビゲーションメニュー --}}
@@ -11,7 +11,7 @@
 
 {{-- メインコンテツ --}}
 <div class="col-md-9">
-@yield('content')  
+@yield('content')
 </div>
 
 {{-- フッター --}}

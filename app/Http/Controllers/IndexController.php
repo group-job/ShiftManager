@@ -8,15 +8,11 @@ use App\Http\Controllers\Controller;
 
 class IndexController extends Controller
 {
+  // ログイン画面へ
     public function index()
     {
       return view('index');
     }
 
-    //loginへ
-    public function login()
-    {
-      return  view('login');
-    }
 
 }
