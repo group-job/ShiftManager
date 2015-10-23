@@ -5991,4 +5991,30 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+* {
+  margin: 0;
+  padding: 0; }
+
+.side-menu {
+  background-color: #f6a55b;
+  position: relative;
+  top: -20px;
+  left: -15px;
+  height: 1000px; }
+
+.side-menu-content {
+  position: relative;
+  top: 100px;
+  margin-left: 10px; }
+  .side-menu-content li {
+    font-size: 1.3em;
+    color: black;
+    margin-bottom: 20px;
+    list-style-type: none; }
+    .side-menu-content li > ul > li:hover {
+      background-color: #ed822a; }
+    .side-menu-content li > ul > li {
+      margin-bottom: 0;
+      list-style-type: square; }
+
 /*# sourceMappingURL=app.css.map */

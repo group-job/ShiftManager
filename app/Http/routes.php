@@ -13,3 +13,7 @@
 
 Route::get('/login', 'IndexController@login');
 Route::get('/', 'IndexController@index');
+Route::get('/test1', function()
+{
+    return view('test1');
+});
