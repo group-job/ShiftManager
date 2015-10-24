@@ -5998,7 +5998,7 @@ button.close {
 .side-menu {
   background-color: #f6a55b;
   position: relative;
-  top: -20px;
+  top: -30px;
   left: -15px;
   height: 1000px; }
 
@@ -6007,14 +6007,20 @@ button.close {
   top: 100px;
   margin-left: 10px; }
   .side-menu-content li {
-    font-size: 1.3em;
+    line-height: 1.5em;
+    font-size: 1.2em;
     color: black;
-    margin-bottom: 20px;
+    margin: 10px 0;
     list-style-type: none; }
-    .side-menu-content li > ul > li:hover {
+    .side-menu-content li > a {
+      display: block;
+      width: 198px;
+      color: black;
+      text-decoration: none; }
+    .side-menu-content li :hover {
       background-color: #ed822a; }
-    .side-menu-content li > ul > li {
-      margin-bottom: 0;
-      list-style-type: square; }
+  .side-menu-content .list-item li {
+    margin: 0;
+    list-style-type: square; }
 
 /*# sourceMappingURL=app.css.map */

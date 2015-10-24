@@ -13,30 +13,41 @@
 body{
 
 }
+
 .side-menu{
   background-color: rgb(246, 165, 91);
+  // なぜかマージンあるから補正
   position: relative;
-  top: -20px;
+  top: -30px;
   left: -15px;
   height: 1000px;
 }
 .side-menu-content {
+  // メニューリストの位置を調整
   position: relative;
   top: 100px;
   margin-left: 10px;
 
   li{
-    font-size: 1.3em;
+    line-height: 1.5em;
+    font-size: 1.2em;
     color: black;
-    margin-bottom: 20px;
-    list-style-type: none;
-    // border-bottom:1px solid rgb(237, 130, 42);
-    >ul>li:hover{
+    >a{
+      // この書き方だどウィンドウサイズ変更に対応できなきので暫定実装!!
+      display: block;
+      width: 198px;
+      // ここまで
+      color: black;
+      text-decoration: none;
+    }
+    :hover{
       background-color: rgb(237, 130, 42);
     }
-    >ul>li{
-      margin-bottom: 0;
-      list-style-type: square;
-    }
+    margin: 10px 0;
+    list-style-type: none;
+  }
+  .list-item li{
+    margin: 0;
+    list-style-type: square;
   }
 }

@@ -1,6 +1,5 @@
 @section('side-menu')
 <?php
-$myLists = array('aaa','bbb','ccc');
 $joiningLists = array('aaa','bbb','ccc');
 $managingLists = array('aaa','bbb','ccc');
 ?>
@@ -10,36 +9,39 @@ $managingLists = array('aaa','bbb','ccc');
 
     {{-- マイメニューリスト --}}
     <li data-toggle="collapse" href="#collapse-mymenu">
-    <span class="caret"></span>マイメニュー
-    {{-- マイメニューリストアイテム --}}
-      <ul id="collapse-mymenu" class="collapse">
-        @foreach($myLists as $myList)
-          <li>{{$myList}}</li>
-        @endforeach
-      </ul>
+    <a href="#"><span class="caret"></span>マイメニュー</a>
     </li>
+    {{-- マイメニューリストアイテム --}}
+      <div id="collapse-mymenu" class="collapse list-item">
+        <li> <a href="#">マイシフト</a></li>
+        <li> <a href="#">プロフィール</a></li>
+        <li> <a href="#">給与</a></li>
+      </div>
+
 
     {{-- 参加グループリスト --}}
     <li data-toggle="collapse" href="#collapse-joining-group">
-    <span class="caret"></span>参加グループ
+    <a href="#"><span class="caret"></span>参加グループ</a>
+      </li>
     {{-- 参加グループリストアイテム --}}
-      <ul id="collapse-joining-group" class="collapse">
+      <div id="collapse-joining-group" class="collapse list-item">
         @foreach($joiningLists as $joiningList)
-          <li>{{$joiningList}}</li>
+          <li> <a href="#">{{$joiningList}}</a></li>
         @endforeach
-      </ul>
-    </li>
+      </div>
+
 
     {{-- 管理グループリスト --}}
     <li data-toggle="collapse" href="#collapse-managing-group">
-    <span class="caret"></span>管理グループ
-    {{-- 管理グループリストアイテム --}}
-      <ul id="collapse-managing-group" class="collapse">
-        @foreach($managingLists as $managingList)
-          <li>{{$managingList}}</li>
-        @endforeach
-      </ul>
+    <a href="#"><span class="caret"></span>管理グループ</a>
     </li>
+    {{-- 管理グループリストアイテム --}}
+      <div id="collapse-managing-group" class="collapse list-item">
+        @foreach($managingLists as $managingList)
+          <li> <a href="#">{{$managingList}}</a></li>
+        @endforeach
+      </div>
+
     <li>
       <a href="#">
         <span class="glyphicon glyphicon-plus"></span>グループ追加

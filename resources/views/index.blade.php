@@ -1,9 +1,7 @@
 @extends('common.layout')
 @section('side_menu')
 @overwrite
-
 @section('content')
-
 <table>
 <tbody>
 {!! Form::open() !!}
