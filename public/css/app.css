@@ -6000,7 +6000,7 @@ button.close {
   position: relative;
   top: -30px;
   left: -15px;
-  height: 1000px; }
+  height: 780px; }
 
 .side-menu-content {
   position: relative;
@@ -6018,7 +6018,7 @@ button.close {
       color: black;
       text-decoration: none; }
     .side-menu-content li :hover {
-      background-color: #ed822a; }
+      background-color: #f38a2b; }
   .side-menu-content .list-item li {
     margin: 0;
     list-style-type: square; }

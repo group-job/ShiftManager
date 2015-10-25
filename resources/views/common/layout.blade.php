@@ -6,15 +6,21 @@
 {{-- ナビゲーションメニュー --}}
 @include('common.navi-menu')
 
-{{-- サイドメニュー --}}
-<div class="col-md-2">
-@include('common.side-menu')
-</div>
+{{-- コンテンツ --}}
+@section('contents')
 
-{{-- メインコンテツ --}}
-<div class="col-md-10">
-@yield('content')
-</div>
+  {{-- サイドメニュー --}}
+  <div class="col-md-2">
+  @include('common.side-menu')
+  </div>
+
+  {{-- メインコンテツ --}}
+  <div class="col-md-10">
+  @yield('main-contents')
+  </div>
+
+@show
+{{-- END of コンテンツ --}}
 
 {{-- フッター --}}
 @include('common.footer')

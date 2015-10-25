@@ -15,7 +15,6 @@
       <a class="navbar-brand" href="#">ロゴ</a>
     </div>
     <div class="navbar-right">
-      <span class="badge">0</span>
       ここ画像！！！！！画像
     </div>
 

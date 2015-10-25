@@ -1,24 +1,72 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+//                                重要
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+// MAMPの設定でドキュメントルートをShiftManager/publicに変更してください!
+// 通常のルーティングと重複すると2重にGET飛ばす可能性あり、要検証!!
+
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+//                                変更点
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+// コントローラー名/メソッド名でルーティング!
+// やっぱこれだね〜
+// ろってのとっぽ!
+// ごめんなさい(๑•̀ㅂ•́)و✧
+
+// 例:/profile/view にアクセスでProfileController@view にルーティング
+
+// 下に書いたもので上書きされるっぽいからとりあえず一番上に持ってきたよ
+
+
+// // パラメーター取得（末尾の / は削除）
+// 非推奨関数につきえらーでるからとりあえず無効化するよ
+error_reporting(E_ERROR & ~E_NOTICE & ~E_PARSE);
+$param = ereg_replace('/?$', '', $_SERVER['REQUEST_URI']);
+$params[1] = '';
+$params[2] = '';
+$controller = 'index';
+$action = 'index';
+$params = array();
+if ('' != $param) {
+  // パラメーターを / で分割
+  $params = explode('/', $param);
+}
+// １番目のパラメーターをコントローラーとして取得
+if (1 < count($params)) {
+  $controller = $params[1];
+}
+// 	// パラメータより取得したコントローラー名によりクラス振分け
+$className = ucfirst(strtolower($controller)) . 'Controller';
+
+// 2番目のパラメーターをメソッド名として取得
+if (2 < count($params)) {
+  $action = $params[2];
+  if ($params[1] != 'test') {
+    Route::get($params[1].'/'.$params[2], $className.'@'.$action);
+  }
+
+}
+
+
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+//                            通常のルーティング
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+// こっちが優先される
 
 // Index
 Route::get('/', 'IndexController@index');
 
-// プロフィール
+// // プロフィール
 Route::get('/profile_view', 'ProfileController@view');
 Route::get('/profile_edit', 'ProfileController@edit');
 
-// Route::get('/test1', function()
-// {
-//     return view('test1');
-// });
+
+//------------------------------------------------------------------------------
+//                             開発用
+//------------------------------------------------------------------------------
+// /test/数字にアクセスでコントローラー経由せず test数字.blade.php を表示するよ
+Route::get('/test/{number}', function($number)
+{
+  return view('test'.$number);
+});
