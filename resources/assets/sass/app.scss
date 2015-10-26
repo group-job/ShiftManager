@@ -1,9 +1,9 @@
-// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
 @import "bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
 
-// カラー定義ファイルを_color.scss にかいてインポートするのがいいらしいけどプラグインで
+// カラー定義ファイルを_color.scss に書いてインポートするのがいいらしいけどプラグインで
 // エディタに色表示できないので同一ファイルに書くほうが開発しやすいよね
 @import "resources/assets/sass/_color.scss";
 
@@ -43,10 +43,8 @@ body{
     font-size: 1.2em;
     color: black;
     >a{
-      // この書き方だどウィンドウサイズ変更に対応できないので暫定実装!!
       display: block;
-      width: 198px;
-      // ここまで
+      width: 100%;
       color: black;
       text-decoration: none;
     }

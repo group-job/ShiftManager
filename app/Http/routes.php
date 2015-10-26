@@ -66,7 +66,7 @@ Route::get('/profile_edit', 'ProfileController@edit');
 //                             開発用
 //------------------------------------------------------------------------------
 // /test/数字にアクセスでコントローラー経由せず test数字.blade.php を表示するよ
-Route::get('/test/{number}', function($number)
+Route::get('/{view}', function($view)
 {
-  return view('test'.$number);
+  return view($view);
 });
