@@ -43,6 +43,7 @@ $className = ucfirst(strtolower($controller)) . 'Controller';
 if (2 < count($params)) {
   $action = $params[2];
   if ($params[1] != 'test') {
+    echo $params[1].'/'.$params[2].$className.'@'.$action;
     Route::get($params[1].'/'.$params[2], $className.'@'.$action);
   }
 
@@ -65,7 +66,7 @@ Route::get('/profile_edit', 'ProfileController@edit');
 //------------------------------------------------------------------------------
 //                             開発用
 //------------------------------------------------------------------------------
-// /test/数字にアクセスでコントローラー経由せず test数字.blade.php を表示するよ
+// /test数字 にアクセスでコントローラー経由せず test数字.blade.php を表示するよ
 Route::get('/{view}', function($view)
 {
   return view($view);
