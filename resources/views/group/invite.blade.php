@@ -1,24 +1,5 @@
-<?php
-const HOME_OWNER = "シフト表";
-const HOME_OWNER_URL = "shift-home";
-const INFOMATION = "連絡ボード";
-const INFOMATION_URL = "infomation";
-const CHAT = "チャット";
-const CHAT_URL = "chat";
-const NOTIFICATION = "お知らせ";
-const NOTIFICATION_URL = "notification";
-const SETTINGS = "設定";
-const SETTINGS_URL = "settings";
-const kind = "group";
-
-$tabArray = array(HOME_OWNER => HOME_OWNER_URL,
-                  INFOMATION => INFOMATION_URL,
-                  CHAT => CHAT_URL,
-                  NOTIFICATION => NOTIFICATION_URL,
-                  SETTINGS => SETTINGS_URL);
- ?>
 {{-- 店名出すためだけのもの（仮） --}}
- <script type="text/javascript">
+ {{-- <script type="text/javascript">
         window.onload = function onLoad() {
             param = GetQueryString();
             target = document.getElementById("param");
@@ -49,16 +30,20 @@ $tabArray = array(HOME_OWNER => HOME_OWNER_URL,
             }
             return null;
         }
-    </script>
+    </script> --}}
 <!-- レイアウトの継承 -->
 @extends('common.layout')
 
 {{-- タイトル部分の表示 --}}
 @section('title-space')
 @include('group.title-name')
-@include('common.title-menu')
 @endsection
 
 @section('contents-space')
-@include('common.tab-contents')
+<div class="row">
+  <h3>招待する</h3>
+    URL:kimiyakimiya.jp
+    <br>
+    ※上記リンクを招待したい人にメール等で送ってください。
+</div>
 @endsection

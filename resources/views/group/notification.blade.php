@@ -1,1 +1,21 @@
-osirase
+<br>
+<table class="table-bordered">
+  <tbody>
+    <tr>
+      <td>
+        2015/09/19
+      </td>
+      <td>
+        安長さんが大会しました
+      </td>
+    </tr>
+    <tr>
+      <td>
+        2015/09/15
+      </td>
+      <td>
+        増山さんが参加しました。
+      </td>
+    </tr>
+  </tbody>
+</table>
