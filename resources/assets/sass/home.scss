@@ -1,11 +1,5 @@
-
-// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-//                             カラー定義
-// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-$modal-color:rgb(214, 225, 227);
-// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-
-
+// カラー定義インポート
+@import "resources/assets/sass/_color.scss";
 .home{
   background-image: url("/img/top_background.png");
   height: 750px;

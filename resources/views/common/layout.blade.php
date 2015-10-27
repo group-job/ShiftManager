@@ -12,13 +12,14 @@
 
   {{-- サイドメニュー --}}
   <div class="col-md-2">
-  @include('common.side-menu')
+    @include('common.side-menu')
   </div>
 
   {{-- メインコンテツ --}}
   <div class="col-md-10">
-  @yield('main-contents')
+  @include('common.main-contents')
   </div>
+  {{-- End of メインコンテンツ --}}
 
 @show
 {{-- END of コンテンツ --}}

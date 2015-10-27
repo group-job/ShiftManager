@@ -4,8 +4,8 @@ $joiningLists = array('aaa','bbb','ccc');
 $managingLists = array('aaa','bbb','ccc');
 ?>
 {{-- サイドメニュー --}}
-<div class="side-menu">
-  <ul class="side-menu-content">
+<div id="side-menu">
+  <ul id="side-menu-content">
 
     {{-- マイメニューリスト --}}
     <li data-toggle="collapse" href="#collapse-mymenu">
@@ -48,7 +48,7 @@ $managingLists = array('aaa','bbb','ccc');
       </a>
     </li>
   </ul>
-  {{-- end of .side-menu-content --}}
+  {{-- end of #side-menu-content --}}
 </div>
-{{-- end of .side-menu --}}
+{{-- end of #side-menu --}}
 @show

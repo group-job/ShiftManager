@@ -1,15 +1,7 @@
 @import "bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
+// カラー定義インポート
+@import "resources/assets/sass/_color.scss";
 
-// カラー定義ファイルを_color.scss に書いてインポートするのがいいらしいけどプラグインで
-// エディタに色表示できないので同一ファイルに書くほうが開発しやすいよね
-// @import "resources/assets/sass/_color.scss";
-
-// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-//                             カラー定義
-// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-$side-menu-base-color:rgb(246, 165, 91);
-$main-contents-bg-color:rgb(205, 205, 199);
-// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 // @import "node_modules/laravel-elixir-compass";
 // @import "compass/css3";
@@ -28,7 +20,7 @@ body{
 
 }
 
-.side-menu{
+#side-menu{
   background-color: $side-menu-base-color;
   // bootstrapのパディング分を補正
   position: relative;
@@ -36,7 +28,7 @@ body{
   left: -15px;
   height: 730px;
 }
-.side-menu-content {
+#side-menu-content {
   // メニューリストの位置を調整
   position: relative;
   top: 100px;
@@ -64,7 +56,7 @@ body{
   }
 }
 
-.main-contents{
+#main-contents{
   // background-color: $main-contents-bg-color;
   background-color: black;
 }
