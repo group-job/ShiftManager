@@ -5785,9 +5785,6 @@ button.close {
     margin: 0;
     list-style-type: square; }
 
-#main-contents {
-  background-color: black; }
-
 .home {
   background-image: url("/img/top_background.png");
   height: 750px;

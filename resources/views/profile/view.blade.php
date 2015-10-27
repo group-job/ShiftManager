@@ -1,7 +1,5 @@
 @extends('common.layout')
 
-@section('side_menu')
-@overwrite
 
 @section('main-contents')
 <table>

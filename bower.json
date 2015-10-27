@@ -8,8 +8,9 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components"
-
+    "bower_components",
+    "test",
+    "tests"
   ],
   "dependencies": {
     "bootstrap-sass-official": "~3.3.5"
