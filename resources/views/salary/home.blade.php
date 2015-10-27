@@ -12,7 +12,7 @@
 @endsection
 
 @section('contents-space')
-<div id="myTabContent" class="tab-content">
+<div id="salary-tab" class="tab-content">
 <div class="tab-pane fade in active" id="tab1">
       {{-- @include('salary.view') --}}
       @include('salary.view')

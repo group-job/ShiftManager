@@ -15,7 +15,7 @@ $managingLists = array('aaa','bbb','ccc');
       <div id="collapse-mymenu" class="collapse list-item">
         <li> <a href="#">マイシフト</a></li>
         <li> <a href="/profile/view">プロフィール</a></li>
-        <li> <a href="#">給与</a></li>
+        <li> <a href="/salary.home">給与</a></li>
       </div>
 
 
@@ -43,7 +43,7 @@ $managingLists = array('aaa','bbb','ccc');
       </div>
 
     <li>
-      <a href="#">
+      <a href="/home.group-create">
         <span class="glyphicon glyphicon-plus"></span>グループ追加
       </a>
     </li>

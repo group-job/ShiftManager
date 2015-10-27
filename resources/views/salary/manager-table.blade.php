@@ -4,11 +4,11 @@
   const SALARY_MONEY = "給与金額";
   const START_DAY = "開始年月日";
   const END_DAY = "終了年月日";
-  $salaryTable = array(SALARY_KBN,SALARY_MONEY,START_DAY,END_DAY);
+  $salaryArray= array(SALARY_KBN,SALARY_MONEY,START_DAY,END_DAY);
  ?>
 <table class="table-bordered">
   <tbody>
-     @foreach($salaryTable as  $value)
+     @foreach($salaryArray as  $value)
        <th>{{ $value }}</th>
      @endforeach
      <th></th>
