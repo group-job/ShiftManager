@@ -21,6 +21,8 @@ var elixir = require('laravel-elixir');
 elixir(function(mix) {
     mix.less('app.less');
     mix.sass([
+      "fullcalendar.scss",
+      "fullcalendar.print.scss",
       'app.scss',
       'home.scss'
     ]); // app.scssをコンパイルして、public/css/app.css に出力
@@ -33,7 +35,7 @@ elixir(function(mix) {
             paths.fullcalendar+"moment.min.js",
             paths.jquery + "dist/jquery.js",
             paths.fullcalendar+"jquery-ui.custom.min.js",
-            path.fullcalendar + "fullcalendar.min.js"
+            paths.fullcalendar + "fullcalendar.js",
             paths.bootstrap + "javascripts/bootstrap.js"
         ], 'public/js/app.js', './');  // ①
 });

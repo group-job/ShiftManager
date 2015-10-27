@@ -13,7 +13,7 @@ $managingLists = array('aaa','bbb','ccc');
     </li>
     {{-- マイメニューリストアイテム --}}
       <div id="collapse-mymenu" class="collapse list-item">
-        <li> <a href="#">マイシフト</a></li>
+        <li> <a href="/home.personal-home">マイシフト</a></li>
         <li> <a href="/profile/view">プロフィール</a></li>
         <li> <a href="/salary.home">給与</a></li>
       </div>
@@ -26,7 +26,7 @@ $managingLists = array('aaa','bbb','ccc');
     {{-- 参加グループリストアイテム --}}
       <div id="collapse-joining-group" class="collapse list-item">
         @foreach($joiningLists as $joiningList)
-          <li> <a href="#">{{$joiningList}}</a></li>
+          <li> <a href="/group.home">{{$joiningList}}</a></li>
         @endforeach
       </div>
 

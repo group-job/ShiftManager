@@ -12,7 +12,7 @@
           </button>  --}}
 
       {{-- タイトルなどのテキスト --}}
-      <a class="navbar-brand" href="#">ロゴ</a>
+      <a class="navbar-brand" href="/">ロゴ</a>
     </div>
     <div class="navbar-right">
       @yield('navbar-right')
