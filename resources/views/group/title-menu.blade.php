@@ -1,4 +1,4 @@
-<h1>給与</h1>
+<h1>グループ名</h1>
 <ul class="nav nav-tabs">
   {{-- タブを定数でループ --}}
   @foreach($tabArray as $key => $value)
@@ -6,6 +6,7 @@
     @if( $key == HOME_OWNER )
       class="active"
     @endif
-    ><a href="{{ $value }}" data-toggle="tab">{{ $key }}</a></li>
+    >
+    <a href="{{ $value }}" data-toggle="tab">{{ $key }}</a></li>
   @endforeach
 </ul>
