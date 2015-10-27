@@ -9,21 +9,22 @@ const NOTIFICATION = "お知らせ";
 const NOTIFICATION_URL = "notification";
 const SETTINGS = "設定";
 const SETTINGS_URL = "settings";
+const kind = "group";
 
 $tabArray = array(HOME_OWNER => HOME_OWNER_URL,
                   INFOMATION => INFOMATION_URL,
                   CHAT => CHAT_URL,
                   NOTIFICATION => NOTIFICATION_URL,
-                  SETTINGS_URL => SETTINGS_URL);
+                  SETTINGS => SETTINGS_URL);
  ?>
 <!-- レイアウトの継承 -->
 @extends('common.layout')
 
 {{-- タイトル部分の表示 --}}
 @section('title-space')
-@include('group.title-menu')
+@include('group.title-name')
 @endsection
 
 @section('contents-space')
-@include('group.contents')
+@include('common.tab-contents')
 @endsection

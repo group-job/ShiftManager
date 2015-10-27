@@ -1,11 +1,10 @@
-<h1>給与</h1>
 <ul class="nav nav-tabs">
   {{-- タブを定数でループ --}}
   @foreach($tabArray as $key => $value)
     <li
-    @if( $key == HOME_OWNER )
+    @if( $value == reset($tabArray) )
       class="active"
     @endif
-    ><a href="{{ $value }}" data-toggle="tab">{{ $key }}</a></li>
+    ><a href="#{{ $value }}" data-toggle="tab">{{ $key }}</a></li>
   @endforeach
 </ul>

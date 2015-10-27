@@ -1,24 +1,22 @@
+<?php
+const VIEW = "給与一覧";
+const VIEW_URL = "view";
+const MANAGER = "給与管理";
+const MANAGER_URL = "manager";
+const kind = "salary";
+
+$tabArray = array(VIEW => VIEW_URL,
+                  MANAGER => MANAGER_URL,
+                );
+ ?>
 <!-- レイアウトの継承 -->
 @extends('common.layout')
 
 {{-- タイトル部分の表示 --}}
 @section('title-space')
-<h1>給与</h1>
-<ul class="nav nav-tabs">
-<li class="active"><a href="#tab1" data-toggle="tab">タブ1</a></li>
-<li><a href="#tab2" data-toggle="tab">タブ2</a></li>
-</ul>
-<!-- / タブ-->
+@include('salary.title-name')
 @endsection
 
 @section('contents-space')
-<div id="salary-tab" class="tab-content">
-<div class="tab-pane fade in active" id="tab1">
-      {{-- @include('salary.view') --}}
-      @include('salary.view')
-</div>
-<div class="tab-pane fade" id="tab2">
-    @include('salary.manager')
-</div>
-</div>
+@include('common.tab-contents')
 @endsection
