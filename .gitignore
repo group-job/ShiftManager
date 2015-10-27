@@ -4,3 +4,6 @@ Homestead.json
 /shortcut
 /node_modules/
 /bower_components/
+/vendor
+/composer.lock
+/composer.phar
