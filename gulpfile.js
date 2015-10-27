@@ -19,7 +19,11 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
     mix.less('app.less');
-    mix.sass('app.scss'); // app.scssをコンパイルして、public/css/app.css に出力
+    mix.sass([
+      'app.scss',
+      'home.scss'
+    ]); // app.scssをコンパイルして、public/css/app.css に出力
+
 
        // Bootstrapのフォントを public/fonts/bootstrapディレクトリにコピー
        mix.copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts/bootstrap');

@@ -7,7 +7,7 @@
 <!-- ここまで -->
 
 <!-- この中身にかく -->
-@section('content')
+@section('main-contents')
 
 <table>
 <tbody>

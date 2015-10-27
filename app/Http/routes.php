@@ -43,7 +43,6 @@ $className = ucfirst(strtolower($controller)) . 'Controller';
 if (2 < count($params)) {
   $action = $params[2];
   if ($params[1] != 'test') {
-    echo $params[1].'/'.$params[2].$className.'@'.$action;
     Route::get($params[1].'/'.$params[2], $className.'@'.$action);
   }
 

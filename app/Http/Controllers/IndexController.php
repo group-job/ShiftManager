@@ -11,7 +11,7 @@ class IndexController extends Controller
   // ログイン画面へ
     public function index()
     {
-      return view('index');
+      return view('home.index');
     }
 
 

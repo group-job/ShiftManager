@@ -3,7 +3,7 @@
 @section('side_menu')
 @overwrite
 
-@section('content')
+@section('main-contents')
 <table>
 <tbody>
   <tr>
@@ -45,7 +45,7 @@
   </tr>
   <tr>
     <td colspan="2">
-      <a href="/ShiftManager/public/profile_edit"><span>アカウント情報を変更する</span></a>
+      <a href="/profile/edit"><span>アカウント情報を変更する</span></a>
     </td>
   </tr>
 </tbody>

@@ -5993,16 +5993,10 @@ button.close {
   margin: 0;
   padding: 0; }
 
-.home {
-  background-image: url("/img/top_background_dark.jpg");
-  height: 750px;
-  position: relative;
-  top: -20px; }
-
 .side-menu {
   background-color: #f6a55b;
   position: relative;
-  top: -30px;
+  top: -20px;
   left: -15px;
   height: 730px; }
 
@@ -6011,10 +6005,10 @@ button.close {
   top: 100px;
   margin-left: 10px; }
   .side-menu-content li {
-    line-height: 1.5em;
+    line-height: 1.3em;
     font-size: 1.2em;
     color: black;
-    margin: 10px 0;
+    padding: 10px 0;
     list-style-type: none; }
     .side-menu-content li > a {
       display: block;
@@ -6026,5 +6020,28 @@ button.close {
   .side-menu-content .list-item li {
     margin: 0;
     list-style-type: square; }
+
+.main-contents {
+  background-color: black; }
+
+.home {
+  background-image: url("/img/top_background.png");
+  height: 750px;
+  position: relative;
+  top: -20px; }
+
+#login-botton {
+  position: relative;
+  top: 8px;
+  left: -5px; }
+
+.modal-content {
+  background-color: #d6e1e3; }
+
+#description {
+  font-size: 10em;
+  position: relative;
+  top: 300px;
+  left: 600px; }
 
 /*# sourceMappingURL=app.css.map */

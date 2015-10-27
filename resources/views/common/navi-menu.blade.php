@@ -15,7 +15,7 @@
       <a class="navbar-brand" href="#">ロゴ</a>
     </div>
     <div class="navbar-right">
-      ここ画像！！！！！画像
+      @yield('navbar-right')
     </div>
 
   </div>

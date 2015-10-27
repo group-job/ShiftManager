@@ -14,7 +14,7 @@ $managingLists = array('aaa','bbb','ccc');
     {{-- マイメニューリストアイテム --}}
       <div id="collapse-mymenu" class="collapse list-item">
         <li> <a href="#">マイシフト</a></li>
-        <li> <a href="#">プロフィール</a></li>
+        <li> <a href="/profile/view">プロフィール</a></li>
         <li> <a href="#">給与</a></li>
       </div>
 
