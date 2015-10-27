@@ -1,2 +1,2 @@
-<h1>給与</h1>
+<h1><div id="param"></div></h1>
 @include('common.title-menu')
