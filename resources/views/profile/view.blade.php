@@ -1,7 +1,5 @@
 @extends('common.layout')
 
-@section('side_menu')
-@overwrite
 
 @section('main-contents')
 <table>
@@ -16,7 +14,7 @@
       氏名：
     </td>
     <td>
-      きみや
+      吉川　公也
     </td>
   </tr>
   <tr>
@@ -24,7 +22,7 @@
       電話番号：
     </td>
     <td>
-      きみや
+      090-0000-0000
     </td>
   </tr>
   <tr>
@@ -32,7 +30,7 @@
       メールアドレス：
     </td>
     <td>
-      きみや
+      kimiya@kimiya.com
     </td>
   </tr>
   <tr>
@@ -40,7 +38,7 @@
       画像：
     </td>
     <td>
-      きみや
+      ここに画像
     </td>
   </tr>
   <tr>

@@ -11,6 +11,11 @@
 
 <table>
 <tbody>
+  <tr>
+    <td colspan="2">
+      <h1>きみやさんのアカウント情報変更</h1>
+    </td>
+  </tr>
 {!! Form::open() !!}
 {{-- 氏名 --}}
   <tr>
@@ -82,7 +87,8 @@
     {!! Form::label('image', '画像:') !!}
   </td>
   <td>
-    {!! Form::text('image', null, ['class' => 'form-control']) !!}
+    {{-- {!! Form::text('image', null, ['class' => 'form-control']) !!} --}}
+    <input type="text" name="name" value="">
     <input type="button" name="image" value="画像選択">
   </td>
 </tr>
@@ -91,8 +97,13 @@
 </table>
 
 <div class="col-md-offset-1">
-        {!! Form::submit('キャンセル', ['class' => 'btn btn-primary']) !!}
-        {!! Form::submit('確認', ['class' => 'btn btn-primary']) !!}
+  <button type="button" class="btn btn-default">キャンセル
+  </button>
+  <button type="button" class="btn btn-default" onclick="location.href='http://localhost:8888/profile.check'">
+    確認
+  </button>
+        {{-- {!! Form::submit('キャンセル', ['class' => 'btn btn-primary']) !!} --}}
+        {{-- {!! Form::submit('確認', ['class' => 'btn btn-primary']) !!} --}}
 {!! Form::close() !!}
 
 @endsection
