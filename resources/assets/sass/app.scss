@@ -1,3 +1,4 @@
+// app.scss
 @import "bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
 // カラー定義インポート
 @import "resources/assets/sass/_color.scss";
@@ -17,7 +18,7 @@
 
 }
 body{
-
+  background-color: $main-contents-bg-color;
 }
 
 #side-menu{
