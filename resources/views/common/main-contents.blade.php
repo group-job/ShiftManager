@@ -1,12 +1,11 @@
 @section('main-contents')
   <div id="main-contents">
-    @section('title-space')
-        <div id="title-space">
-        </div>
-    @show
-    @section('contens-space')
-        <div id="contens-space">
-        </div>
-    @show
+    <div id="title-space">
+      @yield('title-space','サブタイトル')
+    </div>
+    <div id="contens-space">
+      @section('contens-space')
+      @show
+    </div>
   </div>
 @show
