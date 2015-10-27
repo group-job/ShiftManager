@@ -43,7 +43,7 @@ $managingLists = array('とりまる','ラウンドワン');
       </div>
 
     <li>
-      <a href="/home.group-create">
+      <a href="/create.group">
         <span class="glyphicon glyphicon-plus"></span>グループ追加
       </a>
     </li>
