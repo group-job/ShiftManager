@@ -45,11 +45,7 @@ $(document).ready(function() {
     // 日付クリック処理
     dayClick: function(date, jsEvent, view) {
     var dataTooltip, insertHtml;
-    alertify.alert( 'message', function () {
-    // after clicking OK
-    });
-
-			// var title = prompt('Event Title:');
+			var title = prompt('Event Title:');
 			var eventData;
 			if (title) {
 				eventData = {
@@ -88,4 +84,5 @@ $(document).ready(function() {
   });
 
 });
+
 </script>
