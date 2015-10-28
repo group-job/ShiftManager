@@ -1,5 +1,5 @@
 <br>
-<div class="row col-lg-offset-3">
+<div class="row col-lg-offset-2">
   <div class="container">
     <div class="alert-info col-lg-7">
       社長が辞めました。
