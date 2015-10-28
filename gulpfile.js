@@ -15,7 +15,8 @@ var elixir = require('laravel-elixir');
  var paths = {
      'jquery': 'bower_components/jquery/',
      'bootstrap': 'bower_components/bootstrap-sass-official/assets/',
-     'fullcalendar' : 'resources/assets/fullcalendar/'
+     'fullcalendar' : 'resources/assets/fullcalendar/',
+     'js' : 'resources/assets/js/'
  };
 
 elixir(function(mix) {
@@ -36,6 +37,8 @@ elixir(function(mix) {
             paths.jquery + "dist/jquery.js",
             // paths.fullcalendar+"jquery-ui.custom.min.js",
             paths.fullcalendar + "fullcalendar.js",
+            paths.js + "jquery.darktooltip.js",
+            paths.js + "alertify.js",
             paths.bootstrap + "javascripts/bootstrap.js"
         ], 'public/js/app.js', './');  // ①
 });

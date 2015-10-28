@@ -7,6 +7,8 @@
 @parent
 <link href='css/fullcalendar.css' rel='stylesheet' />
 <link href='css/fullcalendar.print.css' rel='stylesheet' media='print' />
+<link rel="stylesheet" href="css/alertify.core.css" />
+<link rel="stylesheet" href="css/alertify.default.css" />
 @endsection
 @section('modify-js')
 @parent
@@ -18,7 +20,5 @@
 
 @section('contents-space')
 {{-- カレンダーにイベントを追加するためのスクリプト --}}
-
-
   <div id='calendar'></div>
 @stop

@@ -1,6 +1,9 @@
 {{-- カレンダーを描画するスクリプト --}}
 <script>
 $(document).ready(function() {
+  // ツールチップ
+
+  // カレンダー描画
   $('#calendar').fullCalendar({
     buttonText: {
       today: '今日'
@@ -41,18 +44,23 @@ $(document).ready(function() {
 
     // 日付クリック処理
     dayClick: function(date, jsEvent, view) {
-				var title = prompt('Event Title:');
-				var eventData;
-				if (title) {
-					eventData = {
-						title: title,
-            start:date,
-						// start: start,
-						// end: end
-					};
-					$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-				}
-				$('#calendar').fullCalendar('unselect');
+    var dataTooltip, insertHtml;
+    alertify.alert( 'message', function () {
+    // after clicking OK
+    });
+
+			// var title = prompt('Event Title:');
+			var eventData;
+			if (title) {
+				eventData = {
+					title: title,
+          start:date,
+					// start: start,
+					// end: end
+				};
+				$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+			}
+			$('#calendar').fullCalendar('unselect');
     },
 
     // // イベントクリック処理
