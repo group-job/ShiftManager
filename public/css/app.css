@@ -5760,6 +5760,9 @@ button.close {
 body {
   background-color: #f5f5ea; }
 
+.navbar-inverse {
+  color: #f5f5ea; }
+
 #title-space {
   height: 100px; }
 

@@ -20,6 +20,9 @@
 body{
   background-color: $main-contents-bg-color;
 }
+.navbar-inverse{
+  color: $main-contents-bg-color;
+}
 #title-space{
   height: 100px;
 }
