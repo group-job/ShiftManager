@@ -15,7 +15,9 @@
       <a class="navbar-brand" href="/">ロゴ</a>
     </div>
     <div class="navbar-right">
-      @yield('navbar-right')
+      @section('navbar-right')
+
+      @show
     </div>
 
   </div>
