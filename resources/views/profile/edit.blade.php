@@ -89,7 +89,7 @@
   <td>
     {{-- {!! Form::text('image', null, ['class' => 'form-control']) !!} --}}
     <input type="text" name="name" value="">
-    <input type="button" name="image" value="画像選択">
+    <input type="button" name="image" value="画像選択" class="btn btn-default">
   </td>
 </tr>
 

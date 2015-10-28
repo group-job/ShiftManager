@@ -27,7 +27,7 @@ $managingLists = array('とりまる','ラウンドワン');
       <div id="collapse-joining-group" class="collapse list-item">
         @foreach($joiningLists as $joiningList)
 
-          <li> <a href="group.home?name={{ $joiningList }}">{{$joiningList}}</a></li>
+          <li> <a href="/group.home?name={{ $joiningList }}">{{$joiningList}}</a></li>
 
         @endforeach
       </div>
@@ -40,7 +40,7 @@ $managingLists = array('とりまる','ラウンドワン');
     {{-- 管理グループリストアイテム --}}
       <div id="collapse-managing-group" class="collapse list-item">
         @foreach($managingLists as $managingList)
-          <li> <a href="group.home?name={{ $managingList }}">{{$managingList}}</a></li>
+          <li> <a href="/group.home?name={{ $managingList }}">{{$managingList}}</a></li>
         @endforeach
       </div>
 

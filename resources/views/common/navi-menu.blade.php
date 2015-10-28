@@ -12,11 +12,12 @@
           </button>  --}}
 
       {{-- タイトルなどのテキスト --}}
-      <a class="navbar-brand" href="/">ロゴ</a>
+      <a class="navbar-brand" href="#">ロゴ</a>
     </div>
     <div class="navbar-right">
       @section('navbar-right')
-
+        <img src="img/icon-cat.png" alt="" width="45" height="45"/>
+        ここにユーザ名
       @show
     </div>
 

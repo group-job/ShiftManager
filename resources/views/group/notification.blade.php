@@ -1,4 +1,5 @@
 <br>
+<div class="row col-lg-offset-3">
 <table class="table-bordered">
   <tbody>
     <tr>
@@ -6,7 +7,7 @@
         2015/09/19
       </td>
       <td>
-        安長さんが大会しました
+        安長さんが退会しました
       </td>
     </tr>
     <tr>
@@ -19,3 +20,4 @@
     </tr>
   </tbody>
 </table>
+</div>

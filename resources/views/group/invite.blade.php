@@ -40,7 +40,7 @@
 @endsection
 
 @section('contents-space')
-<div class="row">
+<div class="row col-lg-offset-3">
   <h3>招待する</h3>
     URL:kimiyakimiya.jp
     <br>

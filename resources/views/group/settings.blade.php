@@ -10,7 +10,7 @@
         <input type="text" name="name" value="">
       </td>
       <td>
-        <input type="button" name="name" value="変更">
+        <input type="button" name="name" value="変更" class="btn btn-primary">
       </td>
     </tr>
     <tr>
@@ -29,7 +29,7 @@
         メンバー招待
       </td>
       <td>
-        <input type="button" name="name" value="招待画面へ" onclick="location.href='http://localhost:8888/group.invite'">
+        <input type="button" name="name" value="招待画面へ" onclick="location.href='http://localhost:8888/group.invite'" class="btn btn-primary">
       </td>
     </tr>
     <tr>
@@ -37,7 +37,7 @@
         メンバー承認
       </td>
       <td>
-        <input type="button" name="name" value="承認画面へ" onclick="location.href='http://localhost:8888/group.approval'">
+        <input type="button" name="name" value="承認画面へ" onclick="location.href='http://localhost:8888/group.approval'" class="btn btn-primary">
       </td>
     </tr>
     <tr>
@@ -45,7 +45,7 @@
         メンバー削除
       </td>
       <td>
-        <input type="button" name="name" value="削除画面へ">
+        <input type="button" name="name" value="削除画面へ" class="btn btn-primary">
       </td>
     </tr>
   </tbody>

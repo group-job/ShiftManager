@@ -7,7 +7,7 @@
 @endsection
 
 @section('contents-space')
-<div class="row">
+<div class="row col-lg-offset-3">
   とりまるに参加申請をしますか？<br>
   管理者:牛嶋<usshi@gmail.com><br>
   URL:http://kimiya.com/group-kimiya
