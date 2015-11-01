@@ -45,7 +45,7 @@ $(document).ready(function() {
     // 日付クリック処理
     dayClick: function(date, jsEvent, view) {
     var dataTooltip, insertHtml;
-			var title = alertify.prompt('Event Title:');
+			var title = prompt('Event Title:');
 			var eventData;
 			if (title) {
 				eventData = {
