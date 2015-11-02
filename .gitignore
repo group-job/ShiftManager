@@ -7,6 +7,3 @@ Homestead.json
 /vendor
 /composer.lock
 /composer.phar
-/config/database.php
-
-config/database.php
