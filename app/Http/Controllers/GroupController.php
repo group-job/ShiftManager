@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Group;
+use App\Http\Requests\GroupRequest;
 
 class GroupController extends Controller
 {
@@ -13,32 +14,30 @@ class GroupController extends Controller
     /**
      * グループ作成用の画面表示
      *
-     * @return view
+     * @return View
      */
     public function create()
     {
         $title = 'グループの作成';
-        return view('create.group',compact('title'));
+        \Session::put('manager_id', '11');
+        return view('groupcreate.create',compact('title'));
     }
 
     /**
      * 作成ボタンをおした時の処理
-     *
-     * @return \Illuminate\Http\Response
+     * @param  GroupRequest
+     * @return View
      */
-    // public function store(Request $request)
-    public function store()
+    public function store(GroupRequest $request)
     {
-      $inputs = \Request::all();
-      $inputs["manager_id"] = "10";
-      // ②マスアサインメントを使って、DB
-      Group::create($inputs);
-      // die(var_dump($inputs));
+      //ユーザidの追加
+      $request["manager_id"] = "22";
+      //dbに登録
+      Group::create($request->all());
+
       // フラシュメッセージの表示
       \Session::flash('flash_message', 'グループの作成に成功しました。');
-      // ③記事一覧へリダイレクト
-
-      $title = 'グループの作成';
+      // 直前にリダイレクト
       return redirect()->back();
     }
 
