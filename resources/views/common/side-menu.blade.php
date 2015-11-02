@@ -45,8 +45,7 @@ $managingLists = array('とりまる','ラウンドワン');
       </div>
 
     <li>
-      <a href="/create.group">
-        <span class="glyphicon glyphicon-plus"></span>グループ追加
+      <span class="glyphicon glyphicon-plus">{!! link_to('group/create', 'グループ追加') !!}
       </a>
     </li>
   </ul>

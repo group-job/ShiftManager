@@ -5,18 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Group;
 
 class GroupController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -25,7 +18,8 @@ class GroupController extends Controller
      */
     public function create()
     {
-        return view('create.group');
+        $title = 'グループの作成';
+        return view('create.group',compact('title'));
     }
 
     /**
@@ -34,9 +28,18 @@ class GroupController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    // public function store(Request $request)
+    public function store()
     {
-        //
+      $inputs = \Request::all();
+
+      // ②マスアサインメントを使って、DB
+      Group::create($inputs);
+
+      \Session::flash('flash_message', 'グループの作成に成功しました。');
+      // ③記事一覧へリダイレクト
+      $title = 'グループの作成';
+      return redirect()->back();
     }
 
     /**
