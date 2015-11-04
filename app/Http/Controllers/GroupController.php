@@ -19,6 +19,7 @@ class GroupController extends Controller
     public function create()
     {
         $title = 'グループの作成';
+        // var_dump(parent::getSideMenu());
         \Session::put('manager_id', '11');
         return view('groupcreate.create',compact('title'));
     }
