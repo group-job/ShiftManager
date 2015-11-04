@@ -14,7 +14,7 @@
       氏名：
     </td>
     <td>
-      吉川　公也
+      {{ Session::get('user_name')}}
     </td>
   </tr>
   <tr>
@@ -22,7 +22,7 @@
       電話番号：
     </td>
     <td>
-      090-0000-0000
+      {{-- {{ $my_profile["phone"] }} --}}
     </td>
   </tr>
   <tr>
@@ -30,7 +30,7 @@
       メールアドレス：
     </td>
     <td>
-      kimiya@kimiya.com
+      {{-- {{ $my_profile["email"] }} --}}
     </td>
   </tr>
   <tr>
@@ -43,7 +43,7 @@
   </tr>
   <tr>
     <td colspan="2">
-      <a href="/profile/edit"><span>アカウント情報を変更する</span></a>
+      {!! link_to('profile/edit', 'アカウント情報を変更する') !!}
     </td>
   </tr>
 </tbody>

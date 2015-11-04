@@ -12,11 +12,17 @@ abstract class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function getSideMenu()
-    {
-      // var_dump(Group::all()->get(1)["group_name"]);
-      $manage_group = Group::latest('created_at')->manager()->get();
-      // die($manage_group);
-      return $manage_group;
-    }
+    // public function __construct()
+    // {
+    //
+    // }
+    //
+    // public function getSideMenu()
+    // {
+    //   // var_dump(Group::all()->get(1)["group_name"]);
+    //   $manage_group = Group::latest('created_at')->manager()->get();
+    //   // die($manage_group);
+    //   return $manage_group;
+    // }
+
 }

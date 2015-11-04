@@ -16,12 +16,10 @@ class GroupController extends Controller
      *
      * @return View
      */
-    public function create()
+    public function show()
     {
-        $title = 'グループの作成';
-        // var_dump(parent::getSideMenu());
-        \Session::put('manager_id', '11');
-        return view('groupcreate.create',compact('title'));
+        // \Session::put('manager_id', '11');
+        return view('groupcreate.create');
     }
 
     /**

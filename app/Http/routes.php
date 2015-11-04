@@ -58,11 +58,14 @@ if (2 < count($params)) {
 Route::get('/', 'IndexController@index');
 
 // // プロフィール
-Route::get('/profile_view', 'ProfileController@view');
-Route::get('/profile_edit', 'ProfileController@edit');
+Route::get('profile/show', 'ProfileController@show');
+Route::get('profile/edit', 'ProfileController@edit');
+// Route::resource('profile','ProfileController',['only' => ['show']]);
+// Route::resource('profile','ProfileController');
 
 //グループ作成
-Route::get('group/create', 'GroupController@create');
+// Route::resource('group','GroupController',['only' => ['create', 'store']]);
+Route::get('group/create', 'GroupController@show');
 Route::post('group/store', 'GroupController@store');
 
 //------------------------------------------------------------------------------

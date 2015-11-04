@@ -14,7 +14,7 @@ $managingLists = array('とりまる','ラウンドワン');
     {{-- マイメニューリストアイテム --}}
       <div id="collapse-mymenu" class="collapse list-item">
         <li> <a href="/home.personal-home">マイシフト</a></li>
-        <li> <a href="/profile/view">プロフィール</a></li>
+        <li> {!! link_to('profile/show', 'プロフィール') !!}</a></li>
         <li> <a href="/salary.home">給与</a></li>
       </div>
 
