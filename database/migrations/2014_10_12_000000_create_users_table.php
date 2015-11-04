@@ -24,7 +24,9 @@ class CreateUsersTable extends Migration
 =======
             $table->string('name',25);
             $table->string('email',30)->unique();
-            $table->string('phone',11)->unique();
+            $table->string('phone1',11)->unique();
+            $table->string('phone2',11)->unique();
+            $table->string('phone3',11)->unique();
             $table->string('password', 16);
 >>>>>>> origin/master
             $table->rememberToken();
