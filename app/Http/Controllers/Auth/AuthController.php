@@ -62,4 +62,11 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    //ログインチェックーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
+    // ログイン実行ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+    public static function executeLogin(){
+      echo "kimiya";
+    }
 }
