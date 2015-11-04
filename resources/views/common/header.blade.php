@@ -1,8 +1,6 @@
 <head>
   <meta charset="UTF-8">
-  {{-- <title>@yield('title','名前はまだない')</title> --}}
-  <title>{{ $title }}</title>
-
+  <title>@yield('title','名前はまだない')</title>
   <!-- CSSを追加 -->
   <!-- ① 追加 -->
   @section('modify-css')

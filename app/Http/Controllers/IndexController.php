@@ -9,52 +9,29 @@ use App\User;
 
 class IndexController extends Controller
 {
-    // ログイン画面へアクセスされたとき
+    // ログイン画面へアクセスされたときーーーーーーーーーーーーーーーーーーーーーーーーーーー
     public function index()
     {
-      if (Session::has('user')){
-        //既ログイン
-        $this->redirectToHome();
-      }else {
-        //未ログイン
-        $this->redirectToLogin();
-      }
+    //ログイン済みかチェック
+    return view('home.index');
     }
 
-    // ログイン実行
-    public function executeLogin(){
-      // ログイン処理
-      $input_name = Request::input('name');
-      $input_pass = Request::input('pass');
-
-      if($input_name != '' && $input_pass != ''){
-        //入力値がからじゃない場合DBから対応するユーザーのパス取得
-        $pass = User::where('name', '=', $input_name)->first().pass;
-        if($pass === $input_pass){
-          // 成功
-          $this->redirectToHome();
-        }
-        else {
-          // 失敗
-          $this->redirectToLogin();
-
-      }
 
 
-
-      }
-
-    }
-
-    // ログイン画面にリダイレクト
+    // ログイン画面にリダイレクトーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
     public function redirectToLogin($message = null){
-      return view('home.index');
+      return view('home.index',compact('message'));
     }
 
-    //ホーム画面へリダイレクト
+    //ホーム画面へリダイレクトーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
     public function redirectToHome(){
-      //ユーザー
+      //ユーザー情報をセッションに格納
 
+
+    }
+
+    public function test(){
+      echo "kimiya";
     }
 
 
