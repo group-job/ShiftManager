@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Http\Requests\ProfileRequst;
 
 class ProfileController extends Controller
 {
@@ -27,6 +28,16 @@ class ProfileController extends Controller
     public function edit()
     {
       return view('profile.edit');
+    }
+
+    // public function store(ProfileRequest $request)
+    public function store(Request $request)
+    {
+      $user = User::myProfile()->find(1);
+      // var_dump($user);
+      // $value = $_REQUEST['value'];
+      $user->update($request->all());
+      // \Session::put('user_name', $request['name']);
     }
 
 

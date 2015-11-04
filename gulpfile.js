@@ -39,6 +39,11 @@ elixir(function(mix) {
             paths.fullcalendar + "fullcalendar.js",
             paths.js + "jquery.darktooltip.js",
             paths.js + "alertify.js",
-            paths.bootstrap + "javascripts/bootstrap.js"
+            paths.bootstrap + "javascripts/bootstrap.js",
         ], 'public/js/app.js', './');  // ①
+
+        //jsファイルわけ
+        mix.scripts([
+          'profile.js'
+        ],'public/js/profile.js')
 });

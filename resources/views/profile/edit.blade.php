@@ -1,14 +1,14 @@
 <!-- レイアウトの継承 -->
 @extends('common.layout')
 
-<!-- サイドメニューを消したい時にかく -->
-@section('side_menu')
-@overwrite
-<!-- ここまで -->
+{{-- @section('modify-js')
+  @parent
+  <script type="text/javascript" src="/js/profile.js"></script>
+@show --}}
 
 <!-- この中身にかく -->
 @section('main-contents')
-
+@include('common.form-alert')
 <table>
 <tbody>
   <tr>
@@ -18,13 +18,16 @@
   </tr>
   <tr>
     <td>
-        @include('profile.form.name')
+      @include('profile.form.name')
+    </td>
+    <td>
+      @include('profile.form.phone')
     </td>
   </tr>
 
 
 </tbody>
 </table>
-
+{{-- とりあえずここに --}}
+<script type="text/javascript" src="/js/profile.js"></script>
 @endsection
-<!-- ここまで -->
