@@ -1,3 +1,6 @@
+変数
+message
+
 <!-- モーダル・ダイアログ -->
 <div class="modal fade" id="login-modal" tabindex="-1">
   <div class="modal-dialog">
@@ -23,7 +26,7 @@
             </div>
           </div>
           <div class="text-danger text-center">
-            {{$login_message}}
+            {{$message}}
           </div>
           <div class="col-md-offset-8">
             会員登録は<a href="#">こちら</a>
