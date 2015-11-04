@@ -6,7 +6,7 @@
 <tbody>
   <tr>
     <td colspan="2">
-      <h1>きみやさんのアカウント情報</h1>
+      <h1>{{ Session::get('user_name')}}さんのアカウント情報</h1>
     </td>
   </tr>
   <tr>
@@ -22,7 +22,7 @@
       電話番号：
     </td>
     <td>
-      {{-- {{ $my_profile["phone"] }} --}}
+      {{ $my_profile["phone1"] }}-{{ $my_profile["phone2"] }}-{{ $my_profile["phone3"] }}
     </td>
   </tr>
   <tr>
@@ -30,7 +30,7 @@
       メールアドレス：
     </td>
     <td>
-      {{-- {{ $my_profile["email"] }} --}}
+      {{ $my_profile["email"] }}
     </td>
   </tr>
   <tr>

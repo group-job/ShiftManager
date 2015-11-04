@@ -13,7 +13,7 @@ class ProfileController extends Controller
     {
       \Session::put('user_name', 'きみや');
       \Session::put('user_id', '1');
-      // $my_profile = User::myProfile()->find(1);
+      $my_profile = User::myProfile()->find(1);
       // foreach ($my_profile as $key => $value) {
       //   echo $value["name"];
       // }
