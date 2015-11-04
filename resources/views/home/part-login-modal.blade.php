@@ -1,6 +1,3 @@
-変数
-message
-
 <!-- モーダル・ダイアログ -->
 <div class="modal fade" id="login-modal" tabindex="-1">
   <div class="modal-dialog">
