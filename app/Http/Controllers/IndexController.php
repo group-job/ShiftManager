@@ -15,7 +15,7 @@ class IndexController extends Controller
       $message = '';
       if(AuthController::checkStatus()){
         //既ログイン→homeにリダイレクト
-          return redirect('user/login');
+          return redirect('group/home');
       }else {
           return view('home.index');
       }

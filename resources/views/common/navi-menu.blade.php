@@ -9,8 +9,10 @@
     </div>
     <div class="navbar-right">
       @section('navbar-right')
+        @if (Auth::check()) 
+             {{ Auth::user()->name }}
+        @endif
         <img src="img/icon-cat.png" alt="" width="45" height="45"/>
-         {{-- {{ Auth::user()->name }}さん --}}
       @show
     </div>
 

@@ -61,9 +61,12 @@ Route::post('auth/register', 'Auth\AuthController@create');
 Route::post('auth/login', 'Auth\AuthController@login');
 Route::post('auth/login2', 'Auth\AuthController@postLogin');
 
-
 // Index
 Route::get('/', 'IndexController@index');
+
+//home
+Route::controller('home', 'HomeController');
+
 
 // // プロフィール
 Route::get('profile/show', 'ProfileController@show');

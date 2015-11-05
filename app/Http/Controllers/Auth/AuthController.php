@@ -77,10 +77,9 @@ class AuthController extends Controller
     // ログイン実行ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
     public function login(Request $request){
       $email = $request->input('mail');
-      $password = bcrypt($request->input('password'));
-      echo "login status:";
-      var_dump ($this->checkStatus());
-      echo $email."<br/>.$password";
+      $password = $request->input('password');
+      echo $email."<br/>".$password;
       var_dump (Auth::attempt(['email' => $email, 'password' => $password]));
+      return redirect('group/create');
     }
 }
