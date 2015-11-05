@@ -7,6 +7,8 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Auth;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -54,19 +56,28 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
-    {
+    protected function create(Request $request){
+        // TODO 多重登録防止 mail is unique key !
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'name' => $request->input('name'),
+            'email' => $request->input('mail'),
+            'password' => bcrypt($request->input('password')),
+            'phone1' => $request->input('phone1'),
+            'phone2' => $request->input('phone2'),
+            'phone3' => $request->input('phone3'),
         ]);
     }
 
     //ログインチェックーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+    public function checkStatus(){
+      return Auth::check();
+    }
 
     // ログイン実行ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-    public static function executeLogin(){
-      echo "kimiya";
+    public function login(Request $request){
+      $email = $request->input('mail');
+      $password = bcrypt($request->input('password'));
+      echo $email."<br/>.$password";
+      var_dump (Auth::attempt(['email' => $email, 'password' => $password]));
     }
 }

@@ -10,9 +10,19 @@ use App\User;
 
 class TestController extends Controller
 {
-  public function test(){
-    echo "kimiya";
+    function test(){
+    $data = array(
+      'name'=>'kimiya',
+      'email' => 'email',
+      'password' => 'password',
+      'phone1' => 'phone1',
+      'phone2' => 'phone2',
+      'phone3' => 'phone3'
+    );
+    var_dump($data);
+    // var_dump(AuthController::Create($data));
 
-  }
+    }
+
 
 }

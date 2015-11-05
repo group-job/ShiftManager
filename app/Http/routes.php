@@ -42,10 +42,7 @@ $className = ucfirst(strtolower($controller)) . 'Controller';
 // 2番目のパラメーターをメソッド名として取得
 if (2 < count($params)) {
   $action = $params[2];
-  if ($params[1] != 'test') {
     Route::get($params[1].'/'.$params[2], $className.'@'.$action);
-  }
-
 }
 
 
@@ -53,6 +50,11 @@ if (2 < count($params)) {
 //                            通常のルーティング
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 // こっちが優先される
+
+//Authentication
+Route::post('auth/register', 'Auth\AuthController@create');
+Route::post('auth/login', 'Auth\AuthController@login');
+
 
 // Index
 Route::get('/', 'IndexController@index');
