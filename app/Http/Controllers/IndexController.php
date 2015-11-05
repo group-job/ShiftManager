@@ -13,11 +13,13 @@ class IndexController extends Controller
     // ログイン画面へアクセスされたときーーーーーーーーーーーーーーーーーーーーーーーーーーー
     public function index(){
       $message = '';
+      //リダイレクトループ回避のためミドルウェア非適用。自前でログインチェック
       if(AuthController::checkStatus()){
         //既ログイン→homeにリダイレクト
-          return redirect('group/home');
+          return redirect('personal/home');
       }else {
-          return view('home.index');
+          // 未ログイン
+          return view('index.home');
       }
 
     }

@@ -1,5 +1,5 @@
 
-  {!! Form::open( ['url' => 'group/store'] ) !!}
+  {!! Form::open( ['url' => 'group/create'] ) !!}
   <table>
     <tr>
       <td>

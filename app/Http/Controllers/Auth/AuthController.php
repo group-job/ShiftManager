@@ -30,7 +30,6 @@ class AuthController extends Controller
      *
      * @return void
      */
-    protected $redirectTo = '/group/create';
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'getLogout']);
@@ -57,9 +56,11 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(Request $request){
+    protected function getRegister(Request $request){
         // TODO 多重登録防止 mail is unique key !
-        return User::create([
+        // TODO 入力チェック
+
+        User::create([
             'name' => $request->input('name'),
             'email' => $request->input('mail'),
             'password' => bcrypt($request->input('password')),
@@ -75,11 +76,23 @@ class AuthController extends Controller
     }
 
     // ログイン実行ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-    public function login(Request $request){
+    public function postLogin(Request $request){
       $email = $request->input('mail');
       $password = $request->input('password');
-      echo $email."<br/>".$password;
-      var_dump (Auth::attempt(['email' => $email, 'password' => $password]));
-      return redirect('group/create');
+      if(Auth::attempt(['email' => $email, 'password' => $password])){
+        //ログイン成功
+        return redirect()->intended('/personal/home');
+      }
+      else {
+        // ログイン失敗
+        return back()->withInput();
+      }
+    }
+    public function getLogout(){
+      Auth::logout();
+      return redirect('/');
+    }
+    public function getLogin(){
+        return redirect('/');
     }
 }

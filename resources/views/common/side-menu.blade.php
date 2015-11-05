@@ -13,7 +13,7 @@ $managingLists = array('とりまる','ラウンドワン');
     </li>
     {{-- マイメニューリストアイテム --}}
       <div id="collapse-mymenu" class="collapse list-item">
-        <li> <a href="/home.personal-home">マイシフト</a></li>
+        <li> <a href="/personal/home">マイシフト</a></li>
         <li> {!! link_to('profile/show', 'プロフィール') !!}</a></li>
         <li> <a href="/salary.home">給与</a></li>
       </div>
@@ -45,7 +45,7 @@ $managingLists = array('とりまる','ラウンドワン');
       </div>
 
     <li>
-      <span class="glyphicon glyphicon-plus">{!! link_to('group/create', 'グループ追加') !!}
+      <span class="glyphicon glyphicon-plus">{!! link_to('/group/create', 'グループ追加') !!}
       </a>
     </li>
   </ul>
