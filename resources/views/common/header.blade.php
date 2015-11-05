@@ -1,5 +1,6 @@
 <head>
   <meta charset="UTF-8">
+  <meta name="csrf-token" content="{{ Session::token() }}">
   <title>@yield('title','名前はまだない')</title>
 
   <!-- CSSを追加 -->
