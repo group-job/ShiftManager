@@ -24,7 +24,6 @@
             </div>
           </div>
           <div class="text-danger text-center">
-            {{$message}}
           </div>
           <div class="col-md-offset-8">
             会員登録は<a href="#" data-toggle="modal" data-target="#signup-modal" data-dismiss="modal">こちら</a>
@@ -94,7 +93,6 @@
             </div>
           </div>
           <div class="text-danger text-center">
-            {{$message}}
           </div>
           <div class="col-md-offset-8">
           </div>

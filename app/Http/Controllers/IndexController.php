@@ -12,11 +12,12 @@ class IndexController extends Controller
 {
     // ログイン画面へアクセスされたときーーーーーーーーーーーーーーーーーーーーーーーーーーー
     public function index(){
+      $message = '';
       if(AuthController::checkStatus()){
         //既ログイン→homeにリダイレクト
           return redirect('user/login');
       }else {
-          return view('home.index',$message);
+          return view('home.index');
       }
 
     }

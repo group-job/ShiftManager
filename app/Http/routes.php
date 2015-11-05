@@ -59,6 +59,7 @@
 //Authentication
 Route::post('auth/register', 'Auth\AuthController@create');
 Route::post('auth/login', 'Auth\AuthController@login');
+Route::post('auth/login2', 'Auth\AuthController@postLogin');
 
 
 // Index

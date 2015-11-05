@@ -30,6 +30,7 @@ class AuthController extends Controller
      *
      * @return void
      */
+    protected $redirectTo = '/group/create';
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'getLogout']);
@@ -69,7 +70,7 @@ class AuthController extends Controller
     }
 
     //ログインチェックーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-    public function checkStatus(){
+    public static function checkStatus(){
       return Auth::check();
     }
 
@@ -77,6 +78,8 @@ class AuthController extends Controller
     public function login(Request $request){
       $email = $request->input('mail');
       $password = bcrypt($request->input('password'));
+      echo "login status:";
+      var_dump ($this->checkStatus());
       echo $email."<br/>.$password";
       var_dump (Auth::attempt(['email' => $email, 'password' => $password]));
     }
