@@ -14,9 +14,11 @@ class BaseController extends Controller
   public function __construct()
   {
     // $my_profile = User::myProfile()->find(1);
-    $member_group_id = GroupMember::memberGroup()->get();;
-    $member_group = Group::groupName($member_group_id)->get();
+    $join_group_id = GroupMember::joinGroup()->get();
+    // $join_group_id = 1;
+    $join_group = Group::groupName($join_group_id)->get();
     // View::share('member_group', $member_group_id);
-    View::share('member_group', $member_group);
+    View::share('join_group_id', $join_group_id);
+    View::share('join_group', $join_group);
   }
 }
