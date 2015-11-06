@@ -25,10 +25,8 @@ $managingLists = array('とりまる','ラウンドワン');
       </li>
     {{-- 参加グループリストアイテム --}}
       <div id="collapse-joining-group" class="collapse list-item">
-        @foreach($joiningLists as $joiningList)
-
-          <li> <a href="/group.home?name={{ $joiningList }}">{{$joiningList}}</a></li>
-
+        @foreach($member_group as $value)
+          <li> <a href="">{{ $value['name'] }}<br></a></li>
         @endforeach
       </div>
 

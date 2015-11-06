@@ -15,7 +15,8 @@ class BaseController extends Controller
   {
     // $my_profile = User::myProfile()->find(1);
     $member_group_id = GroupMember::memberGroup()->get();;
-    $member_group = Group::groupName($member_group_id[0]["user_id"])->get();
+    $member_group = Group::groupName($member_group_id)->get();
+    // View::share('member_group', $member_group_id);
     View::share('member_group', $member_group);
   }
 }
