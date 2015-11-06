@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Auth\AuthController;
 use App\Group;
 use App\Http\Requests\GroupRequest;
+use Auth;
 
 class GroupController extends BaseController
 {
@@ -34,7 +35,7 @@ class GroupController extends BaseController
     public function postCreate(GroupRequest $request)
     {
       //ユーザidの追加
-      $request["user_id"] = "22";
+      $request["user_id"] = Auth::user()->name;
       //dbに登録
       Group::create($request->all());
 

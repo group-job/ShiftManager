@@ -1,6 +1,5 @@
 @section('side-menu')
 <?php
-$joiningLists = array('とりまる','ラウンドワン');
 $managingLists = array('とりまる','ラウンドワン');
 ?>
 {{-- サイドメニュー --}}
