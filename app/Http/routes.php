@@ -22,32 +22,32 @@
 // // パラメーター取得（末尾の / は削除）
 // 非推奨関数につきえらーでるからとりあえず無効化するよ
 // ----------------------------------------------------------------------------
-// error_reporting(E_ERROR & ~E_NOTICE & ~E_PARSE);
-// $param = ereg_replace('/?$', '', $_SERVER['REQUEST_URI']);
-// $params[1] = '';
-// $params[2] = '';
-// $controller = 'index';
-// $action = 'index';
-// $params = array();
-// if ('' != $param) {
-//   // パラメーターを / で分割
-//   $params = explode('/', $param);
-// }
-// // １番目のパラメーターをコントローラーとして取得
-// if (1 < count($params)) {
-//   $controller = $params[1];
-// }
-// // 	// パラメータより取得したコントローラー名によりクラス振分け
-// $className = ucfirst(strtolower($controller)) . 'Controller';
-//
-// // 2番目のパラメーターをメソッド名として取得
-// if (2 < count($params)) {
-//   $action = $params[2];
-//   if ($params[1] != 'test') {
-//     Route::get($params[1].'/'.$params[2], $className.'@'.$action);
-//   }
-//
-// }
+error_reporting(E_ERROR & ~E_NOTICE & ~E_PARSE);
+$param = ereg_replace('/?$', '', $_SERVER['REQUEST_URI']);
+$params[1] = '';
+$params[2] = '';
+$controller = 'index';
+$action = 'index';
+$params = array();
+if ('' != $param) {
+  // パラメーターを / で分割
+  $params = explode('/', $param);
+}
+// １番目のパラメーターをコントローラーとして取得
+if (1 < count($params)) {
+  $controller = $params[1];
+}
+// 	// パラメータより取得したコントローラー名によりクラス振分け
+$className = ucfirst(strtolower($controller)) . 'Controller';
+
+// 2番目のパラメーターをメソッド名として取得
+if (2 < count($params)) {
+  $action = $params[2];
+  if ($params[1] != 'test') {
+    Route::get($params[1].'/'.$params[2], $className.'@'.$action);
+  }
+
+}
 
 
 
