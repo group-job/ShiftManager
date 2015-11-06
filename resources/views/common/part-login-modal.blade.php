@@ -7,7 +7,7 @@
         <h4 class="modal-title">ログイン</h4>
       </div>
         {{-- フォーム --}}
-        <form action="auth/login" class="form-horizontal" method="post">
+        <form action="/auth/login" class="form-horizontal" method="post">
           <div class="modal-body">
           {{-- CSRF対策--}}
           <input type="hidden" name="_token" value="{{ csrf_token() }}">

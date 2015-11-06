@@ -56,11 +56,11 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function getRegister(Request $request){
+    public function postRegister(Request $request){
         // TODO 多重登録防止 mail is unique key !
         // TODO 入力チェック
-
-        User::create([
+        // TODO 登録失敗処理
+        $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('mail'),
             'password' => bcrypt($request->input('password')),
@@ -68,6 +68,8 @@ class AuthController extends Controller
             'phone2' => $request->input('phone2'),
             'phone3' => $request->input('phone3'),
         ]);
+        Auth::login($user);
+        return redirect('/personal/home');
     }
 
     //ログインチェックーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
@@ -76,7 +78,7 @@ class AuthController extends Controller
     }
 
     // ログイン実行ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-    public function postLogin(Request $request){
+    public static function postLogin(Request $request){
       $email = $request->input('mail');
       $password = $request->input('password');
       if(Auth::attempt(['email' => $email, 'password' => $password])){
@@ -93,6 +95,6 @@ class AuthController extends Controller
       return redirect('/');
     }
     public function getLogin(){
-        return redirect('/');
+      return redirect('/');
     }
 }
