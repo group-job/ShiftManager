@@ -6,11 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Group extends Model
 {
-    protected $fillable = ['group_name', 'manager_id'];
+    protected $fillable = ['name', 'user_id'];
 
     // 管理しているグループ一覧
     public function scopeManager($query)
     {
-      $query->where('manager_id','=',22);
+      $query->where('user_id','=',22);
+    }
+
+    public function scopeGroupName($query,$id)
+    {
+      $query->where('id', '=', $id);
     }
 }

@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Http\Requests\ProfileRequst;
 
-class ProfileController extends Controller
+class ProfileController extends BaseController
 {
     public function show()
     {

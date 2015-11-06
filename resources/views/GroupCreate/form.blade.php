@@ -3,10 +3,10 @@
   <table>
     <tr>
       <td>
-        {!! Form::label('group_name', 'グループ名：') !!}
+        {!! Form::label('name', 'グループ名：') !!}
       </td>
       <td>
-        {!! Form::text('group_name', null, ['class' => 'form-control']) !!}
+        {!! Form::text('name', null, ['class' => 'form-control']) !!}
       </td>
     </tr>
     <tr>
@@ -15,4 +15,5 @@
       </td>
     </tr>
   </table>
-    {!! Form::close() !!}
+
+  {{ $member_group }}

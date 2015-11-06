@@ -9,7 +9,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Group;
 use App\Http\Requests\GroupRequest;
 
-class GroupController extends Controller
+class GroupController extends BaseController
 {
 
     /**
@@ -31,7 +31,7 @@ class GroupController extends Controller
     public function store(GroupRequest $request)
     {
       //ユーザidの追加
-      $request["manager_id"] = "22";
+      $request["user_id"] = "22";
       //dbに登録
       Group::create($request->all());
 

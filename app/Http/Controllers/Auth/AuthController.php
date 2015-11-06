@@ -80,7 +80,9 @@ class AuthController extends Controller
       $password = bcrypt($request->input('password'));
       echo "login status:";
       var_dump ($this->checkStatus());
-      echo $email."<br/>.$password";
-      var_dump (Auth::attempt(['email' => $email, 'password' => $password]));
+      echo $email."<br/>.$password.<br>";
+      $inputs = Input::only(array('mail', 'password'));
+      var_dump (Auth::attempt($inputs));
+      // var_dump (Auth::attempt(['email' => $email, 'password' => $password]));
     }
 }

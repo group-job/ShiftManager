@@ -24,7 +24,7 @@ class GroupRequest extends Request
     public function rules()
     {
         return [
-            'group_name' => 'required',
+            'name' => 'required',
         ];
     }
 }
