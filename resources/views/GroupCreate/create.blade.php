@@ -6,7 +6,7 @@
   <div class="container col-lg-offset-1">
       <h1>新規グループの作成</h1>
   </div>
-  
+
   {{-- フラッシュメッセージ --}}
   <div class="container">
     <div class="col-lg-6">

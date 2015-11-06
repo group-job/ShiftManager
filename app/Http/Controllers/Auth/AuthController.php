@@ -30,7 +30,6 @@ class AuthController extends Controller
      *
      * @return void
      */
-    protected $redirectTo = '/group/create';
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'getLogout']);
@@ -57,9 +56,11 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(Request $request){
+    public function postRegister(Request $request){
         // TODO 多重登録防止 mail is unique key !
-        return User::create([
+        // TODO 入力チェック
+        // TODO 登録失敗処理
+        $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('mail'),
             'password' => bcrypt($request->input('password')),
@@ -67,6 +68,8 @@ class AuthController extends Controller
             'phone2' => $request->input('phone2'),
             'phone3' => $request->input('phone3'),
         ]);
+        Auth::login($user);
+        return redirect('/personal/home');
     }
 
     //ログインチェックーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
@@ -75,14 +78,23 @@ class AuthController extends Controller
     }
 
     // ログイン実行ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-    public function login(Request $request){
+    public static function postLogin(Request $request){
       $email = $request->input('mail');
-      $password = bcrypt($request->input('password'));
-      echo "login status:";
-      var_dump ($this->checkStatus());
-      echo $email."<br/>.$password.<br>";
-      $inputs = Input::only(array('mail', 'password'));
-      var_dump (Auth::attempt($inputs));
-      // var_dump (Auth::attempt(['email' => $email, 'password' => $password]));
+      $password = $request->input('password');
+      if(Auth::attempt(['email' => $email, 'password' => $password])){
+        //ログイン成功
+        return redirect()->intended('/personal/home');
+      }
+      else {
+        // ログイン失敗
+        return back()->withInput();
+      }
+    }
+    public function getLogout(){
+      Auth::logout();
+      return redirect('/');
+    }
+    public function getLogin(){
+      return redirect('/');
     }
 }

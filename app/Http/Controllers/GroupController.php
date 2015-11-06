@@ -17,9 +17,12 @@ class GroupController extends BaseController
      *
      * @return View
      */
-    public function show()
+     public function getHome(){
+       return view('group.home');
+     }
+
+    public function getCreate()
     {
-        // \Session::put('manager_id', '11');
         return view('groupcreate.create');
     }
 
@@ -28,7 +31,7 @@ class GroupController extends BaseController
      * @param  GroupRequest
      * @return View
      */
-    public function store(GroupRequest $request)
+    public function postCreate(GroupRequest $request)
     {
       //ユーザidの追加
       $request["user_id"] = "22";

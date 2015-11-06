@@ -10,7 +10,7 @@ use App\Http\Requests\ProfileRequst;
 
 class ProfileController extends BaseController
 {
-    public function show()
+    public function getShow()
     {
       \Session::put('user_name', 'きみや');
       \Session::put('user_id', '1');
@@ -25,13 +25,13 @@ class ProfileController extends BaseController
       return view('profile.show',compact('my_profile'));
     }
 
-    public function edit()
+    public function getEdit()
     {
       return view('profile.edit');
     }
 
     // public function store(ProfileRequest $request)
-    public function store(Request $request)
+    public function postStore(Request $request)
     {
       $user = User::myProfile()->find(1);
       // var_dump($user);
