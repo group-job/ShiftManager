@@ -18,10 +18,11 @@
     {!! Form::close() !!}
     {{-- {{ var_dump($member_group) }} --}}
     {{ $join_group_id }}
+    {{-- {{ $join_group }} --}}
         {{-- {{ $member_group['group_id'] }} --}}
         {{-- {{ $member_group['user_id'] }} --}}
         {{-- {{var_dump($member_group)}} --}}
         {{-- {{var_dump($member_group_id)}} --}}
-        {{-- @foreach($member_group as $value)
-          グループ：{{ $value['name'] }}<br>
-        @endforeach --}}
+        @foreach($join_group_id as $value)
+          グループ：{{ $value['group_id'] }}<br>:
+        @endforeach
