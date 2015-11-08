@@ -1,6 +1,8 @@
+
 @section('side-menu')
 <?php
 $managingLists = array('とりまる','ラウンドワン');
+$join_group = array('とりまる','ラウンドワン');
 ?>
 {{-- サイドメニュー --}}
 <div id="side-menu">
@@ -25,7 +27,7 @@ $managingLists = array('とりまる','ラウンドワン');
     {{-- 参加グループリストアイテム --}}
       <div id="collapse-joining-group" class="collapse list-item">
         @foreach($join_group as $value)
-          <li> <a href="">{{ $value['name'] }}<br></a></li>
+          <li> <a href="">{{ $value }}<br></a></li>
         @endforeach
       </div>
 
