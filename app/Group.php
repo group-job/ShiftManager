@@ -16,11 +16,12 @@ class Group extends Model
 
     public function scopeGroupName($query,$id)
     {
-      if ($id) {
-        foreach ($id as $value) {
-          $query->orWhere('id', '=', $value['group_id']);
-        }
-      }
+      // if ($id) {
+      //   foreach ($id as $value) {
+      //     $query->orWhere('id', '=', $value['group_id']);
+      //   }
+        $query->whereIn('id',$id);
+      // }
       // dd($query);
 
       // $query->orWhere('id', '=', $id[0]['group_id']);
