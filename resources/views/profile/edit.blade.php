@@ -20,6 +20,8 @@
     <td>
       @include('profile.form.name')
     </td>
+  </tr>
+  <tr>
     <td>
       @include('profile.form.phone')
     </td>
