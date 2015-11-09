@@ -6,7 +6,7 @@
         <a data-toggle="collapse" data-parent="#accordion" href="#form-phone" data-toggle="tooltip" title="クリックしてね">電話番号変更</a>
         </h4>
     </div>{{-- パネルヘッダー --}}
-    
+
     <div id="form-phone" class="panel-collapse collapse">{{-- 隠すためのやつ --}}
         <div class="panel-body">{{-- パネルボデー --}}
         <div class="row">
@@ -39,7 +39,7 @@
                 {{-- {!! Form::close() !!} --}}
             </div>
             <br />
-        
+
         </div>
         </div>{{-- パネルボデー --}}
     </div>{{-- 隠すためのやつ --}}
