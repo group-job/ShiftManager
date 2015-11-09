@@ -41,7 +41,7 @@
                 </div>
                 <div class="row">
                     {{-- {!! Form::button('変更', ['class' => 'btn btn-primary form-control', 'id' => 'button-email', 'data-loading-text' => '変更中']) !!} --}}
-                    <input type="button" class="btn btn-primary  col-lg-4 col-lg-offset-7" id="button-email" data-loading-text="変更中" value="メールアドレス変更">
+                    <input type="button" class="btn btn-primary  col-lg-2 col-lg-offset-9" id="button-email" data-loading-text="変更中" value="メールアドレス変更">
                     {{-- {!! Form::close() !!} --}}
                 </div>
             </div>

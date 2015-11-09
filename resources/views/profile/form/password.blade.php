@@ -14,7 +14,7 @@
                         {!! Form::label('user_now_password', '現在のパスワード：') !!}
                     </label>
                     <div class="col-lg-4">
-                        {!! Form::text('user_now_password', null, ['class' => 'form-control', 'id' => 'input-now-password'  ]) !!}
+                        {!! Form::password('user_now_password', null, ['class' => 'form-control', 'id' => 'input-now-password'  ]) !!}
                     </div>
                     <div class="col-lg-2">
                         <div style="color:#ff0000; font-size:8pt;">
@@ -27,7 +27,7 @@
                         {!! Form::label('user_new_password', '新しいパスワード：') !!}
                     </label>
                     <div class="col-lg-4">
-                        {!! Form::text('user_new_password', null, ['class' => 'form-control', 'id' => 'input-new-password'  ]) !!}
+                        {!! Form::password('user_new_password', null, ['class' => 'form-control', 'id' => 'input-new-password'  ]) !!}
                     </div>
                     <div class="col-lg-2">
                         <div style="color:#ff0000; font-size:8pt;">
@@ -40,7 +40,7 @@
                         {!! Form::label('user_new_password2', '新しいパスワード(再入力)：') !!}
                     </label>
                     <div class="col-lg-4">
-                        {!! Form::text('user_new_password2', null, ['class' => 'form-control', 'id' => 'input-new-password2'  ]) !!}
+                        {!! Form::password('user_new_password2', null, ['class' => 'form-control', 'id' => 'input-new-password2'  ]) !!}
                     </div>
                     <div class="col-lg-2">
                         <div style="color:#ff0000; font-size:8pt;">
@@ -50,7 +50,7 @@
                 </div>
                 <div class="row">
                     {{-- {!! Form::button('変更', ['class' => 'btn btn-primary form-control', 'id' => 'button-password', 'data-loading-text' => '変更中']) !!} --}}
-                    <input type="button" class="btn btn-primary  col-lg-4 col-lg-offset-7" id="button-password" data-loading-text="変更中" value="パスワード変更">
+                    <input type="button" class="btn btn-primary  col-lg-2 col-lg-offset-9" id="button-password" data-loading-text="変更中" value="パスワード変更">
                     {{-- {!! Form::close() !!} --}}
                 </div>
             </div>

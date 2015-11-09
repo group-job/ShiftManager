@@ -63,6 +63,22 @@ jQuery(document).ready(function () {
   );
   });
 
+  //画像変更処理
+  $("#button-image").click(function (event) {
+    $.post(
+      "store",
+      {
+        '_token': $('meta[image=csrf-token]').attr('content'),
+        value: document.getElementById("input-image").value,
+      },
+      function (data) {
+        // $('#alert').html("氏名を" + data + "に変更しました");
+        // $('#nowname').html(data);
+        // $('#sessionName').html(data);
+      }
+  );
+  });
+
   // ローディングボタン
   $("input:button").click(function () {
     var btn = $(this);

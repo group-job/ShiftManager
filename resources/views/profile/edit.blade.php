@@ -36,6 +36,11 @@
       @include('profile.form.password')
     </td>
   </tr>
+  <tr>
+    <td>
+      @include('profile.form.image')
+    </td>
+  </tr>
 </tbody>
 </table>
 {{-- とりあえずここに --}}
