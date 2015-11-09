@@ -21,7 +21,6 @@ jQuery(document).ready(function () {
         "store",
         {
           '_token': $('meta[phone=csrf-token]').attr('content'),
-          type: "phone1",
           value: document.getElementById("input-phone1").value,
         },
         function (data) {
