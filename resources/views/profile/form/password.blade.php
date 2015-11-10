@@ -11,10 +11,10 @@
                 <div class="row">
                     {{-- {!! Form::open() !!} --}}
                     <label class="col-lg-3" for="nowpassword">
-                        {!! Form::label('user_now_password', '現在のパスワード：') !!}
+                        {!! Form::label('user_nowpassword', '現在のパスワード：') !!}
                     </label>
                     <div class="col-lg-4">
-                        {!! Form::password('user_now_password', null, ['class' => 'form-control', 'id' => 'input-now-password'  ]) !!}
+                        {!! Form::password('user_nowpassword', null, ['class' => 'form-control', 'id' => 'input-now-password'  ]) !!}
                     </div>
                     <div class="col-lg-2">
                         <div style="color:#ff0000; font-size:8pt;">
