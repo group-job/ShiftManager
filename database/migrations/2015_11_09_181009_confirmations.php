@@ -14,7 +14,7 @@ class Confirmations extends Migration
     {
       Schema::create('confirmations', function(Blueprint $table){
         $table->increments('id');
-        $table->integer('user`_id');
+        $table->integer('user_id');
       });
     }
 
