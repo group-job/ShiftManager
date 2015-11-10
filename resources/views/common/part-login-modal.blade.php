@@ -78,23 +78,7 @@
               <input type="password" class="form-control" name="con_password" id="input-passward" placeholder="半角英数字6文字以上" value="{{ old('name') }}" required="required">
             </div>
           </div>
-          <div class="form-group">
-            <label for="input-phone1" class="col-md-3 control-label text-left">電話番号</label>
-            <div class="col-md-2">
-              <input type="text" class="form-control" name="phone1" id="input-phone1" placeholder="080" value="{{ old('name') }}" required="required">
-            </div>
-            <label for="input-phone2" class="control-label col-md-1">-</label>
-            <div class="col-md-2">
-              <input type="text" class="form-control" name="phone2"id="input-phone1" placeholder="11234" value="{{ old('name') }}" required="required">
-            </div>
-            <label for="input-phone3" class="control-label col-md-1">-</label>
-            <div class="col-md-2">
-              <input type="text" class="form-control" name="phone3"id="input-phone3" placeholder="5678" value="{{ old('name') }}" required="required">
-            </div>
-          </div>
           <div class="text-danger text-center">
-          </div>
-          <div class="col-md-offset-8">
           </div>
         </div>
         <div class="col-md-offset-8">
