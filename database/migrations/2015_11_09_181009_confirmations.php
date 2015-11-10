@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateChatsTable extends Migration
+class Confirmations extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,10 @@ class CreateChatsTable extends Migration
      */
     public function up()
     {
-        //
+      Schema::create('confirmations', function(Blueprint $table){
+        $table->increments('id');
+        $table->integer('user`_id');
+      });
     }
 
     /**
@@ -22,6 +25,6 @@ class CreateChatsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('chats');
+        Schema::drop('confirmations');
     }
 }

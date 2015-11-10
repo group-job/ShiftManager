@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateShiftsTable extends Migration
+class Groups extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,12 @@ class CreateShiftsTable extends Migration
      */
     public function up()
     {
-        //
+      Schema::create('groups', function(Blueprint $table){
+        $table->increments('id');
+        $table->string('group_name',45);
+        $table->integer('manager_id');
+        $table->timestamps();
+      });
     }
 
     /**
@@ -22,6 +27,6 @@ class CreateShiftsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('groups');
     }
 }

@@ -9,7 +9,7 @@
 <!-- この中身にかく -->
 @section('main-contents')
 @include('common.form-alert')
-<table>
+<table class="col-lg-12">
 <tbody>
   <tr>
     <td colspan="2">
@@ -20,12 +20,27 @@
     <td>
       @include('profile.form.name')
     </td>
+  </tr>
+  <tr>
     <td>
       @include('profile.form.phone')
     </td>
   </tr>
-
-
+  <tr>
+    <td>
+      @include('profile.form.email')
+    </td>
+  </tr>
+  <tr>
+    <td>
+      @include('profile.form.password')
+    </td>
+  </tr>
+  <tr>
+    <td>
+      @include('profile.form.image')
+    </td>
+  </tr>
 </tbody>
 </table>
 {{-- とりあえずここに --}}
