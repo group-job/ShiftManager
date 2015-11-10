@@ -4,22 +4,13 @@
 //                                重要
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 // MAMPの設定でドキュメントルートをShiftManager/publicに変更してください!
-// 暗黙ルーティング使おうよ!? 参照: https://goo.gl/JPpiaS
-
-
+// 暗黙ルーティング使おうよ!? 参照: https://goo.gl/JPpiaSs
 // 例:/profile/view にアクセスでProfileController@view にルーティング
-
-// 下に書いたもので上書きされるっぽいからとりあえず一番上に持ってきたよ
-
-
-// // パラメーター取得（末尾の / は削除）
-// 非推奨関数につきえらーでるからとりあえず無効化するよ
 // ----------------------------------------------------------------------------
 
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 //                            通常のルーティング
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-// こっちが優先される
 // Index
   Route::get('/', 'IndexController@index');
 
@@ -27,11 +18,11 @@
   Route::controller('auth', 'Auth\AuthController');
 
   Route::group(['middleware' => 'auth'], function(){
-  //home
-  Route::controller('personal', 'PersonalController');
-  //group
-  Route::controller('group', 'GroupController');
-  Route::controller('profile', 'ProfileController');
+    //home
+    Route::controller('personal', 'PersonalController');
+    //group
+    Route::controller('group', 'GroupController');
+    Route::controller('profile', 'ProfileController');
 });
 
 
