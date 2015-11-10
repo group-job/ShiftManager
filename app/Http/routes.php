@@ -16,12 +16,13 @@
 
 //Authentication
   Route::controller('auth', 'Auth\AuthController');
-
+  //ログインしてる間許す
   Route::group(['middleware' => 'auth'], function(){
-    //home
+    //personal
     Route::controller('personal', 'PersonalController');
     //group
-    Route::controller('group', 'GroupController');
+    Route::controller('group/{name?}', 'GroupController');
+    //profile
     Route::controller('profile', 'ProfileController');
 });
 

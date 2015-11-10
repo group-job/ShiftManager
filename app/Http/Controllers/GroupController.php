@@ -18,7 +18,8 @@ class GroupController extends BaseController
      *
      * @return View
      */
-     public function getHome(){
+     public function getHome($name='default'){
+      //  dd($name);
        return view('group.home');
      }
 
@@ -44,5 +45,10 @@ class GroupController extends BaseController
       // 直前にリダイレクト
       return redirect()->back();
     }
-
+    //グループ設定
+    public function postStore(GroupRequest $request)
+    {
+      $group = Group::group($join_group_id)->get();
+      $group->update($request->all());
+    }
 }

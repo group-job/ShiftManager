@@ -14,7 +14,7 @@
                         {!! Form::label('user_image', '画像：') !!}
                     </label>
                     <div class="col-lg-4">
-                        {!! Form::file('user_image', null, ['class' => 'form-control', 'id' => 'input-image'  ]) !!}
+                        {!! Form::file('user_image', ['class' => 'form-control', 'id' => 'input-image'  ]) !!}
                     </div>
                 </div>
                 <div class="row">

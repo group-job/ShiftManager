@@ -11,7 +11,7 @@
                 <div class="row">
                     {{-- {!! Form::open() !!} --}}
                     <label class="col-lg-3" for="nowpassword">
-                        {!! Form::label('user_now_password', '現在のパスワード：') !!}
+                        {!! Form::label('user_nowpassword', '現在のパスワード：') !!}
                     </label>
                     <div class="col-lg-4">
                         {!! Form::password('user_now_password',['class' => 'form-control', 'id' => 'input-now-password'  ]) !!}
