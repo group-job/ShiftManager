@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Auth\AuthController;
 use App\Group;
 use App\Http\Requests\GroupRequest;
+use Auth;
 
 class GroupController extends BaseController
 {
@@ -17,7 +18,8 @@ class GroupController extends BaseController
      *
      * @return View
      */
-     public function getHome(){
+     public function getHome($name='default'){
+      //  dd($name);
        return view('group.home');
      }
 
@@ -34,7 +36,7 @@ class GroupController extends BaseController
     public function postCreate(GroupRequest $request)
     {
       //ユーザidの追加
-      $request["user_id"] = "22";
+      $request["user_id"] = Auth::user()->name;
       //dbに登録
       Group::create($request->all());
 
@@ -43,5 +45,10 @@ class GroupController extends BaseController
       // 直前にリダイレクト
       return redirect()->back();
     }
-
+    //グループ設定
+    public function postStore(GroupRequest $request)
+    {
+      $group = Group::group($join_group_id)->get();
+      $group->update($request->all());
+    }
 }

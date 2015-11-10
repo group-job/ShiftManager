@@ -14,13 +14,13 @@ class Group extends Model
       $query->where('user_id','=',22);
     }
 
-    public function scopeGroupName($query,$id)
+    public function scopeGroup($query,$id)
     {
-      // if ($id) {
-      //   foreach ($id as $value) {
-      //     $query->orWhere('id', '=', $value['group_id']);
-      //   }
-        $query->whereIn('id',$id);
+      if ($id) {
+        foreach ($id as $value) {
+          $query->orWhere('id', '=', $value['group_id']);
+        }
+        // $query->whereIn('id',$id);
       // }
       // dd($query);
 
