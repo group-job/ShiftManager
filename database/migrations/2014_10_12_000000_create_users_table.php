@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->string('name',45);
             $table->string('email')->unique();
             $table->string('password', 60);
-            // $table->midiumblob('photo', 45); 画像 → migrateでエラーでるのです
+            // $table->midiumblob('photo'); 画像 → migrateでエラーでるのです
             $table->rememberToken();
             $table->timestamps();
         });
