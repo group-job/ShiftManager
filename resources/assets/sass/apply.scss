@@ -1,0 +1,76 @@
+// app.scss
+@import "bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
+// カラー定義インポート
+@import "resources/assets/sass/_color.scss";
+
+
+// @import "node_modules/laravel-elixir-compass";
+// @import "compass/css3";
+
+
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+//                             申請のCSS
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
+*{
+  margin: 0;
+  padding: 0;
+
+}
+body{
+  background-color: $main-contents-bg-color;
+}
+.navbar-inverse{
+  color: $main-contents-bg-color;
+}
+#title-space{
+  height: 100px;
+}
+
+#side-menu{
+  background-color: $side-menu-base-color;
+  // bootstrapのパディング分を補正
+  position: relative;
+  top: -20px;
+  left: -15px;
+  height: 730px;
+}
+#side-menu-content {
+  // メニューリストの位置を調整
+  position: relative;
+  top: 100px;
+  margin-left: 10px;
+
+  li{
+    line-height: 1.3em;
+    font-size: 1.2em;
+    color: black;
+    >a{
+      display: block;
+      width: 100%;
+      color: black;
+      text-decoration: none;
+    }
+    :hover{
+      background-color: darken($side-menu-base-color,10%);
+    }
+    padding: 10px 0;
+    list-style-type: none;
+  }
+  .list-item li{
+    margin: 0;
+    list-style-type: square;
+  }
+}
+
+/* button
+---------------------------------------------------------------------------------------*/
+#notapply{
+  background-color: #ffcccc;
+  border: 1px solid #ff0000;
+}
+#apply{
+  background-color: #ccffcc;
+}
+
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー

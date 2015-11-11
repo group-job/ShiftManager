@@ -25,7 +25,9 @@ elixir(function(mix) {
       // "fullcalendar.scss",
       // "fullcalendar.print.scss",
       'app.scss',
-      'home.scss'
+      'home.scss',
+      'invite.scss',
+      'apply.scss'
     ]); // app.scssをコンパイルして、public/css/app.css に出力
 
        // Bootstrapのフォントを public/fonts/bootstrapディレクトリにコピー
