@@ -29,6 +29,7 @@
                     <div class="col-lg-4">
                         {!! Form::password('user_new_password', ['class' => 'form-control', 'id' => 'input-new-password'  ]) !!}
 
+
                     </div>
                     <div class="col-lg-2">
                         <div style="color:#ff0000; font-size:8pt;">

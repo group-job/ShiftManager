@@ -20,6 +20,7 @@ class GroupController extends BaseController
      */
      public function getHome($name='default'){
       //  dd($name);
+      //
        return view('group.home');
      }
 
