@@ -14,6 +14,7 @@ class Group extends Model
       $query->where('user_id','=',22);
     }
 
+    //所属しているグループ情報取得
     public function scopeGroup($query,$id)
     {
       if ($id) {
@@ -27,4 +28,6 @@ class Group extends Model
       // $query->orWhere('id', '=', $id[0]['group_id']);
       // $query->orWhere('id', '=', $id[1]['group_id']);
     }
+
+
 }

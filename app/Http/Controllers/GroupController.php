@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Auth\AuthController;
 use App\Group;
+use App\Employment;
 use App\Http\Requests\GroupRequest;
 use Auth;
 
@@ -38,9 +39,10 @@ class GroupController extends BaseController
     {
       //ユーザidの追加
       $request["user_id"] = Auth::user()->name;
-      //dbに登録
+      //グループ登録
       Group::create($request->all());
-
+      //雇用登録
+      Employment::create();
       // フラシュメッセージの表示
       \Session::flash('flash_message', 'グループの作成に成功しました。');
       // 直前にリダイレクト
