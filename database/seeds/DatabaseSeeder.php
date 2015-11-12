@@ -69,8 +69,19 @@ class DatabaseSeeder extends Seeder
     'group_id' => '2',
     'user_id' => '1',
     'date' => '2015-11-11',
-    'chat_category' => '1',
-    'text' => 'きみやがうっしーのグループで発言',
+    'chat_category' => '0',
+    'text' => 'きみやがうっしーのグループでチャット',
+]);
+DB::table('chats')->insert([
+   'group_id' => '2',
+   'user_id' => '1',
+   'date' => '2015-11-11',
+   'chat_category' => '1',
+   'text' => 'きみやがうっしーのグループで連絡',
+]);
+DB::table('confirmations')->insert([ //うっしーがきみ屋の連絡を確認
+   'user_id' => '2',
+   'caht_id' => '2',
 ]);
 
 
