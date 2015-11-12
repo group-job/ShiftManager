@@ -14,8 +14,10 @@ class Employments extends Migration
     {
       Schema::create('employments', function(Blueprint $table){
         $table->increments('id');
-        $table->string('name');
-        $table->integer('manager_id');
+        $table->integer('user_id');
+        $table->integer('group_id');
+        $table->date('start_date');
+        $table->date('end_date');
         $table->timestamps();
         });
     }
