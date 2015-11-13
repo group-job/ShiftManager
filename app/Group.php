@@ -22,12 +22,16 @@ class Group extends Model
           $query->orWhere('id', '=', $value['group_id']);
         }
         // $query->whereIn('id',$id);
-      // }
+      }
       // dd($query);
 
       // $query->orWhere('id', '=', $id[0]['group_id']);
       // $query->orWhere('id', '=', $id[1]['group_id']);
     }
+    public function tasks()
+   {
+       return $this->hasMany(Shift::class);
+     }
 
 
 }

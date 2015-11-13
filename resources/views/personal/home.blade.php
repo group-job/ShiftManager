@@ -20,4 +20,5 @@
 @section('contents-space')
 {{-- カレンダーにイベントを追加するためのスクリプト --}}
   <div id='calendar'></div>
+  <button type="button" class="btn btn-danger" id="deleteButton" style="position:absolute;">削除依頼</button>
 @stop

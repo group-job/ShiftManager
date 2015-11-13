@@ -1,0 +1,93 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'leeoniya/dump-r' ]
+2 info using npm@2.14.2
+3 info using node@v0.12.7
+4 verbose node symlink /usr/local/bin/node
+5 verbose install initial load of /Users/Aki/workspace/php_workspace/ShiftManager/package.json
+6 verbose installManyTop reading scoped package data from /Users/Aki/workspace/php_workspace/ShiftManager/node_modules/gulp/package.json
+7 verbose installManyTop reading scoped package data from /Users/Aki/workspace/php_workspace/ShiftManager/node_modules/laravel-elixir/package.json
+8 verbose readDependencies loading dependencies from /Users/Aki/workspace/php_workspace/ShiftManager/package.json
+9 silly cache add args [ 'leeoniya/dump-r', null ]
+10 verbose cache add spec leeoniya/dump-r
+11 silly cache add parsed spec { raw: 'leeoniya/dump-r',
+11 silly cache add   scope: null,
+11 silly cache add   name: null,
+11 silly cache add   rawSpec: 'leeoniya/dump-r',
+11 silly cache add   spec: 'github:leeoniya/dump-r',
+11 silly cache add   type: 'hosted',
+11 silly cache add   hosted:
+11 silly cache add    { type: 'github',
+11 silly cache add      ssh: 'git@github.com:leeoniya/dump-r.git',
+11 silly cache add      sshUrl: 'git+ssh://git@github.com/leeoniya/dump-r.git',
+11 silly cache add      httpsUrl: 'git+https://github.com/leeoniya/dump-r.git',
+11 silly cache add      gitUrl: 'git://github.com/leeoniya/dump-r.git',
+11 silly cache add      shortcut: 'github:leeoniya/dump-r',
+11 silly cache add      directUrl: 'https://raw.githubusercontent.com/leeoniya/dump-r/master/package.json' } }
+12 verbose addRemoteGit caching leeoniya/dump-r
+13 verbose addRemoteGit leeoniya/dump-r is a repository hosted by github
+14 silly tryGitProto attempting to clone git://github.com/leeoniya/dump-r.git
+15 silly tryClone cloning leeoniya/dump-r via git://github.com/leeoniya/dump-r.git
+16 verbose tryClone git-github-com-leeoniya-dump-r-git-723fdf77 not in flight; caching
+17 verbose makeDirectory /Users/Aki/.npm/_git-remotes creation not in flight; initializing
+18 silly makeDirectory /Users/Aki/.npm/_git-remotes uid: 501 gid: 20
+19 info git [ 'clone',
+19 info git   '--template=/Users/Aki/.npm/_git-remotes/_templates',
+19 info git   '--mirror',
+19 info git   'git://github.com/leeoniya/dump-r.git',
+19 info git   '/Users/Aki/.npm/_git-remotes/git-github-com-leeoniya-dump-r-git-723fdf77' ]
+20 verbose git clone --template=/Users/Aki/.npm/_git-remotes/_templates --mirror git://github.com/leeoniya/dump-r.git /Users/Aki/.npm/_git-remotes/git-github-com-leeoniya-dump-r-git-723fdf77: Cloning into bare repository '/Users/Aki/.npm/_git-remotes/git-github-com-leeoniya-dump-r-git-723fdf77'...
+20 verbose git clone --template=/Users/Aki/.npm/_git-remotes/_templates --mirror git://github.com/leeoniya/dump-r.git /Users/Aki/.npm/_git-remotes/git-github-com-leeoniya-dump-r-git-723fdf77: fatal: remote error:
+20 verbose git clone --template=/Users/Aki/.npm/_git-remotes/_templates --mirror git://github.com/leeoniya/dump-r.git /Users/Aki/.npm/_git-remotes/git-github-com-leeoniya-dump-r-git-723fdf77:   Repository not found.
+21 silly tryHTTPS attempting to clone git+https://github.com/leeoniya/dump-r.git
+22 silly tryClone cloning leeoniya/dump-r via git+https://github.com/leeoniya/dump-r.git
+23 verbose tryClone https-github-com-leeoniya-dump-r-git-46178214 not in flight; caching
+24 info git [ 'clone',
+24 info git   '--template=/Users/Aki/.npm/_git-remotes/_templates',
+24 info git   '--mirror',
+24 info git   'https://github.com/leeoniya/dump-r.git',
+24 info git   '/Users/Aki/.npm/_git-remotes/https-github-com-leeoniya-dump-r-git-46178214' ]
+25 verbose git clone --template=/Users/Aki/.npm/_git-remotes/_templates --mirror https://github.com/leeoniya/dump-r.git /Users/Aki/.npm/_git-remotes/https-github-com-leeoniya-dump-r-git-46178214: Cloning into bare repository '/Users/Aki/.npm/_git-remotes/https-github-com-leeoniya-dump-r-git-46178214'...
+25 verbose git clone --template=/Users/Aki/.npm/_git-remotes/_templates --mirror https://github.com/leeoniya/dump-r.git /Users/Aki/.npm/_git-remotes/https-github-com-leeoniya-dump-r-git-46178214: remote: Invalid username or password.
+25 verbose git clone --template=/Users/Aki/.npm/_git-remotes/_templates --mirror https://github.com/leeoniya/dump-r.git /Users/Aki/.npm/_git-remotes/https-github-com-leeoniya-dump-r-git-46178214: fatal: Authentication failed for 'https://github.com/leeoniya/dump-r.git/'
+26 silly trySSH attempting to clone git@github.com:leeoniya/dump-r.git
+27 silly tryClone cloning leeoniya/dump-r via git@github.com:leeoniya/dump-r.git
+28 verbose tryClone git-github-com-leeoniya-dump-r-git-ecfaf867 not in flight; caching
+29 info git [ 'clone',
+29 info git   '--template=/Users/Aki/.npm/_git-remotes/_templates',
+29 info git   '--mirror',
+29 info git   'git@github.com:leeoniya/dump-r.git',
+29 info git   '/Users/Aki/.npm/_git-remotes/git-github-com-leeoniya-dump-r-git-ecfaf867' ]
+30 error git clone --template=/Users/Aki/.npm/_git-remotes/_templates --mirror git@github.com:leeoniya/dump-r.git /Users/Aki/.npm/_git-remotes/git-github-com-leeoniya-dump-r-git-ecfaf867: Cloning into bare repository '/Users/Aki/.npm/_git-remotes/git-github-com-leeoniya-dump-r-git-ecfaf867'...
+30 error git clone --template=/Users/Aki/.npm/_git-remotes/_templates --mirror git@github.com:leeoniya/dump-r.git /Users/Aki/.npm/_git-remotes/git-github-com-leeoniya-dump-r-git-ecfaf867: ERROR: Repository not found.
+30 error git clone --template=/Users/Aki/.npm/_git-remotes/_templates --mirror git@github.com:leeoniya/dump-r.git /Users/Aki/.npm/_git-remotes/git-github-com-leeoniya-dump-r-git-ecfaf867: fatal: Could not read from remote repository.
+30 error git clone --template=/Users/Aki/.npm/_git-remotes/_templates --mirror git@github.com:leeoniya/dump-r.git /Users/Aki/.npm/_git-remotes/git-github-com-leeoniya-dump-r-git-ecfaf867:
+30 error git clone --template=/Users/Aki/.npm/_git-remotes/_templates --mirror git@github.com:leeoniya/dump-r.git /Users/Aki/.npm/_git-remotes/git-github-com-leeoniya-dump-r-git-ecfaf867: Please make sure you have the correct access rights
+30 error git clone --template=/Users/Aki/.npm/_git-remotes/_templates --mirror git@github.com:leeoniya/dump-r.git /Users/Aki/.npm/_git-remotes/git-github-com-leeoniya-dump-r-git-ecfaf867: and the repository exists.
+31 verbose stack Error: Command failed: git clone --template=/Users/Aki/.npm/_git-remotes/_templates --mirror git@github.com:leeoniya/dump-r.git /Users/Aki/.npm/_git-remotes/git-github-com-leeoniya-dump-r-git-ecfaf867
+31 verbose stack Cloning into bare repository '/Users/Aki/.npm/_git-remotes/git-github-com-leeoniya-dump-r-git-ecfaf867'...
+31 verbose stack ERROR: Repository not found.
+31 verbose stack fatal: Could not read from remote repository.
+31 verbose stack
+31 verbose stack Please make sure you have the correct access rights
+31 verbose stack and the repository exists.
+31 verbose stack
+31 verbose stack     at ChildProcess.exithandler (child_process.js:751:12)
+31 verbose stack     at ChildProcess.emit (events.js:110:17)
+31 verbose stack     at maybeClose (child_process.js:1015:16)
+31 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:1087:5)
+32 verbose cwd /Users/Aki/workspace/php_workspace/ShiftManager
+33 error Darwin 15.0.0
+34 error argv "node" "/usr/local/bin/npm" "install" "leeoniya/dump-r"
+35 error node v0.12.7
+36 error npm  v2.14.2
+37 error code 128
+38 error Command failed: git clone --template=/Users/Aki/.npm/_git-remotes/_templates --mirror git@github.com:leeoniya/dump-r.git /Users/Aki/.npm/_git-remotes/git-github-com-leeoniya-dump-r-git-ecfaf867
+38 error Cloning into bare repository '/Users/Aki/.npm/_git-remotes/git-github-com-leeoniya-dump-r-git-ecfaf867'...
+38 error ERROR: Repository not found.
+38 error fatal: Could not read from remote repository.
+38 error
+38 error Please make sure you have the correct access rights
+38 error and the repository exists.
+39 error If you need help, you may report this error at:
+39 error     <https://github.com/npm/npm/issues>
+40 verbose exit [ 1, true ]
