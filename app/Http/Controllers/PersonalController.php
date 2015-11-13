@@ -8,7 +8,7 @@ use App\Shift;
 use App\Group;
 use Auth;
 
-class PersonalController extends Controller
+class PersonalController extends BaseController
 {
     // ログイン画面へアクセスされたときーーーーーーーーーーーーーーーーーーーーーーーーーーー
     public function getHome(){

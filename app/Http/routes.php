@@ -21,7 +21,8 @@
     //personal
     Route::controller('personal', 'PersonalController');
     //group
-    Route::controller('group/{name?}', 'GroupController');
+    Route::controller('group/{id}', 'GroupController');
+    Route::controller('group_create', 'GroupCreateController');
     //profile
     Route::controller('profile', 'ProfileController');
 });
