@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Auth\AuthController;
 use App\User;
 
-class IndexController extends Controller
+class IndexController extends BaseController
 {
     // ログイン画面へアクセスされたときーーーーーーーーーーーーーーーーーーーーーーーーーーー
     public function index(){

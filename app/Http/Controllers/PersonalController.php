@@ -6,11 +6,11 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Shift;
 
-class PersonalController extends Controller
+class PersonalController extends BaseController
 {
     // ログイン画面へアクセスされたときーーーーーーーーーーーーーーーーーーーーーーーーーーー
     public function getHome(){
-      var_dump(Shift::all());
+      // var_dump(Shift::all());
       return view('personal.home');
     }
 }
