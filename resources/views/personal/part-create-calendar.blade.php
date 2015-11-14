@@ -48,10 +48,10 @@
 
       // // イベントクリック処理
       eventClick: function(calEvent, jsEvent, view) {
-        alert("イベントクリック!");
         alert('Event: ' + calEvent.title);
         alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-        alert('View: ' + view.name);
+        document.getElementById('deleteButton').style.top = jsEvent.pageY;
+        document.getElementById('deleteButton').style.left = jsEvent.pageX;
       },
       events:{!!$calendarEventsJson!!}
     });

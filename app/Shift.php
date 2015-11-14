@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Shift extends Model
 {
-  private $groupName;
+  // private $groupName;
+  //idからグループ名を取得するクエリを毎回打つのがめんどくさいため、groupNameを属性に
+  // 持たせようかと考えたがORMのリレーション機能で簡単に習得できるため廃止
 
   protected $guarded = ['id'];
   public function user()

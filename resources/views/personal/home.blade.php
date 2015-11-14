@@ -20,5 +20,17 @@
 @section('contents-space')
 {{-- カレンダーにイベントを追加するためのスクリプト --}}
   <div id='calendar'></div>
-  <button type="button" class="btn btn-danger" id="deleteButton" style="position:absolute;">削除依頼</button>
+  <form action="/personal/delete-shift" class="form-horizontal" method="post">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <input type="hidden" name="id" value="3">
+    <button type="submit" class="btn btn-danger" id="deleteButton" style="position:absolute;">削除依頼</button>
+  </form>
+
+  <form action="/personal/test" class="form-horizontal" method="get">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <input type="hidden" name="id" value="3">
+    <input type="hidden" name="name" value="きみや">
+    <button type="submit" class="btn btn-danger" id="deleteButton" style="position:absolute;">test</button>
+  </form>
+
 @stop
