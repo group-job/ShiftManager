@@ -22,18 +22,16 @@ class User extends Model implements AuthenticatableContract,
     {
       $query->where('id','=',1);
     }
-<<<<<<< HEAD
 
     public function employment()
     {
       return $this->hasMany('Employment');
     }
-=======
+
     public function shifts()
    {
        $shifts = $this->hasMany(Shift::class);
       // var_dump($shifts);
        return $shifts;
    }
->>>>>>> origin/master
 }
