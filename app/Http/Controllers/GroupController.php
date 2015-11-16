@@ -21,9 +21,7 @@ class GroupController extends BaseController
      * @return View
      */
      public function getHome($id='default'){
-       dd(User::find(1)->employment);
        return view('group.home');
-
      }
 
     /**
