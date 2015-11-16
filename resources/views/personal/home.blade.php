@@ -32,5 +32,4 @@
     <input type="hidden" id="testInput" name="id" value="1">
     <button type="submit" class="btn btn-danger togglable" id="testButton" style="position:absolute; z-index:1; ">test</button>
   </form>
-
 @stop
