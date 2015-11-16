@@ -4,19 +4,19 @@
   --}}
   <script>
   $(document).ready(function() {
-    // ツールチップ
+    //各ボタン、ウィンドウ初期化
+    $('.togglable').hide();
+
+    $('div').not("#calendar").click(function(){
+      $('.togglable').hide();
+    });
 
     // カレンダー描画
     $('#calendar').fullCalendar({
+      //ヘッダー設定
       buttonText: {
         today: '今日'
       },
-
-      defaultDate: '2015-11-15',
-      editable: true,
-      aditable: true,
-      slotEventOverlap: true,
-      eventLimit: true, // allow "more" link when too many events
       // タイトルの書式
       titleFormat: {
         month: 'YYYY年 M月', // 2014年9月
@@ -28,6 +28,14 @@
       dayNamesShort: ['日', '月', '火', '水', '木', '金', '土'],
       // 時間の書式
       timeFormat: 'H:mm',
+      //デフォルトの日付 省略すると当日?
+      // defaultDate: '2015-11-15',
+
+      editable: true,
+      aditable: true,
+      slotEventOverlap: true,
+      eventLimit: true, // allow "more" link when too many events
+      events:{!!$calendarEventsJson!!},
 
       // 日付クリック処理
       dayClick: function(date, jsEvent, view) {
@@ -46,14 +54,39 @@
         $('#calendar').fullCalendar('unselect');
       },
 
-      // // イベントクリック処理
-      eventClick: function(calEvent, jsEvent, view) {
-        alert('Event: ' + calEvent.title);
-        alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-        document.getElementById('deleteButton').style.top = jsEvent.pageY;
-        document.getElementById('deleteButton').style.left = jsEvent.pageX;
+      //イベントマウスオーバー時処理
+      eventMouseover:function( event, jsEvent, view ) {
+        //イベントの詳細を表示するよ
       },
-      events:{!!$calendarEventsJson!!}
+
+      // イベントクリック時処理
+      eventClick: function(calEvent, jsEvent, view) {
+        if(calEvent.user_id == calEvent.manager_id){
+            //マイシフト編集ポップアップ
+        }else {
+          switch (calEvent.status) {
+            case 1:
+              // 仮シフトクリック時
+              //仮シフト承認/拒否ボタン表示
+
+              break;
+            case 2:
+              //確定シフトクリック時
+              //削除依頼ボタン表示
+              $("#button-request-delete").css('top',jsEvent.pageY-110+"px");
+              $("#button-request-delete").css('left',jsEvent.pageX-260+"px");
+              $("#input-request-delete").val(calEvent.shift_id);
+              $("#button-request-delete").show("fast");
+              break;
+            default:
+              //希望･削除依頼シフトクリック時
+              //なにもしない
+
+          }
+        }
+      },
+
     });
   });
+
   </script>

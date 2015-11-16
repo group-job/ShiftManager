@@ -24,8 +24,10 @@ class User extends Model implements AuthenticatableContract,
     }
     public function shifts()
    {
-       $shifts = $this->hasMany(Shift::class);
-      // var_dump($shifts);
-       return $shifts;
+       return $this->hasMany(Shift::class);
+   }
+   public function groups()
+   {
+     return $this->hasMany(Group::class);
    }
 }
