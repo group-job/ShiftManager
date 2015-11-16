@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Auth\AuthController;
 use App\Group;
 use App\Employment;
+use App\User;
 use App\Http\Requests\GroupRequest;
 use Auth;
 
@@ -20,7 +21,7 @@ class GroupController extends BaseController
      * @return View
      */
      public function getHome($id='default'){
-      //  dd($id);
+       dd(User::find(1)->employment);
        return view('group.home');
 
      }
