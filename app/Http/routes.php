@@ -18,12 +18,9 @@
   Route::controller('auth', 'Auth\AuthController');
   //ログインしてる間許す
   Route::group(['middleware' => 'auth'], function(){
-    //personal
     Route::controller('personal', 'PersonalController');
-    //group
     Route::controller('group/{id}', 'GroupController');
     Route::controller('group_create', 'GroupCreateController');
-    //profile
     Route::controller('profile', 'ProfileController');
 });
 

@@ -35,16 +35,34 @@ class DatabaseSeeder extends Seeder
     DB::table('shifts')->insert([
        'user_id' => '1',
        'group_id' => '1',
-       'date' => '2015-12-25',
+       'date' => '2015-11-25',
        'start_time' => '10:30',
        'end_time' => '10:30',
-       'status' => '2',
-       'note' => 'きみやの個人シフトのサンプル',
+       'status' => '0',
+       'note' => 'きみやの個人シフトのサンプル0',
    ]);
    DB::table('shifts')->insert([
       'user_id' => '1',
+      'group_id' => '1',
+      'date' => '2015-11-26',
+      'start_time' => '10:30',
+      'end_time' => '10:30',
+      'status' => '1',
+      'note' => 'きみやの個人シフトのサンプル1',
+  ]);
+  DB::table('shifts')->insert([
+     'user_id' => '1',
+     'group_id' => '1',
+     'date' => '2015-11-27',
+     'start_time' => '10:30',
+     'end_time' => '10:30',
+     'status' => '2',
+     'note' => 'きみやの個人シフトのサンプル2',
+ ]);
+   DB::table('shifts')->insert([
+      'user_id' => '1',
       'group_id' => '2',
-      'date' => '2015-12-26',
+      'date' => '2015-11-26',
       'start_time' => '18:30',
       'end_time' => '18:30',
       'status' => '0',

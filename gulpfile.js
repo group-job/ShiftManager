@@ -22,7 +22,7 @@ var elixir = require('laravel-elixir');
 elixir(function(mix) {
     mix.less('app.less');
     mix.sass([
-      // "fullcalendar.scss",
+      "fullcalendar.scss",
       // "fullcalendar.print.scss",
       'app.scss',
       'home.scss',
@@ -39,8 +39,6 @@ elixir(function(mix) {
             paths.jquery + "dist/jquery.js",
             // paths.fullcalendar+"jquery-ui.custom.min.js",
             paths.fullcalendar + "fullcalendar.js",
-            paths.js + "jquery.darktooltip.js",
-            paths.js + "alertify.js",
             paths.bootstrap + "javascripts/bootstrap.js",
         ], 'public/js/app.js', './');  // ①
 
