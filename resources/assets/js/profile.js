@@ -93,4 +93,3 @@ jQuery(document).ready(function () {
     }, 400);
   });
 });
-

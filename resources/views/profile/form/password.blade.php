@@ -14,7 +14,7 @@
                         {!! Form::label('user_nowpassword', '現在のパスワード：') !!}
                     </label>
                     <div class="col-lg-4">
-                        {!! Form::password('user_nowpassword', ['class' => 'form-control', 'id' => 'input-now-password'  ]) !!}
+                        {!! Form::password('user_now_password',['class' => 'form-control', 'id' => 'input-now-password'  ]) !!}
                     </div>
                     <div class="col-lg-2">
                         <div style="color:#ff0000; font-size:8pt;">
@@ -28,6 +28,7 @@
                     </label>
                     <div class="col-lg-4">
                         {!! Form::password('user_new_password', ['class' => 'form-control', 'id' => 'input-new-password'  ]) !!}
+
                     </div>
                     <div class="col-lg-2">
                         <div style="color:#ff0000; font-size:8pt;">

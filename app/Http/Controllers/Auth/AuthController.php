@@ -87,6 +87,7 @@ class AuthController extends Controller
       }
       else {
         // ログイン失敗
+        die('kimiya');
         return back()->withInput();
       }
     }
