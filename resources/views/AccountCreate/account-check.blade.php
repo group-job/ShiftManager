@@ -3,7 +3,6 @@
 {{-- サイドメニューを消す --}}
 @section('side-menu')
 @stop
-
 @section('contents')
 <div class="col-lg-offset-4">
 <table>
