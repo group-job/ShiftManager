@@ -1,5 +1,6 @@
 <?php
 $login_message = "ログイン失敗した場合はここにメッセージ";
+$manager_group = "";
 ?>
 
 @extends('common.layout')
