@@ -1,11 +1,9 @@
 <!-- レイアウトの継承 -->
 @extends('common.layout')
-
 {{-- タイトル部分の表示 --}}
 @section('title-space')
 @include('group.title-name')
 @endsection
-
 @section('contents-space')
 <div class="row col-lg-offset-3">
   とりまるに参加申請をしますか？<br>
@@ -19,6 +17,5 @@
       <input type="button" name="name" value="申請する" onclick="location.href='http://localhost:8888'">
     </div>
   </div>
-
 </div>
 @endsection
