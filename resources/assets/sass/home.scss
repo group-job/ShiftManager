@@ -15,13 +15,11 @@
 .modal-content{
   background-color:$modal-color;
 }
-#description{
-  font-size: 10em;
-  position: relative;
-  top: 300px;
-  left: 600px;
-}
+
 // カレンダーのスタイル上書き
+#calendar{
+  height: 600px;
+}
 /* 日曜日 */
 .fc-sun {
     color: red;
@@ -37,3 +35,75 @@
   width: 700px;
   margin: 0 auto;
 }
+
+.fc-event{
+  color: $default-calendar-color;
+}
+
+.event-status0{
+	background-color: $event-background0;
+	border: 1px solid darken($event-background0, 20%);
+}
+.event-status0:hover{
+	border: 1px solid darken($event-background0, 50%);
+}
+.event-status1{
+	background-color: $event-background1;
+	border: 1px solid darken($event-background1, 20%);
+}
+.event-status1:hover{
+	border: 1px solid darken($event-background1, 50%);
+}
+.event-status2{
+	background-color: $event-background2;
+	border: 1px solid darken($event-background2, 20%);
+}
+.event-status2:hover{
+	border: 1px solid darken($event-background2, 50%);
+}
+.event-status3{
+	background-color: $event-background2;
+	border: 1px solid darken($event-background2, 20%);
+  color: $event-color3;
+}
+.event-status3:hover{
+	border: 1px solid darken($event-background2, 50%);
+}
+
+#explanatory-notes{
+  position: relative;
+  top: -40px;
+  list-style-type: none;
+  li{
+     float: left;
+     width: 100px;
+  }
+  .circle{
+    position: relative;
+    top:5px;
+    width: 40px;
+    height: 10px;
+    float: left;
+    border-radius: 20%;
+    .circle-text{
+      font-size: 0.8em;
+      position: relative;
+      top:-6px;
+      left: 2px;
+    }
+  }
+  #circle0{
+    background-color: $event-background0;
+  }
+  #circle1{
+    background-color: $event-background1;
+  }
+  #circle2{
+    background-color: $event-background2;
+  }
+  #circle3{
+    background-color: $event-background2;
+    color: $event-color3;
+  }
+}
+// -------------------------------------------------------------------------------

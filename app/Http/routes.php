@@ -17,12 +17,15 @@
 //Authentication
   Route::controller('auth', 'Auth\AuthController');
   //ログインしてる間許す
+<<<<<<< HEAD
   // Route::group(['middleware' => 'auth'], function(){
     //personal
+=======
+  Route::group(['middleware' => 'auth'], function(){
+>>>>>>> 518660db4cd008b1881d3cbc4f27d322ea5407b6
     Route::controller('personal', 'PersonalController');
-    //group
-    Route::controller('group/{name?}', 'GroupController');
-    //profile
+    Route::controller('group/{id}', 'GroupController');
+    Route::controller('group_create', 'GroupCreateController');
     Route::controller('profile', 'ProfileController');
 // });
 

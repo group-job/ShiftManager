@@ -15,30 +15,25 @@ class User extends Model implements AuthenticatableContract,
                                     CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword;
-
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
     protected $table = 'users';
-
-    /**
-     * The attributes that aren't mass assignable.
-     *
-     * @var array
-     */
-     protected $guarded = ['id'];
-
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
+    protected $guarded = ['id'];
     protected $hidden = ['password', 'remember_token'];
-
     public function scopeMyProfile($query)
     {
       $query->where('id','=',1);
     }
+
+    public function employments()
+    {
+      return $this->hasMany(Employment::class);
+    }
+
+    public function shifts()
+   {
+       return $this->hasMany(Shift::class);
+   }
+   public function groups()
+   {
+     return $this->hasMany(Group::class);
+   }
 }

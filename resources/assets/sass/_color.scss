@@ -2,6 +2,12 @@
 // カラー管理
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
+$default-text-color:black;
+$default-calendar-color:lighten($default-text-color,20%);
+$event-background0:rgb(230, 252, 138);
+$event-background1:rgb(201, 187, 208);
+$event-background2:rgb(137, 193, 245);
+$event-color3:rgb(179, 78, 78);
 $side-menu-base-color:rgb(255, 182, 116);
 $main-contents-bg-color:rgb(245, 245, 234);
 $modal-color:rgb(214, 225, 227);

@@ -23,11 +23,6 @@
   </tr>
   <tr>
     <td>
-      @include('profile.form.phone')
-    </td>
-  </tr>
-  <tr>
-    <td>
       @include('profile.form.email')
     </td>
   </tr>

@@ -1,7 +1,7 @@
 
 @section('side-menu')
 <?php
-$managingLists = array('とりまる','ラウンドワン');
+// $managingLists = array('とりまる','ラウンドワン');
 $join_group = array('とりまる','ラウンドワン');
 ?>
 {{-- サイドメニュー --}}
@@ -38,13 +38,15 @@ $join_group = array('とりまる','ラウンドワン');
     </li>
     {{-- 管理グループリストアイテム --}}
       <div id="collapse-managing-group" class="collapse list-item">
-        @foreach($managingLists as $managingList)
-          <li> <a href="/group.home?name={{ $managingList }}">{{$managingList}}</a></li>
-        @endforeach
+        @if($manager_group)
+          @foreach($manager_group as $value)
+            <li> <a href="/group/{{ $value->id }}/home">{{ $value->group_name }}</a></li>
+          @endforeach
+        @endif
       </div>
 
     <li>
-      <span class="glyphicon glyphicon-plus">{!! link_to('/group/create', 'グループ追加') !!}
+      <span class="glyphicon glyphicon-plus">{!! link_to('/group_create/edit', 'グループ追加') !!}
       </a>
     </li>
   </ul>

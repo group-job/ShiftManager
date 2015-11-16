@@ -64,9 +64,6 @@ class AuthController extends Controller
             'name' => $request->input('name'),
             'email' => $request->input('mail'),
             'password' => bcrypt($request->input('password')),
-            'phone1' => $request->input('phone1'),
-            'phone2' => $request->input('phone2'),
-            'phone3' => $request->input('phone3'),
         ]);
         Auth::login($user);
         return redirect('/personal/home');
