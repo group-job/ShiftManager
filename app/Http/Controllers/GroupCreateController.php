@@ -20,7 +20,7 @@ class GroupCreateController extends BaseController
    */
   public function getEdit()
   {
-    // dd($name);
+      dd(Auth::user()->employments);
       return view('groupcreate.create');
   }
 
