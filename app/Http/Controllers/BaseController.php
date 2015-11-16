@@ -14,21 +14,24 @@ class BaseController extends Controller
 {
   public function __construct()
   {
+    //管理グループ取得
     $manager_group = Group::where('manager_id','=',Auth::user()->id)->get();
-    // $join_group = ;
-    // dd($manager_group);
-//     // $my_profile = User::myProfile()->find(1);
-//     $join_group_id = Employment::joinGroup()->get();
-//
-//     if ($join_group_id) {
-//       $join_group = Group::group($join_group_id)->get();
-//       View::share('join_group', $join_group);
-//     }
-//
-//     // View::share('member_group', $member_group_id);
-    View::share('manager_group',$manager_group);
-    // View::share('join_group', $join_group);
-    // View::share('join_group_id', $manager_group);
-//
+    if ($manager_group) {
+        View::share('manager_group',$manager_group);
+    }
+
+    //雇用取得
+    $employment = Auth::user()->employments;
+    //雇用からグループ取得
+    if ($employment) {
+      $join_group = array();
+      foreach ($employment as $value) {
+          if ($value->group) {
+            array_push($join_group,$value->group);
+          }
+      }
+      //viewに値を
+      View::share('join_group', $join_group);
+    }
   }
 }
