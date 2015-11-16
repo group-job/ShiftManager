@@ -17,7 +17,7 @@
       <li><div class="circle" id="circle0"></div>希望</li>
       <li><div class="circle" id="circle1"></div>仮確定</li>
       <li><div class="circle" id="circle2"></div>確定</li>
-      <li><div class="circle" id="circle3"><span class="circle-text">赤文字</span></div>削除依頼</li>
+    <li><div class="circle" id="circle3"><span class="circle-text">赤文字</span></div>削除依頼</li>
     </ul>
   </div>
 
