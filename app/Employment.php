@@ -13,4 +13,9 @@ class Employment extends Model
     var_dump(Auth::user()->id);
     $query->where('user_id','=',Auth::user()->id);
   }
+
+  public function user()
+  {
+    
+  }
 }

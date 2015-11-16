@@ -23,9 +23,9 @@ class User extends Model implements AuthenticatableContract,
       $query->where('id','=',1);
     }
 
-    public function employment()
+    public function employments()
     {
-      return $this->hasMany('Employment');
+      return $this->hasMany(Employment::class);
     }
 
     public function shifts()
