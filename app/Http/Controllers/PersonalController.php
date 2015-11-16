@@ -9,6 +9,7 @@ use App\Group;
 use Auth;
 use Input;
 
+
 class PersonalController extends BaseController
 {
   // 個人シフト画面へアクセスされたときーーーーーーーーーーーーーーーーーーーーーーーーーーー
