@@ -1,8 +1,8 @@
 
 @section('side-menu')
 <?php
-// $managingLists = array('とりまる','ラウンドワン');
-// $join_group = array('とりまる','ラウンドワン');
+$managingLists = "";
+$join_group = "";
 ?>
 {{-- サイドメニュー --}}
 <div id="side-menu">

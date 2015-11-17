@@ -38,8 +38,9 @@ elixir(function(mix) {
             paths.fullcalendar+"moment.min.js",
             paths.jquery + "dist/jquery.js",
             // paths.fullcalendar+"jquery-ui.custom.min.js",
+            paths.js+'app.js',
             paths.fullcalendar + "fullcalendar.js",
-            paths.bootstrap + "javascripts/bootstrap.js",
+            paths.bootstrap + "javascripts/bootstrap.js"
         ], 'public/js/app.js', './');  // ①
 
         //jsファイルわけ

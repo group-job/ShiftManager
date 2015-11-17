@@ -4,14 +4,14 @@
   --}}
   <script>
   $(document).ready(function() {
-    //各ボタン、ウィンドウ初期化
-    $('.togglable').hide();
+    //各ボタン、ウィンドウ初期化---------------------------------------------------
+    // $('.togglable').hide();
 
-    $('div').not("#calendar").click(function(){
-      $('.togglable').hide();
-    });
+    // $('div').not("#calendar").click(function(){
+    //   $('.togglable').hide();
+    // });
 
-    // カレンダー描画
+    // カレンダー描画-------------------------------------------------------------
     $('#calendar').fullCalendar({
       //ヘッダー設定
       buttonText: {
@@ -62,12 +62,12 @@
       // イベントクリック時処理
       eventClick: function(calEvent, jsEvent, view) {
         if(calEvent.user_id == calEvent.manager_id){
-            //マイシフト編集ポップアップ
+            //TODO マイシフト編集ポップアップ
         }else {
           switch (calEvent.status) {
             case 1:
               // 仮シフトクリック時
-              //仮シフト承認/拒否ボタン表示
+              //TODO 仮シフト承認/拒否ボタン表示
 
               break;
             case 2:
@@ -84,8 +84,15 @@
           }
         }
       },
-
     });
+    //fullcalendar描画処理ここまで
   });
 
+
+
+  function test(id){
+    var $form = $('#'+id);
+    $form.hide();
+    alert($form);
+  }
   </script>
