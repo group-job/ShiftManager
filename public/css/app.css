@@ -6752,21 +6752,21 @@ body {
   border: 1px solid #d1f927; }
 
 .event-status0:hover {
-  border: 1px solid #6b8403; }
+  border: 1px solid #93b505; }
 
 .event-status1 {
   background-color: #c9bbd0;
   border: 1px solid #997fa6; }
 
 .event-status1:hover {
-  border: 1px solid #4a3953; }
+  border: 1px solid #654e71; }
 
 .event-status2 {
   background-color: #89c1f5;
   border: 1px solid #2b90ed; }
 
 .event-status2:hover {
-  border: 1px solid #0a4175; }
+  border: 1px solid #0e5ca4; }
 
 .event-status3 {
   background-color: #89c1f5;
@@ -6774,7 +6774,7 @@ body {
   color: #b34e4e; }
 
 .event-status3:hover {
-  border: 1px solid #0a4175; }
+  border: 1px solid #0e5ca4; }
 
 #explanatory-notes {
   position: relative;
@@ -6787,7 +6787,7 @@ body {
     position: relative;
     top: 5px;
     width: 40px;
-    height: 10px;
+    height: 13px;
     float: left;
     border-radius: 20%; }
     #explanatory-notes .circle .circle-text {

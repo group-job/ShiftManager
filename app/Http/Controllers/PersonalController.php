@@ -39,7 +39,7 @@ class PersonalController extends BaseController
 
   public function postRequestDelete(){
     //ログイン中のユーザーの全シフトからフォーム入力で指定されたidのシフトインスタンスを取得
-    $shift = Auth::user()->shifts->find(input::get('id'));
+    $shift = Auth::user()->shifts->find(input::get('shift-id'));
     if($shift !== null){
       $shift->status = 3;
       $shift->save();
@@ -67,7 +67,7 @@ class PersonalController extends BaseController
   public function postDeleteShift(){
     // TODO: 作成途中
     //ログイン中のユーザーの全シフトからフォーム入力で指定されたidのシフトインスタンスを取得
-    $shift = Auth::user()->shifts->find(input::get('id'));
+    $shift = Auth::user()->shifts->find(input::get('shift-id'));
     // 該当するシフトがある場合
     if($shift !== null){
       $shift->delete();

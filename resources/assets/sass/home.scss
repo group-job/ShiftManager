@@ -45,21 +45,21 @@
 	border: 1px solid darken($event-background0, 20%);
 }
 .event-status0:hover{
-	border: 1px solid darken($event-background0, 50%);
+	border: 1px solid darken($event-background0, 40%);
 }
 .event-status1{
 	background-color: $event-background1;
 	border: 1px solid darken($event-background1, 20%);
 }
 .event-status1:hover{
-	border: 1px solid darken($event-background1, 50%);
+	border: 1px solid darken($event-background1, 40%);
 }
 .event-status2{
 	background-color: $event-background2;
 	border: 1px solid darken($event-background2, 20%);
 }
 .event-status2:hover{
-	border: 1px solid darken($event-background2, 50%);
+	border: 1px solid darken($event-background2, 40%);
 }
 .event-status3{
 	background-color: $event-background2;
@@ -67,7 +67,7 @@
   color: $event-color3;
 }
 .event-status3:hover{
-	border: 1px solid darken($event-background2, 50%);
+	border: 1px solid darken($event-background2, 40%);
 }
 
 #explanatory-notes{
@@ -82,7 +82,7 @@
     position: relative;
     top:5px;
     width: 40px;
-    height: 10px;
+    height: 13px;
     float: left;
     border-radius: 20%;
     .circle-text{
