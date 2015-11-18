@@ -7,6 +7,7 @@ use Auth;
 
 class Employment extends Model
 {
+  protected $guarded = ['id'];
   // 参加グループ一覧取得
   public function scopeJoinGroup($query)
   {

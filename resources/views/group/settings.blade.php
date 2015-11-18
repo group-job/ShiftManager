@@ -29,7 +29,7 @@
         メンバー招待
       </td>
       <td>
-        <input type="button" name="name" value="招待画面へ" onclick="location.href='http://localhost:8888/group.invite'" class="btn btn-primary">
+        <input type="button" name="name" value="招待画面へ" onclick="location.href='invite'" class="btn btn-primary">
       </td>
     </tr>
     <tr>
@@ -37,7 +37,7 @@
         メンバー承認
       </td>
       <td>
-        <input type="button" name="name" value="承認画面へ" onclick="location.href='http://localhost:8888/group.approval'" class="btn btn-primary">
+        <input type="button" name="name" value="承認画面へ" onclick="location.href='approval'" class="btn btn-primary">
       </td>
     </tr>
     <tr>
