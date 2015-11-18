@@ -1,6 +1,7 @@
   // 指定したidのフォームをPOSTで送信するメソッド
   // Button type="button" onclick=postAcync('formのid')で呼び出す
-//flg = true  で通信終了時にフォームを消す。
+  
+//flg = true  で通信終了時にフォームを消す。 false で通信中のくるくる
 function postAcync(id,flg){
   var $form = $('#'+id);
   $.ajax({
@@ -20,6 +21,12 @@ function postAcync(id,flg){
     // フォームを非表示に
     if (flg == true){
       $form.hide();
+    }else {
+      var btn =$form.find('button');
+      btn.button('loading');
+      setTimeout(function () {
+        btn.button('reset');
+      }, 400);
     }
   });
 }

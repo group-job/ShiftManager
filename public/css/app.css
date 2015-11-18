@@ -6782,7 +6782,7 @@ body {
   list-style-type: none; }
   #explanatory-notes li {
     float: left;
-    width: 100px; }
+    width: 110px; }
   #explanatory-notes .circle {
     position: relative;
     top: 5px;
@@ -6794,7 +6794,7 @@ body {
       font-size: 0.8em;
       position: relative;
       top: -6px;
-      left: 2px; }
+      left: 3px; }
   #explanatory-notes #circle0 {
     background-color: #e6fc8a; }
   #explanatory-notes #circle1 {
