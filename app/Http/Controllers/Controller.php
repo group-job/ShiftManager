@@ -15,11 +15,6 @@ abstract class Controller extends RoutingController
 
     public function __construct()
     {
-      //管理グループ取得
-      $manager_group = '';
-      View::share('manager_group',$manager_group);
-      $join_group = '';
-      View::share('join_group', $join_group);
 
     }
 }

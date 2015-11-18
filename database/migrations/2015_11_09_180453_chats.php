@@ -17,7 +17,7 @@ class Chats extends Migration
         $table->integer('user_id');
         $table->integer('group_id');
         $table->datetime('date');
-        $table->datetime('text');        
+        $table->string('text',200);
         $table->integer('chat_category');
         $table->timestamps();
       });
