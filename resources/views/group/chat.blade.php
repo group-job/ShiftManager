@@ -7,12 +7,13 @@ jQuery(document).ready(function () {
       "chat",
       null,
       function (data) {
+        var chatLog;
+        for (var i = 0; i < data.length; i++) {
+          chatLog += data[i]["name"]+data[i]["text"]+"<br>";
+        }
+        $('#show-chat').html(chatLog);
+        // $('#show-name').html(data[i]["name"]);
 
-        // for (var i = 0; i < data.length; i++) {
-          // $('#show-text').html(data[i]["text"]);
-          // $('#show-name').html(data[i]["name"]);
-
-        // }
         // $('#nowname').html(data);
         // $('#sessionName').html(data);
       }

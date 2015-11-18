@@ -1,9 +1,5 @@
 
 @section('side-menu')
-<?php
-$managingLists = "";
-$join_group = "";
-?>
 {{-- サイドメニュー --}}
 <div id="side-menu">
   <ul id="side-menu-content">
