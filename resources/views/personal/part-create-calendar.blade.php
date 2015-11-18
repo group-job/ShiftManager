@@ -5,12 +5,13 @@
   <script>
   $(document).ready(function() {
     //各ボタン、ウィンドウ初期化---------------------------------------------------
-    // $('.togglable').hide();
+    $('.togglable').hide();
 
-    // $('div').not("#calendar").click(function(){
-    //   $('.togglable').hide();
-    // });
+    $('div').not("#calendar").click(function(){
+      $('.togglable').hide();
+    });
 
+      // $("#contens-space").not('#calendar').css('background-color','#5c0a95');
     // カレンダー描画-------------------------------------------------------------
     $('#calendar').fullCalendar({
       //ヘッダー設定
@@ -77,6 +78,13 @@
               $("#button-request-delete").css('left',jsEvent.pageX-260+"px");
               $("#input-request-delete").val(calEvent.shift_id);
               $("#button-request-delete").show("fast");
+              // $("#button-request-delete").onclick = postAcync("form-request-delete",true);
+              $("#button-request-delete").on('click', function() {
+                postAcync("form-request-delete",true);
+                calEvent.className = "event-status3";
+                $('#calendar').fullCalendar('updateEvent', calEvent);
+              });
+              // $("#button-request-delete").addEventListener("click", test1(), true);
               break;
             default:
               //希望･削除依頼シフトクリック時
@@ -87,9 +95,6 @@
     });
     //fullcalendar描画処理ここまで
   });
-
-
-
   function test(id){
     var $form = $('#'+id);
     $form.hide();

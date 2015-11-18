@@ -3,7 +3,7 @@
     <div id="title-space">
       @yield('title-space','サブタイトル')
     </div>
-    <div id="contens-space">
+    <div id="contents-space">
       @section('contents-space')
       @show
     </div>
