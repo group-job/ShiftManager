@@ -7,7 +7,7 @@ use Auth;
 
 class GroupApply extends Model
 {
-    //申請追加処理
+    //申請追加処理1
     public function userApply($id){
         Employment::create([
             'user_id' => Auth::user()->id,
