@@ -16,14 +16,14 @@ class BaseController extends Controller
   {
     //管理グループ取得
     $manager_group = Group::where('manager_id','=',Auth::user()->id)->get();
-    if ($manager_group) {
+    if (isset($manager_group)) {
         View::share('manager_group',$manager_group);
     }
 
     //雇用取得
     $employment = Auth::user()->employments;
     //雇用からグループ取得
-    if ($employment) {
+    if (isset($employment)) {
       $join_group = array();
       foreach ($employment as $value) {
           if ($value->group) {

@@ -17,7 +17,7 @@ class PersonalController extends BaseController
     //個人カレンダーの全シフトをJsonで取得
     //マイシフト取得
     $myShifts = Auth::user()->shifts;
-    $calendarEvents;
+    $calendarEvents = array();
     foreach ($myShifts as $value) {
       $calendarEvents[] = array(
         //カレンダーイベントクリック時処理などに利用

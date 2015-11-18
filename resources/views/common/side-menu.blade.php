@@ -1,11 +1,14 @@
 
 @section('side-menu')
+<<<<<<< HEAD
 <?php
 $managingLists = array('とりまる','ラウンドワン');
 $join_group = array('とりまる','ラウンドワン');
 $managingLists = "";
 $join_group = "";
 ?>
+=======
+>>>>>>> 97e1a806817931cab68b8cd8b7681e98119a1083
 {{-- サイドメニュー --}}
 <div id="side-menu">
   <ul id="side-menu-content">
@@ -28,7 +31,7 @@ $join_group = "";
       </li>
     {{-- 参加グループリストアイテム --}}
       <div id="collapse-joining-group" class="collapse list-item">
-        @if($join_group)
+        @if(isset($join_group))
           @foreach($join_group as $value)
            <li><a href="/group/{{ $value->id }}/home">{{ $value->group_name}}</a></li>
           @endforeach
@@ -42,7 +45,7 @@ $join_group = "";
     </li>
     {{-- 管理グループリストアイテム --}}
       <div id="collapse-managing-group" class="collapse list-item">
-        @if($manager_group)
+        @if(isset($manager_group))
           @foreach($manager_group as $value)
             <li> <a href="/group/{{ $value->id }}/home">{{ $value->group_name }}</a></li>
           @endforeach

@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Group;
 use App\Employment;
 use App\User;
+use App\Chat;
 use App\Http\Requests\GroupRequest;
 use Auth;
 use App\GroupApply;
@@ -72,5 +73,20 @@ class GroupController extends BaseController
     {
     $group = Group::group($join_group_id)->get();
     $group->update($request->all());
+    }
+
+    public function getChat()
+    {
+      $chat = Chat::where('group_id','=','2')->get();
+      $chatLog = array();
+      foreach ($chat as $value) {
+        $chatParams  = array(
+          'text' => $value->text,
+          'name' => $value->user->name,
+        );
+        array_push($chatLog, $chatParams);
+      }
+      // dd($chatLog);
+      return $chatLog;
     }
 }

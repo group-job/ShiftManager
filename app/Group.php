@@ -37,6 +37,10 @@ class Group extends Model
           return $this->belongsTo(User::class,'manager_id');
     }
 
+    // public function chats()
+    // {
+    //   return $this->hasMany(Chat::class);
+    // }
 
 
 }
