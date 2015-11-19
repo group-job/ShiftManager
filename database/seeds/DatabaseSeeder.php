@@ -59,6 +59,15 @@ class DatabaseSeeder extends Seeder
      'status' => '2',
      'note' => 'きみやの個人シフトのサンプル2',
  ]);
+ DB::table('shifts')->insert([
+    'user_id' => '1',
+    'group_id' => '1',
+    'date' => '2015-11-28',
+    'start_time' => '10:30',
+    'end_time' => '10:30',
+    'status' => '2',
+    'note' => 'きみやの個人シフトのサンプル2',
+]);
    DB::table('shifts')->insert([
       'user_id' => '1',
       'group_id' => '2',

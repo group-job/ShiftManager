@@ -24,7 +24,7 @@
   <form action="/personal/request-delete" id="form-request-delete" class="form-horizontal" method="post">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <input type="hidden" name="shift-id" id="input-request-delete">
-    <button type="button" onclick="postAcync('form-request-delete',true)" class="btn btn-danger togglable" id="button-request-delete" data-loading-text="変更中" style="position:absolute; z-index:1;">削除依頼</button>
+    <button type="button"class="btn btn-danger togglable" id="button-request-delete" style="position:absolute; z-index:1;">削除依頼</button>
   </form>
 
   <form action="/personal/test" id="test-form" class="form-horizontal" method="post">

@@ -1,6 +1,6 @@
   // 指定したidのフォームをPOSTで送信するメソッド
   // Button type="button" onclick=postAcync('formのid')で呼び出す
-  
+
 //flg = true  で通信終了時にフォームを消す。 false で通信中のくるくる
 function postAcync(id,flg){
   var $form = $('#'+id);
@@ -20,7 +20,9 @@ function postAcync(id,flg){
   .always(function() {
     // フォームを非表示に
     if (flg == true){
-      $form.hide();
+      // $form.hide(); これフォームごと消えるから、2回め以降ボタンとか使えなくなる
+      $form.find('button').hide();
+      $form.find('input').hide();
     }else {
       var btn =$form.find('button');
       btn.button('loading');
@@ -30,3 +32,7 @@ function postAcync(id,flg){
     }
   });
 }
+
+$(document).ready(function() {
+  // $("td").not('.fc-day').css('background-color','#5c0a95');
+});
