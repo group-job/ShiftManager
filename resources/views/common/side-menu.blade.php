@@ -1,14 +1,11 @@
 
 @section('side-menu')
-<<<<<<< HEAD
 <?php
 $managingLists = array('とりまる','ラウンドワン');
 $join_group = array('とりまる','ラウンドワン');
 $managingLists = "";
 $join_group = "";
 ?>
-=======
->>>>>>> 97e1a806817931cab68b8cd8b7681e98119a1083
 {{-- サイドメニュー --}}
 <div id="side-menu">
   <ul id="side-menu-content">
