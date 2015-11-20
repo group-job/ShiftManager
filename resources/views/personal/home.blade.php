@@ -12,6 +12,7 @@
 @section('contents-space')
 {{-- カレンダーにイベントを追加するためのスクリプト --}}
   <div id='calendar'></div>
+  {{-- カレンダーイベントの凡例 --}}
   <div class="col-md-offset-3">
     <ul id="explanatory-notes">
       <li><div class="circle" id="circle0"></div>希望</li>
@@ -20,13 +21,15 @@
     <li><div class="circle" id="circle3"><span class="circle-text">赤文字</span></div>削除依頼中</li>
     </ul>
   </div>
-
+  {{-- 削除依頼ボタンのフォーム --}}
   <form action="/personal/request-delete" id="form-request-delete" class="form-horizontal" method="post">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <input type="hidden" name="shift-id" id="input-request-delete">
     <button type="button"class="btn btn-danger togglable" id="button-request-delete" style="position:absolute; z-index:1;">削除依頼</button>
   </form>
+  {{-- イベント詳細表示用ツールチップ --}}
 
+  {{-- テスト用フォーム --}}
   <form action="/personal/test" id="test-form" class="form-horizontal" method="post">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <input type="hidden" id="testInput" name="id" value="1">

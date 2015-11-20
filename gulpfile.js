@@ -15,15 +15,18 @@ var elixir = require('laravel-elixir');
  var paths = {
      'jquery': 'bower_components/jquery/',
      'bootstrap': 'bower_components/bootstrap-sass-official/assets/',
-     'fullcalendar' : 'resources/assets/fullcalendar/',
+     'fullcalendar' : 'bower_components/fullcalendar/',
+     'alertify' : 'bower_components/alertify/',
+     'moment' : 'bower_components/moment/',
      'js' : 'resources/assets/js/'
  };
 
 elixir(function(mix) {
     mix.less('app.less');
     mix.sass([
-      "fullcalendar.scss",
-      // "fullcalendar.print.scss",
+      '../../../'+paths.fullcalendar+"dist/fullcalendar.css",
+      '../../../'+paths.alertify+"themes/alertify.core.css",
+      '../../../'+paths.alertify+"themes/alertify.bootstrap.css",
       'app.scss',
       'home.scss',
       'invite.scss',
@@ -35,12 +38,13 @@ elixir(function(mix) {
 
        // jquery.jsと bootstrap.jsを結合して、public/js/app.jsに出力
        mix.scripts([
-            paths.fullcalendar+"moment.min.js",
             paths.jquery + "dist/jquery.js",
-            // paths.fullcalendar+"jquery-ui.custom.min.js",
-            paths.fullcalendar + "fullcalendar.js",
             paths.bootstrap + "javascripts/bootstrap.js",
-            paths.js+'app.js'
+            // paths.moment+"src/moment.js",
+            "resources/assets/fullcalendar/moment.min.js", //bowerでいれたmoment.jsがなぜかエラーはくので
+            paths.fullcalendar + "dist/fullcalendar.js",
+            paths.alertify + "alertify.js",
+            paths.js+'app.js',
         ], 'public/js/app.js', './');  // ①
 
         //jsファイルわけ

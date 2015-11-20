@@ -4,14 +4,22 @@
   --}}
   <script>
   $(document).ready(function() {
-    //各ボタン、ウィンドウ初期化---------------------------------------------------
+    //--------------------------各ボタン、ウィンドウ初期化--------------------------
     $('.togglable').hide();
+    // $('.togglable').css("visibility","hidden");
 
-    // カレンダー描画-------------------------------------------------------------
+    // -------------------------カレンダー描画---------------------------------------------
     $('#calendar').fullCalendar({
       //ヘッダー設定
+      header: {
+               // title, prev, next, prevYear, nextYear, today
+               left: 'prev,next today',
+               center: 'title',
+               right: 'month,agendaWeek'
+           },
+
       buttonText: {
-        today: '今日'
+        // today: '今日'
       },
       // タイトルの書式
       titleFormat: {
@@ -27,8 +35,9 @@
       //デフォルトの日付 省略すると当日?
       // defaultDate: '2015-11-15',
 
-      editable: true,
+      editable: false,
       aditable: true,
+      allDaySlot: true,
       slotEventOverlap: true,
       eventLimit: true, // allow "more" link when too many events
       events:{!!$calendarEventsJson!!},
@@ -75,14 +84,13 @@
               $("#button-request-delete").css('left',jsEvent.pageX-260+"px");
               $("#input-request-delete").val(calEvent.shift_id);
               $("#button-request-delete").show("fast");
-              // $("#button-request-delete").onclick = postAcync("form-request-delete",true);
-              // $("#button-request-delete").addEventListener("click", test1(), true);
               // 登録されているイベントハンドラを削除。 イベント複数回クリック
               $("#button-request-delete").unbind('click');
-              $("#button-request-delete").on('click', function() {
-                postAcync("form-request-delete",false);
+              $("#button-request-delete").on('click', function(event) {
+                postAcync(this,false);
                 calEvent.className = "event-status3";
                 $('#calendar').fullCalendar('updateEvent', calEvent);
+                 alertify.success('削除依頼をしました');
               });
               break;
             default:
@@ -93,7 +101,8 @@
       },
 
     });
-    // fullcalendar描画処理ここまで
+    // ------------------------------------------------------fullcalendar描画処理
+    //------------------------各ボタン、ウィンドウリセット---------------------------
     $('div').click(function(event){
         if (this.id === "contents-space" || this.className === "fc-bg"){
           event.stopPropagation();
@@ -105,6 +114,7 @@
         }
     });
   });
+  // ---------------------------テスト-------------------------------------------
   function test(id){
     var $form = $('#'+id);
     $form.hide();
