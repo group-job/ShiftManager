@@ -34,6 +34,6 @@
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <input type="hidden" id="testInput" name="id" value="1">
     <input type="hidden" name="name" value="kimiya">
-    <button type="button" onclick="test('test-form')" class="btn btn-danger" id="testButton" style="position:absolute; z-index:1; ">test</button>
+    <button type="button" onclick="test('test-form')" class="btn btn-danger custom-tooltip"  title="This is my div's tooltip message!" id="testButton" style="position:absolute; z-index:1; ">test</button>
   </form>
 @stop

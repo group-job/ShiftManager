@@ -22,6 +22,7 @@ class PersonalController extends BaseController
       $calendarEvents[] = array(
         //カレンダーイベントクリック時処理などに利用
         'shift_id' => $value->id,
+        'manager_id' => $value->group->manager_id,
         'group_id' => $value->group_id,
         'user_id' => $value->user_id,
         'status' => $value->status,

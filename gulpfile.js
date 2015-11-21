@@ -18,6 +18,7 @@ var elixir = require('laravel-elixir');
      'fullcalendar' : 'bower_components/fullcalendar/',
      'alertify' : 'bower_components/alertify/',
      'moment' : 'bower_components/moment/',
+     'tooltipster' : 'bower_components/tooltipster/',
      'js' : 'resources/assets/js/'
  };
 
@@ -27,6 +28,7 @@ elixir(function(mix) {
       '../../../'+paths.fullcalendar+"dist/fullcalendar.css",
       '../../../'+paths.alertify+"themes/alertify.core.css",
       '../../../'+paths.alertify+"themes/alertify.bootstrap.css",
+      '../../../'+paths.tooltipster+"css/tooltipster.css",
       'app.scss',
       'home.scss',
       'invite.scss',
@@ -44,6 +46,7 @@ elixir(function(mix) {
             "resources/assets/fullcalendar/moment.min.js", //bowerでいれたmoment.jsがなぜかエラーはくので
             paths.fullcalendar + "dist/fullcalendar.js",
             paths.alertify + "alertify.js",
+            paths.tooltipster+"js/jquery.tooltipster.min.js",
             paths.js+'app.js',
         ], 'public/js/app.js', './');  // ①
 

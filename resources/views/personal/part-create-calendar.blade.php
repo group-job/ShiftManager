@@ -4,10 +4,6 @@
   --}}
   <script>
   $(document).ready(function() {
-    //--------------------------各ボタン、ウィンドウ初期化--------------------------
-    $('.togglable').hide();
-    // $('.togglable').css("visibility","hidden");
-
     // -------------------------カレンダー描画---------------------------------------------
     $('#calendar').fullCalendar({
       //ヘッダー設定
@@ -64,11 +60,12 @@
       //イベントマウスオーバー時処理
       eventMouseover:function( event, jsEvent, view ) {
         //イベントの詳細を表示するよ
+
       },
 
       // イベントクリック時処理
       eventClick: function(calEvent, jsEvent, view) {
-        if(calEvent.user_id == calEvent.manager_id){
+        if(calEvent.user_id === calEvent.manager_id){
             //TODO マイシフト編集ポップアップ
         }else {
           switch (calEvent.status) {
@@ -90,7 +87,7 @@
                 postAcync(this,false);
                 calEvent.className = "event-status3";
                 $('#calendar').fullCalendar('updateEvent', calEvent);
-                 alertify.success('削除依頼をしました');
+                 alertify.success(calEvent.title+'に削除依頼をしました');
               });
               break;
             default:
@@ -102,9 +99,13 @@
 
     });
     // ------------------------------------------------------fullcalendar描画処理
-    //------------------------各ボタン、ウィンドウリセット---------------------------
+    //------------------------各ボタン、ウィンドウリセット--------------------------
     $('div').click(function(event){
-        if (this.id === "contents-space" || this.className === "fc-bg"){
+      // alert(this.id+"/"+this.className);
+        if(this.id === "calendar"){
+          event.stopPropagation();
+        }
+        else if (this.id === "contents-space" || this.className === "fc-bg"){
           event.stopPropagation();
           $('.togglable').hide();
         }else if (this.className === "fc-content") {

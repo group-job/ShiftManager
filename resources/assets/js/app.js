@@ -32,3 +32,7 @@ function postAcync(button,flg){
     }
   });
 }
+$(document).ready(function() {
+  $('.togglable').hide();
+  $('.custom-tooltip').tooltipster();
+});
