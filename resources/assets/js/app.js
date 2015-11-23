@@ -4,6 +4,7 @@
 //button : クリックされたボタン
 //flg = true  で通信終了時にフォームを非表示。 false で通信中のくるくる
 function postAcync(button,flg){
+  //クリックされたボタンの先祖の直近のフォームを取得
   var $form = $(button).closest("form");
   $.ajax({
     url: $form.attr('action'),
@@ -34,5 +35,4 @@ function postAcync(button,flg){
 }
 $(document).ready(function() {
   $('.togglable').hide();
-  $('.custom-tooltip').tooltipster();
 });

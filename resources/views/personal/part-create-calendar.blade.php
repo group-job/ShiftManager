@@ -4,7 +4,7 @@
   --}}
   <script>
   $(document).ready(function() {
-    // -------------------------カレンダー描画---------------------------------------------
+    // =========================カレンダー描画====================================
     $('#calendar').fullCalendar({
       //ヘッダー設定
       header: {
@@ -38,7 +38,7 @@
       eventLimit: true, // allow "more" link when too many events
       events:{!!$calendarEventsJson!!},
 
-      // 日付クリック処理
+      // -----------------------日付クリック処理----------------------------------
       dayClick: function(date, jsEvent, view) {
         //削除申請ボタンなどを非表示に
         $('.togglable').hide();
@@ -57,14 +57,28 @@
         $('#calendar').fullCalendar('unselect');
       },
 
-      //イベントマウスオーバー時処理
+      //------------------イベントマウスオーバー時処理-------------------------------
       eventMouseover:function( event, jsEvent, view ) {
         //イベントの詳細を表示するよ
 
+        //カレンダーの次月などに遷移後戻ってきた時にツールチップが初期化されてないエラーが発生するため、
+        // イベントマウスオーバー時に初期化。重複宣言されるが致命的なエラーにはならないが2度マウスオーバーする必要あり
+        // TODO 初期化方法変更
+        $('.fc-event').tooltipster({
+            position: 'right',
+            content: $('<p>aaa</p>'),
+            theme: 'theme-event-detail-tooltip',
+            animation: 'fade',
+            iconTouch:true,
+        });
+        // console.log(event);
+        content = "<p>勤務先:"+event.title+"</p><p>開始時刻:"+event.start_time+"</p><p>終了時刻:"+event.end_time+"</p>";
+        $('.fc-event').tooltipster('content',$(content));
       },
 
-      // イベントクリック時処理
+      // ------------------イベントクリック時処理----------------------------------
       eventClick: function(calEvent, jsEvent, view) {
+        $('.fc-event').tooltipster('hide');
         if(calEvent.user_id === calEvent.manager_id){
             //TODO マイシフト編集ポップアップ
         }else {
@@ -72,22 +86,54 @@
             case 1:
               // 仮シフトクリック時
               //TODO 仮シフト承認/拒否ボタン表示
+              $("#input-reply-shift-id").val(calEvent.shift_id);
+              //ボタン表示処理
+              $("#button-reply-approve").css('top',jsEvent.pageY-100+"px");
+              $("#button-reply-approve").css('left',jsEvent.pageX-273+"px");
+              $("#button-reply-deny").css('top',jsEvent.pageY-100+"px");
+              $("#button-reply-deny").css('left',jsEvent.pageX-240+"px");
+              $("#button-reply-approve").show("fast");
+              $("#button-reply-deny").show("fast");
+              // 登録されているイベントハンドラを削除。 イベント複数回クリック対策
+              $("#button-reply-approve").unbind('click');
+              $("#button-reply-deny").unbind('click');
 
+              //承認ボタンクリック時の処理を定義
+              $("#button-reply-approve").on('click', function(event) {
+                $("#input-reply-status").val('2');
+                postAcync(this,false);
+                calEvent.className = "event-status2";
+                calEvent.status = 2;
+                $('#calendar').fullCalendar('updateEvent', calEvent);
+                 alertify.success(calEvent.title+'の'+calEvent.date+'のシフトを承認しました');
+              });
+
+              //拒否ボタンクリック時の処理を定義
+              $("#button-reply-deny").on('click', function(event) {
+                $("#input-reply-status").val('4');
+                postAcync(this,false);
+                $('#calendar').fullCalendar("removeEvents", calEvent._id);
+                alertify.success(calEvent.title+'の'+calEvent.date+'のシフトを拒否しました');
+
+              });
               break;
             case 2:
               //確定シフトクリック時
               //削除依頼ボタン表示
-              $("#button-request-delete").css('top',jsEvent.pageY-110+"px");
+              $("#button-request-delete").css('top',jsEvent.pageY-100+"px");
               $("#button-request-delete").css('left',jsEvent.pageX-260+"px");
-              $("#input-request-delete").val(calEvent.shift_id);
+              $("#input-request-delete-shift-id").val(calEvent.shift_id);
               $("#button-request-delete").show("fast");
               // 登録されているイベントハンドラを削除。 イベント複数回クリック
               $("#button-request-delete").unbind('click');
+              //ボタンクリック時の処理を定義
               $("#button-request-delete").on('click', function(event) {
                 postAcync(this,false);
                 calEvent.className = "event-status3";
+                calEvent.status = 3;
                 $('#calendar').fullCalendar('updateEvent', calEvent);
-                 alertify.success(calEvent.title+'に削除依頼をしました');
+                alertify.success(calEvent.title+'に削除依頼をしました');
+
               });
               break;
             default:
@@ -96,10 +142,12 @@
           }
         }
       },
-
+      eventAfterAllRender:function( view ) {
+        alert('カレンダー描画完了');
+      }
     });
-    // ------------------------------------------------------fullcalendar描画処理
-    //------------------------各ボタン、ウィンドウリセット--------------------------
+    //=======================================================fullcalendar描画処理
+    //========================各ボタン、ウィンドウリセット==========================
     $('div').click(function(event){
       // alert(this.id+"/"+this.className);
         if(this.id === "calendar"){
@@ -114,11 +162,24 @@
           event.stopPropagation();
         }
     });
+    // ========================ツールチップ===========================================
+    $('.fc-event').tooltipster({
+        position: 'right',
+        content: $('<p>aaa</p>'),
+        theme: 'theme-event-detail-tooltip',
+    });
+    $('.fc-event').tooltipster({
+        // position: 'right',
+        trigger: 'click',
+        multiple:true,
+        autoClose:false,
+        content: $('<p>aaa</p>'),
+        theme: 'theme-event-detail-tooltip',
+    });
   });
-  // ---------------------------テスト-------------------------------------------
+  // ===========================テスト===========================================
   function test(id){
     var $form = $('#'+id);
-    $form.hide();
     alert($form);
   }
   </script>

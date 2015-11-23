@@ -24,16 +24,24 @@
   {{-- 削除依頼ボタンのフォーム --}}
   <form action="/personal/request-delete" id="form-request-delete" class="form-horizontal" method="post">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-    <input type="hidden" name="shift-id" id="input-request-delete">
-    <button type="button"class="btn btn-danger togglable" id="button-request-delete" style="position:absolute; z-index:1;">削除依頼</button>
+    <input type="hidden" name="shift-id" id="input-request-delete-shift-id">
+    <button type="button"class="btn btn-calendar btn-danger togglable" id="button-request-delete" style="position:absolute; z-index:1;">削除依頼</button>
   </form>
-  {{-- イベント詳細表示用ツールチップ --}}
-
-  {{-- テスト用フォーム --}}
-  <form action="/personal/test" id="test-form" class="form-horizontal" method="post">
+  {{-- 仮シフト承認/拒否ボタンのフォーム --}}
+  <form action="/personal/reply" id="form-reply" class="form-horizontal" method="post">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-    <input type="hidden" id="testInput" name="id" value="1">
-    <input type="hidden" name="name" value="kimiya">
-    <button type="button" onclick="test('test-form')" class="btn btn-danger custom-tooltip"  title="This is my div's tooltip message!" id="testButton" style="position:absolute; z-index:1; ">test</button>
+    <input type="hidden" name="shift-id" id="input-reply-shift-id">
+    {{-- input-reply-status→承認:value=2, 拒否:value=4 --}}
+    <input type="hidden" name="shift-status" id="input-reply-status">
+    <button type="button"class="btn btn-calendar btn-danger togglable" id="button-reply-deny" style="position:absolute; z-index:1;">拒否</button>
+    <button type="button"class="btn btn-calendar btn-success togglable" id="button-reply-approve" style="position:absolute; z-index:1;">承認</button>
+  </form>
+
+    {{-- テスト用フォーム --}}
+  <form action="/personal/reply" id="test-form" class="form-horizontal" method="post">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <input type="hidden" name="shift-id" value="4">
+    <input type="hidden" name="shift-status" value="2">
+    <button type="submit" class="btn btn-danger event-detail-tooltip"  title="This is my div's tooltip message!" style="position:absolute; z-index:1; ">test</button>
   </form>
 @stop

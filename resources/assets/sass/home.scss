@@ -16,20 +16,20 @@
   background-color:$modal-color;
 }
 
-// カレンダーのスタイル上書き
+// ---------------------------カレンダーのスタイル上書き----------------------------
 #calendar{
   height: 600px;
 }
 /* 日曜日 */
 .fc-sun {
-    color: red;
-    background-color: #fff0f0;
+  color: red;
+  background-color: #fff0f0;
 }
 
 /* 土曜日 */
 .fc-sat {
-    color: blue;
-    background-color: #f0f0ff;
+  color: blue;
+  background-color: #f0f0ff;
 }
 .fc{
   width: 700px;
@@ -41,42 +41,43 @@
 }
 
 .event-status0{
-	background-color: $event-background0;
-	border: 1px solid darken($event-background0, 20%);
+  background-color: $event-background0;
+  border: 1px solid darken($event-background0, 20%);
 }
 .event-status0:hover{
-	border: 1px solid darken($event-background0, 40%);
+  border: 1px solid darken($event-background0, 40%);
 }
 .event-status1{
-	background-color: $event-background1;
-	border: 1px solid darken($event-background1, 20%);
+  background-color: $event-background1;
+  border: 1px solid darken($event-background1, 20%);
 }
 .event-status1:hover{
-	border: 1px solid darken($event-background1, 40%);
+  border: 1px solid darken($event-background1, 40%);
 }
 .event-status2{
-	background-color: $event-background2;
-	border: 1px solid darken($event-background2, 20%);
+  background-color: $event-background2;
+  border: 1px solid darken($event-background2, 20%);
 }
 .event-status2:hover{
-	border: 1px solid darken($event-background2, 40%);
+  border: 1px solid darken($event-background2, 40%);
 }
 .event-status3{
-	background-color: $event-background2;
-	border: 1px solid darken($event-background2, 20%);
+  background-color: $event-background2;
+  border: 1px solid darken($event-background2, 20%);
   color: $event-color3;
 }
 .event-status3:hover{
-	border: 1px solid darken($event-background2, 40%);
+  border: 1px solid darken($event-background2, 40%);
 }
 
+// ==========================カレンダー凡例=======================================
 #explanatory-notes{
   position: relative;
   top: -40px;
   list-style-type: none;
   li{
-     float: left;
-     width: 110px;
+    float: left;
+    width: 110px;
   }
   .circle{
     position: relative;
@@ -92,6 +93,7 @@
       left: 3px;
     }
   }
+}
   #circle0{
     background-color: $event-background0;
   }
@@ -105,4 +107,24 @@
     background-color: $event-background2;
     color: $event-color3;
   }
+  // ===========================tooltipsterカスタムスタイル========================
+  .theme-event-detail-tooltip{
+    width: 200px;
+    height: 110px;
+    border-radius: 3px;
+    border: 2px solid #000;
+    background: rgba(#537a80, 0.77);
+    color: #fff;
+  }
+  .theme-event-detail-tooltip .tooltipster-content {
+    font-family: Arial, sans-serif;
+  	font-size: 14px;
+  	line-height: 16px;
+  	padding: 8px 10px;
+}
+// ================================カレンダー内のボタン============================
+.btn-calendar{
+  height: 25px;
+  margin: 0;
+  padding: 0 2px;
 }

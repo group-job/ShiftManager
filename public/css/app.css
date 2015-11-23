@@ -7228,15 +7228,38 @@ body {
       position: relative;
       top: -6px;
       left: 3px; }
-  #explanatory-notes #circle0 {
-    background-color: #e6fc8a; }
-  #explanatory-notes #circle1 {
-    background-color: #c9bbd0; }
-  #explanatory-notes #circle2 {
-    background-color: #89c1f5; }
-  #explanatory-notes #circle3 {
-    background-color: #89c1f5;
-    color: #b34e4e; }
+
+#circle0 {
+  background-color: #e6fc8a; }
+
+#circle1 {
+  background-color: #c9bbd0; }
+
+#circle2 {
+  background-color: #89c1f5; }
+
+#circle3 {
+  background-color: #89c1f5;
+  color: #b34e4e; }
+
+.theme-event-detail-tooltip {
+  width: 200px;
+  height: 110px;
+  border-radius: 3px;
+  border: 2px solid #000;
+  background: rgba(83, 122, 128, 0.77);
+  color: #fff; }
+
+.theme-event-detail-tooltip .tooltipster-content {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 8px 10px; }
+
+.btn-calendar {
+  height: 25px;
+  margin: 0;
+  padding: 0 2px; }
 
 
 /* button
