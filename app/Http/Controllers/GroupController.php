@@ -11,6 +11,7 @@ use App\Employment;
 use App\User;
 use App\Chat;
 use App\Http\Requests\GroupRequest;
+use App\Http\Requests\ChatRequest;
 use Auth;
 use App\GroupApply;
 
@@ -23,7 +24,7 @@ class GroupController extends BaseController
      * @return View
      */
      public function getHome($id='default'){
-       return view('group.home');
+       return view('group.home',compact('id'));
      }
 
     /**
@@ -80,18 +81,43 @@ class GroupController extends BaseController
     $group->update($request->all());
     }
 
-    public function getChat()
+    public function postShowChat(Request $request)
     {
-      $chat = Chat::where('group_id','=','2')->get();
+      $limit = 10;
+      $count = Chat::where('group_id','=',$request->id)->count();
+      if ($count >= $limit) {
+          $chat = Chat::where('group_id','=',$request->id)->skip($count-$limit)->take($limit)->get();
+      }
+      if ($count <= $limit) {
+          $chat = Chat::where('group_id','=',$request->id)->get();
+      }
       $chatLog = array();
       foreach ($chat as $value) {
         $chatParams  = array(
           'text' => $value->text,
           'name' => $value->user->name,
+          'date' => $value->date,
         );
         array_push($chatLog, $chatParams);
       }
-      // dd($chatLog);
       return $chatLog;
+    }
+
+    public function postStoreChat(ChatRequest $request)
+    {
+      $now = new \DateTime();
+      if(isset($request->text))
+      {
+        $chat = Chat::create([
+            'user_id' => Auth::user()->id,
+            'group_id' => $request->id,
+            'date' => $now,
+            'text' => $request->text,
+            'chat_category' => 0,
+        ]);
+      }else{
+        // \Session::flash('flash_message', "入力してくださ");
+        die("a");
+      }
     }
 }

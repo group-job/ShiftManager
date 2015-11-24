@@ -1,9 +1,11 @@
-  // 指定したidのフォームをPOSTで送信するメソッド
-  // Button type="button" onclick=postAcync('formのid')で呼び出す
-  
-//flg = true  で通信終了時にフォームを消す。 false で通信中のくるくる
-function postAcync(id,flg){
-  var $form = $('#'+id);
+// 指定したidのフォームをPOSTで送信するメソッド
+// Button type="button" onclick=postAcync(クリックされたボタン,flg)で呼び出す
+// 利用例はpart-create-calendar.blade.php:83 参照
+//button : クリックされたボタン
+//flg = true  で通信終了時にフォームを非表示。 false で通信中のくるくる
+function postAcync(button,flg){
+  //クリックされたボタンの先祖の直近のフォームを取得
+  var $form = $(button).closest("form");
   $.ajax({
     url: $form.attr('action'),
     type: $form.attr('method'),
@@ -20,7 +22,8 @@ function postAcync(id,flg){
   .always(function() {
     // フォームを非表示に
     if (flg == true){
-      $form.hide();
+      // $form.css("visibility","hidden");//フォームごと非表示に
+      $('.togglable').hide();
     }else {
       var btn =$form.find('button');
       btn.button('loading');
@@ -30,3 +33,6 @@ function postAcync(id,flg){
     }
   });
 }
+$(document).ready(function() {
+  $('.togglable').hide();
+});

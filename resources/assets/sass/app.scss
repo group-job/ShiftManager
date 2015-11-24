@@ -22,6 +22,7 @@ body{
 }
 .navbar-inverse{
   color: $main-contents-bg-color;
+  background-color: $navbar-background;
 }
 #title-space{
   height: 100px;
@@ -63,4 +64,9 @@ body{
   }
 }
 
-// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+// ---------------------------------alertify------------------------------------
+.alertify-logs {
+  position: absolute;
+  top: 42px;
+  right: 5px;
+}

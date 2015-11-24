@@ -88,10 +88,12 @@ class AuthController extends Controller
         return back()->withInput();
       }
     }
+    //ログアウト処理してログイン画面へリダイレクト
     public function getLogout(){
       Auth::logout();
       return redirect('/');
     }
+    //ログイン画面へリダイレクト(/loginのルーティングが標準で実装しているため)
     public function getLogin(){
       return redirect('/');
     }

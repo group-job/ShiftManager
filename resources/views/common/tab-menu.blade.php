@@ -1,6 +1,4 @@
 <div class="row">
-
-
 <ul class="nav nav-tabs">
   {{-- タブを定数でループ --}}
   @foreach($tabArray as $key => $value)

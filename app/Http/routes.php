@@ -24,6 +24,7 @@
     Route::controller('group/{id}', 'GroupController');
     Route::controller('group_create', 'GroupCreateController');
     Route::controller('profile', 'ProfileController');
+    Route::controller('salary', 'SalaryController');
    });
 
 
