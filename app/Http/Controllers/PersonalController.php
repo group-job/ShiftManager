@@ -78,4 +78,9 @@ class PersonalController extends BaseController
   public function getTest(){
       echo Input::get('id');
   }
+  public function getUssiy(){
+    $kimiya = "yosikawa";
+    return view('ussiy',compact('kimiya'));
+  }
+  
 }

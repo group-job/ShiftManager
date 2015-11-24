@@ -50,8 +50,12 @@ class GroupController extends BaseController
      * @return View
      */
      public function getApply($id='default'){
-       return view('groupsettings.groupapply.apply',compact('id'));
+       $GroupApply= new GroupApply();
+       $group = $GroupApply->getGroupInfo($id);
+       $checkapply = $GroupApply->checkApply($id);
+       return view('groupsettings.groupapply.apply',compact('id','group','checkapply'));
      }
+     
     /**
      * メンバー申請処理用
      *
@@ -60,10 +64,11 @@ class GroupController extends BaseController
      public function getApplyed($id='default'){
        // $this->loadModel('GroupApply',compact('id'));
        $GroupApply= new GroupApply();
+    //   $GroupApply->userApply($id);
        $GroupApply->userApply($id);
        return view('group.home');
      }
-
+     
     /**
     * グループ設定
     * @param  GroupRequest $request [description]
