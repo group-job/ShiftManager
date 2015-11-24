@@ -19,12 +19,14 @@ class PersonalController extends BaseController
     $myShifts = Auth::user()->shifts;
     $calendarEvents = array();
     foreach ($myShifts as $value) {
+      $myShiftFlg = ($value->group->manager_id === $value->user_id);
       $calendarEvents[] = array(
         //カレンダーイベントクリック時処理などに利用
         'shift_id' => $value->id,
-        'manager_id' => $value->group->manager_id,
-        'group_id' => $value->group_id,
-        'user_id' => $value->user_id,
+        // 'manager_id' => $value->group->manager_id,
+        // 'group_id' => $value->group_id,
+        // 'user_id' => $value->user_id,
+        'my_shift_flg' =>$myShiftFlg,
         'status' => $value->status,
         'date' => $value->date,
         'start_time' =>$value->start_time,

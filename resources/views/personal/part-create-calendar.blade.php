@@ -60,18 +60,6 @@
       //------------------イベントマウスオーバー時処理-------------------------------
       eventMouseover:function( event, jsEvent, view ) {
         //イベントの詳細を表示するよ
-
-        //カレンダーの次月などに遷移後戻ってきた時にツールチップが初期化されてないエラーが発生するため、
-        // イベントマウスオーバー時に初期化。重複宣言されるが致命的なエラーにはならないが2度マウスオーバーする必要あり
-        // TODO 初期化方法変更
-        $('.fc-event').tooltipster({
-            position: 'right',
-            content: $('<p>aaa</p>'),
-            theme: 'theme-event-detail-tooltip',
-            animation: 'fade',
-            iconTouch:true,
-        });
-        // console.log(event);
         content = "<p>勤務先:"+event.title+"</p><p>開始時刻:"+event.start_time+"</p><p>終了時刻:"+event.end_time+"</p>";
         $('.fc-event').tooltipster('content',$(content));
       },
@@ -79,8 +67,13 @@
       // ------------------イベントクリック時処理----------------------------------
       eventClick: function(calEvent, jsEvent, view) {
         $('.fc-event').tooltipster('hide');
-        if(calEvent.user_id === calEvent.manager_id){
+        $('.togglable').hide();
+        if(calEvent.my_shift_flg){
             //TODO マイシフト編集ポップアップ
+
+          $("#button-test").on('click', function(event) {
+
+          });
         }else {
           switch (calEvent.status) {
             case 1:
@@ -133,7 +126,6 @@
                 calEvent.status = 3;
                 $('#calendar').fullCalendar('updateEvent', calEvent);
                 alertify.success(calEvent.title+'に削除依頼をしました');
-
               });
               break;
             default:
@@ -142,8 +134,25 @@
           }
         }
       },
+      // ----------------------------カレンダー描画終了---------------------------
       eventAfterAllRender:function( view ) {
-        alert('カレンダー描画完了');
+        // ツールチップ----------------------
+        // カレンダー描画後に毎回ツールチップ設定
+        $('.fc-event').tooltipster({
+            position: 'right',
+            content: $('<p>aaa</p>'),
+            theme: 'theme-event-detail-tooltip',
+        });
+        // シフト編集ポップアップをtooltipsterで実装するかまようところ
+        $('.event-status2').tooltipster({
+            // position: 'right',
+            trigger: 'click',
+            multiple:true,
+            autoClose:false,
+            contentAsHTML: true,
+            content: $('<button class="btn-warning" id="test-button" style="z-index:5;">aaa</button>'),
+            theme: 'theme-event-detail-tooltip',
+        });
       }
     });
     //=======================================================fullcalendar描画処理
@@ -161,20 +170,6 @@
         }else if(this.className === "fc-day-grid-container") {
           event.stopPropagation();
         }
-    });
-    // ========================ツールチップ===========================================
-    $('.fc-event').tooltipster({
-        position: 'right',
-        content: $('<p>aaa</p>'),
-        theme: 'theme-event-detail-tooltip',
-    });
-    $('.fc-event').tooltipster({
-        // position: 'right',
-        trigger: 'click',
-        multiple:true,
-        autoClose:false,
-        content: $('<p>aaa</p>'),
-        theme: 'theme-event-detail-tooltip',
     });
   });
   // ===========================テスト===========================================
