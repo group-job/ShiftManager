@@ -37,6 +37,11 @@
     <button type="button"class="btn btn-calendar btn-success togglable" id="button-reply-approve" style="position:absolute; z-index:1;">承認</button>
   </form>
 
+  {{-- マイシフト編集フォーム --}}
+  <form action="index.html" method="post">
+
+  </form>
+
     {{-- テスト用フォーム --}}
   <form action="/personal/reply" id="test-form" class="form-horizontal" method="post">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
