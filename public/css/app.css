@@ -7280,4 +7280,10 @@ body {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px; }
 
+/* div
+---------------------------------------------------------------------------------------*/
+.failed {
+  color: red;
+  background: #ffeeee; }
+
 /*# sourceMappingURL=app.css.map */

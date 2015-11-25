@@ -144,15 +144,17 @@
             theme: 'theme-event-detail-tooltip',
         });
         // シフト編集ポップアップをtooltipsterで実装するかまようところ
-        $('.event-status2').tooltipster({
-            // position: 'right',
-            trigger: 'click',
-            multiple:true,
-            autoClose:false,
-            contentAsHTML: true,
-            content: $('<button class="btn-warning" id="test-button" style="z-index:5;">aaa</button>'),
-            theme: 'theme-event-detail-tooltip',
-        });
+        // var el = $('<button type="submit" class="btn-warning" id="test-button" style="z-index:5;">aaa</button><a title="Close" href="#">kimiya</a>');
+        // el.find('button').click(function(){ alert('hello') });
+        // $('.event-status2').tooltipster({
+        //     // position: 'right',
+        //     trigger: 'click',
+        //     multiple:true,
+        //     autoClose:false,
+        //     contentAsHTML: true,
+        //     content: el,
+        //     theme: 'theme-event-detail-tooltip',
+        // });
       }
     });
     //=======================================================fullcalendar描画処理
