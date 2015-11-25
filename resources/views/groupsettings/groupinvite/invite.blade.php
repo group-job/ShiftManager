@@ -9,7 +9,7 @@
 @section('contents-space')
 <div class="row col-lg-offset-3">
   <h3>招待する</h3>
-    URL:http://shiftmanager-akihiroyasunaga.c9.io/group/{{ $id }}/apply
+    URL:{{ url('group/'.$id.'/apply')}}
     <br>
     ※上記リンクを招待したい人にメール等で送ってください。
 </div>
