@@ -13,8 +13,8 @@ use App\Chat;
 use App\Http\Requests\GroupRequest;
 use App\Http\Requests\ChatRequest;
 use Auth;
-use App\GroupApproval;
 use DateTime;
+use Input;
 
 class GroupController extends BaseController
 {
@@ -33,7 +33,7 @@ class GroupController extends BaseController
      * @return View
      */
      public function getInvite($id='default'){
-       return view('groupsettings.groupinvite.invite',compact('id','url'));
+       return view('groupsettings.groupinvite.invite',compact('id'));
      }
 
     /**
@@ -59,9 +59,9 @@ class GroupController extends BaseController
        $group = $this->getGroupInfo($id);
        $checkapply = $this->checkApply($id);
        $checkapply = $this->checkRegistration($id);
-       return view('groupsettings.groupapply.apply',compact('id','checkgroup','group','checkapply','url'));
+       return view('groupsettings.groupapply.apply',compact('checkgroup','group','checkapply'));
      }
-     
+
     /**
      * メンバー申請処理用
      *
@@ -71,9 +71,9 @@ class GroupController extends BaseController
        // $this->loadModel('GroupApply',compact('id'));
     //   $GroupApply->userApply($id);
        $this->userApply($id);
-       return view('group.home');
+       return view('group.home',compact('id'));
      }
-     
+
     /**
     * グループ設定
     * @param  GroupRequest $request [description]
@@ -124,8 +124,7 @@ class GroupController extends BaseController
         die("a");
       }
     }
-    
-/* データベース操作 */
+
     //承認処理
     public function getApprovalTrue($id,$employment_id)
     {
@@ -135,7 +134,7 @@ class GroupController extends BaseController
                 ->update(['start_date'=> $today->format('Y-m-d')]);
         GroupController.getApproval($employment_id);
     }
-    
+
     //拒否処理
     public function getApprovalFalse($id,$employment_id)
     {
@@ -144,7 +143,7 @@ class GroupController extends BaseController
                 ->delete();
         GroupController.getApproval($employment_id);
     }
-    
+
         //申請追加データベース処理
     public function userApply($id){
         Employment::create([
@@ -153,16 +152,16 @@ class GroupController extends BaseController
             'start_date' => '0000-00-00'
         ]);
     }
-    
+
     //グループ情報取得データベース処理
     public function getGroupInfo($id){
        $group = Group::join('users','groups.manager_id','=','users.id')
                 ->where('groups.id','=',$id)
-                ->select('groups.group_name','users.name')
+                ->select('groups.id','groups.group_name','users.name')
                 ->first();
        return $group;
     }
-    
+
     //既に申請済みか確認(false=未申請 true=申請済み)
     public function checkApply($id){
         //同一ユーザが同一グループに申請済みか取得レコード数で確認
@@ -191,7 +190,7 @@ class GroupController extends BaseController
             return true;
         }
     }
-    
+
     //グループが存在するか確認(false=存在しない true=存在する)
     public function checkGroup($id){
         //同一ユーザが同一グループに申請済みか取得レコード数で確認

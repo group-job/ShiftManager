@@ -38,8 +38,11 @@
   </form>
 
   {{-- マイシフト編集フォーム --}}
-  <form action="index.html" method="post">
-
+  <form action="personal/edit-shift" method="post">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <select class="" name="">
+      <option value="value1">Value 1</option> 
+    </select>
   </form>
 
     {{-- テスト用フォーム --}}
