@@ -115,8 +115,7 @@ class PersonalController extends BaseController
       echo Input::get('id');
   }
   public function getUssiy(){
-    $kimiya = "yosikawa";
-    return view('ussiy',compact('kimiya'));
+    return view('ussiy');
   }
   
 }

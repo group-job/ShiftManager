@@ -18,7 +18,7 @@
         <input type="button" id="notapply" name="notapply" value="申請しない" onclick="location.href='/personal/home'">
       </div>
       <div class="col-lg-4">
-        <input type="button" id="apply" name="apply" value="申請する" onclick="location.href='applyed'">
+        <input type="button" id="apply" name="apply" value="申請する" onclick="location.href='/group/{{ $id }}/applyed'">
       </div>
     </div>
   @elseif($checkgroup)
