@@ -17,59 +17,96 @@ use App\GroupApply;
 
 class GroupController extends BaseController
 {
+  private $compact;
+
+  public function params($groupId='default')
+  {
+    $group = Group::where('id','=',$groupId)->get();
+    if (isset($group)) {
+      foreach ($group as $value) {
+        $groupName = $value->group_name;
+      }
+    }
+    $this->compact = compact('groupId','groupName');
+  }
 
     /**
      * グループ作成用の画面表示
      *
-     * @return View
+     * @return Response
      */
-     public function getHome($id='default'){
-       return view('group.home',compact('id'));
+     public function getShift($groupId='default'){
+       $this->params($groupId);
+       return view('group.join-shift',$this->compact);
+     }
+
+     /*
+      *	連絡ボードの表示
+      *
+      * @return Reponse
+      */
+     public function getInfomation($groupId='default')
+     {
+       $this->params($groupId);
+       return view('group.infomation',$this->compact);
+     }
+
+     /*
+      *チャットの表示
+      */
+     public function getChat($groupId='default')
+     {
+       $this->params($groupId);
+       return view('group.chat',$this->compact);
      }
 
     /**
      * メンバー招待用の画面表示
      *
-     * @return View
+     * @return Response
      */
-     public function getInvite($id='default'){
-       return view('groupsettings.groupinvite.invite',compact('id'));
+     public function getInvite($groupId='default'){
+       $this->params($groupId);
+       return view('groupsettings.groupinvite.invite',$this->compact);
      }
 
     /**
      * メンバー承認用の画面表示
      *
-     * @return View
+     * @return Response
      */
-     public function getApproval($id='default'){
-       return view('groupsettings.groupapproval.approval',compact('id'));
+     public function getApproval($groupId='default'){
+       $this->params($groupId);
+       return view('groupsettings.groupapproval.approval',$this->compact);
      }
 
     /**
      * メンバー申請用の画面表示
      *
-     * @return View
+     * @return Response
      */
-     public function getApply($id='default'){
+     public function getApply($groupId='default'){
+       $this->params($groupId);
        $GroupApply= new GroupApply();
-       $group = $GroupApply->getGroupInfo($id);
-       $checkapply = $GroupApply->checkApply($id);
-       return view('groupsettings.groupapply.apply',compact('id','group','checkapply'));
+       $group = $GroupApply->getGroupInfo($groupId);
+       $checkapply = $GroupApply->checkApply($groupId);
+       return view('groupsettings.groupapply.apply',$this->compact,'group','checkapply');
      }
-     
+
     /**
      * メンバー申請処理用
      *
      * @return View
      */
-     public function getApplyed($id='default'){
-       // $this->loadModel('GroupApply',compact('id'));
+     public function getApplyed($groupId='default'){
+       $this->params($groupId);
+       // $this->loadModel('GroupApply',$this->compact'id'));
        $GroupApply= new GroupApply();
-    //   $GroupApply->userApply($id);
-       $GroupApply->userApply($id);
+    //   $GroupApply->userApply($groupId);
+       $GroupApply->userApply($groupId);
        return view('group.home');
      }
-     
+
     /**
     * グループ設定
     * @param  GroupRequest $request [description]
