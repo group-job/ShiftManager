@@ -37,12 +37,13 @@ class PersonalController extends BaseController
     }
     $calendarEventsJson = json_encode($calendarEvents);
     $employments = Auth::user()->employments;
-    $groups;
+    $joiningGroups;
     foreach ($employments as $value) {
-      $groups[] = Group::find($value->group_id);
+      $joiningGroups[] = Group::find($value->group_id);
     }
+    $managingGroups = Auth::user()->groups;
     //$calendarEventsJsonは personal.home内のpart-create-calendar.blade.phpに渡す
-    return view('personal.home',compact('calendarEventsJson','groups'));
+    return view('personal.home',compact('calendarEventsJson','managingGroups','joiningGroups'));
   }
 
 //==============================削除依頼=========================================
@@ -91,6 +92,8 @@ class PersonalController extends BaseController
     //requestパラメータはShiftの全フィールド
     $shift = Shift::find(input::get('id'));
     $newShift = input::except('_token');
+    $newShift['status'] = 2;
+    dd($newShift);
     $shift->fill($newShift);
     $shift->save();
 }

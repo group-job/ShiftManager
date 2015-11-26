@@ -34,6 +34,6 @@ class User extends Model implements AuthenticatableContract,
    }
    public function groups()
    {
-     return $this->hasMany(Group::class);
+     return $this->hasMany(Group::class,'manager_id');
    }
 }
