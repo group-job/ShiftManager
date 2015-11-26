@@ -1,3 +1,8 @@
+{{--
+ 個人ホーム
+@param groups
+--}}
+
 @extends('common.layout')
 @section('title')
 ホーム
@@ -40,8 +45,10 @@
   {{-- マイシフト編集フォーム --}}
   <form action="personal/edit-shift" method="post">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-    <select class="" name="">
-      <option value="value1">Value 1</option> 
+    <select class="form-calendar" name="group-id">
+      @foreach($groups as $value)
+        <option value="{{$value->id}}">{{$value->group_name}}</option>
+      @endforeach
     </select>
   </form>
 

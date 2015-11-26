@@ -24,6 +24,11 @@ class DatabaseSeeder extends Seeder
         'email' => '1',
         'password' => bcrypt('1'),
     ]);
+    DB::table('users')->insert([
+       'name' => 'masu',
+       'email' => '2',
+       'password' => bcrypt('2'),
+   ]);
      DB::table('groups')->insert([
         'group_name' => 'きみやの管理グループ1',
         'manager_id' => '1',
@@ -32,6 +37,10 @@ class DatabaseSeeder extends Seeder
        'group_name' => 'うっしーの管理グループ1',
        'manager_id' => '2',
    ]);
+   DB::table('groups')->insert([
+      'group_name' => 'ますやまの管理グループ1',
+      'manager_id' => '3',
+  ]);
 
    DB::table('shifts')->insert([
       'user_id' => '1',
@@ -83,7 +92,12 @@ class DatabaseSeeder extends Seeder
      'start_date' => '2015-10-1',
      'end_date' => '',
  ]);
-
+ DB::table('employments')->insert([
+    'group_id' => '3',
+    'user_id' => '1',
+    'start_date' => '2015-11-1',
+    'end_date' => '',
+]);
  DB::table('chats')->insert([
     'group_id' => '2',
     'user_id' => '1',
