@@ -109,7 +109,7 @@ class GroupController extends BaseController
        // $this->loadModel('GroupApply',compact('id'));
     //   $GroupApply->userApply($id);
        $this->userApply($groupId);
-       return view('group.home',compact('groupId'));
+       return view('group.home',$this->compact,compact('groupId'));
      }
 
     /**
