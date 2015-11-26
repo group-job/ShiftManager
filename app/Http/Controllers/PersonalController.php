@@ -23,15 +23,11 @@ class PersonalController extends BaseController
       $calendarEvents[] = array(
         //カレンダーイベントクリック時処理などに利用
         'shift_id' => $value->id,
-        // 'manager_id' => $value->group->manager_id,
-        // 'group_id' => $value->group_id,
-        // 'user_id' => $value->user_id,
         'my_shift_flg' =>$myShiftFlg,
         'status' => $value->status,
         'date' => $value->date,
         'start_time' =>$value->start_time,
         'end_time' =>$value->end_time,
-
         //ここから下カレンダー描画に必要
         'className' => 'event-status'.$value->status,
         'title' => $value->group->group_name,
@@ -40,8 +36,13 @@ class PersonalController extends BaseController
       );
     }
     $calendarEventsJson = json_encode($calendarEvents);
+    $employments = Auth::user()->employments;
+    $groups;
+    foreach ($employments as $value) {
+      $groups[] = Group::find($value->group_id);
+    }
     //$calendarEventsJsonは personal.home内のpart-create-calendar.blade.phpに渡す
-    return view('personal.home',compact('calendarEventsJson'));
+    return view('personal.home',compact('calendarEventsJson','groups'));
   }
 
 //==============================削除依頼=========================================
@@ -52,33 +53,28 @@ class PersonalController extends BaseController
       $shift->status = 3;
       $shift->save();
     }else {
-      echo "指定されたShiftはありません";
+      return redirect('/personal/home');
     }
   }
 //==============================仮シフト承認/拒否=========================================
   public function postReply(){
+    //ログイン中のユーザーの全シフトからフォーム入力で指定されたidのシフトインスタンスを取得
     $shift = Auth::user()->shifts->find(Input::get('shift-id'));
     $replay = Input::get('shift-status');
     if($shift !== null){
       switch ($replay) {
         case '2':
-          //仮シフトが承a認された
+          //仮シフトが承認された
           $shift->status = 2;
           $shift->save();
-          echo "承認";
           break;
         case '4':
           //仮シフトが拒否された
           $shift->delete();
-          echo "拒否";
-          break;
-        default:
-          //
-          echo "エラー";
           break;
       }
     }else {
-      echo "指定されたShiftはありません";
+      return redirect('/personal/home');
     }
   }
 
@@ -93,7 +89,7 @@ class PersonalController extends BaseController
   public function postEditShift(){
     // TODO 作成途中
     //requestパラメータはShiftの全フィールド
-    $shift = Shift::find($request->input('id'));
+    $shift = Shift::find(input::get('id'));
     $newShift = input::except('_token');
     $shift->fill($newShift);
     $shift->save();
@@ -107,7 +103,7 @@ class PersonalController extends BaseController
     if($shift !== null){
       $shift->delete();
     }else {
-      echo "指定されたShiftはありません";
+      return redirect('/personal/home');
     }
   }
   //==============================テスト=====================================
@@ -117,5 +113,5 @@ class PersonalController extends BaseController
   public function getUssiy(){
     return view('ussiy');
   }
-  
+
 }

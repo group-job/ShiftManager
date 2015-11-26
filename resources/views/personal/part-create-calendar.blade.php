@@ -172,6 +172,9 @@
         }else if(this.className === "fc-day-grid-container") {
           event.stopPropagation();
         }
+        else if (this.className === "fc-button-group") {
+          $('.togglable').hide();
+        }
     });
   });
   // ===========================テスト===========================================
