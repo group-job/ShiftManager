@@ -14,7 +14,7 @@
       <div id="collapse-mymenu" class="collapse list-item">
         <li> <a href="/personal/home">マイシフト</a></li>
         <li> {!! link_to('profile/show', 'プロフィール') !!}</a></li>
-        <li> <a href="/salary.home">給与</a></li>
+        <li> <a href="/salary/list">給与</a></li>
       </div>
 
 

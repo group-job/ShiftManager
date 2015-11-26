@@ -12,15 +12,26 @@ use Input;
 
 class SalaryController extends BaseController
 {
+
+  public function getList()
+  {
+    return view('salary.list');
+  }
+
+  public function getManager()
+  {
+    return view('salary.manager');
+  }
+
   public function getShow(){
 
     $field1 = '';
     $field2 = '';
     return view('salary.home',compact('field1,field2'));
   }
-  
+
   function Show(){
-    
+
     return 0;
   }
 }

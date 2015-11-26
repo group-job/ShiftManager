@@ -2,7 +2,6 @@
 @extends('common.layout')
 
 {{-- タイトル部分の表示 --}}
-@section('main-contents')
   @section('title-space')
     <div class="row">{{-- グループタブ --}}
       <div class="container">
@@ -17,8 +16,6 @@
         </div>
       </div>
     </div>{{-- グループタブ --}}
-  @show
-  @section('tab-space')
   <div class="row">{{-- タイトル --}}
     <ul class="nav nav-tabs">
       <li><a href="/group/{{ $groupId }}/shift">シフト表</a></li>
@@ -27,8 +24,4 @@
       {{-- <li class="active"><a href="/group/{{ $groupId }}/join-shift" data-toggle="tab">設定</a></li> --}}
     </ul>
   </div>{{-- タイトル --}}
-  @show
-  @section('contents-space')
-  aaa
-  @show
-@endsection
+  @endsection

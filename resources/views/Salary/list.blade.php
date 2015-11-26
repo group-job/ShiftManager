@@ -1,4 +1,5 @@
-
+@extends('Salary.home')
+@section('contents-space')
 <table class="table-bordered">
 <tbody>
   <th>
@@ -43,3 +44,4 @@
 </tbody>
 
 </table>
+@endsection
