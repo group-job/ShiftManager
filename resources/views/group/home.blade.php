@@ -25,3 +25,8 @@
     </ul>
   </div>{{-- タイトル --}}
   @endsection
+  @section('contents-space')
+    <div class="row col-lg-5">
+      @yield('tab-space')
+    </div>
+  @endsection

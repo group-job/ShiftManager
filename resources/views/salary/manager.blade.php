@@ -1,5 +1,5 @@
 @extends('Salary.home')
-  @section('contents-space')
+  @section('tab-space')
   <div class="row">
     <a data-toggle="collapse" href="#collapse-sample"><span class="caret"></span>とりまる</a>
     {{-- マイメニューリストアイテム --}}
