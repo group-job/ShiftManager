@@ -1,6 +1,6 @@
 @extends('Group.home')
 
-@section('tab-contents')
+@section('contents-space')
 <br>
 <script>
   $(function(){

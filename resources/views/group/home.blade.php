@@ -3,7 +3,7 @@
 
 {{-- タイトル部分の表示 --}}
 @section('main-contents')
-  @section('tab-space')
+  @section('title-space')
     <div class="row">{{-- グループタブ --}}
       <div class="container">
         <div class="col-lg-4">
@@ -18,7 +18,7 @@
       </div>
     </div>{{-- グループタブ --}}
   @show
-  @section('title-space')
+  @section('tab-space')
   <div class="row">{{-- タイトル --}}
     <ul class="nav nav-tabs">
       <li><a href="/group/{{ $groupId }}/shift">シフト表</a></li>
@@ -28,8 +28,7 @@
     </ul>
   </div>{{-- タイトル --}}
   @show
-@endsection
-
-@section('contents-space')
-  @yield('tab-contents')
+  @section('contents-space')
+  aaa
+  @show
 @endsection
