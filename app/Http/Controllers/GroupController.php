@@ -13,6 +13,7 @@ use App\Chat;
 use App\Http\Requests\GroupRequest;
 use App\Http\Requests\ChatRequest;
 use Auth;
+use DateTime;
 use Input;
 
 class GroupController extends BaseController
@@ -57,6 +58,7 @@ class GroupController extends BaseController
        $checkgroup = $this->checkGroup($id);
        $group = $this->getGroupInfo($id);
        $checkapply = $this->checkApply($id);
+       $checkapply = $this->checkRegistration($id);
        return view('groupsettings.groupapply.apply',compact('checkgroup','group','checkapply'));
      }
 
@@ -123,14 +125,6 @@ class GroupController extends BaseController
       }
     }
 
-    // public function getEmployments($group_id){
-        // $employments = Employment::join('users','employments.user_id','=','users.id')
-        //         ->where('employments.group_id','=',$group_id)
-        //         ->select('employments.id','users.name')
-        //         ->lists();
-    //     return $employments;
-    // }
-
     //承認処理
     public function getApprovalTrue($id,$employment_id)
     {
@@ -170,6 +164,21 @@ class GroupController extends BaseController
 
     //既に申請済みか確認(false=未申請 true=申請済み)
     public function checkApply($id){
+        //同一ユーザが同一グループに申請済みか取得レコード数で確認
+        $user = Employment::where('user_id','=',Auth::user()->id)
+                            ->where('group_id','=',$id)
+                            ->where('start_date','=','0000-00-00')
+                            ->where('end_date','=','0000-00-00')
+                            ->count();
+        if($user == 0){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    
+    //既に登録済みか確認(false=未登録 true=登録済み)
+    public function checkRegistration($id){
         //同一ユーザが同一グループに申請済みか取得レコード数で確認
         $user = Employment::where('user_id','=',Auth::user()->id)
                             ->where('group_id','=',$id)
