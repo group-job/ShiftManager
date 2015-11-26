@@ -19,7 +19,7 @@ class SalaryController extends BaseController
     return view('salary.home',compact('field1,field2'));
   }
   
-  function Show(){
+  public function Show(){
     
     return 0;
   }

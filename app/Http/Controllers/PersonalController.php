@@ -114,8 +114,5 @@ class PersonalController extends BaseController
   public function getTest(){
       echo Input::get('id');
   }
-  public function getUssiy(){
-    return view('ussiy');
-  }
   
 }

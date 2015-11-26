@@ -42,6 +42,9 @@ class GroupController extends BaseController
      * @return View
      */
      public function getApproval($id='default'){
+       if(!empty($_SESSION['employments_id'])){
+           unset($_SESSION['employments_id']);
+       }
        $employments = Employment::join('users','employments.user_id','=','users.id')
                 ->where('employments.group_id','=',$id)
                 ->select('employments.id','users.name')
@@ -126,22 +129,26 @@ class GroupController extends BaseController
     }
 
     //承認処理
-    public function getApprovalTrue($id,$employment_id)
+    public function getApprovaltrue($id='default')
     {
         $today = new DateTime();
-        Employment::where('id','=',$employment_id)
+        $count = $_GET['count'];
+        Employment::where('id','=',$_SESSION['employments_id'][$count])
                 ->where('group_id','=',$id)
                 ->update(['start_date'=> $today->format('Y-m-d')]);
-        GroupController.getApproval($employment_id);
+        unset($_SESSION['employments_id']);
+        return $this->getApproval($id);
     }
 
     //拒否処理
-    public function getApprovalFalse($id,$employment_id)
+    public function getApprovalfalse($id='default')
     {
-        Employment::where('id','=',$employment_id)
+        $count = $_GET['count'];
+        Employment::where('id','=',$_SESSION['employments_id'][$count])
                 ->where('group_id','=',$id)
                 ->delete();
-        GroupController.getApproval($employment_id);
+        unset($_SESSION['employments_id']);
+        return $this->getApproval($id);
     }
 
         //申請追加データベース処理

@@ -5,6 +5,10 @@
 @endsection
 
 @section('contents-space')
+<?php
+  session_start();
+  $_SESSION["employments_id"] = array();
+?>
 <div class="col-lg-offset-3">
 下記の方からグループ参加への申請が届いています。
 <table>
@@ -27,19 +31,22 @@
     <!--    <input type="button" name="name" value="拒否する">-->
     <!--  </td>-->
     <!--</tr>-->
-    <form name=approvalform>
-      @foreach($employments as $employment)
+    <?php $count=0; ?>
+    @foreach($employments as $employment)
+      <form name="approvalform" method="POST">
       <tr>
         <td>
           {{ $employment->name }}　さん
         </td>
         <td>
-            <input type="button" name="name" value="承認する">
-            <input type="button" name="name" value="拒否する">
+            <input type="button" id="approvaltrue" value="承認する" onclick="location.href='/group/{{$id}}/approvaltrue?count={{ $count }}'">
+            <input type="button" id="approvalfalse" value="拒否する" onclick="location.href='/group/{{$id}}/approvalfalse?count={{ $count }}'">
         </td>
       </tr>
-      @endforeach
-    </form>
+      <?php $_SESSION["employments_id"] = $employment->id; ?>
+      </form>
+      <?php $count++; ?>
+    @endforeach
   </tbody>
 </table>
 </div>
