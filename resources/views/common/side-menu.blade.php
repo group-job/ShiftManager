@@ -14,7 +14,7 @@
       <div id="collapse-mymenu" class="collapse list-item">
         <li> <a href="/personal/home">マイシフト</a></li>
         <li> {!! link_to('profile/show', 'プロフィール') !!}</a></li>
-        <li> <a href="/salary.home">給与</a></li>
+        <li> <a href="/salary/list">給与</a></li>
       </div>
 
 
@@ -26,7 +26,7 @@
       <div id="collapse-joining-group" class="collapse list-item">
         @if(isset($join_group))
           @foreach($join_group as $value)
-           <li><a href="/group/{{ $value->id }}/home">{{ $value->group_name}}</a></li>
+           <li><a href="/group/{{ $value->id }}/shift">{{ $value->group_name}}</a></li>
           @endforeach
         @endif
       </div>
@@ -40,7 +40,7 @@
       <div id="collapse-managing-group" class="collapse list-item">
         @if(isset($manager_group))
           @foreach($manager_group as $value)
-            <li> <a href="/group/{{ $value->id }}/home">{{ $value->group_name }}</a></li>
+            <li> <a href="/group/{{ $value->id }}/shift">{{ $value->group_name }}</a></li>
           @endforeach
         @endif
       </div>

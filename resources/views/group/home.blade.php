@@ -1,31 +1,27 @@
-<?php
-const HOME_OWNER = "シフト表";
-const HOME_OWNER_URL = "shift-home";
-const INFOMATION = "連絡ボード";
-const INFOMATION_URL = "infomation";
-const CHAT = "チャット";
-const CHAT_URL = "chat";
-const NOTIFICATION = "お知らせ";
-const NOTIFICATION_URL = "notification";
-const SETTINGS = "設定";
-const SETTINGS_URL = "settings";
-const kind = "group";
-
-$tabArray = array(HOME_OWNER => HOME_OWNER_URL,
-                  INFOMATION => INFOMATION_URL,
-                  CHAT => CHAT_URL,
-                  NOTIFICATION => NOTIFICATION_URL,
-                  SETTINGS => SETTINGS_URL);
- ?>
 <!-- レイアウトの継承 -->
 @extends('common.layout')
 
 {{-- タイトル部分の表示 --}}
-@section('title-space')
-@include('group.title-name')
-@include('common.tab-menu')
-@endsection
-
-@section('contents-space')
-@include('common.tab-contents')
-@endsection
+  @section('title-space')
+    <div class="row">{{-- グループタブ --}}
+      <div class="container">
+        <div class="col-lg-4">
+          <h1><div id="param">{{ $groupName }}</div></h1>
+        </div>
+        <div class="col-lg-8">
+          <img src="/img/user_icon.png" alt="" />
+          <img src="/img/user_icon.png" alt="" />
+          <img src="/img/user_icon.png" alt="" />
+          <span class="glyphicon glyphicon-plus" style="font-size:3em;position:relative;top:18px;"></span>
+        </div>
+      </div>
+    </div>{{-- グループタブ --}}
+  <div class="row">{{-- タイトル --}}
+    <ul class="nav nav-tabs">
+      <li><a href="/group/{{ $groupId }}/shift">シフト表</a></li>
+      <li><a href="/group/{{ $groupId }}/infomation">連絡ボード</a></li>
+      <li><a href="/group/{{ $groupId }}/chat">チャット</a></li>
+      {{-- <li class="active"><a href="/group/{{ $groupId }}/join-shift" data-toggle="tab">設定</a></li> --}}
+    </ul>
+  </div>{{-- タイトル --}}
+  @endsection

@@ -1,10 +1,5 @@
 @extends('common.layout')
-{{-- タイトル部分の表示 --}}
-@section('title-space')
-@include('group.title-name')
-@endsection
-
-@section('contents-space')
+@section('main-contents')
 <div class="col-lg-offset-3">
 下記の方からグループ参加への申請が届いています。
 <table>

@@ -1,10 +1,10 @@
 {{-- テーブル作成 --}}
 <table class="table-bordered">
   <tbody>
-     @foreach($salaryArray as  $value)
-       <th>{{ $value }}</th>
-     @endforeach
-     <th></th>
+     <th>a</th>
+     <th>b</th>
+     <th>c</th>
+     <th>d</th>
     <tr>
       <td colspan="5">
         新しい給与を追加する<span class="text-right"><span class="glyphicon glyphicon-plus pull-right"></span>

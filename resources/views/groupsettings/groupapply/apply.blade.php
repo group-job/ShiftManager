@@ -2,12 +2,7 @@
 @extends('common.layout')
 <link rel="stylesheets" type="text/scss" href="resources/assets/sass/apply.scss">
 
-{{-- タイトル部分の表示 --}}
-@section('title-space')
-@include('group.title-name')
-@endsection
-
-@section('contents-space')
+@section('main-contents')
 <div class="row col-lg-offset-3">
   @if(!$checkapply && $checkgroup)
     {{ $group->group_name }}に参加申請をしますか？<br>
@@ -18,11 +13,7 @@
         <input type="button" id="notapply" name="notapply" value="申請しない" onclick="location.href='/personal/home'">
       </div>
       <div class="col-lg-4">
-<<<<<<< HEAD
-        <input type="button" id="apply" name="apply" value="申請する" onclick="location.href='/group/{{ $id }}/applyed'">
-=======
         <input type="button" id="apply" name="apply" value="申請する" onclick="location.href='/group/{{$group->id}}/applyed'">
->>>>>>> 7744c73fc3d76de0ca1d41299fe81ff6aef83774
       </div>
     </div>
   @elseif($checkgroup)
