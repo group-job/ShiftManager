@@ -43,8 +43,8 @@
           {{ $employment->name }}　さん
         </td>
         <td>
-            <input type="button" id="approvaltrue" value="承認する" onclick="location.href='/group/{{$id}}/approvaltrue?count={{ $count }}'">
-            <input type="button" id="approvalfalse" value="拒否する" onclick="location.href='/group/{{$id}}/approvalfalse?count={{ $count }}'">
+            <input type="button" id="approvaltrue" value="承認する" onclick="location.href='/group/{{$groupId}}/approvaltrue?count={{ $count }}'">
+            <input type="button" id="approvalfalse" value="拒否する" onclick="location.href='/group/{{$groupId}}/approvalfalse?count={{ $count }}'">
         </td>
       </tr>
       <?php $_SESSION["employments_id"][$count] = $employment->id; ?>
