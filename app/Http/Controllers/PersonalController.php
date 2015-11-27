@@ -44,6 +44,11 @@ class PersonalController extends BaseController
     return view('personal.home',compact('calendarEventsJson'));
   }
 
+// =============================ヘルプ===========================================
+  public function getHelp(){
+    return view('help');
+  }
+
 //==============================削除依頼=========================================
   public function postRequestDelete(){
     //ログイン中のユーザーの全シフトからフォーム入力で指定されたidのシフトインスタンスを取得

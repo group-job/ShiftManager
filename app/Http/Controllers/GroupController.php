@@ -44,9 +44,12 @@ class GroupController extends BaseController
      public function getApproval($id='default'){
        if(!empty($_SESSION['employments_id'])){
            unset($_SESSION['employments_id']);
+           $_SESSION["employments_id"] = array();
+           session_destroy();
        }
        $employments = Employment::join('users','employments.user_id','=','users.id')
                 ->where('employments.group_id','=',$id)
+                ->where('start_date','=','0000-00-00')
                 ->select('employments.id','users.name')
                 ->get();
        return view('groupsettings.groupapproval.approval',compact('id','employments'));
@@ -61,8 +64,8 @@ class GroupController extends BaseController
        $checkgroup = $this->checkGroup($id);
        $group = $this->getGroupInfo($id);
        $checkapply = $this->checkApply($id);
-       $checkapply = $this->checkRegistration($id);
-       return view('groupsettings.groupapply.apply',compact('checkgroup','group','checkapply'));
+       $checkregistration = $this->checkRegistration($id);
+       return view('groupsettings.groupapply.apply',compact('checkgroup','group','checkapply','checkregistration'));
      }
 
     /**
@@ -131,24 +134,28 @@ class GroupController extends BaseController
     //承認処理
     public function getApprovaltrue($id='default')
     {
-        $today = new DateTime();
-        $count = $_GET['count'];
-        Employment::where('id','=',$_SESSION['employments_id'][$count])
-                ->where('group_id','=',$id)
-                ->update(['start_date'=> $today->format('Y-m-d')]);
-        unset($_SESSION['employments_id']);
+        session_start();
+        if(!empty($_SESSION["employments_id"])){
+            $today = new DateTime();
+            $count = (int)$_GET["count"];
+            Employment::where('id','=',$_SESSION["employments_id"][$count])
+                    ->where('group_id','=',$id)
+                    ->update(['start_date'=> $today->format('Y-m-d')]);
+        }
         return $this->getApproval($id);
     }
 
     //拒否処理
     public function getApprovalfalse($id='default')
     {
-        $count = $_GET['count'];
-        Employment::where('id','=',$_SESSION['employments_id'][$count])
-                ->where('group_id','=',$id)
-                ->delete();
-        unset($_SESSION['employments_id']);
-        return $this->getApproval($id);
+        session_start();
+        if(!empty($_SESSION["employments_id"])){
+            $count = $_GET['count'];
+            Employment::where('id','=',$_SESSION["employments_id"][$count])
+                    ->where('group_id','=',$id)
+                    ->delete();
+            return $this->getApproval($id);
+        }
     }
 
         //申請追加データベース処理
@@ -189,6 +196,7 @@ class GroupController extends BaseController
         //同一ユーザが同一グループに申請済みか取得レコード数で確認
         $user = Employment::where('user_id','=',Auth::user()->id)
                             ->where('group_id','=',$id)
+                            ->where('start_date','<>','0000-00-00')
                             ->where('end_date','=','0000-00-00')
                             ->count();
         if($user == 0){

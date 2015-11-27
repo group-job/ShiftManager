@@ -10,7 +10,11 @@
   $_SESSION["employments_id"] = array();
 ?>
 <div class="col-lg-offset-3">
-下記の方からグループ参加への申請が届いています。
+@if(!empty($employments) && count($employments) > 0)
+  下記の方からグループ参加への申請が届いています。
+@else
+  現在グループ参加への申請は存在しません。
+@endif
 <table>
   <tbody>
     <!--<tr>-->
@@ -43,7 +47,7 @@
             <input type="button" id="approvalfalse" value="拒否する" onclick="location.href='/group/{{$id}}/approvalfalse?count={{ $count }}'">
         </td>
       </tr>
-      <?php $_SESSION["employments_id"] = $employment->id; ?>
+      <?php $_SESSION["employments_id"][$count] = $employment->id; ?>
       </form>
       <?php $count++; ?>
     @endforeach

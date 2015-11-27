@@ -1,6 +1,8 @@
 <!-- レイアウトの継承 -->
 @extends('common.layout')
-
+@section('title')
+ヘルプ
+@stop
 <!-- サイドメニューを消したい時にかく -->
 @section('side_menu')
 @overwrite
@@ -9,22 +11,27 @@
 <!-- この中身にかく -->
 @section('main-contents')
 
+<div><h1>ヘルプ</h1></div>
+
 <div>
     <ul>
-    <li><a href="#smoothplay1">このサイトについて</a></li>
-    使い方
-    <li><a href="#smoothplay2">アカウント</a></li>
-    <li><a href="#smoothplay3">グループ作成</a></li>
-    <li><a href="#smoothplay4">グループ招待</a></li>
-    <li><a href="#smoothplay5">オーナー機能</a></li>
-    <li><a href="#smoothplay6">メンバー機能</a></li>
-    <li><a href="#smoothplay7">給与</a></li>
-    <li><a href="#smoothplay8">チャット</a></li>
-    <li><a href="#smoothplay9">連絡ボード</a></li>
-    <li><a href="#smoothplay10">お知らせ</a></li>
-    <li><a href="#smoothplay11">メールアドレス、パスワードを忘れた方。</a></li>
+        <li><a href="#smoothplay1">このサイトについて</a></li>
+        <li>使い方
+            <ul>
+                <li><a href="#smoothplay2">アカウント</a></li>
+                <li><a href="#smoothplay3">グループ作成</a></li>
+                <li><a href="#smoothplay4">グループ招待</a></li>
+                <li><a href="#smoothplay5">オーナー機能</a></li>
+                <li><a href="#smoothplay6">メンバー機能</a></li>
+                <li><a href="#smoothplay7">給与</a></li>
+                <li><a href="#smoothplay8">チャット</a></li>
+                <li><a href="#smoothplay9">連絡ボード</a></li>
+                <li><a href="#smoothplay10">お知らせ</a></li>
+            </ul>
+        </li>
+        <li><a href="#smoothplay11">メールアドレス、パスワードを忘れた方。</a></li>
     </ul>
-</div>
+</div><br>
 
 <div id="smoothplay1">
     このサイトについて<br>
