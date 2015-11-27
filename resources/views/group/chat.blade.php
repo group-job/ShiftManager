@@ -1,13 +1,17 @@
+@extends('Group.home')
+
+@section('tab-space')
 <br>
 <script>
   $(function(){
     var intervalTime = 1000;
+    var groupId = {{ $groupId }};
     function showChat(){
       $.post(
         "show-chat",
         {
           '_token': $('meta[name=csrf-token]').attr('content'),
-          'id' : {{ $id }},
+          'id' : groupId,
         },
         function (data) {
           var chatLog ="";
@@ -28,7 +32,7 @@
         {
           '_token': $('meta[name=csrf-token]').attr('content'),
           text: document.getElementById("chat-text").value,
-          'id' : {{ $id }},
+          'id' : groupId,
         },
         function (data) {
         });
@@ -36,8 +40,7 @@
     });
   });
 </script>
-<div class="row col-lg-offset-3">
   <div id="show-chat" class="col-lg-6"></div>
   {!! Form::text('chat_text', null, ['class' => 'form-control', 'id' => 'chat-text'  ]) !!}
   <input type="button" class="btn btn-primary  col-lg-2 col-lg-offset-2" id="button-send-chat" data-loading-text="送信中" value="送信">
-</div>
+@endsection

@@ -12,6 +12,17 @@ use Input;
 
 class SalaryController extends BaseController
 {
+
+  public function getList()
+  {
+    return view('salary.list');
+  }
+
+  public function getManager()
+  {
+    return view('salary.manager');
+  }
+
   public function getShow(){
 
     $field1 = '';
@@ -20,7 +31,6 @@ class SalaryController extends BaseController
   }
   
   public function Show(){
-    
     return 0;
   }
 }

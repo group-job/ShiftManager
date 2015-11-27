@@ -18,28 +18,63 @@ use Input;
 
 class GroupController extends BaseController
 {
+  private $compact;
+
+  public function params($groupId)
+  {
+    $group = Group::where('id','=',$groupId)->get();
+    if (isset($group)) {
+      foreach ($group as $value) {
+        $groupName = $value->group_name;
+      }
+    }
+    $this->compact = compact('groupId','groupName');
+  }
+
     /**
      * グループ作成用の画面表示
      *
-     * @return View
+     * @return Response
      */
-     public function getHome($id='default'){
-       return view('group.home',compact('id'));
+     public function getShift($groupId='default'){
+       $this->params($groupId);
+       return view('group.join-shift',$this->compact);
+     }
+
+     /*
+      *	連絡ボードの表示
+      *
+      * @return Reponse
+      */
+     public function getInfomation($groupId='default')
+     {
+       $this->params($groupId);
+       return view('group.infomation',$this->compact);
+     }
+
+     /*
+      *チャットの表示
+      */
+     public function getChat($groupId='default')
+     {
+       $this->params($groupId);
+       return view('group.chat',$this->compact);
      }
 
     /**
      * メンバー招待用の画面表示
      *
-     * @return View
+     * @return Response
      */
-     public function getInvite($id='default'){
-       return view('groupsettings.groupinvite.invite',compact('id'));
+     public function getInvite($groupId='default'){
+       $this->params($groupId);
+       return view('groupsettings.groupinvite.invite',$this->compact);
      }
 
     /**
      * メンバー承認用の画面表示
      *
-     * @return View
+     * @return Response
      */
      public function getApproval($id='default'){
        if(!empty($_SESSION['employments_id'])){
@@ -52,13 +87,13 @@ class GroupController extends BaseController
                 ->where('start_date','=','0000-00-00')
                 ->select('employments.id','users.name')
                 ->get();
-       return view('groupsettings.groupapproval.approval',compact('id','employments'));
+       return view('groupsettings.groupapproval.approval',$this->compact,compact('employments'));
      }
 
     /**
      * メンバー申請用の画面表示
      *
-     * @return View
+     * @return Response
      */
      public function getApply($id='default'){
        $checkgroup = $this->checkGroup($id);
@@ -73,11 +108,12 @@ class GroupController extends BaseController
      *
      * @return View
      */
-     public function getApplyed($id='default'){
+     public function getApplyed($groupId='default'){
+       $this->params($groupId);
        // $this->loadModel('GroupApply',compact('id'));
     //   $GroupApply->userApply($id);
-       $this->userApply($id);
-       return view('group.home',compact('id'));
+       $this->userApply($groupId);
+       return view('group.home',$this->compact,compact('groupId'));
      }
 
     /**
@@ -190,7 +226,7 @@ class GroupController extends BaseController
             return true;
         }
     }
-    
+
     //既に登録済みか確認(false=未登録 true=登録済み)
     public function checkRegistration($id){
         //同一ユーザが同一グループに申請済みか取得レコード数で確認

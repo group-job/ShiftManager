@@ -11,7 +11,7 @@
 <!-- この中身にかく -->
 @section('main-contents')
 
-<div><h1>ヘルプ</h1></div>
+<h1>ヘルプ</h1>
 
 <div>
     <ul>

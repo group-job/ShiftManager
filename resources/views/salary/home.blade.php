@@ -1,29 +1,23 @@
-<?php
-const VIEW = "給与一覧";
-const VIEW_URL = "view";
-const MANAGER = "給与管理";
-const MANAGER_URL = "manager";
-const kind = "salary";
-
-const SALARY_KBN = "給与区分";
-const SALARY_MONEY = "給与金額";
-const START_DAY = "開始年月日";
-const END_DAY = "終了年月日";
-$salaryArray= array(SALARY_KBN,SALARY_MONEY,START_DAY,END_DAY);
-
-
-$tabArray = array(VIEW => VIEW_URL,
-MANAGER => MANAGER_URL,
-);
-?>
 <!-- レイアウトの継承 -->
 @extends('common.layout')
+  @section('title-space')
+    <div class="row">{{-- タイトル --}}
+      <div class="container">
+        <div class="col-lg-4">
+          <h1>給与</h1>
+        </div>
+      </div>
+    </div>{{-- グループタブ --}}
+  <div class="row">{{-- グループタブ --}}
+    <ul class="nav nav-tabs">
+      <li><a href="/salary/list">給与一覧</a></li>
+      <li><a href="/salary/manager">給与管理</a></li>
+    </ul>
+  </div>{{-- グループタブ --}}
+  @endsection
 
-{{-- タイトル部分の表示 --}}
-@section('title-space')
-@include('salary.title-name')
-@endsection
-
-@section('contents-space')
-@include('common.tab-contents')
-@endsection
+  @section('contents-space')
+    <div class="row col-lg-5">
+      @yield('tab-space')
+    </div>
+  @endsection

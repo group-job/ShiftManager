@@ -2,12 +2,7 @@
 @extends('common.layout')
 <link rel="stylesheets" type="text/scss" href="resources/assets/sass/apply.scss">
 
-{{-- タイトル部分の表示 --}}
-@section('title-space')
-@include('group.title-name')
-@endsection
-
-@section('contents-space')
+@section('main-contents')
 <div class="row col-lg-offset-3">
   @if(!$checkapply && !$checkregistration && $checkgroup)
     {{ $group->group_name }}に参加申請をしますか？<br>
