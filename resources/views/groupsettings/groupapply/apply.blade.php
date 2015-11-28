@@ -4,7 +4,7 @@
 
 @section('main-contents')
 <div class="row col-lg-offset-3">
-  @if(!$checkapply && $checkgroup)
+  @if(!$checkapply && !$checkregistration && $checkgroup)
     {{ $group->group_name }}に参加申請をしますか？<br>
     管理者:{{ $group->name }}<usshi@gmail.com><br>
     URL:{{ url('group/'.$group->id.'/apply')}}
@@ -16,6 +16,10 @@
         <input type="button" id="apply" name="apply" value="申請する" onclick="location.href='/group/{{$group->id}}/applyed'">
       </div>
     </div>
+  @elseif($checkregistration && $checkgroup)
+    既に{{ $group->group_name }}に参加をしています。<br>
+    管理者:{{ $group->name }}<usshi@gmail.com><br>
+    URL:{{ url('group/'.$group->id.'/apply')}}
   @elseif($checkgroup)
     既に{{ $group->group_name }}に参加申請をしています。<br>
     管理者:{{ $group->name }}<usshi@gmail.com><br>

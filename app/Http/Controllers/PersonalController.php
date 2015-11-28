@@ -48,6 +48,11 @@ class PersonalController extends BaseController
     return view('personal.home',compact('calendarEventsJson','managingGroups','joiningGroups'));
   }
 
+// =============================ヘルプ===========================================
+  public function getHelp(){
+    return view('help');
+  }
+
 //==============================削除依頼=========================================
   public function postRequestDelete(){
     //ログイン中のユーザーの全シフトからフォーム入力で指定されたidのシフトインスタンスを取得
@@ -115,8 +120,4 @@ class PersonalController extends BaseController
   public function getTest(){
       echo Input::get('id');
   }
-  public function getUssiy(){
-    return view('ussiy');
-  }
-
 }

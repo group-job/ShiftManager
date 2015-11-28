@@ -38,7 +38,7 @@ class GroupController extends BaseController
      */
      public function getShift($groupId='default'){
        $this->params($groupId);
-       return view('group.join-shift',$this->compact);
+      return view('group.home',$this->compact);
      }
 
      /*
@@ -77,9 +77,14 @@ class GroupController extends BaseController
      * @return Response
      */
      public function getApproval($groupId='default'){
-       $this->params($groupId);
+       if(!empty($_SESSION['employments_id'])){
+           unset($_SESSION['employments_id']);
+           $_SESSION["employments_id"] = array();
+           session_destroy();
+       }
        $employments = Employment::join('users','employments.user_id','=','users.id')
-                ->where('employments.group_id','=',$id)
+                ->where('employments.group_id','=',$groupId)
+                ->where('start_date','=','0000-00-00')
                 ->select('employments.id','users.name')
                 ->get();
        return view('groupsettings.groupapproval.approval',$this->compact,compact('employments'));
@@ -91,12 +96,11 @@ class GroupController extends BaseController
      * @return Response
      */
      public function getApply($groupId='default'){
-       $this->params($groupId);
        $checkgroup = $this->checkGroup($groupId);
        $group = $this->getGroupInfo($groupId);
        $checkapply = $this->checkApply($groupId);
-       $checkapply = $this->checkRegistration($groupId);
-       return view('groupsettings.groupapply.apply',compact('checkgroup','group','checkapply'));
+       $checkregistration = $this->checkRegistration($groupId);
+       return view('groupsettings.groupapply.apply',compact('checkgroup','group','checkapply','checkregistration'));
      }
 
     /**
@@ -164,47 +168,55 @@ class GroupController extends BaseController
     }
 
     //承認処理
-    public function getApprovalTrue($id,$employment_id)
+    public function getApprovaltrue($groupId='default')
     {
-        $today = new DateTime();
-        Employment::where('id','=',$employment_id)
-                ->where('group_id','=',$id)
-                ->update(['start_date'=> $today->format('Y-m-d')]);
-        GroupController.getApproval($employment_id);
+        session_start();
+        if(!empty($_SESSION["employments_id"])){
+            $today = new DateTime();
+            $count = (int)$_GET["count"];
+            Employment::where('id','=',$_SESSION["employments_id"][$count])
+                    ->where('group_id','=',$groupId)
+                    ->update(['start_date'=> $today->format('Y-m-d')]);
+        }
+        return $this->getApproval($groupId);
     }
 
     //拒否処理
-    public function getApprovalFalse($id,$employment_id)
+    public function getApprovalfalse($groupId='default')
     {
-        Employment::where('id','=',$employment_id)
-                ->where('group_id','=',$id)
-                ->delete();
-        GroupController.getApproval($employment_id);
+        session_start();
+        if(!empty($_SESSION["employments_id"])){
+            $count = $_GET['count'];
+            Employment::where('id','=',$_SESSION["employments_id"][$count])
+                    ->where('group_id','=',$groupId)
+                    ->delete();
+            return $this->getApproval($groupId);
+        }
     }
 
         //申請追加データベース処理
-    public function userApply($id){
+    public function userApply($groupId='default'){
         Employment::create([
             'user_id' => Auth::user()->id,
-            'group_id' => $id,
+            'group_id' => $groupId,
             'start_date' => '0000-00-00'
         ]);
     }
 
     //グループ情報取得データベース処理
-    public function getGroupInfo($id){
+    public function getGroupInfo($groupId='default'){
        $group = Group::join('users','groups.manager_id','=','users.id')
-                ->where('groups.id','=',$id)
+                ->where('groups.id','=',$groupId)
                 ->select('groups.id','groups.group_name','users.name')
                 ->first();
        return $group;
     }
 
     //既に申請済みか確認(false=未申請 true=申請済み)
-    public function checkApply($id){
+    public function checkApply($groupId='default'){
         //同一ユーザが同一グループに申請済みか取得レコード数で確認
         $user = Employment::where('user_id','=',Auth::user()->id)
-                            ->where('group_id','=',$id)
+                            ->where('group_id','=',$groupId)
                             ->where('start_date','=','0000-00-00')
                             ->where('end_date','=','0000-00-00')
                             ->count();
@@ -216,10 +228,11 @@ class GroupController extends BaseController
     }
 
     //既に登録済みか確認(false=未登録 true=登録済み)
-    public function checkRegistration($id){
+    public function checkRegistration($groupId='default'){
         //同一ユーザが同一グループに申請済みか取得レコード数で確認
         $user = Employment::where('user_id','=',Auth::user()->id)
-                            ->where('group_id','=',$id)
+                            ->where('group_id','=',$groupId)
+                            ->where('start_date','<>','0000-00-00')
                             ->where('end_date','=','0000-00-00')
                             ->count();
         if($user == 0){
@@ -230,9 +243,9 @@ class GroupController extends BaseController
     }
 
     //グループが存在するか確認(false=存在しない true=存在する)
-    public function checkGroup($id){
+    public function checkGroup($groupId='default'){
         //同一ユーザが同一グループに申請済みか取得レコード数で確認
-        $group = Group::where('id','=',$id)
+        $group = Group::where('id','=',$groupId)
                         ->count();
         if($group == 0){
             return false;

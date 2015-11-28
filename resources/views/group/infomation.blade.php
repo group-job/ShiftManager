@@ -1,6 +1,6 @@
 @extends('Group.home')
 
-@section('contents-space')
+@section('tab-space')
 <br>
 <div class="row col-lg-offset-2">
   <div class="container">
