@@ -69,16 +69,35 @@
         $('.fc-event').tooltipster('hide');
         $('.togglable').hide();
         if(calEvent.my_shift_flg){
-            //TODO マイシフト編集ポップアップ
-
-          $("#button-test").on('click', function(event) {
-
+            //マイシフトクリック時
+            //フォーム初期化
+            $("#input-shift-id-edit-shift").val(calEvent.shift_id);
+            $("#input-group-name-edit-shift").html(calEvent.title);
+            $("#input-date-edit-shift").val(calEvent.date);
+            $("#input-start-time-edit-shift").val(calEvent.start_time);
+            $("#input-end-time-edit-shift").val(calEvent.end_time);
+            $("#input-note-edit-shift").val(calEvent.note);
+            //フォーム表示処理
+            $("#div-edit-shift").css('top',jsEvent.pageY-100+"px");
+            $("#div-edit-shift").css('left',jsEvent.pageX-273+"px");
+            $("#div-edit-shift").show("fast");
+            // 登録されているイベントハンドラを削除。 イベント複数回クリック対策
+            $("#btn-update-edit-shift").unbind('click');
+            $("#btn-delete-edit-shift").unbind('click');
+            //変更ボタンクリック時処理
+            $("#btn-update-edit-shift").on('click', function(event) {
+              postAcync(this,true);
+              calEvent.start_time = $("#input-start-time-edit-shift").val();
+              calEvent.end_time = $("#input-end-time-edit-shift").val();
+              calEvent.start = $("#input-date-edit-shift").val()+"T"+$("#input-start-time-edit-shift").val();
+              calEvent.end = $("#input-date-edit-shift").val()+"T"+$("#input-end-time-edit-shift").val();
+              $('#calendar').fullCalendar('updateEvent', calEvent);
           });
         }else {
+            //グループシフトクリック時
           switch (calEvent.status) {
             case 1:
               // 仮シフトクリック時
-              //TODO 仮シフト承認/拒否ボタン表示
               $("#input-reply-shift-id").val(calEvent.shift_id);
               //ボタン表示処理
               $("#button-reply-approve").css('top',jsEvent.pageY-100+"px");
@@ -161,7 +180,7 @@
     //========================各ボタン、ウィンドウリセット==========================
     $('div').click(function(event){
       // alert(this.id+"/"+this.className);
-        if(this.id === "calendar"){
+        if(this.id === "calendar"  || this.id === "div-edit-shift"){
           event.stopPropagation();
         }
         else if (this.id === "contents-space" || this.className === "fc-bg"){

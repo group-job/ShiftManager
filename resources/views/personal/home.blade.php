@@ -43,34 +43,76 @@
 </form>
 <br/>
 {{-- マイシフト編集フォーム --}}
-<form action="/personal/edit-shift" method="post">
-  <input type="hidden" name="_token" value="{{ csrf_token() }}">
-  <input type="hidden" id="input-edit-shift-shift-id" name="shift-id">
-  <input type="hidden" id="input-edit-shift-group-id" name="group-id">
-  <table>
-    <tr>
-      <td>勤務先:</td>
-      <td>
-        <input type="text"  value="勤務先" disabled="disabled">
-      </td>
-    </tr>
-    <tr>
-      <td>日付:</td>
-      <td><input type="date" name="date" required></td>
-    </tr>
-    <tr>
-      <td>開始時間</td>
-      {{-- TODO デザイン変更--}}
-      <td><input type="time" name="start_time" required></td>
-    </tr>
-    <tr>
-      <td>終了時間</td>
-      {{-- TODO デザイン変更--}}
-      <td><input type="time" name="end_time"></td>
-    </tr>
-  </table>
-  <button type="submit" class="">send</button>
-</form>
+<div id="div-edit-shift" class="togglable">
+  <form action="/personal/edit-shift" id="form-edit-shift" method="post">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <input type="hidden" id="input-shift-id-edit-shift" name="shift_id">
+    <table>
+      <tr>
+        <td>勤務先:</td>
+        <td>
+          <span id="input-group-name-edit-shift"></span>
+        </td>
+      </tr>
+      <tr>
+        <td>日付:</td>
+        <td><input type="date" id="input-date-edit-shift" name="date" required></td>
+      </tr>
+      <tr>
+        <td>開始時間</td>
+        {{-- TODO デザイン変更--}}
+        <td><input type="time" name="start_time"  id="input-start-time-edit-shift" required></td>
+      </tr>
+      <tr>
+        <td>終了時間</td>
+        {{-- TODO デザイン変更--}}
+        <td><input type="time" name="end_time" id="input-end-time-edit-shift" ></td>
+      </tr>
+      <tr>
+        <td>備考</td>
+        <td><input type="text" name="note" id="input-note-edit-shift" ></td>
+      </tr>
+    </table>
+    <button type="button" id="btn-update-edit-shift" class="btn btn-calendar btn-success col-md-offset-2 col-md-3">変更</button>
+    <button type="button" id="btn-delete-edit-shift" class="btn btn-calendar btn-danger col-md-offset-2 col-md-3">削除</button>
+  </form>
+</div>
+
+{{-- マイシフト追加フォーム --}}
+<div id="div-edit-shift" class="togglable">
+  <form action="/personal/edit-shift" id="form-edit-shift" method="post">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <input type="hidden" id="input-shift-id-edit-shift" name="shift_id">
+    <table>
+      <tr>
+        <td>勤務先:</td>
+        <td>
+          <span id="input-group-name-edit-shift"></span>
+        </td>
+      </tr>
+      <tr>
+        <td>日付:</td>
+        <td><input type="date" id="input-date-edit-shift" name="date" required></td>
+      </tr>
+      <tr>
+        <td>開始時間</td>
+        {{-- TODO デザイン変更--}}
+        <td><input type="time" name="start_time"  id="input-start-time-edit-shift" required></td>
+      </tr>
+      <tr>
+        <td>終了時間</td>
+        {{-- TODO デザイン変更--}}
+        <td><input type="time" name="end_time" id="input-end-time-edit-shift" ></td>
+      </tr>
+      <tr>
+        <td>備考</td>
+        <td><input type="text" name="note" id="input-note-edit-shift" ></td>
+      </tr>
+    </table>
+    <button type="button" id="btn-update-edit-shift" class="btn btn-calendar btn-success col-md-offset-2 col-md-3">変更</button>
+    <button type="button" id="btn-delete-edit-shift" class="btn btn-calendar btn-danger col-md-offset-2 col-md-3">削除</button>
+  </form>
+</div>
 {{-- テスト用フォーム --}}
 <form action="/personal/reply" id="test-form" class="form-horizontal" method="post">
   <input type="hidden" name="_token" value="{{ csrf_token() }}">

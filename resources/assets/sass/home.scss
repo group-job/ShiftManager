@@ -125,10 +125,22 @@
 // ================================カレンダー内のボタン･フォーム============================
 .btn-calendar{
   height: 25px;
-  margin: 0;
   padding: 0 2px;
+  margin-top: 2px;
 }
-.form-calendar{
-  width: 150px;
+
+#div-edit-shift{
+  position: absolute;
+  z-index: 5;
+  width: 230px;
+  background: $form-edit-shift-background;
+  padding: 5px;
+  border: 1px solid darken($form-edit-shift-background, 30%);
+  td{
+    width: 100px;
+  }
+  input{
+    margin: 1px 0;
+  }
 }
 // ====================================ヘルプ====================================

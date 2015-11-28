@@ -19,6 +19,7 @@ class PersonalController extends BaseController
     $myShifts = Auth::user()->shifts;
     $calendarEvents = array();
     foreach ($myShifts as $value) {
+
       $myShiftFlg = ($value->group->manager_id === $value->user_id);
       $calendarEvents[] = array(
         //カレンダーイベントクリック時処理などに利用
@@ -26,8 +27,9 @@ class PersonalController extends BaseController
         'my_shift_flg' =>$myShiftFlg,
         'status' => $value->status,
         'date' => $value->date,
-        'start_time' =>$value->start_time,
-        'end_time' =>$value->end_time,
+        'start_time' =>date('G:i', strtotime($value->start_time)),
+        'end_time' =>date('G:i', strtotime($value->end_time)),
+        'note' => $value->note,
         //ここから下カレンダー描画に必要
         'className' => 'event-status'.$value->status,
         'title' => $value->group->group_name,
@@ -90,11 +92,11 @@ class PersonalController extends BaseController
   public function postEditShift(){
     // TODO 作成途中
     //requestパラメータはShiftの全フィールド
-    $shift = Shift::find(input::get('id'));
-    $newShift = input::except('_token');
-    $newShift['status'] = 2;
-    dd($newShift);
-    $shift->fill($newShift);
+    $shift = Shift::find(input::get('shift_id'));
+    $shift->date = Input::get('date');
+    $shift->start_time = Input::get('start_time');
+    $shift->end_time = Input::get('end_time');
+    $shift->note = Input::get('note');
     $shift->save();
 }
 //==============================個人シフト削除====================================
