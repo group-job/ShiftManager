@@ -238,13 +238,13 @@
     //========================各ボタン、ウィンドウリセット==========================
     $('div').click(function(event){
       // alert(this.id+"/"+this.className);
-        if (this.className === "fc-button-group" || this.className === "fc-content") {
+        if (this.className === "fc-button-group" || this.className === "fc-content" || this.id === "side-menu") {
           $('.togglable').hide();
         }
         else if(this.id === "calendar"  || this.id === "div-edit-shift" || this.id ==="div-add-shift" || this.className === "fc-day-grid-container"){
           event.stopPropagation();
         }
-        else if (this.id === "contents-space" || this.id === "title-space" || this.id === "side-menu"){
+        else if (this.id === "contents-space" || this.id === "title-space"){
           event.stopPropagation();
           $('.togglable').hide();
         }
