@@ -9,7 +9,7 @@
 @stop
 @section('modify-js')
 @parent
-@include('personal.part-create-calendar')
+@include('personal.part-personal-calendar')
 @endsection
 @section('title-space')
 <div class="col-md-offset-4 col-md-4"><h1>マイシフト</h1></div>
