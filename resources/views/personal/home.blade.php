@@ -57,17 +57,17 @@
       </tr>
       <tr>
         <td>日付:</td>
-        <td><input type="date" id="input-date-edit-shift" name="date" required></td>
+        <td><input type="date" id="input-date-edit-shift" name="date" required min="2015-01-01" max="2030-12-31"></td>
       </tr>
       <tr>
         <td>開始時間</td>
         {{-- TODO デザイン変更--}}
-        <td><input type="time" name="start_time"  id="input-start-time-edit-shift" required></td>
+        <td><input type="time" name="start_time"  id="input-start-time-edit-shift" required step="1800"></td>
       </tr>
       <tr>
         <td>終了時間</td>
         {{-- TODO デザイン変更--}}
-        <td><input type="time" name="end_time" id="input-end-time-edit-shift" ></td>
+        <td><input type="time" name="end_time" id="input-end-time-edit-shift" step="1800"></td>
       </tr>
       <tr>
         <td>備考</td>
@@ -100,7 +100,7 @@
       </tr>
       <tr>
         <td>日付:</td>
-        <td><input type="date" id="input-date-add-shift" name="date" required></td>
+        <td><input type="date" id="input-date-add-shift" name="date" required min="2015-01-01" max="2030-12-31"></td>
       </tr>
       <tr>
         <td>開始時間</td>

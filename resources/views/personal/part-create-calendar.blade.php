@@ -74,23 +74,27 @@
             $("#input-status-add-shift").val(0);
             myShiftFlg = false;
           }
-          var shiftId = postAcync($(this).closest("form"),true);
-          eventData = {
-             title: $("#input-group-add-shift option:selected").text(),
-             start:$("#input-date-add-shift").val()+"T"+$("#input-start-time-add-shift").val(),
-             end: $("#input-date-add-shift").val()+"T"+$("#input-end-time-add-shift").val(),
-             date: $("#input-date-add-shift").val(),
-             start_time : $("#input-start-time-add-shift").val(),
-             end_time : $("#input-end-time-add-shift").val(),
-             className: 'event-status'+$("#input-status-add-shift").val(),
-             note: $("input-note-add-shift").val(),
-             my_shift_flg: myShiftFlg,
-             status: $("#input-status-add-shift").val(),
-             shift_id: shiftId,
-           };
-           $('#calendar').fullCalendar('renderEvent', eventData, true);
+          var shiftId = postCync($(this).closest("form"),true);
 
-           alertify.success('シフトを作成しました');
+          if (shiftId !== null){
+            eventData = {
+               title: $("#input-group-add-shift option:selected").text(),
+               start:$("#input-date-add-shift").val()+"T"+$("#input-start-time-add-shift").val(),
+               end: $("#input-date-add-shift").val()+"T"+$("#input-end-time-add-shift").val(),
+               date: $("#input-date-add-shift").val(),
+               start_time : $("#input-start-time-add-shift").val(),
+               end_time : $("#input-end-time-add-shift").val(),
+               className: 'event-status'+$("#input-status-add-shift").val(),
+               note: $("input-note-add-shift").val(),
+               my_shift_flg: myShiftFlg,
+               status: $("#input-status-add-shift").val(),
+               shift_id: shiftId,
+            };
+            $('#calendar').fullCalendar('renderEvent', eventData, true);
+            alertify.success('シフトを作成しました');
+          }else {
+            alertify.danger('シフトの作成に失敗しました');
+          }
       });
 
         // var title = prompt('Event Title:');
