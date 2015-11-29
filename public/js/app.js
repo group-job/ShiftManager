@@ -23388,12 +23388,10 @@ return fc; // export for Node/CommonJS
 // postAcync()
 // 指定したidのフォームをPOSTで送信するメソッド
 // Button type="button" onclick=postAcync(クリックされたフォーム,flg)で呼び出す
-// 利用例はpart-create-calendar.blade.php:83 参照
-// button : クリックされたボタン
-// flg = true  で通信終了時にフォームを非表示。 false で通信中のくるくる
-function postAcync(button,flg){
-  //クリックされたボタンの先祖の直近のフォームを取得
-  var form = $(button).closest("form");
+// 利用例はpart-create-calendar.blade.php:143 参照
+// @param form  送信するフォーム
+// @param flg  trueで通信終了時にフォームを非表示。 false で通信中のくるくる
+function postAcync(form,flg){
   $.ajax({
     url: form.attr('action'),
     type: form.attr('method'),
@@ -23403,6 +23401,8 @@ function postAcync(button,flg){
   })
   .done(function(result) {
     //非同期通信成功
+    //通信先メソッドのリターンをそのまま返却
+    return result;
   })
   .fail(function(result) {
     //非同期通信失敗
