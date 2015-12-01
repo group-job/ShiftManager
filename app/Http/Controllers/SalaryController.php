@@ -18,8 +18,10 @@ class SalaryController extends BaseController
     $saarly_arry;
     foreach(Auth::user()->rates as $value){
     $saarly_arry[]=$value->rate;
+    $saarly_arry[]=$value->user_id;
     }
     dd($saarly_arry);
+    //echo ($saarly_arry);
     return view('salary.list');
   }
 
