@@ -9,7 +9,7 @@
 @stop
 @section('modify-js')
 @parent
-@include('personal.part-create-calendar')
+@include('personal.part-personal-calendar')
 @endsection
 @section('title-space')
 <div class="col-md-offset-4 col-md-4"><h1>マイシフト</h1></div>
@@ -29,13 +29,13 @@
 {{-- 削除依頼ボタンのフォーム --}}
 <form action="/personal/request-delete" id="form-request-delete" class="form-horizontal" method="post">
   <input type="hidden" name="_token" value="{{ csrf_token() }}">
-  <input type="hidden" name="shift-id" id="input-request-delete-shift-id">
+  <input type="hidden" name="shift_id" id="input-request-delete-shift-id">
   <button type="button"class="btn btn-calendar btn-danger togglable" id="button-request-delete" style="position:absolute; z-index:1;">削除依頼</button>
 </form>
 {{-- 仮シフト承認/拒否ボタンのフォーム --}}
 <form action="/personal/reply" id="form-reply" class="form-horizontal" method="post">
   <input type="hidden" name="_token" value="{{ csrf_token() }}">
-  <input type="hidden" name="shift-id" id="input-reply-shift-id">
+  <input type="hidden" name="shift_id" id="input-reply-shift-id">
   {{-- input-reply-status→承認:value=2, 拒否:value=4 --}}
   <input type="hidden" name="shift-status" id="input-reply-status">
   <button type="button"class="btn btn-calendar btn-danger togglable" id="button-reply-deny" style="position:absolute; z-index:1;">拒否</button>
@@ -43,38 +43,87 @@
 </form>
 <br/>
 {{-- マイシフト編集フォーム --}}
-<form action="/personal/edit-shift" method="post">
-  <input type="hidden" name="_token" value="{{ csrf_token() }}">
-  <input type="hidden" id="input-edit-shift-shift-id" name="shift-id">
-  <input type="hidden" id="input-edit-shift-group-id" name="group-id">
-  <table>
-    <tr>
-      <td>勤務先:</td>
-      <td>
-        <input type="text"  value="勤務先" disabled="disabled">
-      </td>
-    </tr>
-    <tr>
-      <td>日付:</td>
-      <td><input type="date" name="date" required></td>
-    </tr>
-    <tr>
-      <td>開始時間</td>
-      {{-- TODO デザイン変更--}}
-      <td><input type="time" name="start_time" required></td>
-    </tr>
-    <tr>
-      <td>終了時間</td>
-      {{-- TODO デザイン変更--}}
-      <td><input type="time" name="end_time"></td>
-    </tr>
-  </table>
-  <button type="submit" class="">send</button>
-</form>
+<div id="div-edit-shift" class="togglable">
+  <form action="/personal/edit-shift" id="form-edit-shift" method="post">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <input type="hidden" id="input-shift-id-edit-shift" name="shift_id">
+    <input type="hidden" name="shift-status" id="input-status-edit-shift">
+    <table>
+      <tr>
+        <td>勤務先:</td>
+        <td>
+          <span id="input-group-name-edit-shift"></span>
+        </td>
+      </tr>
+      <tr>
+        <td>日付:</td>
+        <td><input type="date" id="input-date-edit-shift" name="date" required min="2015-01-01" max="2030-12-31"></td>
+      </tr>
+      <tr>
+        <td>開始時間</td>
+        {{-- TODO デザイン変更--}}
+        <td><input type="time" name="start_time"  id="input-start-time-edit-shift" required step="1800"></td>
+      </tr>
+      <tr>
+        <td>終了時間</td>
+        {{-- TODO デザイン変更--}}
+        <td><input type="time" name="end_time" id="input-end-time-edit-shift" step="1800"></td>
+      </tr>
+      <tr>
+        <td>備考</td>
+        <td><input type="text" name="note" id="input-note-edit-shift" ></td>
+      </tr>
+    </table>
+    <button type="button" id="btn-update-edit-shift" class="btn btn-calendar btn-success col-md-offset-2 col-md-3">変更</button>
+    <button type="button" id="btn-delete-edit-shift" class="btn btn-calendar btn-danger col-md-offset-2 col-md-3">削除</button>
+  </form>
+</div>
+
+{{-- マイシフト追加/グループシフト希望申請フォーム --}}
+<div id="div-add-shift" class="togglable">
+  <form id="form-add-shift" action = "/personal/add-shift" method="post">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <input type="hidden" id="input-status-add-shift" name="status" >
+    <table>
+      <tr>
+        <td>勤務先:</td>
+        <td>
+          <select id="input-group-add-shift" name="group_id">
+            @foreach($managingGroups as $key => $value)
+            <option class="option-managing-group-add-shift" value="{{$value->id}}">{{$value->group_name}}</option>
+            @endforeach
+            @foreach($joiningGroups as $key => $value)
+            <option class="option-joining-group-add-shift" value="{{$value->id}}">{{$value->group_name}}</option>
+            @endforeach
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>日付:</td>
+        <td><input type="date" id="input-date-add-shift" name="date" required min="2015-01-01" max="2030-12-31"></td>
+      </tr>
+      <tr>
+        <td>開始時間</td>
+        {{-- TODO デザイン変更--}}
+        <td><input type="time" name="start_time"  id="input-start-time-add-shift" required></td>
+      </tr>
+      <tr>
+        <td>終了時間</td>
+        {{-- TODO デザイン変更--}}
+        <td><input type="time" name="end_time" id="input-end-time-add-shift" ></td>
+      </tr>
+      <tr>
+        <td>備考</td>
+        <td><input type="text" name="note" id="input-note-add-shift" ></td>
+      </tr>
+    </table>
+    <button type="button" id="btn-add-add-shift" class="btn btn-calendar btn-success col-md-offset-5 col-md-3">追加</button>
+  </form>
+</div>
 {{-- テスト用フォーム --}}
 <form action="/personal/reply" id="test-form" class="form-horizontal" method="post">
   <input type="hidden" name="_token" value="{{ csrf_token() }}">
-  <input type="hidden" name="shift-id" value="4">
+  <input type="hidden" name="shift_id" value="4">
   <input type="hidden" name="shift-status" value="2">
   <button type="submit" class="btn btn-danger event-detail-tooltip"  title="This is my div's tooltip message!" style="position:absolute; z-index:1; ">test</button>
 </form>

@@ -19,6 +19,7 @@ class PersonalController extends BaseController
     $myShifts = Auth::user()->shifts;
     $calendarEvents = array();
     foreach ($myShifts as $value) {
+
       $myShiftFlg = ($value->group->manager_id === $value->user_id);
       $calendarEvents[] = array(
         //カレンダーイベントクリック時処理などに利用
@@ -26,8 +27,9 @@ class PersonalController extends BaseController
         'my_shift_flg' =>$myShiftFlg,
         'status' => $value->status,
         'date' => $value->date,
-        'start_time' =>$value->start_time,
-        'end_time' =>$value->end_time,
+        'start_time' =>date('G:i', strtotime($value->start_time)),
+        'end_time' =>date('G:i', strtotime($value->end_time)),
+        'note' => $value->note,
         //ここから下カレンダー描画に必要
         'className' => 'event-status'.$value->status,
         'title' => $value->group->group_name,
@@ -54,7 +56,7 @@ class PersonalController extends BaseController
 //==============================削除依頼=========================================
   public function postRequestDelete(){
     //ログイン中のユーザーの全シフトからフォーム入力で指定されたidのシフトインスタンスを取得
-    $shift = Auth::user()->shifts->find(Input::get('shift-id'));
+    $shift = Auth::user()->shifts->find(Input::get('shift_id'));
     if($shift !== null){
       $shift->status = 3;
       $shift->save();
@@ -65,7 +67,7 @@ class PersonalController extends BaseController
 //==============================仮シフト承認/拒否=========================================
   public function postReply(){
     //ログイン中のユーザーの全シフトからフォーム入力で指定されたidのシフトインスタンスを取得
-    $shift = Auth::user()->shifts->find(Input::get('shift-id'));
+    $shift = Auth::user()->shifts->find(Input::get('shift_id'));
     $replay = Input::get('shift-status');
     if($shift !== null){
       switch ($replay) {
@@ -89,24 +91,35 @@ class PersonalController extends BaseController
     // TODO: 作成途中
     //requestパラメータはShiftの全フィールド
     $shift = Input::except('_token');
-    Shift::create($shift);
+    $shift['user_id'] = Auth::user()->id;
+    $newShift = Shift::create($shift);
+    return $newShift->id;
   }
 //==============================個人シフト変更====================================
   public function postEditShift(){
-    // TODO 作成途中
     //requestパラメータはShiftの全フィールド
-    $shift = Shift::find(input::get('id'));
-    $newShift = input::except('_token');
-    $newShift['status'] = 2;
-    dd($newShift);
-    $shift->fill($newShift);
-    $shift->save();
+    $shift = Auth::user()->shifts->find(Input::get('shift_id'));
+    $status = Input::get('shift-status');
+    if($shift !== null){
+      switch ($status) {
+        case '2':
+          $shift->date = Input::get('date');
+          $shift->start_time = Input::get('start_time');
+          $shift->end_time = Input::get('end_time');
+          $shift->note = Input::get('note');
+          $shift->save();
+          break;
+        case '4':
+        $shift->delete();
+          break;
+      }
+    }
 }
 //==============================個人シフト削除====================================
   public function postDeleteShift(){
     // TODO: 作成途中
     //ログイン中のユーザーの全シフトからフォーム入力で指定されたidのシフトインスタンスを取得
-    $shift = Auth::user()->shifts->find(input::get('shift-id'));
+    $shift = Auth::user()->shifts->find(input::get('shift_id'));
     // 該当するシフトがある場合
     if($shift !== null){
       $shift->delete();
