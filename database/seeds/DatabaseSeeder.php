@@ -86,6 +86,14 @@ class DatabaseSeeder extends Seeder
       'end_date' => '',
       'rate_category' => '0',
   ]);
+  DB::table('rates')->insert([
+      'user_id' => '1',
+      'group_id' => '2',
+      'rate' => '32000',
+      'start_date' => '2015-10-10',
+      'end_date' => '',
+      'rate_category' => '0',
+  ]);
   DB::table('employments')->insert([
      'group_id' => '2',
      'user_id' => '1',

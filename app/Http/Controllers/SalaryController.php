@@ -15,6 +15,11 @@ class SalaryController extends BaseController
 
   public function getList()
   {
+    $saarly_arry;
+    foreach(Auth::user()->rates as $value){
+    $saarly_arry[]=$value->rate;
+    }
+    dd($saarly_arry);
     return view('salary.list');
   }
 
@@ -32,5 +37,11 @@ class SalaryController extends BaseController
   
   public function Show(){
     return 0;
+  }
+  
+  public function itex(){
+  $mymonney = Auth::user()->shifts;
+   
+  return view('salary.manager'); 
   }
 }

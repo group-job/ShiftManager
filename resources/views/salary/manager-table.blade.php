@@ -1,10 +1,10 @@
 {{-- テーブル作成 --}}
 <table class="table-bordered">
   <tbody>
-     <th>a</th>
-     <th>b</th>
-     <th>c</th>
-     <th>d</th>
+     <th>給与区分</th>
+     <th>給与金額</th>
+     <th>開始年月日</th>
+     <th>終了年月日</th>
     <tr>
       <td colspan="5">
         新しい給与を追加する<span class="text-right"><span class="glyphicon glyphicon-plus pull-right"></span>
