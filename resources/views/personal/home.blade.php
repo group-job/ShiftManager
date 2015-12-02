@@ -15,7 +15,13 @@
 <div class="col-md-offset-4 col-md-4"><h1>マイシフト</h1></div>
 @stop
 @section('contents-space')
-{{-- カレンダーにイベントを追加するためのスクリプト --}}
+{{-- メッセージ --}}
+@if (Session::has('errorMessage'))
+  <script type="text/javascript">
+    alertify.error("{!!Session::get('errorMessage')!!}");    
+  </script>
+@endif
+{{-- カレンダー --}}
 <div id='calendar'></div>
 {{-- カレンダーイベントの凡例 --}}
 <div class="col-md-offset-3">

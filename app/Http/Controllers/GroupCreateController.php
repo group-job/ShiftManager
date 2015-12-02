@@ -36,7 +36,7 @@ public function postStore(GroupRequest $request)
   //グループ登録
   Group::create($request->all());
   // フラシュメッセージの設定
-  \Session::flash('flash_message', 'グループの作成に成功しました。');
+  Session::flash('errorMessage', 'グループの作成に成功しました。');
   // 直前にリダイレクト
   return redirect()->back();
   }
