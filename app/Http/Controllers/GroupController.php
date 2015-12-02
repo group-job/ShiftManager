@@ -15,6 +15,7 @@ use App\Http\Requests\ChatRequest;
 use Auth;
 use DateTime;
 use Input;
+use Session;
 
 class GroupController extends BaseController
 {
@@ -36,6 +37,7 @@ class GroupController extends BaseController
     $this->compact = compact('groupId','groupName');
   }
 
+
     /**
      * グループ作成用の画面表示
      *
@@ -43,7 +45,7 @@ class GroupController extends BaseController
      */
      public function getShift($groupId='default'){
        $this->params($groupId);
-      return view('group.home',$this->compact);
+       return view('group.join-shift',$this->compact);
      }
 
      /**

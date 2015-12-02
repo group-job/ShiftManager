@@ -16,6 +16,7 @@ var elixir = require('laravel-elixir');
      'jquery': 'bower_components/jquery/',
      'bootstrap': 'bower_components/bootstrap-sass-official/assets/',
      'fullcalendar' : 'bower_components/fullcalendar/',
+     'scheduler' : 'bower_components/fullcalendar-scheduler/',
      'alertify' : 'bower_components/alertify/',
      'moment' : 'bower_components/moment/',
      'tooltipster' : 'bower_components/tooltipster/',
@@ -26,6 +27,7 @@ elixir(function(mix) {
     mix.less('app.less');
     mix.sass([
       '../../../'+paths.fullcalendar+"dist/fullcalendar.css",
+      '../../../'+paths.scheduler+"dist/scheduler.css",
       '../../../'+paths.alertify+"themes/alertify.core.css",
       '../../../'+paths.alertify+"themes/alertify.bootstrap.css",
       '../../../'+paths.tooltipster+"css/tooltipster.css",
@@ -45,6 +47,7 @@ elixir(function(mix) {
             // paths.moment+"src/moment.js",
             "resources/assets/fullcalendar/moment.min.js", //bowerでいれたmoment.jsがなぜかエラーはくので
             paths.fullcalendar + "dist/fullcalendar.js",
+            paths.scheduler + "dist/scheduler.js",
             paths.alertify + "alertify.js",
             paths.tooltipster+"js/jquery.tooltipster.min.js",
             paths.js+'app.js',
