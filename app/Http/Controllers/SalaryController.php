@@ -16,26 +16,14 @@ class SalaryController extends BaseController
 
   public function getList()
   {
-    // $groupids;
-    // foreach(Auth::user()->rates as $value){
-    //   $cheaktime=strcmp($value->end_date,'0000-00-00');
-    //   if(!$cheaktime){
-    //     $groupids[]=$value;
-    //   }
-    // }
-    
     $groupids;
     foreach(Auth::user()->employments as $value){
+      $cheaktime=strcmp($value->end_date,'0000-00-00');
       if(!$cheaktime){
-        $groupids[]=$value;
+        $groupids[]=$value->group_id;
       }
     }
     dd($groupids);
-    $groupids[]=$value->id;
-        $groupids[]=$value->user_id;
-        $groupids[]=$value->group_id;
-        $groupids[]=$value->start_date;
-        $groupids[]=$cheaktime;
     
     
     $saarly_arry;
@@ -44,7 +32,7 @@ class SalaryController extends BaseController
     $saarly_arry[]=$value->user_id;
     }
     //echo ($saarly_arry);
-    return view('salary.list');
+    return view('salary.list',compact('groupids'));
   }
 
   public function getManager()

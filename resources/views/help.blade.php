@@ -19,13 +19,12 @@
     }
 </style>
 
-
 <h1>ヘルプ</h1>
 
 <div>
     <ul class="help">
         <li><a href="#smoothplay1">このサイトについて</a></li>
-        <li>使い方
+        <li>主な機能
             <ul>
                 <li><a href="#smoothplay2">アカウント</a></li>
                 <li><a href="#smoothplay3">グループ作成</a></li>
