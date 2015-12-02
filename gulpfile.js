@@ -54,4 +54,8 @@ elixir(function(mix) {
         mix.scripts([
           'profile.js'
         ],'public/js/profile.js')
+
+        mix.scripts([
+          'chat.js'
+        ],'public/js/chat.js')
 });
