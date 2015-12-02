@@ -8,6 +8,7 @@ use App\Shift;
 use App\Group;
 use Auth;
 use Input;
+use Session;
 
 
 class PersonalController extends BaseController
@@ -45,6 +46,7 @@ class PersonalController extends BaseController
     }
     $managingGroups = Auth::user()->groups;
     //$calendarEventsJsonは personal.home内のpart-create-calendar.blade.phpに渡す
+    Session::reflash();
     return view('personal.home',compact('calendarEventsJson','managingGroups','joiningGroups'));
   }
 
@@ -61,6 +63,7 @@ class PersonalController extends BaseController
       $shift->status = 3;
       $shift->save();
     }else {
+      Session::flash('errorMessage', '削除依頼に失敗しました');
       return redirect('/personal/home');
     }
   }
@@ -82,6 +85,7 @@ class PersonalController extends BaseController
           break;
       }
     }else {
+      Session::flash('errorMessage', '仮シフトの承認/拒否に失敗しました');
       return redirect('/personal/home');
     }
   }
@@ -124,6 +128,7 @@ class PersonalController extends BaseController
     if($shift !== null){
       $shift->delete();
     }else {
+      Session::flash('errorMessage', 'シフトの削除に失敗しました。');
       return redirect('/personal/home');
     }
   }
