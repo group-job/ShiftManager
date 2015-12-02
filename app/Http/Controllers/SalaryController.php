@@ -15,6 +15,7 @@ class SalaryController extends BaseController
 
   public function getList()
   {
+    $groupid[]=Employment::where('user_id','=',Auth::user()->id)->group_id();
     $saarly_arry;
     foreach(Auth::user()->rates as $value){
     $saarly_arry[]=$value->rate;
