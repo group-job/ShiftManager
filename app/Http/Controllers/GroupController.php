@@ -21,9 +21,14 @@ class GroupController extends BaseController
 {
   private $compact;
 
+  /**
+   * グループIDとグループ名をViewへ渡す
+   * @param  [type] $groupId [description]
+   * @return [type]          [description]
+   */
   public function params($groupId)
   {
-    $group = Group::where('id','=',$groupId)->get();
+    $group = Group::find($groupId)->get();
     if (isset($group)) {
       foreach ($group as $value) {
         $groupName = $value->group_name;
@@ -43,10 +48,10 @@ class GroupController extends BaseController
        return view('group.join-shift',$this->compact);
      }
 
-     /*
-      *	連絡ボードの表示
-      *
-      * @return Reponse
+     /**
+      * 連絡ボードの表示
+      * @param  string $groupId [description]
+      * @return [type]          [description]
       */
      public function getInfomation($groupId='default')
      {
@@ -128,49 +133,55 @@ class GroupController extends BaseController
     $group = Group::group($join_group_id)->get();
     $group->update($request->all());
     }
-
+    /**
+     * チャット,連絡ボード取得
+     * @param  Request $request [description]
+     * @return Array $chatLog         [description]
+     */
     public function postShowChat(Request $request)
     {
       $limit = 10;
-      $count = Chat::where('group_id','=',$request->id)->count();
-      if ($count >= $limit) {
-          $chat = Chat::where('group_id','=',$request->id)->skip($count-$limit)->take($limit)->get();
-      }
-      if ($count <= $limit) {
-          $chat = Chat::where('group_id','=',$request->id)->get();
-      }
+          $count = Chat::log($request)->count();
+          if ($count >= $limit) {
+              $chat = Chat::log($request)->skip($count-$limit)->take($limit)->get();
+          }
+          if ($count <= $limit) {
+              $chat = Chat::log($request)->get();
+          }
       $chatLog = array();
       foreach ($chat as $value) {
         $chatParams  = array(
           'text' => $value->text,
           'name' => $value->user->name,
-          'date' => $value->date,
+          'date' => substr($value->date, 0, 10),
+          'time' => substr($value->date, 11, 5),
         );
         array_push($chatLog, $chatParams);
       }
       return $chatLog;
     }
 
+    /**
+     * チャット登録
+     * @param  ChatRequest $request [description]
+     */
     public function postStoreChat(ChatRequest $request)
     {
-      $now = new \DateTime();
+      $date = new \DateTime();
       if(isset($request->text))
       {
-        $chat = Chat::create([
-            'user_id' => Auth::user()->id,
-            'group_id' => $request->id,
-            'date' => $now,
-            'text' => $request->text,
-            'chat_category' => 0,
-        ]);
+        $this->createChat($request, $date);
       }else{
-        // \Session::flash('flash_message', "入力してくださ");
-        die("a");
       }
     }
 
-    //承認処理
-    public function getApprovaltrue($groupId='default')
+    /**
+     * 承認処理
+     * @param  [type] $id            [description]
+     * @param  [type] $employment_id [description]
+     * @return [type]                [description]
+     */
+    public function getApprovalTrue($groupId)
     {
         session_start();
         if(!empty($_SESSION["employments_id"])){
@@ -183,8 +194,13 @@ class GroupController extends BaseController
         return $this->getApproval($groupId);
     }
 
-    //拒否処理
-    public function getApprovalfalse($groupId='default')
+    /**
+     * 拒否
+     * @param  [type] $id            [description]
+     * @param  [type] $employment_id [description]
+     * @return [type]                [description]
+     */
+    public function getApprovalFalse($groupId)
     {
         session_start();
         if(!empty($_SESSION["employments_id"])){
@@ -196,8 +212,12 @@ class GroupController extends BaseController
         }
     }
 
-        //申請追加データベース処理
-    public function userApply($groupId='default'){
+    /**
+     * 申請追加データベース処理
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function userApply($groupId){
         Employment::create([
             'user_id' => Auth::user()->id,
             'group_id' => $groupId,
@@ -205,7 +225,11 @@ class GroupController extends BaseController
         ]);
     }
 
-    //グループ情報取得データベース処理
+    /**
+     * グループ情報取得データベース処理
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
     public function getGroupInfo($groupId='default'){
        $group = Group::join('users','groups.manager_id','=','users.id')
                 ->where('groups.id','=',$groupId)
@@ -214,7 +238,11 @@ class GroupController extends BaseController
        return $group;
     }
 
-    //既に申請済みか確認(false=未申請 true=申請済み)
+    /**
+     * 既に申請済みか確認(false=未申請 true=申請済み)
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
     public function checkApply($groupId='default'){
         //同一ユーザが同一グループに申請済みか取得レコード数で確認
         $user = Employment::where('user_id','=',Auth::user()->id)
@@ -229,6 +257,11 @@ class GroupController extends BaseController
         }
     }
 
+    /**
+     * 既に登録済みか確認(false=未登録 true=登録済み)
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
     //既に登録済みか確認(false=未登録 true=登録済み)
     public function checkRegistration($groupId='default'){
         //同一ユーザが同一グループに申請済みか取得レコード数で確認
@@ -244,7 +277,11 @@ class GroupController extends BaseController
         }
     }
 
-    //グループが存在するか確認(false=存在しない true=存在する)
+    /**
+     * グループが存在するか確認(false=存在しない true=存在する)
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
     public function checkGroup($groupId='default'){
         //同一ユーザが同一グループに申請済みか取得レコード数で確認
         $group = Group::where('id','=',$groupId)
@@ -254,5 +291,22 @@ class GroupController extends BaseController
         }else{
             return true;
         }
+    }
+
+    /**
+     * db登録
+     * @param  [type] $request  [description]
+     * @param  [type] $date     [description]
+     * @param  [type] $category [description]
+     */
+    public function createChat($request, $date)
+    {
+      $chat = Chat::create([
+          'user_id' => Auth::user()->id,
+          'group_id' => $request->id,
+          'date' => $date,
+          'text' => $request->text,
+          'chat_category' => $request->category,
+      ]);
     }
 }

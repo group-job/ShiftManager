@@ -40,7 +40,7 @@
       <form name="approvalform" method="POST">
       <tr>
         <td>
-          {{ $employment->name }}　さん
+          {{ $employment->name }}&emsp;さん
         </td>
         <td> 
             <input type="button" id="approvaltrue" value="承認する" onclick="location.href='/group/{{$groupId}}/approvaltrue?count={{ $count }}'">
