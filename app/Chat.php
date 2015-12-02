@@ -13,4 +13,19 @@ class Chat extends Model
          return $this->belongsTo(User::class,'user_id');
    }
 
+   /**
+    * チャットログ取得
+    * @param  [type] $query    [description]
+    * @param  [type] $request  [description]
+    * @param  [type] $category [description]
+    * @return [type]           [description]
+    */
+   public function scopeLog($query, $request)
+    {
+      $query->where('group_id','=',$request->id)
+            ->where('chat_category', '=', $request->category);
+
+    }
+
+
 }
