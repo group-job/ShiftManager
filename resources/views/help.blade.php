@@ -1,5 +1,6 @@
 <!-- レイアウトの継承 -->
 @extends('common.layout')
+<link rel="stylesheets" type="text/scss" href="resources/assets/sass/home.scss">
 @section('title')
 ヘルプ
 @stop
@@ -10,11 +11,19 @@
 
 <!-- この中身にかく -->
 @section('main-contents')
+<!--
+<style type="text/css">
+    ul.example li ul {
+    margin: 0 0 0 1em;
+    padding: 0;
+    }
+</style>
+-->
 
 <h1>ヘルプ</h1>
 
 <div>
-    <ul>
+    <ul class="example">
         <li><a href="#smoothplay1">このサイトについて</a></li>
         <li>使い方
             <ul>
@@ -30,6 +39,7 @@
             </ul>
         </li>
         <li><a href="#smoothplay11">メールアドレス、パスワードを忘れた方。</a></li>
+        <li><a href="#smoothplay12">お問合せ</a></li>
     </ul>
 </div><br>
 
@@ -89,6 +99,11 @@
 <div id="smoothplay11">
     <strong>メールアドレス、パスワードを忘れた方。</strong><br>
     当サイトでは、パスワード再発行などは、行っておりません。ご了承ください。<br><br>
+</div>
+
+<div id="smoothplay12">
+    <strong>お問合せ</strong><br>
+    当サイトでは、お問合せは行っておりません。ご了承ください。<br><br>
 </div>
 
 @endsection
