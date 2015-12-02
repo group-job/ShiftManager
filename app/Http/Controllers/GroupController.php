@@ -79,11 +79,12 @@ class GroupController extends BaseController
      * @return Response
      */
      public function getApproval($groupId='default'){
-       if(!empty($_SESSION['employments_id'])){
-           unset($_SESSION['employments_id']);
-           $_SESSION["employments_id"] = array();
-           session_destroy();
-       }
+       $this->params($groupId);
+      //  if(!empty($_SESSION['employments_id'])){
+      //      unset($_SESSION['employments_id']);
+      //      $_SESSION["employments_id"] = array();
+      //      session_destroy();
+      //  }
        $employments = Employment::join('users','employments.user_id','=','users.id')
                 ->where('employments.group_id','=',$groupId)
                 ->where('start_date','=','0000-00-00')
@@ -115,7 +116,7 @@ class GroupController extends BaseController
        // $this->loadModel('GroupApply',compact('id'));
     //   $GroupApply->userApply($id);
        $this->userApply($groupId);
-       return view('group.home',$this->compact,compact('groupId'));
+       return redirect('/personal/home');
      }
 
     /**
@@ -213,8 +214,6 @@ class GroupController extends BaseController
                 ->first();
        return $group;
     }
-    $group = Group::find(groupId);
-    $managerName = $group->user->manager_mame;
 
     //既に申請済みか確認(false=未申請 true=申請済み)
     public function checkApply($groupId='default'){
