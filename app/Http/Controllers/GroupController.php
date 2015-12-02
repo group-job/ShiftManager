@@ -28,11 +28,12 @@ class GroupController extends BaseController
    */
   public function params($groupId)
   {
-    $group = Group::find($groupId)->get();
+    $group = Group::find($groupId);
     if (isset($group)) {
-      foreach ($group as $value) {
-        $groupName = $value->group_name;
-      }
+        $groupName = $group->group_name;
+    }else{
+      // Session::put('errorMessage', '指定されたグループは存在しません') ;
+      redirect('/personal/home');
     }
     $this->compact = compact('groupId','groupName');
   }
@@ -85,11 +86,11 @@ class GroupController extends BaseController
      */
      public function getApproval($groupId='default'){
        $this->params($groupId);
-      //  if(!empty($_SESSION['employments_id'])){
-      //      unset($_SESSION['employments_id']);
-      //      $_SESSION["employments_id"] = array();
-      //      session_destroy();
-      //  }
+       if(!empty($_SESSION['employments_id'])){
+           unset($_SESSION['employments_id']);
+           $_SESSION["employments_id"] = array();
+           session_destroy();
+       }
        $employments = Employment::join('users','employments.user_id','=','users.id')
                 ->where('employments.group_id','=',$groupId)
                 ->where('start_date','=','0000-00-00')
@@ -211,6 +212,7 @@ class GroupController extends BaseController
      * @param  [type] $employment_id [description]
      * @return [type]                [description]
      */
+<<<<<<< HEAD
     // public function getApprovalTrue($groupId)
     // {
     //     session_start();
@@ -248,6 +250,7 @@ class GroupController extends BaseController
      * @return [type]     [description]
      */
     public function userApply($groupId){
+      // TODO: 重複チェック
         Employment::create([
             'user_id' => Auth::user()->id,
             'group_id' => $groupId,
