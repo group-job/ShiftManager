@@ -1,5 +1,5 @@
 @extends('common.layout')
-{{-- タイトル部分の表示 --}}
+
 @section('main-contents')
 <?php
   session_start();
@@ -39,7 +39,11 @@
           {{ $employment->name }}&emsp;さん
         </td>
         <td>
+<<<<<<< Updated upstream
             <input type="button" id="approvaltrue" value="承認する" onclick="location.href='/group/{{$groupId}}/approval-true?count={{ $count }}'">
+=======
+            <input type="button" id="approvaltrue" value="承認する" onclick="location.href='/group/{{$groupId}}/approvaltrue?count={{ $count }}'">
+>>>>>>> Stashed changes
             <input type="button" id="approvalfalse" value="拒否する" onclick="location.href='/group/{{$groupId}}/approvalfalse?count={{ $count }}'">
         </td>
       </tr>
