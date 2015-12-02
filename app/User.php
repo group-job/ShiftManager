@@ -36,4 +36,8 @@ class User extends Model implements AuthenticatableContract,
    {
      return $this->hasMany(Group::class,'manager_id');
    }
+   public function rates()
+   {
+       return $this->hasMany(Rate::class);
+   }
 }
