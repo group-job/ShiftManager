@@ -5899,7 +5899,7 @@ body {
 
 .theme-event-detail-tooltip {
   width: 200px;
-  height: 110px;
+  height: 140px;
   border-radius: 3px;
   border: 2px solid #000;
   background: rgba(83, 122, 128, 0.77);
@@ -5913,11 +5913,23 @@ body {
 
 .btn-calendar {
   height: 25px;
-  margin: 0;
-  padding: 0 2px; }
+  padding: 0 2px;
+  margin-top: 2px; }
 
-.form-calendar {
-  width: 150px; }
+#div-edit-shift, #div-add-shift {
+  position: absolute;
+  z-index: 5;
+  width: 230px;
+  background: #b2cef2;
+  padding: 5px;
+  border: 1px solid #2f7bdc; }
+  #div-edit-shift td, #div-add-shift td {
+    width: 100px; }
+  #div-edit-shift input, #div-add-shift input {
+    margin: 1px 0; }
+
+.option-managing-group-add-shift {
+  background: red; }
 
 
 /* button

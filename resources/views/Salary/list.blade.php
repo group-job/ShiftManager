@@ -1,4 +1,4 @@
-@extends('Salary.home')
+@extends('salary.home')
 @section('tab-space')
 <table class="table-bordered">
 <tbody>

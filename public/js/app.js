@@ -11583,12 +11583,11 @@ if (typeof jQuery === 'undefined') {
 // postAcync()
 // 指定したidのフォームをPOSTで送信するメソッド
 // Button type="button" onclick=postAcync(クリックされたフォーム,flg)で呼び出す
-// 利用例はpart-create-calendar.blade.php:83 参照
-// button : クリックされたボタン
-// flg = true  で通信終了時にフォームを非表示。 false で通信中のくるくる
-function postAcync(button,flg){
-  //クリックされたボタンの先祖の直近のフォームを取得
-  var form = $(button).closest("form");
+// 利用例はpart-create-calendar.blade.php:143 参照
+// @param form  送信するフォーム
+// @param flg  trueで通信終了時にフォームを非表示。 false で通信中のくるくる
+function postAcync(form,flg){
+  // console.log(form);
   $.ajax({
     url: form.attr('action'),
     type: form.attr('method'),
@@ -11616,6 +11615,27 @@ function postAcync(button,flg){
     }
   });
 }
+function postCync(form,flg){
+  var result = $.ajax({
+    url: form.attr('action'),
+    type: form.attr('method'),
+    data: form.serialize(),
+    async: false,
+  }).responseText;
+  // フォームを非表示に
+  if (flg == true){
+    // form.css("visibility","hidden");//フォームごと非表示に
+    $('.togglable').hide();
+  }else {
+    var btn =form.find('button');
+    btn.button('loading');
+    setTimeout(function () {
+      btn.button('reset');
+    }, 400);
+  }
+  return result;
+}
+
 $(document).ready(function() {
   $('.togglable').hide();
 });
