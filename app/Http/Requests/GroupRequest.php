@@ -27,4 +27,5 @@ class GroupRequest extends Request
             'group_name' => 'required',
         ];
     }
+    
 }

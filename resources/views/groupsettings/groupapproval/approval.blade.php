@@ -1,10 +1,6 @@
 @extends('common.layout')
 {{-- タイトル部分の表示 --}}
-@section('title-space')
-@include('group.title-name')
-@endsection
-
-@section('contents-space')
+@section('main-contents')
 <?php
   session_start();
   $_SESSION["employments_id"] = array();
@@ -42,8 +38,8 @@
         <td>
           {{ $employment->name }}&emsp;さん
         </td>
-        <td> 
-            <input type="button" id="approvaltrue" value="承認する" onclick="location.href='/group/{{$groupId}}/approvaltrue?count={{ $count }}'">
+        <td>
+            <input type="button" id="approvaltrue" value="承認する" onclick="location.href='/group/{{$groupId}}/approval-true?count={{ $count }}'">
             <input type="button" id="approvalfalse" value="拒否する" onclick="location.href='/group/{{$groupId}}/approvalfalse?count={{ $count }}'">
         </td>
       </tr>

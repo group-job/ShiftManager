@@ -913,6 +913,406 @@ be a descendant of the grid when it is being dragged.
 .fc-time-grid-event .fc-resizer:after {
   content: "="; }
 
+/*!
+ * FullCalendar Scheduler v1.0.2
+ * Docs & License: http://fullcalendar.io/scheduler/
+ * (c) 2015 Adam Shaw
+ */
+/* TODO: break this file up */
+/* Scroll Pane
+--------------------------------------------------------------------------------------------------*/
+.fc-scrollpane {
+  overflow: hidden;
+  /* for clipping scrollbars */
+  position: relative;
+  /* so things like scrollfollowers can attach to this */ }
+
+.fc-scrollpane-inner {
+  overflow: hidden;
+  /* for clipping inner content */
+  position: relative;
+  /* origin for bg */
+  box-sizing: border-box;
+  /* so that padding (for gutter) will be part of height */
+  min-height: 100%; }
+
+.fc-scrollpane-inner > .fc-bg {
+  z-index: 1;
+  /* make default? */ }
+
+.fc-scrollpane-inner > .fc-content {
+  z-index: 2;
+  /* make default? */
+  position: relative;
+  /* origin for inner content */ }
+
+.fc-no-scrollbars::-webkit-scrollbar {
+  /* might be applied to scrollpane-scroller */
+  /* supresses rendering of native scrollbars */
+  width: 0;
+  height: 0; }
+
+/* View Structure
+--------------------------------------------------------------------------------------------------*/
+.fc-rtl .fc-timeline {
+  direction: rtl; }
+
+.fc-timeline .fc-divider {
+  width: 3px;
+  border-style: double;
+  /* overcome neighboring borders */ }
+
+.fc-timeline .fc-head > tr > .fc-divider {
+  border-bottom: 0; }
+
+.fc-timeline .fc-body > tr > .fc-divider {
+  border-top: 0; }
+
+.fc-timeline .fc-body .fc-divider.ui-widget-header {
+  background-image: none; }
+
+.fc-scrolled .fc-head .fc-scrollpane {
+  z-index: 2;
+  /* so drop shadow will go above body panes */ }
+
+.fc-timeline.fc-scrolled .fc-head .fc-scrollpane {
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.075); }
+
+.fc-timeline .fc-body .fc-scrollpane {
+  z-index: 1; }
+
+.fc-timeline .fc-scrollpane-inner > .fc-content,
+.fc-timeline .fc-scrollpane-inner > .fc-bg {
+  margin: -1px; }
+
+/* Table Cell Common
+--------------------------------------------------------------------------------------------------*/
+.fc-timeline th,
+.fc-timeline td {
+  white-space: nowrap; }
+
+.fc-timeline .fc-cell-content {
+  overflow: hidden; }
+
+.fc-timeline .fc-cell-text {
+  padding-left: 4px;
+  padding-right: 4px; }
+
+.fc-timeline .fc-col-resizer {
+  cursor: col-resize; }
+
+/*
+Cells at the start of a week
+TODO: figure out better styling
+
+.fc-ltr .fc-timeline .fc-em-cell div {
+	border-left: 3px solid #eee;
+	height: 100%;
+}
+.fc-rtl .fc-timeline .fc-em-cell {
+	border-right-width: 3px;
+}
+*/
+/* head */
+.fc-timeline th {
+  vertical-align: middle; }
+
+.fc-timeline .fc-head .fc-cell-content {
+  padding-top: 3px;
+  padding-bottom: 3px; }
+
+/* body */
+.fc-timeline .fc-body .ui-widget-content {
+  background-image: none; }
+
+/* Resource Area
+--------------------------------------------------------------------------------------------------*/
+.fc-resource-area {
+  width: 30%; }
+
+.fc-resource-area col {
+  width: 40%;
+  min-width: 70px;
+  /* will be read by JS */ }
+
+.fc-resource-area col.fc-main-col {
+  width: 60%;
+  /* make the first column in a nested setup bigger */ }
+
+.fc-flat .fc-expander-space {
+  /* fc-flat is opposite of fc-nested */
+  display: none; }
+
+.fc-ltr .fc-resource-area tr > * {
+  text-align: left; }
+
+.fc-rtl .fc-resource-area tr > * {
+  text-align: right; }
+
+.fc-resource-area .fc-cell-content {
+  padding-left: 4px;
+  padding-right: 4px; }
+
+/* head */
+.fc-resource-area .fc-super th {
+  text-align: center; }
+
+.fc-resource-area th > div {
+  position: relative; }
+
+.fc-resource-area th .fc-cell-content {
+  position: relative;
+  z-index: 1; }
+
+.fc-resource-area th .fc-col-resizer {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  width: 5px; }
+
+.fc-ltr .fc-resource-area th .fc-col-resizer {
+  right: -3px; }
+
+.fc-rtl .fc-resource-area th .fc-col-resizer {
+  left: -3px; }
+
+/* body */
+tr.fc-collapsed > td,
+tr.fc-transitioning > td {
+  /* during the transition */
+  overflow: hidden;
+  /* prevents absolutely-positioned events from bleeding out */ }
+
+tr.fc-transitioning > td > div {
+  transition: margin-top 0.2s; }
+
+tr.fc-collapsed > td > div {
+  margin-top: -10px; }
+
+.fc-body .fc-resource-area .fc-cell-content {
+  /* might BE the cell */
+  padding-top: 8px;
+  padding-bottom: 8px; }
+
+.fc-no-overlap .fc-body .fc-resource-area .fc-cell-content {
+  /* might BE the cell */
+  padding-top: 5px;
+  padding-bottom: 5px; }
+
+.fc-resource-area .fc-icon {
+  /* the expander and spacers before the expander */
+  font-size: .9em;
+  vertical-align: middle;
+  margin-top: -2%; }
+
+.fc-resource-area .fc-expander {
+  cursor: pointer;
+  color: #666; }
+
+/* Time Area
+--------------------------------------------------------------------------------------------------*/
+.fc-time-area col {
+  min-width: 2.2em;
+  /* detected by JS */ }
+
+/* head */
+.fc-ltr .fc-time-area .fc-chrono th {
+  text-align: left; }
+
+.fc-rtl .fc-time-area .fc-chrono th {
+  text-align: right; }
+
+/* body slats (vertical lines) */
+.fc-time-area .fc-slats {
+  /* fc-bg is responsible for a lot of this now! */
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; }
+
+.fc-time-area .fc-slats table {
+  height: 100%; }
+
+.fc-time-area .fc-slats .fc-minor {
+  border-style: dotted; }
+
+.fc-time-area .fc-slats td {
+  border-width: 0 1px;
+  /* need to do this. sometimes -1 margin wouldn't hide the dotted */ }
+
+.fc-ltr .fc-time-area .fc-slats td {
+  border-right-width: 0; }
+
+.fc-rtl .fc-time-area .fc-slats td {
+  border-left-width: 0; }
+
+/* body content containers
+   can be within rows or directly within the pane's content
+*/
+.fc-time-area .fc-bgevent-container,
+.fc-time-area .fc-highlight-container {
+  position: absolute;
+  z-index: 2;
+  /* only for directly within pane. not for row. overridden later */
+  top: 0;
+  bottom: 0;
+  width: 0; }
+
+.fc-ltr .fc-time-area .fc-helper-container,
+.fc-ltr .fc-time-area .fc-bgevent-container,
+.fc-ltr .fc-time-area .fc-highlight-container {
+  left: 0; }
+
+.fc-rtl .fc-time-area .fc-helper-container,
+.fc-rtl .fc-time-area .fc-bgevent-container,
+.fc-rtl .fc-time-area .fc-highlight-container {
+  right: 0; }
+
+.fc-time-area .fc-bgevent,
+.fc-time-area .fc-highlight {
+  position: absolute;
+  top: 0;
+  bottom: 0; }
+
+/* body resource rows */
+.fc-time-area .fc-rows {
+  position: relative;
+  z-index: 3; }
+
+.fc-time-area .fc-rows .ui-widget-content {
+  background: none; }
+
+.fc-time-area .fc-rows td > div {
+  position: relative; }
+
+.fc-time-area .fc-rows .fc-bgevent-container,
+.fc-time-area .fc-rows .fc-highlight-container {
+  z-index: 1; }
+
+.fc-time-area .fc-event-container {
+  position: relative;
+  z-index: 2;
+  /* above bgevent and highlight */
+  width: 0;
+  /* for event positioning. will end up on correct side based on dir */ }
+
+.fc-time-area .fc-helper-container {
+  /* also an fc-event-container */
+  position: absolute;
+  z-index: 3;
+  top: 0; }
+
+.fc-time-area .fc-event-container {
+  padding-bottom: 8px;
+  top: -1px; }
+
+.fc-time-area tr:first-child .fc-event-container {
+  top: 0; }
+
+.fc-no-overlap .fc-time-area .fc-event-container {
+  padding-bottom: 0;
+  top: 0; }
+
+/* Time Grid Events
+--------------------------------------------------------------------------------------------------*/
+.fc-timeline-event {
+  position: absolute;
+  border-radius: 0;
+  padding: 2px 0;
+  margin-bottom: 1px; }
+
+.fc-no-overlap .fc-timeline-event {
+  padding: 5px 0;
+  margin-bottom: 0; }
+
+/* don't overlap grid lines at the event's end */
+.fc-ltr .fc-timeline-event {
+  margin-right: 1px; }
+
+.fc-rtl .fc-timeline-event {
+  margin-left: 1px; }
+
+.fc-timeline-event .fc-content {
+  padding: 0 1px;
+  white-space: nowrap;
+  overflow: hidden; }
+
+.fc-timeline-event .fc-time {
+  font-weight: bold;
+  padding: 0 1px; }
+
+.fc-rtl .fc-timeline-event .fc-time {
+  display: inline-block;
+  /* will force it on the other side */ }
+
+.fc-timeline-event .fc-title {
+  padding: 0 1px; }
+
+.fc-timeline-event .fc-resizer:after {
+  width: 1px;
+  /* activate! */ }
+
+/* follower logic */
+.fc-ltr .fc-timeline-event .fc-title {
+  padding-left: 10px;
+  margin-left: -8px; }
+
+.fc-rtl .fc-timeline-event .fc-title {
+  padding-right: 10px;
+  margin-right: -8px; }
+
+.fc-ltr .fc-timeline-event.fc-not-start .fc-title {
+  margin-left: -2px; }
+
+.fc-rtl .fc-timeline-event.fc-not-start .fc-title {
+  margin-right: -2px; }
+
+.fc-timeline-event.fc-not-start .fc-title,
+.fc-body .fc-time-area .fc-following {
+  position: relative; }
+
+.fc-timeline-event.fc-not-start .fc-title:before,
+.fc-body .fc-time-area .fc-following:before {
+  /* generic arrow */
+  content: "";
+  position: absolute;
+  top: 50%;
+  margin-top: -5px;
+  border: 5px solid #000;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  opacity: .5; }
+
+.fc-ltr .fc-timeline-event.fc-not-start .fc-title:before,
+.fc-ltr .fc-body .fc-time-area .fc-following:before {
+  /* LTR. left pointing arrow */
+  border-left: 0;
+  left: 2px; }
+
+.fc-rtl .fc-timeline-event.fc-not-start .fc-title:before,
+.fc-rtl .fc-body .fc-time-area .fc-following:before {
+  /* RTL. right pointing arrow */
+  border-right: 0;
+  right: 2px; }
+
+/* License Message
+--------------------------------------------------------------------------------------------------*/
+.fc-license-message {
+  position: absolute;
+  z-index: 99999;
+  bottom: 1px;
+  left: 1px;
+  background: #eee;
+  border-color: #ddd;
+  border-style: solid;
+  border-width: 1px 1px 0 0;
+  padding: 2px 4px;
+  font-size: 12px;
+  border-top-right-radius: 3px; }
+
 .alertify,
 .alertify-show,
 .alertify-log {
@@ -1345,7 +1745,7 @@ be a descendant of the grid when it is being dragged.
 
 @charset "UTF-8";
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
+ * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
@@ -1598,10 +1998,10 @@ th {
   -moz-osx-font-smoothing: grayscale; }
 
 .glyphicon-asterisk:before {
-  content: "\002a"; }
+  content: "\2a"; }
 
 .glyphicon-plus:before {
-  content: "\002b"; }
+  content: "\2b"; }
 
 .glyphicon-euro:before,
 .glyphicon-eur:before {
@@ -3665,9 +4065,6 @@ output {
     color: #999; }
   .form-control::-webkit-input-placeholder {
     color: #999; }
-  .form-control::-ms-expand {
-    border: 0;
-    background-color: transparent; }
   .form-control[disabled], .form-control[readonly],
   fieldset[disabled] .form-control {
     background-color: #eeeeee;
@@ -4105,7 +4502,7 @@ select[multiple].input-lg,
 
 @media (min-width: 768px) {
   .form-horizontal .form-group-lg .control-label {
-    padding-top: 11px;
+    padding-top: 14.333333px;
     font-size: 18px; } }
 
 @media (min-width: 768px) {
@@ -4182,10 +4579,13 @@ fieldset[disabled] a.btn {
   .btn-default:active, .btn-default.active,
   .open > .btn-default.dropdown-toggle {
     background-image: none; }
-  .btn-default.disabled:hover, .btn-default.disabled:focus, .btn-default.disabled.focus, .btn-default[disabled]:hover, .btn-default[disabled]:focus, .btn-default[disabled].focus,
+  .btn-default.disabled, .btn-default.disabled:hover, .btn-default.disabled:focus, .btn-default.disabled.focus, .btn-default.disabled:active, .btn-default.disabled.active, .btn-default[disabled], .btn-default[disabled]:hover, .btn-default[disabled]:focus, .btn-default[disabled].focus, .btn-default[disabled]:active, .btn-default[disabled].active,
+  fieldset[disabled] .btn-default,
   fieldset[disabled] .btn-default:hover,
   fieldset[disabled] .btn-default:focus,
-  fieldset[disabled] .btn-default.focus {
+  fieldset[disabled] .btn-default.focus,
+  fieldset[disabled] .btn-default:active,
+  fieldset[disabled] .btn-default.active {
     background-color: #fff;
     border-color: #ccc; }
   .btn-default .badge {
@@ -4219,10 +4619,13 @@ fieldset[disabled] a.btn {
   .btn-primary:active, .btn-primary.active,
   .open > .btn-primary.dropdown-toggle {
     background-image: none; }
-  .btn-primary.disabled:hover, .btn-primary.disabled:focus, .btn-primary.disabled.focus, .btn-primary[disabled]:hover, .btn-primary[disabled]:focus, .btn-primary[disabled].focus,
+  .btn-primary.disabled, .btn-primary.disabled:hover, .btn-primary.disabled:focus, .btn-primary.disabled.focus, .btn-primary.disabled:active, .btn-primary.disabled.active, .btn-primary[disabled], .btn-primary[disabled]:hover, .btn-primary[disabled]:focus, .btn-primary[disabled].focus, .btn-primary[disabled]:active, .btn-primary[disabled].active,
+  fieldset[disabled] .btn-primary,
   fieldset[disabled] .btn-primary:hover,
   fieldset[disabled] .btn-primary:focus,
-  fieldset[disabled] .btn-primary.focus {
+  fieldset[disabled] .btn-primary.focus,
+  fieldset[disabled] .btn-primary:active,
+  fieldset[disabled] .btn-primary.active {
     background-color: #337ab7;
     border-color: #2e6da4; }
   .btn-primary .badge {
@@ -4256,10 +4659,13 @@ fieldset[disabled] a.btn {
   .btn-success:active, .btn-success.active,
   .open > .btn-success.dropdown-toggle {
     background-image: none; }
-  .btn-success.disabled:hover, .btn-success.disabled:focus, .btn-success.disabled.focus, .btn-success[disabled]:hover, .btn-success[disabled]:focus, .btn-success[disabled].focus,
+  .btn-success.disabled, .btn-success.disabled:hover, .btn-success.disabled:focus, .btn-success.disabled.focus, .btn-success.disabled:active, .btn-success.disabled.active, .btn-success[disabled], .btn-success[disabled]:hover, .btn-success[disabled]:focus, .btn-success[disabled].focus, .btn-success[disabled]:active, .btn-success[disabled].active,
+  fieldset[disabled] .btn-success,
   fieldset[disabled] .btn-success:hover,
   fieldset[disabled] .btn-success:focus,
-  fieldset[disabled] .btn-success.focus {
+  fieldset[disabled] .btn-success.focus,
+  fieldset[disabled] .btn-success:active,
+  fieldset[disabled] .btn-success.active {
     background-color: #5cb85c;
     border-color: #4cae4c; }
   .btn-success .badge {
@@ -4293,10 +4699,13 @@ fieldset[disabled] a.btn {
   .btn-info:active, .btn-info.active,
   .open > .btn-info.dropdown-toggle {
     background-image: none; }
-  .btn-info.disabled:hover, .btn-info.disabled:focus, .btn-info.disabled.focus, .btn-info[disabled]:hover, .btn-info[disabled]:focus, .btn-info[disabled].focus,
+  .btn-info.disabled, .btn-info.disabled:hover, .btn-info.disabled:focus, .btn-info.disabled.focus, .btn-info.disabled:active, .btn-info.disabled.active, .btn-info[disabled], .btn-info[disabled]:hover, .btn-info[disabled]:focus, .btn-info[disabled].focus, .btn-info[disabled]:active, .btn-info[disabled].active,
+  fieldset[disabled] .btn-info,
   fieldset[disabled] .btn-info:hover,
   fieldset[disabled] .btn-info:focus,
-  fieldset[disabled] .btn-info.focus {
+  fieldset[disabled] .btn-info.focus,
+  fieldset[disabled] .btn-info:active,
+  fieldset[disabled] .btn-info.active {
     background-color: #5bc0de;
     border-color: #46b8da; }
   .btn-info .badge {
@@ -4330,10 +4739,13 @@ fieldset[disabled] a.btn {
   .btn-warning:active, .btn-warning.active,
   .open > .btn-warning.dropdown-toggle {
     background-image: none; }
-  .btn-warning.disabled:hover, .btn-warning.disabled:focus, .btn-warning.disabled.focus, .btn-warning[disabled]:hover, .btn-warning[disabled]:focus, .btn-warning[disabled].focus,
+  .btn-warning.disabled, .btn-warning.disabled:hover, .btn-warning.disabled:focus, .btn-warning.disabled.focus, .btn-warning.disabled:active, .btn-warning.disabled.active, .btn-warning[disabled], .btn-warning[disabled]:hover, .btn-warning[disabled]:focus, .btn-warning[disabled].focus, .btn-warning[disabled]:active, .btn-warning[disabled].active,
+  fieldset[disabled] .btn-warning,
   fieldset[disabled] .btn-warning:hover,
   fieldset[disabled] .btn-warning:focus,
-  fieldset[disabled] .btn-warning.focus {
+  fieldset[disabled] .btn-warning.focus,
+  fieldset[disabled] .btn-warning:active,
+  fieldset[disabled] .btn-warning.active {
     background-color: #f0ad4e;
     border-color: #eea236; }
   .btn-warning .badge {
@@ -4367,10 +4779,13 @@ fieldset[disabled] a.btn {
   .btn-danger:active, .btn-danger.active,
   .open > .btn-danger.dropdown-toggle {
     background-image: none; }
-  .btn-danger.disabled:hover, .btn-danger.disabled:focus, .btn-danger.disabled.focus, .btn-danger[disabled]:hover, .btn-danger[disabled]:focus, .btn-danger[disabled].focus,
+  .btn-danger.disabled, .btn-danger.disabled:hover, .btn-danger.disabled:focus, .btn-danger.disabled.focus, .btn-danger.disabled:active, .btn-danger.disabled.active, .btn-danger[disabled], .btn-danger[disabled]:hover, .btn-danger[disabled]:focus, .btn-danger[disabled].focus, .btn-danger[disabled]:active, .btn-danger[disabled].active,
+  fieldset[disabled] .btn-danger,
   fieldset[disabled] .btn-danger:hover,
   fieldset[disabled] .btn-danger:focus,
-  fieldset[disabled] .btn-danger.focus {
+  fieldset[disabled] .btn-danger.focus,
+  fieldset[disabled] .btn-danger:active,
+  fieldset[disabled] .btn-danger.active {
     background-color: #d9534f;
     border-color: #d43f3a; }
   .btn-danger .badge {
@@ -4706,15 +5121,13 @@ tbody.collapse.in {
 
 .btn-group-vertical > .btn:first-child:not(:last-child) {
   border-top-right-radius: 4px;
-  border-top-left-radius: 4px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0; }
 
 .btn-group-vertical > .btn:last-child:not(:first-child) {
+  border-bottom-left-radius: 4px;
   border-top-right-radius: 0;
-  border-top-left-radius: 0;
-  border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px; }
+  border-top-left-radius: 0; }
 
 .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
   border-radius: 0; }
@@ -4765,8 +5178,6 @@ tbody.collapse.in {
     float: left;
     width: 100%;
     margin-bottom: 0; }
-    .input-group .form-control:focus {
-      z-index: 3; }
 
 .input-group-addon,
 .input-group-btn,
@@ -5415,7 +5826,7 @@ tbody.collapse.in {
   .pagination > li > a:hover, .pagination > li > a:focus,
   .pagination > li > span:hover,
   .pagination > li > span:focus {
-    z-index: 2;
+    z-index: 3;
     color: #23527c;
     background-color: #eeeeee;
     border-color: #ddd; }
@@ -5423,7 +5834,7 @@ tbody.collapse.in {
   .pagination > .active > span,
   .pagination > .active > span:hover,
   .pagination > .active > span:focus {
-    z-index: 3;
+    z-index: 2;
     color: #fff;
     background-color: #337ab7;
     border-color: #337ab7;
@@ -5615,9 +6026,7 @@ a.badge:hover, a.badge:focus {
     border-top-color: #d5d5d5; }
   .container .jumbotron,
   .container-fluid .jumbotron {
-    border-radius: 6px;
-    padding-left: 15px;
-    padding-right: 15px; }
+    border-radius: 6px; }
   .jumbotron .container {
     max-width: 100%; }
   @media screen and (min-width: 768px) {
@@ -6416,12 +6825,8 @@ button.close {
 
 .modal-header {
   padding: 15px;
-  border-bottom: 1px solid #e5e5e5; }
-  .modal-header:before, .modal-header:after {
-    content: " ";
-    display: table; }
-  .modal-header:after {
-    clear: both; }
+  border-bottom: 1px solid #e5e5e5;
+  min-height: 16.428571429px; }
 
 .modal-header .close {
   margin-top: -2px; }
@@ -6772,8 +7177,7 @@ button.close {
   font-size: 20px;
   color: #fff;
   text-align: center;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-  background-color: transparent; }
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6); }
   .carousel-control.left {
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
     background-repeat: repeat-x;
@@ -6866,14 +7270,14 @@ button.close {
   .carousel-control .icon-next {
     width: 30px;
     height: 30px;
-    margin-top: -10px;
+    margin-top: -15px;
     font-size: 30px; }
   .carousel-control .glyphicon-chevron-left,
   .carousel-control .icon-prev {
-    margin-left: -10px; }
+    margin-left: -15px; }
   .carousel-control .glyphicon-chevron-right,
   .carousel-control .icon-next {
-    margin-right: -10px; }
+    margin-right: -15px; }
   .carousel-caption {
     left: 20%;
     right: 20%;
