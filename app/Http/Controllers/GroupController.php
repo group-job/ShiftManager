@@ -213,6 +213,8 @@ class GroupController extends BaseController
                 ->first();
        return $group;
     }
+    $group = Group::find(groupId);
+    $managerName = $group->user->manager_mame;
 
     //既に申請済みか確認(false=未申請 true=申請済み)
     public function checkApply($groupId='default'){

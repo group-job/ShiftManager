@@ -7561,7 +7561,9 @@ body {
   background-color: #d6e1e3; }
 
 #calendar {
-  height: 600px; }
+  height: 600px;
+  position: relative;
+  top: -50px; }
 
 /* 日曜日 */
 .fc-sun {
@@ -7610,8 +7612,6 @@ body {
   border: 1px solid #0e5ca4; }
 
 #explanatory-notes {
-  position: relative;
-  top: -40px;
   list-style-type: none; }
   #explanatory-notes li {
     float: left;
