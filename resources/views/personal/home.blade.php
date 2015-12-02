@@ -12,25 +12,26 @@
 @include('personal.part-personal-calendar')
 @endsection
 @section('title-space')
-<div class="col-md-offset-4 col-md-4"><h1>マイシフト</h1></div>
+<div class="col-md-offset-5 col-md-4"><h1>マイシフト</h1></div>
 @stop
 @section('contents-space')
 {{-- メッセージ --}}
 @if (Session::has('errorMessage'))
   <script type="text/javascript">
-    alertify.error("{!!Session::get('errorMessage')!!}");    
+    alertify.error("{!!Session::get('errorMessage')!!}");
   </script>
 @endif
 {{-- カレンダー --}}
-<div id='calendar'></div>
+<div id='calendar'>
 {{-- カレンダーイベントの凡例 --}}
-<div class="col-md-offset-3">
-  <ul id="explanatory-notes">
-    <li><div class="circle" id="circle0"></div>希望</li>
-    <li><div class="circle" id="circle1"></div>仮確定</li>
-    <li><div class="circle" id="circle2"></div>確定</li>
-    <li><div class="circle" id="circle3"><span class="circle-text">赤文字</span></div>削除依頼中</li>
-  </ul>
+  <div class="col-md-offset-2">
+    <ul id="explanatory-notes">
+      <li><div class="circle" id="circle0"></div>希望</li>
+      <li><div class="circle" id="circle1"></div>仮確定</li>
+      <li><div class="circle" id="circle2"></div>確定</li>
+      <li><div class="circle" id="circle3"><span class="circle-text">赤文字</span></div>削除依頼中</li>
+    </ul>
+  </div>
 </div>
 {{-- 削除依頼ボタンのフォーム --}}
 <form action="/personal/request-delete" id="form-request-delete" class="form-horizontal" method="post">
@@ -126,12 +127,4 @@
     <button type="button" id="btn-add-add-shift" class="btn btn-calendar btn-success col-md-offset-5 col-md-3">追加</button>
   </form>
 </div>
-{{-- テスト用フォーム --}}
-<form action="/personal/reply" id="test-form" class="form-horizontal" method="post">
-  <input type="hidden" name="_token" value="{{ csrf_token() }}">
-  <input type="hidden" name="shift_id" value="4">
-  <input type="hidden" name="shift-status" value="2">
-  <button type="submit" class="btn btn-danger event-detail-tooltip"  title="This is my div's tooltip message!" style="position:absolute; z-index:1; ">test</button>
-</form>
-
 @stop

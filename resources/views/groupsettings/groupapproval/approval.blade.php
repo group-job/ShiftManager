@@ -42,7 +42,7 @@
         <td>
           {{ $employment->name }}&emsp;さん
         </td>
-        <td>
+        <td> 
             <input type="button" id="approvaltrue" value="承認する" onclick="location.href='/group/{{$groupId}}/approvaltrue?count={{ $count }}'">
             <input type="button" id="approvalfalse" value="拒否する" onclick="location.href='/group/{{$groupId}}/approvalfalse?count={{ $count }}'">
         </td>
