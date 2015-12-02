@@ -1,6 +1,6 @@
 <!-- レイアウトの継承 -->
 @extends('common.layout')
-<link rel="stylesheets" type="text/scss" href="resources/assets/sass/home.scss">
+<!--<link rel="stylesheets" type="text/scss" href="resources/assets/sass/home.scss">-->
 @section('title')
 ヘルプ
 @stop
@@ -11,19 +11,19 @@
 
 <!-- この中身にかく -->
 @section('main-contents')
-<!--
+
 <style type="text/css">
-    ul.example li ul {
+    ul.help li ul {
     margin: 0 0 0 1em;
     padding: 0;
     }
 </style>
--->
+
 
 <h1>ヘルプ</h1>
 
 <div>
-    <ul class="example">
+    <ul class="help">
         <li><a href="#smoothplay1">このサイトについて</a></li>
         <li>使い方
             <ul>

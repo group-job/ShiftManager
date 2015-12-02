@@ -45,7 +45,7 @@ class GroupController extends BaseController
      */
      public function getShift($groupId='default'){
        $this->params($groupId);
-       return view('group.join-shift',$this->compact);
+       return view('Group.join-shift',$this->compact);
      }
 
      /**
