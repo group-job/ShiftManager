@@ -46,7 +46,7 @@ class GroupController extends BaseController
      */
      public function getShift($groupId='default'){
        $this->params($groupId);
-       return view('Group.join-shift',$this->compact);
+       return view('group.join-shift',$this->compact);
      }
 
      /**
@@ -212,7 +212,7 @@ class GroupController extends BaseController
      * @param  [type] $employment_id [description]
      * @return [type]                [description]
      */
-<<<<<<< HEAD
+
     // public function getApprovalTrue($groupId)
     // {
     //     session_start();
