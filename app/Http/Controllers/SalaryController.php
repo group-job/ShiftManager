@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Shift;
 use App\Group;
+use App\Employment;
 use Auth;
 use Input;
 
@@ -15,15 +16,23 @@ class SalaryController extends BaseController
 
   public function getList()
   {
-    $groupid[]=Employment::where('user_id','=',Auth::user()->id)->group_id();
+    $groupids;
+    foreach(Auth::user()->employments as $value){
+      $cheaktime=strcmp($value->end_date,'0000-00-00');
+      if(!$cheaktime){
+        $groupids[]=$value->group_id;
+      }
+    }
+    dd($groupids);
+    
+    
     $saarly_arry;
     foreach(Auth::user()->rates as $value){
     $saarly_arry[]=$value->rate;
     $saarly_arry[]=$value->user_id;
     }
-    dd($saarly_arry);
     //echo ($saarly_arry);
-    return view('salary.list');
+    return view('salary.list',compact('groupids'));
   }
 
   public function getManager()
