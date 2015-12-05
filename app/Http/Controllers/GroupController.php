@@ -21,6 +21,7 @@ class GroupController extends BaseController
 {
   private $compact;
 
+
   /**
    * グループIDとグループ名をViewへ渡す
    * @param  [type] $groupId [description]
@@ -30,14 +31,12 @@ class GroupController extends BaseController
   {
     $group = Group::find($groupId);
     if (isset($group)) {
+      foreach ($group as $value) {
         $groupName = $group->group_name;
-    }else{
-      // Session::put('errorMessage', '指定されたグループは存在しません') ;
-      redirect('/personal/home');
-    }
+      }
     $this->compact = compact('groupId','groupName');
+    }
   }
-
 
     /**
      * グループ作成用の画面表示
@@ -45,7 +44,6 @@ class GroupController extends BaseController
      * @return Response
      */
      public function getShift($groupId='default'){
-       $this->params($groupId);
        return view('group.join-shift',$this->compact);
      }
 

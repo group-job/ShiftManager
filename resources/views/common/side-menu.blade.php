@@ -46,8 +46,7 @@
       </div>
 
     <li>
-      <span class="glyphicon glyphicon-plus">{!! link_to('/group_create/edit', 'グループ追加') !!}
-      </a>
+      <div class="glyphicon glyphicon-plus" style="float:left;"></div><a href="/group_create/edit">グループ追加</a>
     </li>
   </ul>
   {{-- end of #side-menu-content --}}
