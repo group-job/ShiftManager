@@ -33,8 +33,14 @@ class GroupController extends BaseController
       foreach ($group as $value) {
         $groupName = $group->group_name;
       }
+    }else{
+      // Session::put('errorMessage', '指定されたグループは存在しません') ;
+      $view = redirect('/personal/home');
+      return $view;
+      }
     $this->compact = compact('groupId','groupName');
     }
+<<<<<<< HEAD
   }
   public function commonParams($groupId)
   {
@@ -44,18 +50,29 @@ class GroupController extends BaseController
       return compact('groupId','groupName');
     }
   }
+=======
+>>>>>>> 04f27068a1c6efa93385d4bf701bcb118011b93d
 
     /**
      * グループ作成用の画面表示
-     *
-     * @return Response
+     * @param  [type] $groupId [description]
+     * @return [type]          [description]
      */
+<<<<<<< HEAD
      public function getShift($groupId){
        $commonParams = $this->commonParams($groupId);
        if (Auth::user()->id === Group::find($groupId)->manager_id) {
          # code...
        }
        return view('group.join-shift',$commonParams,compact('group'));
+=======
+    public function getShift($groupId){
+       $flg = $this->params($groupId);
+       if (isset($flg)){
+         return $flg;
+       }
+       return view('group.join-shift',$this->compact);
+>>>>>>> 04f27068a1c6efa93385d4bf701bcb118011b93d
      }
 
      /**
