@@ -7562,8 +7562,9 @@ body {
 
 #calendar {
   height: 600px;
+  width: 1000px;
   position: relative;
-  top: -50px; }
+  top: -20px; }
 
 /* 日曜日 */
 .fc-sun {

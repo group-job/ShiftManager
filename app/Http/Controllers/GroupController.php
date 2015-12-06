@@ -21,7 +21,6 @@ class GroupController extends BaseController
 {
   private $compact;
 
-
   /**
    * グループIDとグループ名をViewへ渡す
    * @param  [type] $groupId [description]
@@ -37,14 +36,26 @@ class GroupController extends BaseController
     $this->compact = compact('groupId','groupName');
     }
   }
+  public function commonParams($groupId)
+  {
+    $group = Group::find($groupId);
+    if (isset($group)) {
+      $groupName = $group->group_name;
+      return compact('groupId','groupName');
+    }
+  }
 
     /**
      * グループ作成用の画面表示
      *
      * @return Response
      */
-     public function getShift($groupId='default'){
-       return view('group.join-shift',$this->compact);
+     public function getShift($groupId){
+       $commonParams = $this->commonParams($groupId);
+       if (Auth::user()->id === Group::find($groupId)->manager_id) {
+         # code...
+       }
+       return view('group.join-shift',$commonParams,compact('group'));
      }
 
      /**
@@ -96,7 +107,7 @@ class GroupController extends BaseController
                 ->get();
        return view('groupsettings.groupapproval.approval',$this->compact,compact('employments'));
      }
-     
+
      public function postApprove($groupId='default'){
          $this->params($groupId);
          $forms = Input::all();
