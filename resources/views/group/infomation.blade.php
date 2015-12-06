@@ -1,4 +1,4 @@
-@extends('Group.home')
+@extends('group.home')
 
 @section('tab-space')
 <br>

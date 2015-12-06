@@ -21,6 +21,7 @@ class GroupController extends BaseController
 {
   private $compact;
 
+
   /**
    * グループIDとグループ名をViewへ渡す
    * @param  [type] $groupId [description]
@@ -30,22 +31,23 @@ class GroupController extends BaseController
   {
     $group = Group::find($groupId);
     if (isset($group)) {
+      foreach ($group as $value) {
         $groupName = $group->group_name;
+      }
     }else{
       // Session::put('errorMessage', '指定されたグループは存在しません') ;
       $view = redirect('/personal/home');
       return $view;
-    }
+      }
     $this->compact = compact('groupId','groupName');
-  }
-
+    }
 
     /**
      * グループ作成用の画面表示
-     *
-     * @return Response
+     * @param  [type] $groupId [description]
+     * @return [type]          [description]
      */
-     public function getShift($groupId='default'){
+    public function getShift($groupId){
        $flg = $this->params($groupId);
        if (isset($flg)){
          return $flg;
@@ -103,6 +105,30 @@ class GroupController extends BaseController
        return view('groupsettings.groupapproval.approval',$this->compact,compact('employments'));
      }
 
+     public function postApprove($groupId='default'){
+         $this->params($groupId);
+         $forms = Input::all();
+         $approve_flg = false;
+         if(Input::get('approve') == "承認する"){
+             $approve_flg = true;
+         }else if(Input::get('approve') == "拒否する"){
+             $approve_flg = false;
+         }
+         if($approve_flg){
+             //承認処理
+            $today = new DateTime();
+            Employment::where('id','=',Input::get('employment_id'))
+                    ->where('group_id','=',$groupId)
+                    ->update(['start_date'=> $today->format('Y-m-d')]);
+         }else{
+             //拒否処理
+            Employment::where('id','=',Input::get('employment_id'))
+                    ->where('group_id','=',$groupId)
+                    ->delete();
+         }
+         return redirect('/group/'.$groupId.'/approval');
+     }
+
     /**
      * メンバー申請用の画面表示
      *
@@ -125,7 +151,12 @@ class GroupController extends BaseController
        $this->params($groupId);
        // $this->loadModel('GroupApply',compact('id'));
     //   $GroupApply->userApply($id);
-       $this->userApply($groupId);
+       $checkgroup = $this->checkGroup($groupId);
+       $checkapply = $this->checkApply($groupId);
+       $checkregistration = $this->checkRegistration($groupId);
+       if($checkgroup && !$checkapply && !$checkregistration){
+        $this->userApply($groupId);
+       }
        return redirect('/personal/home');
      }
 
@@ -187,18 +218,19 @@ class GroupController extends BaseController
      * @param  [type] $employment_id [description]
      * @return [type]                [description]
      */
-    public function getApprovalTrue($groupId)
-    {
-      dd($_SESSION);
-        if(!empty($_SESSION["employments_id"])){
-            $today = new DateTime();
-            $count = (int)$_GET["count"];
-            Employment::where('id','=',$_SESSION["employments_id"][$count])
-                    ->where('group_id','=',$groupId)
-                    ->update(['start_date'=> $today->format('Y-m-d')]);
-        }
-        return redirect('/group/'.$groupId.'/approval');
-    }
+
+    // public function getApprovalTrue($groupId)
+    // {
+    //     session_start();
+    //     if(!empty($_SESSION["employments_id"])){
+    //         $today = new DateTime();
+    //         $count = (int)$_GET["count"];
+    //         Employment::where('id','=',$_SESSION["employments_id"][$count])
+    //                 ->where('group_id','=',$groupId)
+    //                 ->update(['start_date'=> $today->format('Y-m-d')]);
+    //     }
+    //     return $this->getApproval($groupId);
+    // }
 
     /**
      * 拒否
@@ -206,17 +238,17 @@ class GroupController extends BaseController
      * @param  [type] $employment_id [description]
      * @return [type]                [description]
      */
-    public function getApprovalFalse($groupId)
-    {
-        session_start();
-        if(!empty($_SESSION["employments_id"])){
-            $count = $_GET['count'];
-            Employment::where('id','=',$_SESSION["employments_id"][$count])
-                    ->where('group_id','=',$groupId)
-                    ->delete();
-            return $this->getApproval($groupId);
-        }
-    }
+    // public function getApprovalFalse($groupId)
+    // {
+    //     session_start();
+    //     if(!empty($_SESSION["employments_id"])){
+    //         $count = $_GET['count'];
+    //         Employment::where('id','=',$_SESSION["employments_id"][$count])
+    //                 ->where('group_id','=',$groupId)
+    //                 ->delete();
+    //         return $this->getApproval($groupId);
+    //     }
+    // }
 
     /**
      * 申請追加データベース処理
