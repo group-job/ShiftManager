@@ -16,10 +16,10 @@
       とりまる
     </td>
     <td>
-       750円(時給)
+       {{ $salary_arry[1] }}円({{ $salary_arry[2] }})
     </td>
     <td>
-      {{ $groupids[] }}
+      30000
     </td>
   </tr>
   <tr>

@@ -1,4 +1,4 @@
-@extends('getApply()roup.home')
+@extends('group.home')
 
 @section('tab-space')
 <script>
