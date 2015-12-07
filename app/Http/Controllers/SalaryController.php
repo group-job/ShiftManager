@@ -16,28 +16,20 @@ class SalaryController extends BaseController
 
   public function getList()
   {
-    $groupids;
-    foreach(Auth::user()->employments as $value){
-      $cheaktime=strcmp($value->end_date,'0000-00-00');
-      if(!$cheaktime){
-        $groupids[]=$value->group_id;
-      }
+    if('2014-12-16'<  date("Y-m-j"))
+    {
+      $ifn="ガンダム";
     }
-    dd($groupids);
     
+    $salary_arry=$this->getRate();
     
-    $saarly_arry;
-    foreach(Auth::user()->rates as $value){
-    $saarly_arry[]=$value->rate;
-    $saarly_arry[]=$value->user_id;
-    }
-    //echo ($saarly_arry);
-    return view('salary.list',compact('groupids'));
+    return view('salary.list',compact('salary_arry'));
   }
 
   public function getManager()
   {
-    return view('salary.manager');
+    $salary_arry=$this->getRate();
+    return view('salary.manager',compact('salary_arry'));
   }
 
   public function getShow(){
@@ -47,8 +39,33 @@ class SalaryController extends BaseController
     return view('salary.home',compact('field1,field2'));
   }
   
-  public function Show(){
-    return 0;
+  private function getRate(){
+    $groupids;
+    $salary_arry;
+    foreach(Auth::user()->employments as $value){
+      $cheaktime=strcmp($value->end_date,'0000-00-00');
+      if(!$cheaktime){
+        $groupids=$value->group_id;
+        foreach(Auth::user()->rates as $value1){
+          $cheakgroup=strcmp($value1->group_id,$groupids);
+          if(!$cheakgroup){
+            $salary_arry[]=$value1->group_id;
+            $salary_arry[]=$value1->rate;
+            switch($value1->rate_category){
+             case(0):
+               $salary_arry[]="時給";
+               break;
+             case(1):
+               $salary_arry[]="日給";
+               break;
+            }
+            $salary_arry[]=$value1->start_date;
+            $salary_arry[]=$value1->end_date;
+          }
+        }
+      }
+    }
+    return $salary_arry;
   }
   
   public function itex(){
