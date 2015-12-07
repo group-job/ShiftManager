@@ -33,6 +33,7 @@ elixir(function(mix) {
       '../../../'+paths.tooltipster+"css/tooltipster.css",
       'app.scss',
       'home.scss',
+      'group.scss',
       'invite.scss',
       'apply.scss'
     ]); // app.scssをコンパイルして、public/css/app.css に出力

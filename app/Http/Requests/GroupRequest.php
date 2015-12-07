@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use App\Group;
 
 class GroupRequest extends Request
 {
@@ -13,7 +14,9 @@ class GroupRequest extends Request
      */
     public function authorize()
     {
-        return true;
+        $groupId = $this->route('groupId');
+        // 指定されたグループが存在しない場合、ここで弾いいて403エラー
+        return (Group::find($groupId)!==null);
     }
 
     /**
@@ -24,8 +27,7 @@ class GroupRequest extends Request
     public function rules()
     {
         return [
-            'group_name' => 'required',
         ];
     }
-    
+
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Auth;
+use Session;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -91,6 +92,7 @@ class AuthController extends Controller
     //ログアウト処理してログイン画面へリダイレクト
     public function getLogout(){
       Auth::logout();
+      Session::flush();
       return redirect('/');
     }
     //ログイン画面へリダイレクト(/loginのルーティングが標準で実装しているため)

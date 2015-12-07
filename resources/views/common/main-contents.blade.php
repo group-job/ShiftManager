@@ -5,7 +5,6 @@
       @section('title-space')
       @show
     </div>
-    <br><br>
     <div id="contents-space" class="container">
       @section('contents-space')
       @show
