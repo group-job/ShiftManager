@@ -40,13 +40,14 @@ class PersonalController extends BaseController
     }
     $calendarEventsJson = json_encode($calendarEvents);
     $employments = Auth::user()->employments;
-    $joiningGroups;
+    $joiningGroups = null;
     foreach ($employments as $value) {
       $joiningGroups[] = Group::find($value->group_id);
     }
     $managingGroups = Auth::user()->groups;
     //$calendarEventsJsonは personal.home内のpart-create-calendar.blade.phpに渡す
-    Session::reflash();
+    // dd(Session::get('errorMessage'));
+    // Session::reflash();
     return view('personal.home',compact('calendarEventsJson','managingGroups','joiningGroups'));
   }
 
@@ -63,7 +64,7 @@ class PersonalController extends BaseController
       $shift->status = 3;
       $shift->save();
     }else {
-      Session::flash('errorMessage', '削除依頼に失敗しました');
+      // Session::flash('errorMessage', '削除依頼に失敗しました');
       return redirect('/personal/home');
     }
   }

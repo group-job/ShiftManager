@@ -1,5 +1,4 @@
 @extends('common.layout')
-
 {{-- タイトル部分の表示 --}}
   @section('title-space')
     <div class="container">
@@ -26,6 +25,7 @@
   @endsection
   @section('contents-space')
     <div class="tab-content">
+      <br />
       @yield('tab-space')
     </div>
   @endsection

@@ -5,17 +5,17 @@
   <script>
   $(document).ready(function() {
     // =========================カレンダー描画====================================
-    $('#calendar').fullCalendar({
+    $('#manager-calendar').fullCalendar({
       //ライセンス
       schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
       //ヘッダー設定
       header: {
-               // title, prev, next, prevYear, nextYear, today
-               left: 'prev,next today',
-               center: 'title',
-               right: 'month,agendaWeek'
-           },
-      aspectRatio: 1.9,
+        left: 'prev',
+        center: 'title',
+        right: 'next'
+      },
+      height:200,
+      aspectRatio: 1.5,
       buttonText: {
         // today: '今日'
       },

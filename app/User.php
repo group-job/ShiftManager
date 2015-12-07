@@ -40,4 +40,8 @@ class User extends Model implements AuthenticatableContract,
    {
        return $this->hasMany(Rate::class);
    }
+   public function cahts()
+   {
+       return $this->hasMany(Chat::class);
+   }
 }
