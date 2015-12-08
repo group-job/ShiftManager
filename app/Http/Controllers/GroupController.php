@@ -10,6 +10,7 @@ use App\Group;
 use App\Employment;
 use App\User;
 use App\Chat;
+use App\Confirmation;
 use App\Http\Requests\GroupRequest;
 use App\Http\Requests\ChatRequest;
 use Auth;
@@ -37,7 +38,8 @@ class GroupController extends BaseController
       return $view;
       }
     $this->compact = compact('groupId','groupName');
-  }
+    }
+
   public function commonParams($groupId)
   {
     $group = Group::find($groupId);
@@ -55,7 +57,6 @@ class GroupController extends BaseController
      * @param  [type] $groupId [description]
      * @return [type]          [description]
      */
-
      public function getShift($groupId){
        $calendarEvents = array();
        $calendarEventsJson = json_encode($calendarEvents);
@@ -77,7 +78,6 @@ class GroupController extends BaseController
            return redirect('/personal/home');
          }
        }
-
      }
 
      /**
@@ -234,6 +234,7 @@ class GroupController extends BaseController
       $chatLog = array();
       foreach ($chat as $value) {
         $chatParams  = array(
+          'id'   => $value->id,
           'text' => $value->text,
           'name' => $value->user->name,
           'date' => substr($value->date, 0, 10),
@@ -256,6 +257,14 @@ class GroupController extends BaseController
         $this->createChat($request, $date);
       }else{
       }
+    }
+
+    public function postCheckInfomation(Request $request)
+    {
+      Confirmation::create([
+          'chat_id' => $request->chatId,
+          'user_id' => Auth::user()->id,
+      ]);
     }
 
     /**
@@ -376,14 +385,14 @@ class GroupController extends BaseController
     }
 
     /**
-     * db登録
+     *  チャットdb登録
      * @param  [type] $request  [description]
      * @param  [type] $date     [description]
      * @param  [type] $category [description]
      */
     public function createChat($request, $date)
     {
-      $chat = Chat::create([
+      Chat::create([
           'user_id' => Auth::user()->id,
           'group_id' => $request->id,
           'date' => $date,

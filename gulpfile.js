@@ -66,4 +66,8 @@ elixir(function(mix) {
         mix.scripts([
           'chat.js'
         ],'public/js/chat.js')
+
+        mix.scripts([
+          'infomation.js'
+        ],'public/js/infomation.js')
 });

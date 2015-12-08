@@ -11,7 +11,7 @@ function store(button){
       '_token': $('meta[name=csrf-token]').attr('content'),
       'text': document.getElementById("chat-text").value,
       'id': groupId,
-      'category': 0,
+      'category': 1,
     },
     function (data) {
     });
@@ -34,7 +34,7 @@ $(function(){
       {
         '_token': $('meta[name=csrf-token]').attr('content'),
         'id': groupId,
-        'category': 0,
+        'category': 1,
       },
       function (data) {
         var chatLog ="";
@@ -43,6 +43,8 @@ $(function(){
             chatLog += "<div class='text-center'>"+data[i + 1]["date"]+"</div>";
           }
           chatLog += data[i]["time"]+"に"+data[i]["name"]+"が"+data[i]["text"]+"って言ってる<br>";
+          // TODO: 連絡ボード用のボタンを追加　idを指定し、同じ関数からnameの値を参照できる関数を探す。
+          chatLog += "<input type='button' class='btn btn-primary  col-lg-2 col-lg-offset-2' idata-loading-text='送信中' value='送信' id = 'post-chat'>";
           if (i != data.length - 1) {
             if(data[i]["date"] != data[i + 1]["date"]){
               chatLog += "<div class='text-center'>"+data[i + 1]["date"]+"</div>";
