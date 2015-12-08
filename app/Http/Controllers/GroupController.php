@@ -10,6 +10,7 @@ use App\Group;
 use App\Employment;
 use App\User;
 use App\Chat;
+use App\Confirmation;
 use App\Http\Requests\GroupRequest;
 use App\Http\Requests\ChatRequest;
 use Auth;
@@ -30,9 +31,7 @@ class GroupController extends BaseController
   {
     $group = Group::find($groupId);
     if (isset($group)) {
-      foreach ($group as $value) {
         $groupName = $group->group_name;
-      }
     }else{
       // Session::put('errorMessage', '指定されたグループは存在しません') ;
       $view = redirect('/personal/home');
@@ -40,8 +39,7 @@ class GroupController extends BaseController
       }
     $this->compact = compact('groupId','groupName');
     }
-<<<<<<< HEAD
-  }
+
   public function commonParams($groupId)
   {
     $group = Group::find($groupId);
@@ -50,29 +48,18 @@ class GroupController extends BaseController
       return compact('groupId','groupName');
     }
   }
-=======
->>>>>>> 04f27068a1c6efa93385d4bf701bcb118011b93d
 
     /**
      * グループ作成用の画面表示
      * @param  [type] $groupId [description]
      * @return [type]          [description]
      */
-<<<<<<< HEAD
      public function getShift($groupId){
        $commonParams = $this->commonParams($groupId);
        if (Auth::user()->id === Group::find($groupId)->manager_id) {
          # code...
        }
        return view('group.join-shift',$commonParams,compact('group'));
-=======
-    public function getShift($groupId){
-       $flg = $this->params($groupId);
-       if (isset($flg)){
-         return $flg;
-       }
-       return view('group.join-shift',$this->compact);
->>>>>>> 04f27068a1c6efa93385d4bf701bcb118011b93d
      }
 
      /**
@@ -208,6 +195,7 @@ class GroupController extends BaseController
       $chatLog = array();
       foreach ($chat as $value) {
         $chatParams  = array(
+          'id'   => $value->id,
           'text' => $value->text,
           'name' => $value->user->name,
           'date' => substr($value->date, 0, 10),
@@ -230,6 +218,14 @@ class GroupController extends BaseController
         $this->createChat($request, $date);
       }else{
       }
+    }
+
+    public function postCheckInfomation(Request $request)
+    {
+      Confirmation::create([
+          'chat_id' => $request->chatId,
+          'user_id' => Auth::user()->id,
+      ]);
     }
 
     /**
@@ -353,14 +349,14 @@ class GroupController extends BaseController
     }
 
     /**
-     * db登録
+     *  チャットdb登録
      * @param  [type] $request  [description]
      * @param  [type] $date     [description]
      * @param  [type] $category [description]
      */
     public function createChat($request, $date)
     {
-      $chat = Chat::create([
+      Chat::create([
           'user_id' => Auth::user()->id,
           'group_id' => $request->id,
           'date' => $date,
