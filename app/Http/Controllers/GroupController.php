@@ -38,12 +38,8 @@ class GroupController extends BaseController
       return $view;
       }
     $this->compact = compact('groupId','groupName');
-<<<<<<< HEAD
     }
 
-=======
-  }
->>>>>>> origin/master
   public function commonParams($groupId)
   {
     $group = Group::find($groupId);
@@ -61,15 +57,6 @@ class GroupController extends BaseController
      * @param  [type] $groupId [description]
      * @return [type]          [description]
      */
-<<<<<<< HEAD
-     public function getShift($groupId){
-       $commonParams = $this->commonParams($groupId);
-       if (Auth::user()->id === Group::find($groupId)->manager_id) {
-         # code...
-       }
-       return view('group.join-shift',$commonParams,compact('group'));
-=======
-
      public function getShift($groupId){
        $calendarEvents = array();
        $calendarEventsJson = json_encode($calendarEvents);
@@ -93,8 +80,6 @@ class GroupController extends BaseController
            return redirect('/personal/home');
          }
        }
-
->>>>>>> origin/master
      }
 
      /**
