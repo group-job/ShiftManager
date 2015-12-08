@@ -21,7 +21,7 @@ class BaseController extends Controller
     }
 
     //雇用取得
-    $employment = Auth::user()->employments;
+    $employment = Auth::user()->joiningEmployments;
     //雇用からグループ取得
     if (isset($employment)) {
       $join_group = array();
