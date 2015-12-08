@@ -6,15 +6,16 @@
   $(document).ready(function() {
     // =========================スケジューラー描画====================================
     $('#manager-scheduler').fullCalendar({
-      resourceAreaWidth: 230,
+      resourceAreaWidth: 150,
+      height:400,
       defaultDate: '2015-12-07',
       editable: true,
       aspectRatio: 1.5,
-      scrollTime: '00:00',
+      scrollTime: '00:30',
       header: {
         left: 'promptResource today prev,next',
         center: 'title',
-        right: 'timelineDay,timelineThreeDays,agendaWeek,month'
+        right: 'timelineDay,agendaWeek,month'
       },
       customButtons: {
         promptResource: {

@@ -1,7 +1,8 @@
 @extends('group.home')
 @section('title')
 グループシフト
-@stop
+{{-- <link href='/css/scheduler.css' rel='stylesheet' /> --}}
+@endsection
 @section('modify-js')
 @parent
 @include('group.part-manager-calendar')

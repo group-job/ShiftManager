@@ -67,12 +67,10 @@ class GroupController extends BaseController
          if (Auth::user()->id === Group::find($groupId)->manager_id) {
            //管理グループ
            $group = Group::find($groupId);
-           echo "管理グループ";
            return view('group.manage-shift',$commonParams,compact('calendarEventsJson','group'));
          }else if(Employment::where('user_id',Auth::user()->id)->where('group_id', $groupId)->count() !== 0){
            //参加グループ
            $group = Group::find($groupId);
-           echo "参加グループ";
            return view('group.join-shift',$commonParams,compact('group'));
          }else{
            Session::flash('errorMessage', '指定されたグループへのアクセス権がありません') ;
