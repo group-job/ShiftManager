@@ -62,5 +62,3 @@ $(function(){
 },intervalTime);
 
 });
-
-//# sourceMappingURL=chat.js.map

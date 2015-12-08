@@ -3,7 +3,7 @@
  * @param  {[type]} category [description]
  * @return {[type]}          [description]
  */
-function store(button){
+function store(){
   $.post(
     "store-chat",
     {
@@ -83,5 +83,3 @@ $(function(){
 });
 
 //# sourceMappingURL=chat.js.map
-
-//# sourceMappingURL=infomation.js.map
