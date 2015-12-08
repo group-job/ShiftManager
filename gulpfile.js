@@ -16,7 +16,7 @@ var elixir = require('laravel-elixir');
      'jquery': 'bower_components/jquery/',
      'bootstrap': 'bower_components/bootstrap-sass-official/assets/',
      'fullcalendar' : 'bower_components/fullcalendar/',
-     'scheduler' : 'bower_components/fullcalendar-scheduler/',
+    //  'scheduler' : 'bower_components/fullcalendar-scheduler/',
      'alertify' : 'bower_components/alertify/',
      'moment' : 'bower_components/moment/',
      'tooltipster' : 'bower_components/tooltipster/',
@@ -33,6 +33,7 @@ elixir(function(mix) {
       '../../../'+paths.tooltipster+"css/tooltipster.css",
       'app.scss',
       'home.scss',
+      'group.scss',
       'invite.scss',
       'apply.scss'
     ]); // app.scssをコンパイルして、public/css/app.css に出力
@@ -42,10 +43,12 @@ elixir(function(mix) {
 
        // jquery.jsと bootstrap.jsを結合して、public/js/app.jsに出力
        mix.scripts([
-            paths.jquery + "dist/jquery.js",
-            paths.bootstrap + "javascripts/bootstrap.js",
+
+
             // paths.moment+"src/moment.js",
             "resources/assets/fullcalendar/moment.min.js", //bowerでいれたmoment.jsがなぜかエラーはくので
+            paths.jquery + "dist/jquery.js",
+            paths.bootstrap + "javascripts/bootstrap.js",
             paths.fullcalendar + "dist/fullcalendar.js",
             paths.scheduler + "dist/scheduler.js",
             paths.alertify + "alertify.js",

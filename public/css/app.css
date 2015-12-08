@@ -7157,10 +7157,12 @@ body {
   background-color: #d6e1e3; }
 
 #calendar {
-  height: 600px;
   width: 1000px;
   position: relative;
   top: -20px; }
+
+.fc-center {
+  position: relative; }
 
 /* 日曜日 */
 .fc-sun {
@@ -7272,6 +7274,61 @@ body {
 
 .option-managing-group-add-shift {
   background: red; }
+
+@charset "UTF-8";
+#manager-calendar {
+  width: 250px;
+  margin-top: 100px;
+  /* 土曜日 */ }
+  #manager-calendar .fc-row {
+    min-height: 0; }
+  #manager-calendar .fc-button {
+    width: 0px;
+    padding: 0;
+    border: 0; }
+  #manager-calendar .fc-toolbar {
+    width: 200px;
+    position: relative;
+    left: 20px; }
+    #manager-calendar .fc-toolbar h2 {
+      font-size: 1em;
+      position: relative;
+      top: 18px; }
+  #manager-calendar .fc-icon {
+    position: relative;
+    top: 10; }
+  #manager-calendar .fc-icon-rifht-single-arrow {
+    position: relative;
+    left: -50px; }
+  #manager-calendar .fc-sun {
+    color: red;
+    background-color: #fff0f0; }
+  #manager-calendar .fc-sat {
+    color: blue;
+    background-color: #f0f0ff; }
+  #manager-calendar .fc {
+    width: 700px;
+    margin: 0 auto; }
+  #manager-calendar .fc-event {
+    color: #333333; }
+
+#manager-scheduler {
+  width: 800px;
+  height: 500px; }
+
+.theme-event-detail-tooltip {
+  width: 200px;
+  height: 140px;
+  border-radius: 3px;
+  border: 2px solid #000;
+  background: rgba(83, 122, 128, 0.77);
+  color: #fff; }
+
+.theme-event-detail-tooltip .tooltipster-content {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 8px 10px; }
 
 
 /* button

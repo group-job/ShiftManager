@@ -1,5 +1,4 @@
 @extends('common.layout')
-
 {{-- タイトル部分の表示 --}}
   @section('title-space')
     <div class="container">
@@ -20,12 +19,16 @@
       <li><a href="/group/{{ $groupId or 'グループId' }}/shift">シフト表</a></li>
       <li><a href="/group/{{ $groupId or 'グループId' }}/infomation">連絡ボード</a></li>
       <li><a href="/group/{{ $groupId or 'グループId' }}/chat">チャット</a></li>
+      @if(Auth::user()->id === $group->manager_id)
+        <li><a href="/group/{{ $groupId or 'グループId' }}/setting">設定</a></li>
+      @endif
       {{-- <li class="active"><a href="/group/{{ $groupId }}/join-shift" data-toggle="tab">設定</a></li> --}}
     </ul>
   </div>{{-- タイトル --}}
   @endsection
   @section('contents-space')
     <div class="tab-content">
+      <br />
       @yield('tab-space')
     </div>
   @endsection

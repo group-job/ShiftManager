@@ -10,6 +10,7 @@ use App\Group;
 use App\Employment;
 use App\Http\Requests\GroupRequest;
 use Auth;
+use Session;
 
 
 class GroupCreateController extends BaseController
@@ -29,7 +30,7 @@ class GroupCreateController extends BaseController
 * @param  GroupRequest
 * @return View
 */
-public function postStore(GroupRequest $request)
+public function postStore(Request $request)
 {
   //ユーザidの追加
   $request["manager_id"] = Auth::user()->id;

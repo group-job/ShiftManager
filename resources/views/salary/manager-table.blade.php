@@ -47,16 +47,16 @@
     {{-- フォーム終了 --}}
     <tr>
       <td>
-        日給
+        {{ $salary_arry[2] }}
       </td>
       <td>
-        3750
+        {{ $salary_arry[1] }}円
       </td>
       <td>
-          2015/09/01
+          {{ $salary_arry[3] }}
       </td>
       <td>
-        未入力
+        {{ $salary_arry[4] }}
       </td>
       <td>
         <input type="button" name="name" value="変更">

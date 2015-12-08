@@ -6,6 +6,8 @@
   $(document).ready(function() {
     // =========================カレンダー描画====================================
     $('#calendar').fullCalendar({
+      //ライセンス
+      schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
       //ヘッダー設定
       header: {
                // title, prev, next, prevYear, nextYear, today
@@ -13,7 +15,7 @@
                center: 'title',
                right: 'month,agendaWeek'
            },
-
+      aspectRatio: 1.9,
       buttonText: {
         // today: '今日'
       },

@@ -1,0 +1,74 @@
+// home.scss
+// カラー定義インポート
+@import "resources/assets/sass/_color.scss";
+
+// ---------------------------カレンダーのスタイル上書き----------------------------
+#manager-calendar{
+  width: 250px;
+  margin-top: 100px;
+  .fc-row{
+   min-height: 0;
+  }
+  .fc-button{
+    width: 0px;
+    padding: 0;
+    border: 0;
+  }
+  .fc-toolbar{
+    width: 200px;
+    position: relative;
+    left: 20px;
+    h2{
+      font-size: 1em;
+      position: relative;
+      top: 18px;
+    }
+  }
+  .fc-icon{
+    position: relative;
+    top:10;
+  }
+  .fc-icon-rifht-single-arrow{
+    position: relative;
+    left: -50px;
+  }
+  .fc-sun {
+    color: red;
+    background-color: #fff0f0;
+  }
+
+  /* 土曜日 */
+  .fc-sat {
+    color: blue;
+    background-color: #f0f0ff;
+  }
+  .fc{
+    width: 700px;
+    margin: 0 auto;
+  }
+
+  .fc-event{
+  color: $default-calendar-color;
+  }
+}
+  // ===========================schedulerカスタムスタイル========================
+#manager-scheduler{
+  width: 800px;
+  height: 500px;
+}
+  // ===========================tooltipsterカスタムスタイル========================
+.theme-event-detail-tooltip{
+  width: 200px;
+  height: 140px;
+  border-radius: 3px;
+  border: 2px solid #000;
+  background: rgba(#537a80, 0.77);
+  color: #fff;
+}
+.theme-event-detail-tooltip .tooltipster-content {
+  font-family: Arial, sans-serif;
+	font-size: 14px;
+	line-height: 16px;
+	padding: 8px 10px;
+}
+// ================================カレンダー内のボタン･フォーム============================

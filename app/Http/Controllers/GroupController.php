@@ -38,14 +38,21 @@ class GroupController extends BaseController
       return $view;
       }
     $this->compact = compact('groupId','groupName');
+<<<<<<< HEAD
     }
 
+=======
+  }
+>>>>>>> origin/master
   public function commonParams($groupId)
   {
     $group = Group::find($groupId);
-    if (isset($group)) {
+    if (isset($group)){
       $groupName = $group->group_name;
       return compact('groupId','groupName');
+    }else {
+      Session::flash('errorMessage', '指定されたグループは存在しません') ;
+      exit (redirect('/personal/home'));
     }
   }
 
@@ -54,12 +61,40 @@ class GroupController extends BaseController
      * @param  [type] $groupId [description]
      * @return [type]          [description]
      */
+<<<<<<< HEAD
      public function getShift($groupId){
        $commonParams = $this->commonParams($groupId);
        if (Auth::user()->id === Group::find($groupId)->manager_id) {
          # code...
        }
        return view('group.join-shift',$commonParams,compact('group'));
+=======
+
+     public function getShift($groupId){
+       $calendarEvents = array();
+       $calendarEventsJson = json_encode($calendarEvents);
+       if (!$this->checkGroup($groupId)) {
+         Session::flash('errorMessage', '指定されたグループは存在しません') ;
+         return redirect('/personal/home');
+       }else {
+         $commonParams = $this->commonParams($groupId);
+         if (Auth::user()->id === Group::find($groupId)->manager_id) {
+           //管理グループ
+           $group = Group::find($groupId);
+           echo "管理グループ";
+           return view('group.manage-shift',$commonParams,compact('calendarEventsJson','group'));
+         }else if(Employment::where('user_id',Auth::user()->id)->where('group_id', $groupId)->count() !== 0){
+           //参加グループ
+           $group = Group::find($groupId);
+           echo "参加グループ";
+           return view('group.join-shift',$commonParams,compact('group'));
+         }else{
+           Session::flash('errorMessage', '指定されたグループへのアクセス権がありません') ;
+           return redirect('/personal/home');
+         }
+       }
+
+>>>>>>> origin/master
      }
 
      /**
@@ -80,6 +115,27 @@ class GroupController extends BaseController
      {
        $this->params($groupId);
        return view('group.chat',$this->compact);
+     }
+     /*
+      *チャットの表示
+      */
+     public function getSetting($groupId='default')
+     {
+       if (!$this->checkGroup($groupId)) {
+         Session::flash('errorMessage', '指定されたグループは存在しません') ;
+         return redirect('/personal/home');
+       }else {
+         $commonParams = $this->commonParams($groupId);
+         if (Auth::user()->id === Group::find($groupId)->manager_id) {
+           //管理グループ
+           $group = Group::find($groupId);
+           echo "管理グループ";
+           return view('group.settings',$commonParams,compact('calendarEventsJson','group'));
+         }else{
+           Session::flash('errorMessage', '指定されたグループへのアクセス権がありません') ;
+           return redirect('/personal/home');
+         }
+       }
      }
 
     /**
@@ -239,7 +295,7 @@ class GroupController extends BaseController
     // {
     //     session_start();
     //     if(!empty($_SESSION["employments_id"])){
-    //         $today = new DateTime();
+    //         $today = new ();
     //         $count = (int)$_GET["count"];
     //         Employment::where('id','=',$_SESSION["employments_id"][$count])
     //                 ->where('group_id','=',$groupId)
@@ -337,14 +393,11 @@ class GroupController extends BaseController
      * @param  [type] $id [description]
      * @return [type]     [description]
      */
-    public function checkGroup($groupId='default'){
-        //同一ユーザが同一グループに申請済みか取得レコード数で確認
-        $group = Group::where('id','=',$groupId)
-                        ->count();
-        if($group == 0){
-            return false;
-        }else{
+    public function checkGroup($groupId){
+        if(Group::find($groupId) !== null){
             return true;
+        }else{
+            return false;
         }
     }
 
