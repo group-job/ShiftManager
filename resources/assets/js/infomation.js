@@ -27,16 +27,22 @@ function show(){
                     +data[i]["name"]+
                     "</span><span style='margin-right: 20px;'></span><span class='label-success'>"+data[i]["text"]+"</span>";
         // TODO: 連絡ボード用のボタンを追加　idを指定し、同じ関数からnameの値を参照できる関数を探す。
-        if (data[i]["check"] == 0) {
-          chatLog += "<input type='button' class='btn btn-primary' value='確認' id ="+ data[i]["id"] +" onclick = 'check(this)'></div>";
+        if (data[i]["check"]) {
+          chatLog += "<input type='button' class='btn btn-primary' value='確認' id ="+ data[i]["id"] +" onclick = 'check(this)'>";
         }else{
           chatLog += "<input type='button' class='btn disabled' value='確認' id ="+ data[i]["id"] +"disabled>";
           // for (var j = 0; j < data[i]["check"].length; j++) {
             // chatLog += "<input type='button' class='btn btn-primary' value='確認した人表示' id ="+ data[i]["check"][j].user_id +" onclick = 'checkPerson(this)'>";
             // chatLog += data[i]["check"][j].user_id;
           // }
-          chatLog += "確認している人は"+data[i]["checkPerson"] +"</div>";
+
         }
+        if(data[i]["checkPerson"] != null){
+            chatLog += "確認済みリスト："+data[i]["checkPerson"] +"</div>";
+        }else{
+          chatLog += "</div>";
+        }
+
 
         if (i != data.length - 1) {
           if(data[i]["date"] != data[i + 1]["date"]){

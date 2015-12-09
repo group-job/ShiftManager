@@ -38,7 +38,7 @@ function show(){
 
         }
         if(data[i]["checkPerson"] != null){
-            chatLog += data[i]["checkPerson"] +"が確認しています。</div>";
+            chatLog += "確認済みリスト："+data[i]["checkPerson"] +"</div>";
         }else{
           chatLog += "</div>";
         }
@@ -100,5 +100,7 @@ $(function(){
 },intervalTime);
 
 });
+
+//# sourceMappingURL=infomation.js.map
 
 //# sourceMappingURL=infomation.js.map
