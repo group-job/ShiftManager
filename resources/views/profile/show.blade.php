@@ -17,14 +17,14 @@
       {{ Session::get('user_name')}}
     </td>
   </tr>
-  <tr>
+  {{-- <tr>
     <td>
       電話番号：
     </td>
     <td>
       {{ $my_profile["phone1"] }}-{{ $my_profile["phone2"] }}-{{ $my_profile["phone3"] }}
     </td>
-  </tr>
+  </tr> --}}
   <tr>
     <td>
       メールアドレス：

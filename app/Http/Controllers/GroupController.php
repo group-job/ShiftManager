@@ -57,6 +57,7 @@ class GroupController extends BaseController
      * @return [type]          [description]
      */
      public function getShift($groupId){
+      //  dd(!$this->checkGroup($groupId));
        if (!$this->checkGroup($groupId)) {
          Session::flash('errorMessage', '指定されたグループは存在しません') ;
          return redirect('/personal/home');
