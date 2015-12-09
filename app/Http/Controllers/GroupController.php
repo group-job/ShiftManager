@@ -72,13 +72,14 @@ class GroupController extends BaseController
              //カレンダーイベントクリック時処理などに利用
              'id' => $value->id,
              'status' => $value->status,
-            //  'date' => $value->date,
-            //  'start_time' =>date('G:i', strtotime($value->start_time)),
-            //  'end_time' =>date('G:i', strtotime($value->end_time)),
+             'date' => $value->date,
+             'start_time' =>date('G:i', strtotime($value->start_time)),
+             'end_time' =>date('G:i', strtotime($value->end_time)),
              'note' => $value->note,
+             'name' => $value->user->name,
              //ここから下カレンダー描画に必要
              'resourceId' =>$value->user_id,
-             'className' => 'event-status'.$value->status,
+             'className' => ['event-status'.$value->status,'schedule-event'],
              'title' => $value->group->group_name,
              'start' => $value->date.'T'.$value->start_time,
              'end' => $value->date.'T'.$value->end_time,
@@ -124,7 +125,6 @@ class GroupController extends BaseController
      public function getSetting($groupId='default')
      {
        if (!$this->checkGroup($groupId)) {
-
          Session::flash('errorMessage', '指定されたグループは存在しません') ;
          return redirect('/personal/home');
        }else{
@@ -132,8 +132,7 @@ class GroupController extends BaseController
          if (Auth::user()->id === Group::find($groupId)->manager_id) {
            //管理グループ
            $group = Group::find($groupId);
-           echo "管理グループ";
-           return view('group.settings',$commonParams,compact('calendarEventsJson','group'));
+           return view('group.settings',$commonParams,compact('group'));
          }else{
            Session::flash('errorMessage', '指定されたグループへのアクセス権がありません') ;
            return redirect('/personal/home');

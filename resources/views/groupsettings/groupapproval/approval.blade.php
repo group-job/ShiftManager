@@ -30,13 +30,13 @@
     <!--  </td>-->
     <!--</tr>-->
     @foreach($employments as $employment)
-      <form name="approvalform" method="POST" action="/group/{{ $groupId }}/approve">
+      <form name="approvalform" method="POST" action="/group/{{ $group->id }}/approve">
       {!! Form::token() !!}
       <tr>
         <td>
           {{ $employment->name }}&emsp;さん
         </td>
-        <td> 
+        <td>
             <input type="hidden" name="employment_id" value="{{ $employment->id }}">
             <input type="submit" name="approve" value="承認する">
             <input type="submit" name="approve" value="拒否する">

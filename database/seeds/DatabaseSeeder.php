@@ -114,6 +114,15 @@ DB::table('shifts')->insert([
    'status' => '2',
    'note' => 'masuの確定グループシフト',
 ]);
+DB::table('shifts')->insert([
+   'user_id' => '3',
+   'group_id' => '1',
+   'date' => '2015-12-11',
+   'start_time' => '02:30',
+   'end_time' => '05:00',
+   'status' => '3',
+   'note' => 'masuの削除依頼グループシフト',
+]);
    DB::table('rates')->insert([
       'user_id' => '1',
       'group_id' => '1',
