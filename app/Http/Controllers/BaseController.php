@@ -15,23 +15,23 @@ class BaseController extends Controller
   public function __construct()
   {
     //管理グループ取得
-    $manager_group = Group::where('manager_id','=',Auth::user()->id)->get();
+    $manager_group = Auth::user()->groups;
     if (isset($manager_group)) {
-        View::share('manager_group',$manager_group);
+        View::share('manager_groups',$manager_group);
     }
 
     //雇用取得
-    $employment = Auth::user()->joiningEmployments;
+    $employments = Auth::user()->joiningEmployments;
     //雇用からグループ取得
-    if (isset($employment)) {
+    if (isset($employments)) {
       $join_group = array();
-      foreach ($employment as $value) {
+      foreach ($employments as $value) {
           if ($value->group) {
             array_push($join_group,$value->group);
           }
       }
       //viewに値を
-      View::share('join_group', $join_group);
+      View::share('join_groups', $join_group);
     }
   }
 }

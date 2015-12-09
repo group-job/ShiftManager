@@ -96,13 +96,13 @@
         <td>勤務先:</td>
         <td>
           <select id="input-group-add-shift" name="group_id">
-            @if(isset($joiningGroups))
-              @foreach($joiningGroups as $key => $value)
+            @if(isset($join_groups))
+              @foreach($join_groups as $key => $value)
               <option class="option-joining-group-add-shift" value="{{$value->id}}">{{$value->group_name}}</option>
               @endforeach
             @endif
-            @if(isset($managingGroups))
-              @foreach($managingGroups as $key => $value)
+            @if(isset($manage_groups))
+              @foreach($manage_groups as $key => $value)
               <option class="option-managing-group-add-shift" value="{{$value->id}}">{{$value->group_name}}</option>
               @endforeach
             @endif

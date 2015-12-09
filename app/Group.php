@@ -8,7 +8,7 @@ class Group extends Model
 {
     protected $fillable = ['group_name', 'manager_id'];
 
-    public function tasks()
+    public function shifts()
     {
       return $this->hasMany(Shift::class);
     }
