@@ -3,7 +3,7 @@
 @section('modify-js')
   @parent
   <script>
-    var groupId = {{ $groupId }};
+    var groupId = {{ $group->id }};
   </script>
   <script type="text/javascript" src="/js/chat.js"></script>
 @endsection

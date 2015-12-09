@@ -31,13 +31,15 @@ class GroupController extends BaseController
   {
     $group = Group::find($groupId);
     if (isset($group)) {
-        $groupName = $group->group_name;
+        // $groupName = $group->group_name;
     }else{
       // Session::put('errorMessage', '指定されたグループは存在しません') ;
       $view = redirect('/personal/home');
       return $view;
       }
-    $this->compact = compact('groupId','groupName');
+      $groupName = "aaaaa";
+      $groupId = 1;
+    $this->compact = compact('group');
     }
 
   public function commonParams($groupId)
@@ -122,9 +124,10 @@ class GroupController extends BaseController
      public function getSetting($groupId='default')
      {
        if (!$this->checkGroup($groupId)) {
+
          Session::flash('errorMessage', '指定されたグループは存在しません') ;
          return redirect('/personal/home');
-       }else {
+       }else{
          $commonParams = $this->commonParams($groupId);
          if (Auth::user()->id === Group::find($groupId)->manager_id) {
            //管理グループ
