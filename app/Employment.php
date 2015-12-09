@@ -9,10 +9,10 @@ class Employment extends Model
 {
   protected $guarded = ['id'];
   // 参加グループ一覧取得
-  public function scopeJoinGroup($query)
-  {
-    $query->where('user_id','=',Auth::user()->id);
-  }
+  // public function scopeJoinGroup($query)
+  // {
+  //   $query->where('user_id','=',Auth::user()->id);
+  // }
 
   public function user()
   {

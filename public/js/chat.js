@@ -37,20 +37,25 @@ $(function(){
         'category': 0,
       },
       function (data) {
-        var chatLog ="";
+        var chatLog ="<div class='row col-lg-offset-1 col-lg-10' style=''>";
         for (var i = 0; i < data.length; i++) {
           if (i == 0) {
-            chatLog += "<div class='text-center'>"+data[i + 1]["date"]+"</div>";
+            chatLog += "<div class='text-center container col-lg-12'>"+data[i]["date"]+"</div><br>";
           }
-          chatLog += data[i]["time"]+"に"+data[i]["name"]+"が"+data[i]["text"]+"って言ってる<br>";
+          chatLog += "<div class='container col-lg-10 col-lg-offset-1' style='margin-top: 5px;'>"+
+                      data[i]["time"]+"<span style='margin-right: 20px;'></span><span class='label-info'>"
+                      +data[i]["name"]+
+                      "</span><span style='margin-right: 20px;'></span><span class='label-success'>"+data[i]["text"]+"</span></div>";
           if (i != data.length - 1) {
             if(data[i]["date"] != data[i + 1]["date"]){
-              chatLog += "<div class='text-center'>"+data[i + 1]["date"]+"</div>";
+              chatLog += "<div class='text-center text-center row col-lg-12'>"+data[i + 1]["date"]+"</div>";
             }
           }
         }
+        chatLog += "</div>";
       $('#show-chat').html(chatLog);
       });
+
   }
 
   /**
@@ -62,7 +67,5 @@ $(function(){
 },intervalTime);
 
 });
-
-//# sourceMappingURL=chat.js.map
 
 //# sourceMappingURL=chat.js.map

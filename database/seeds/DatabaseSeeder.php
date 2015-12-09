@@ -122,7 +122,7 @@ DB::table('chats')->insert([
 ]);
 DB::table('confirmations')->insert([ //うっしーがきみ屋の連絡を確認
    'user_id' => '2',
-   'caht_id' => '2',
+   'chat_id' => '2',
 ]);
 
 

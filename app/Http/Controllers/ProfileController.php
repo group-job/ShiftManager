@@ -14,7 +14,7 @@ class ProfileController extends BaseController
     {
       \Session::put('user_name', 'きみや');
       \Session::put('user_id', '1');
-      $my_profile = User::myProfile()->find(1);
+      $my_profile = User::find();
       // foreach ($my_profile as $key => $value) {
       //   echo $value["name"];
       // }

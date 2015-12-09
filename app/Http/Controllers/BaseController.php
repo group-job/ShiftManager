@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Employment;
 use App\Group;
+use App\Chat;
 use Auth;
 use View;
 

@@ -31,11 +31,11 @@
       @include('profile.form.password')
     </td>
   </tr>
-  <tr>
+  {{-- <tr>
     <td>
       @include('profile.form.image')
     </td>
-  </tr>
+  </tr> --}}
 </tbody>
 </table>
 {{-- とりあえずここに --}}

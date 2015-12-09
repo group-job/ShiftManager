@@ -239,6 +239,7 @@ class GroupController extends BaseController
           'name' => $value->user->name,
           'date' => substr($value->date, 0, 10),
           'time' => substr($value->date, 11, 5),
+          'check' => $value->confirmations,
         );
         array_push($chatLog, $chatParams);
       }

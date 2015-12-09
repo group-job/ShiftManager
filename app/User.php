@@ -18,10 +18,6 @@ class User extends Model implements AuthenticatableContract,
     protected $table = 'users';
     protected $guarded = ['id'];
     protected $hidden = ['password', 'remember_token'];
-    public function scopeMyProfile($query)
-    {
-      $query->where('id','=',1);
-    }
 
     public function employments()
     {
