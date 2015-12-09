@@ -6,7 +6,7 @@
 <tbody>
   <tr>
     <td colspan="2">
-      <h1>{{ Session::get('user_name')}}さんのアカウント情報</h1>
+      <h1>{{ Auth::user()->name }}さんのアカウント情報</h1>
     </td>
   </tr>
   <tr>
@@ -14,7 +14,7 @@
       氏名：
     </td>
     <td>
-      {{ Session::get('user_name')}}
+      {{ Auth::user()->name }}
     </td>
   </tr>
   {{-- <tr>
@@ -30,7 +30,7 @@
       メールアドレス：
     </td>
     <td>
-      {{ $my_profile["email"] }}
+      {{ Auth::user()->email }}
     </td>
   </tr>
   <tr>

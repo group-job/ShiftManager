@@ -251,16 +251,40 @@ class GroupController extends BaseController
               $chat = Chat::log($request)->get();
           }
       $chatLog = array();
+      $checkPerson = array();
+      $check = true;
       foreach ($chat as $value) {
+        // if (isset($value->confirmations)) {
+                foreach ($value->confirmations as  $param){
+                  $person = User::find($param->user_id);
+                  array_push($checkPerson,$person->name);
+                  // $count = 0;
+                  //   if(Auth::user()->id == $param->user_id ){
+                  //     $count++;
+                  //   }else{
+                  //   }
+                  //   if ($count > 0) {
+                  //     $check = false;
+                  //   }
+                    if (isset($person)) {
+                      $check = false;
+                    }
+                }
+
+              // }
+
         $chatParams  = array(
           'id'   => $value->id,
           'text' => $value->text,
           'name' => $value->user->name,
           'date' => substr($value->date, 0, 10),
           'time' => substr($value->date, 11, 5),
-          'check' => $value->confirmations,
+          // 'check' => $value->confirmations,
+          'check' => $check,
+          'checkPerson' => $checkPerson,
         );
         array_push($chatLog, $chatParams);
+        $checkPerson = array();
       }
       return $chatLog;
     }

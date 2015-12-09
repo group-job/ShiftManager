@@ -5,8 +5,7 @@ jQuery(document).ready(function () {
       "store",
       {
         '_token': $('meta[name=csrf-token]').attr('content'),
-        type: "name",
-        value: document.getElementById("input-name").value,
+        'name': document.getElementById("input-name").value,
       },
       function (data) {
         // $('#alert').html("氏名を" + data + "に変更しました");
@@ -14,24 +13,9 @@ jQuery(document).ready(function () {
         // $('#sessionName').html(data);
       }
   );
+  document.getElementById("input-name").value = '';
   });
 
-  //電話番号変更処理
-    $("#button-phone").click(function (event) {
-      $.post(
-        "store",
-        {
-          '_token': $('meta[phone=csrf-token]').attr('content'),
-          type: "phone1",
-          value: document.getElementById("input-phone1").value,
-        },
-        function (data) {
-          // $('#alert').html("氏名を" + data + "に変更しました");
-          // $('#nowname').html(data);
-          // $('#sessionName').html(data);
-        }
-  );
-  });
 
   //メールアドレス変更処理
   $("#button-email").click(function (event) {
@@ -39,15 +23,11 @@ jQuery(document).ready(function () {
       "store",
       {
         '_token': $('meta[newemail=csrf-token]').attr('content'),
-        type: "email",
-        value: document.getElementById("input-email").value,
+        'email': document.getElementById("input-email").value,
       },
       function (data) {
-        // $('#alert').html("氏名を" + data + "に変更しました");
-        // $('#nowname').html(data);
-        // $('#sessionName').html(data);
-      }
-  );
+      });
+      document.getElementById("input-email").value ='';
   });
 
   //パスワード変更処理
@@ -93,3 +73,5 @@ jQuery(document).ready(function () {
     }, 400);
   });
 });
+
+//# sourceMappingURL=profile.js.map
