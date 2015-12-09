@@ -14,4 +14,4 @@
       </td>
     </tr>
   </table>
-    {!! Form::close() !!}
+  {!! Form::close() !!}
