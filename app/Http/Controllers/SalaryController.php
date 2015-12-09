@@ -16,13 +16,7 @@ class SalaryController extends BaseController
 
   public function getList()
   {
-    if('2014-12-16'<  date("Y-m-j"))
-    {
-      $ifn="ガンダム";
-    }
-    
     $salary_arry=$this->getRate();
-    
     return view('salary.list',compact('salary_arry'));
   }
 
@@ -39,38 +33,73 @@ class SalaryController extends BaseController
     return view('salary.home',compact('field1,field2'));
   }
   
-  private function getRate(){
+  private function getRate(){//現在所属、または今月まで所属していたグループの給与設定を取得するメソッドS
     $groupids;
     $salary_arry;
-    foreach(Auth::user()->employments as $value){
-      $cheaktime=strcmp($value->end_date,'0000-00-00');
-      if(!$cheaktime){
-        $groupids=$value->group_id;
+    $bool_array;
+    $groupids = $this->getGroup();
+    $cnt=0;
+    foreach($groupids as $value){
         foreach(Auth::user()->rates as $value1){
-          $cheakgroup=strcmp($value1->group_id,$groupids);
-          if(!$cheakgroup){
-            $salary_arry[]=$value1->group_id;
-            $salary_arry[]=$value1->rate;
+          if($value1->group_id==$value && ( strcmp($value1->end_date,'0000-00-00') || ($value1->end_date < date("Y-m", strtotime("+1 month")))))
+          {
+            $salary_arry[$cnt][0]=$value1->group->group_name;
+            $salary_arry[$cnt][]=$value1->rate;
             switch($value1->rate_category){
              case(0):
-               $salary_arry[]="時給";
+               $salary_arry[$cnt][]="時給";
                break;
              case(1):
-               $salary_arry[]="日給";
+               $salary_arry[$cnt][]="日給";
+               break;
+             case(2):
+               $salary_arry[$cnt][]="月給";
                break;
             }
-            $salary_arry[]=$value1->start_date;
-            $salary_arry[]=$value1->end_date;
+            $salary_arry[$cnt][]=$value1->start_date;
+            switch(strcmp($value1->end_date,'0000-00-00')){
+             case(false):
+               $salary_arry[$cnt][]="未入力";
+               break;
+             case(true):
+               $salary_arry[$cnt][]=$value1->end_date;
+               break;
+            }
+              $cnt+=1;
           }
         }
-      }
+        //$cnt+=1;
     }
+    //dd($salary_arry);
     return $salary_arry;
   }
   
-  public function itex(){
-  $mymonney = Auth::user()->shifts;
-   
-  return view('salary.manager'); 
+  private function getShiftTime(){//編集中
+    $result_array;
+    foreach(Auth::user()->shifts as $value)
+    {
+      
+    }
+    return $result_array; 
+  }
+  
+  private function getSalary(){//編集中
+    $result_array;
+    $rate=$this->getRate();
+    dd($rate[3]);
+    
+    return $result_array;
+  }
+  
+  private function getGroup(){//現在所属してるグループのIDを取得するメソッド
+  $result_array;
+   foreach(Auth::user()->employments as $value)
+  {
+    $cheaktime=strcmp($value->end_date,'0000-00-00');
+    if(!$cheaktime){
+      $result_array[]=$value->group_id;
+    }
+  }
+  return $result_array; 
   }
 }

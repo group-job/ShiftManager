@@ -13,32 +13,13 @@
   </th>
   <tr>
     <td>
-      とりまる
+      {{ $salary_arry[0][0] }}
     </td>
     <td>
-       {{ $salary_arry[1] }}円({{ $salary_arry[2] }})
-    </td>
-    <td>
-      30000
-    </td>
-  </tr>
-  <tr>
-    <td>
-      ラウンドワン
-    </td>
-    <td>
-       3750円(日給)
+       {{ $salary_arry[0][1] }}円({{ $salary_arry[0][2] }})
     </td>
     <td>
       30000
-    </td>
-  </tr>
-  <tr>
-    <td>
-      合計
-    </td>
-    <td colspan="2">
-      90000
     </td>
   </tr>
 </tbody>

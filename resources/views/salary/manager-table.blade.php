@@ -12,11 +12,6 @@
     </tr>
     {{-- 給与追加フォーム --}}
     <tr>
-     {{-- @for($i=0; $i < 4; $i++)
-      <td>
-        <input type="text" name="name" value="">
-      </td>
-      @endfor --}}
     <form action="" method="post">
       {{-- 給与区分 --}}
       <td>
@@ -47,34 +42,16 @@
     {{-- フォーム終了 --}}
     <tr>
       <td>
-        {{ $salary_arry[2] }}
+        {{ $salary_arry[0][2] }}
       </td>
       <td>
-        {{ $salary_arry[1] }}円
+        {{ $salary_arry[0][1] }}円
       </td>
       <td>
-          {{ $salary_arry[3] }}
+          {{ $salary_arry[0][3] }}
       </td>
       <td>
-        {{ $salary_arry[4] }}
-      </td>
-      <td>
-        <input type="button" name="name" value="変更">
-        <input type="button" name="name" value="削除">
-      </td>
-    </tr>
-    <tr>
-      <td>
-        月給
-      </td>
-      <td>
-        3750
-      </td>
-      <td>
-          2015/09/01
-      </td>
-      <td>
-        未入力
+        {{ $salary_arry[0][4] }}
       </td>
       <td>
         <input type="button" name="name" value="変更">
