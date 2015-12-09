@@ -46,7 +46,7 @@
       </div>
 
     <li>
-      <div class="glyphicon glyphicon-plus" style="float:left;"></div><a href="/group-create/edit">グループ追加</a>
+      <div class="glyphicon glyphicon-plus" style="float:left;"></div><a href="/groupcreate/edit">グループ追加</a>
     </li>
   </ul>
   {{-- end of #side-menu-content --}}
