@@ -1,6 +1,5 @@
 <!-- レイアウトの継承 -->
 @extends('common.layout')
-
 @section('main-contents')
 <div class="row col-lg-offset-2">
   <div class="container col-lg-offset-1">

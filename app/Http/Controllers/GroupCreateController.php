@@ -11,8 +11,6 @@ use App\Employment;
 use App\Http\Requests\GroupRequest;
 use Auth;
 use Session;
-
-
 class GroupCreateController extends BaseController
 {
   /**

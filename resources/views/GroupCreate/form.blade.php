@@ -1,4 +1,3 @@
-
   {!! Form::open( ['url' => 'group_create/store'] ) !!}
   <table>
     <tr>
