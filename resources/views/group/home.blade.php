@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">{{-- グループタブ --}}
         <div class="col-lg-5">
-          <h1><div id="param">{{ $groupName or 'グループ名' }}</div></h1>
+          <h1><div id="param">{{ $group->group_name or 'グループ名' }}</div></h1>
         </div>
         <div class="col-lg-7">
           <img src="/img/user_icon.png" alt="" />
@@ -16,9 +16,9 @@
     </div>
   <div class="row">{{-- タイトル --}}
     <ul class="nav nav-tabs">
-      <li><a href="/group/{{ $groupId or 'グループId' }}/shift">シフト表</a></li>
-      <li><a href="/group/{{ $groupId or 'グループId' }}/infomation">連絡ボード</a></li>
-      <li><a href="/group/{{ $groupId or 'グループId' }}/chat">チャット</a></li>
+      <li><a href="/group/{{ $group->id or 'グループId' }}/shift">シフト表</a></li>
+      <li><a href="/group/{{ $groupId->id or 'グループId' }}/infomation">連絡ボード</a></li>
+      <li><a href="/group/{{ $groupId->id or 'グループId' }}/chat">チャット</a></li>
       @if(isset($group))
         @if(Auth::user()->id === $group->manager_id)
           <li><a href="/group/{{ $groupId or 'グループId' }}/setting">設定</a></li>

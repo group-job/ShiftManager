@@ -6,9 +6,17 @@
   $(document).ready(function() {
     // =========================スケジューラー描画====================================
     $('#manager-scheduler').fullCalendar({
+      schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
       resourceAreaWidth: 150,
-      height:400,
-      defaultDate: '2015-12-07',
+      height:300,
+      defaultDate: '2015-12-11',
+      titleFormat: {
+        month: 'YYYY年 M月', // 2014年9月
+        week: 'YYYY年 M月 D日',
+        day: 'YYYY年 M月 D日[(]ddd[)]', // 2014年9月7日(火)
+      },
+      dayNamesShort: ['日', '月', '火', '水', '木', '金', '土'],
+      timeFormat: 'H:mm',
       editable: true,
       aspectRatio: 1.5,
       scrollTime: '00:30',
@@ -17,21 +25,21 @@
         center: 'title',
         right: 'timelineDay,agendaWeek,month'
       },
-      customButtons: {
-        promptResource: {
-          text: '+ room',
-          click: function() {
-            var title = prompt('Room name');
-            if (title) {
-              $('#manager-scheduler').fullCalendar(
-                'addResource',
-                { title: title },
-                true // scroll to the new resource?
-              );
-            }
-          }
-        }
-      },
+      // customButtons: {
+      //   promptResource: {
+      //     text: '+ room',
+      //     click: function() {
+      //       var title = prompt('Room name');
+      //       if (title) {
+      //         $('#manager-scheduler').fullCalendar(
+      //           'addResource',
+      //           { title: title },
+      //           true // scroll to the new resource?
+      //         );
+      //       }
+      //     }
+      //   }
+      // },
       defaultView: 'timelineDay',
       views: {
         timelineThreeDays: {
@@ -39,27 +47,18 @@
           duration: { days: 3 }
         }
       },
-      resourceLabelText: 'Rooms',
+      resourceLabelText: 'メンバー',
       resources: [
-        { id: 'a', title: 'Auditorium A' },
-        { id: 'b', title: 'Auditorium B', eventColor: 'green' },
-        { id: 'c', title: 'Auditorium C', eventColor: 'orange' },
-        { id: 'd', title: 'Auditorium D', children: [
-          { id: 'd1', title: 'Room D1' },
-          { id: 'd2', title: 'Room D2' }
-        ] },
-        { id: 'e', title: 'Auditorium E' },
-        { id: 'f', title: 'Auditorium F', eventColor: 'red' },
-        { id: 'g', title: 'Auditorium G' },
-        { id: 'h', title: 'Auditorium H' },
+        { id: '1', title: 'Kimmy' },
+        { id: '2', title: 'Ussy', },
+        { id: '3', title: 'Masu',},
+        { id: '4', title: 'Naga' },
+        { id: '5', title: 'Aki', },
       ],
-      events: [
-        { id: '1', resourceId: 'b', start: '2015-12-07T02:00:00', end: '2015-12-07T07:00:00', title: 'event 1' },
-        { id: '2', resourceId: 'c', start: '2015-12-07T05:00:00', end: '2015-12-07T22:00:00', title: 'event 2' },
-        { id: '3', resourceId: 'd', start: '2015-12-06', end: '2015-12-08', title: 'event 3' },
-        { id: '4', resourceId: 'e', start: '2015-12-07T03:00:00', end: '2015-12-07T08:00:00', title: 'event 4' },
-        { id: '5', resourceId: 'f', start: '2015-12-07T00:30:00', end: '2015-12-07T02:30:00', title: 'event 5' }
-      ]
+      // events: [
+      //   { id: '1', resourceId: 2, start: '2015-12-07T01:00:00', end: '2015-12-07T07:00:00', title: 'event 1' },
+      // ]
+        events:{!!$calendarEventsJson!!},
     });
     //=======================================================fullcalendar描画処理
     //========================各ボタン、ウィンドウリセット==========================

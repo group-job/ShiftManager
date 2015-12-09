@@ -44,8 +44,7 @@ class GroupController extends BaseController
   {
     $group = Group::find($groupId);
     if (isset($group)){
-      $groupName = $group->group_name;
-      return compact('group','groupId','groupName');
+      return compact('group');
     }else {
       Session::flash('errorMessage', '指定されたグループは存在しません') ;
       exit (redirect('/personal/home'));
@@ -58,16 +57,33 @@ class GroupController extends BaseController
      * @return [type]          [description]
      */
      public function getShift($groupId){
-       $calendarEvents = array();
-       $calendarEventsJson = json_encode($calendarEvents);
        if (!$this->checkGroup($groupId)) {
          Session::flash('errorMessage', '指定されたグループは存在しません') ;
          return redirect('/personal/home');
        }else {
          $commonParams = $this->commonParams($groupId);
+         $calendarEvents = array();
+         $shifts = Group::find($groupId)->shifts;
+         foreach ($shifts as $value) {
+           $calendarEvents[] = array(
+             //カレンダーイベントクリック時処理などに利用
+             'id' => $value->id,
+             'status' => $value->status,
+            //  'date' => $value->date,
+            //  'start_time' =>date('G:i', strtotime($value->start_time)),
+            //  'end_time' =>date('G:i', strtotime($value->end_time)),
+             'note' => $value->note,
+             //ここから下カレンダー描画に必要
+             'resourceId' =>$value->user_id,
+             'className' => 'event-status'.$value->status,
+             'title' => $value->group->group_name,
+             'start' => $value->date.'T'.$value->start_time,
+             'end' => $value->date.'T'.$value->end_time,
+           );
+         }
+         $calendarEventsJson = json_encode($calendarEvents);
          if (Auth::user()->id === Group::find($groupId)->manager_id) {
            //管理グループ
-           $group = Group::find($groupId);
            return view('group.manage-shift',$commonParams,compact('calendarEventsJson'));
          }else if(Employment::where('user_id',Auth::user()->id)->where('group_id', $groupId)->count() !== 0){
            //参加グループ

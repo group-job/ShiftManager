@@ -24,8 +24,8 @@
       </li>
     {{-- 参加グループリストアイテム --}}
       <div id="collapse-joining-group" class="collapse list-item">
-        @if(isset($join_group))
-          @foreach($join_group as $value)
+        @if(isset($join_groups))
+          @foreach($join_groups as $value)
            <li><a href="/group/{{ $value->id }}/shift">{{ $value->group_name}}</a></li>
           @endforeach
         @endif
@@ -38,8 +38,8 @@
     </li>
     {{-- 管理グループリストアイテム --}}
       <div id="collapse-managing-group" class="collapse list-item">
-        @if(isset($manager_group))
-          @foreach($manager_group as $value)
+        @if(isset($manager_groups))
+          @foreach($manager_groups as $value)
             <li> <a href="/group/{{ $value->id }}/shift">{{ $value->group_name }}</a></li>
           @endforeach
         @endif
