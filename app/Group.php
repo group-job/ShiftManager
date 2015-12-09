@@ -16,6 +16,10 @@ class Group extends Model
     {
       return $this->hasMany(Employment::class);
     }
+    public function joiningEmployments()
+    {
+      return $this->hasMany(Employment::class)->where('start_date','!=', '0000-00-00');
+    }
     public function rates()
     {
       return $this->hasMany(Rate::class);
@@ -30,6 +34,6 @@ class Group extends Model
       return $this->hasMany(Chat::class);
     }
 
-    
+
 
 }

@@ -23,7 +23,10 @@ class User extends Model implements AuthenticatableContract,
     {
       return $this->hasMany(Employment::class);
     }
-
+    public function joiningEmployments()
+    {
+      return $this->hasMany(Employment::class)->where('start_date','!=', '0000-00-00');
+    }
     public function shifts()
    {
        return $this->hasMany(Shift::class);

@@ -17,7 +17,8 @@
   @endsection
 
   @section('contents-space')
-    <div class="row col-lg-5">
+    <div class="tab-content">
+      <br>
       @yield('tab-space')
     </div>
   @endsection
