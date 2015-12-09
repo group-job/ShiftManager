@@ -45,39 +45,75 @@ class DatabaseSeeder extends Seeder
    DB::table('shifts')->insert([
       'user_id' => '1',
       'group_id' => '2',
-      'date' => '2015-11-26',
+      'date' => '2015-12-14',
       'start_time' => '10:30',
       'end_time' => '10:30',
       'status' => '1',
-      'note' => 'きみやのグループシフトのサンプル1',
+      'note' => 'きみやの仮グループシフト',
   ]);
   DB::table('shifts')->insert([
      'user_id' => '1',
      'group_id' => '2',
-     'date' => '2015-11-27',
+     'date' => '2015-12-15',
      'start_time' => '10:30',
      'end_time' => '10:30',
      'status' => '2',
-     'note' => 'きみやのグループシフトのサンプル2',
+     'note' => 'きみやの確定グループシフト',
  ]);
  DB::table('shifts')->insert([
     'user_id' => '1',
     'group_id' => '1',
-    'date' => '2015-11-28',
+    'date' => '2015-12-16',
     'start_time' => '10:30',
     'end_time' => '10:30',
     'status' => '2',
-    'note' => 'きみやの個人シフトのサンプル2',
+    'note' => 'きみやの個人シフト',
 ]);
    DB::table('shifts')->insert([
       'user_id' => '1',
       'group_id' => '2',
-      'date' => '2015-11-26',
+      'date' => '2015-12-16',
       'start_time' => '18:30',
       'end_time' => '18:30',
       'status' => '0',
-      'note' => 'きみやのグループシフト(申請)のサンプル',
+      'note' => 'きみやのグループ申請シフト',
   ]);
+  DB::table('shifts')->insert([
+     'user_id' => '2',
+     'group_id' => '1',
+     'date' => '2015-12-11',
+     'start_time' => '02:30',
+     'end_time' => '05:30',
+     'status' => '0',
+     'note' => 'うっしーの申請グループシフト',
+ ]);
+ DB::table('shifts')->insert([
+    'user_id' => '2',
+    'group_id' => '1',
+    'date' => '2015-12-11',
+    'start_time' => '06:30',
+    'end_time' => '09:30',
+    'status' => '1',
+    'note' => 'うっしーの仮グループシフト',
+]);
+DB::table('shifts')->insert([
+   'user_id' => '2',
+   'group_id' => '1',
+   'date' => '2015-12-12',
+   'start_time' => '09:30',
+   'end_time' => '18:30',
+   'status' => '2',
+   'note' => 'うっしーの確定グループシフト',
+]);
+DB::table('shifts')->insert([
+   'user_id' => '3',
+   'group_id' => '1',
+   'date' => '2015-12-11',
+   'start_time' => '05:30',
+   'end_time' => '08:30',
+   'status' => '2',
+   'note' => 'masuの確定グループシフト',
+]);
    DB::table('rates')->insert([
       'user_id' => '1',
       'group_id' => '1',
@@ -130,7 +166,7 @@ DB::table('chats')->insert([
 ]);
 DB::table('confirmations')->insert([ //うっしーがきみ屋の連絡を確認
    'user_id' => '2',
-   'caht_id' => '2',
+   'chat_id' => '2',
 ]);
 
 

@@ -10,6 +10,7 @@ use App\Group;
 use App\Employment;
 use App\User;
 use App\Chat;
+use App\Confirmation;
 use App\Http\Requests\GroupRequest;
 use App\Http\Requests\ChatRequest;
 use Auth;
@@ -37,13 +38,13 @@ class GroupController extends BaseController
       return $view;
       }
     $this->compact = compact('groupId','groupName');
-  }
+    }
+
   public function commonParams($groupId)
   {
     $group = Group::find($groupId);
     if (isset($group)){
-      $groupName = $group->group_name;
-      return compact('groupId','groupName');
+      return compact('group');
     }else {
       Session::flash('errorMessage', '指定されたグループは存在しません') ;
       exit (redirect('/personal/home'));
@@ -55,29 +56,44 @@ class GroupController extends BaseController
      * @param  [type] $groupId [description]
      * @return [type]          [description]
      */
-
      public function getShift($groupId){
-       $calendarEvents = array();
-       $calendarEventsJson = json_encode($calendarEvents);
        if (!$this->checkGroup($groupId)) {
          Session::flash('errorMessage', '指定されたグループは存在しません') ;
          return redirect('/personal/home');
        }else {
          $commonParams = $this->commonParams($groupId);
+         $calendarEvents = array();
+         $shifts = Group::find($groupId)->shifts;
+         foreach ($shifts as $value) {
+           $calendarEvents[] = array(
+             //カレンダーイベントクリック時処理などに利用
+             'id' => $value->id,
+             'status' => $value->status,
+            //  'date' => $value->date,
+            //  'start_time' =>date('G:i', strtotime($value->start_time)),
+            //  'end_time' =>date('G:i', strtotime($value->end_time)),
+             'note' => $value->note,
+             //ここから下カレンダー描画に必要
+             'resourceId' =>$value->user_id,
+             'className' => 'event-status'.$value->status,
+             'title' => $value->group->group_name,
+             'start' => $value->date.'T'.$value->start_time,
+             'end' => $value->date.'T'.$value->end_time,
+           );
+         }
+         $calendarEventsJson = json_encode($calendarEvents);
          if (Auth::user()->id === Group::find($groupId)->manager_id) {
            //管理グループ
-           echo "管理グループ";
-           return view('group.manage-shift',$commonParams,compact('calendarEventsJson','group'));
+           return view('group.manage-shift',$commonParams,compact('calendarEventsJson'));
          }else if(Employment::where('user_id',Auth::user()->id)->where('group_id', $groupId)->count() !== 0){
            //参加グループ
-           echo "参加グループ";
+           $group = Group::find($groupId);
            return view('group.join-shift',$commonParams,compact('group'));
          }else{
            Session::flash('errorMessage', '指定されたグループへのアクセス権がありません') ;
            return redirect('/personal/home');
          }
        }
-
      }
 
      /**
@@ -98,6 +114,27 @@ class GroupController extends BaseController
      {
        $this->params($groupId);
        return view('group.chat',$this->compact);
+     }
+     /*
+      *チャットの表示
+      */
+     public function getSetting($groupId='default')
+     {
+       if (!$this->checkGroup($groupId)) {
+         Session::flash('errorMessage', '指定されたグループは存在しません') ;
+         return redirect('/personal/home');
+       }else {
+         $commonParams = $this->commonParams($groupId);
+         if (Auth::user()->id === Group::find($groupId)->manager_id) {
+           //管理グループ
+           $group = Group::find($groupId);
+           echo "管理グループ";
+           return view('group.settings',$commonParams,compact('calendarEventsJson','group'));
+         }else{
+           Session::flash('errorMessage', '指定されたグループへのアクセス権がありません') ;
+           return redirect('/personal/home');
+         }
+       }
      }
 
     /**
@@ -213,10 +250,12 @@ class GroupController extends BaseController
       $chatLog = array();
       foreach ($chat as $value) {
         $chatParams  = array(
+          'id'   => $value->id,
           'text' => $value->text,
           'name' => $value->user->name,
           'date' => substr($value->date, 0, 10),
           'time' => substr($value->date, 11, 5),
+          'check' => $value->confirmations,
         );
         array_push($chatLog, $chatParams);
       }
@@ -237,6 +276,14 @@ class GroupController extends BaseController
       }
     }
 
+    public function postCheckInfomation(Request $request)
+    {
+      Confirmation::create([
+          'chat_id' => $request->chatId,
+          'user_id' => Auth::user()->id,
+      ]);
+    }
+
     /**
      * 承認処理
      * @param  [type] $id            [description]
@@ -244,18 +291,18 @@ class GroupController extends BaseController
      * @return [type]                [description]
      */
 
-    // public function getApprovalTrue($groupId)
-    // {
-    //     session_start();
-    //     if(!empty($_SESSION["employments_id"])){
-    //         $today = new ();
-    //         $count = (int)$_GET["count"];
-    //         Employment::where('id','=',$_SESSION["employments_id"][$count])
-    //                 ->where('group_id','=',$groupId)
-    //                 ->update(['start_date'=> $today->format('Y-m-d')]);
-    //     }
-    //     return $this->getApproval($groupId);
-    // }
+    public function getApprovalTrue($groupId)
+    {
+        session_start();
+        if(!empty($_SESSION["employments_id"])){
+            $today = new DateTime();
+            $count = (int)$_GET["count"];
+            Employment::where('id','=',$_SESSION["employments_id"][$count])
+                    ->where('group_id','=',$groupId)
+                    ->update(['start_date'=> $today->format('Y-m-d')]);
+        }
+        return $this->getApproval($groupId);
+    }
 
     /**
      * 拒否
@@ -263,17 +310,17 @@ class GroupController extends BaseController
      * @param  [type] $employment_id [description]
      * @return [type]                [description]
      */
-    // public function getApprovalFalse($groupId)
-    // {
-    //     session_start();
-    //     if(!empty($_SESSION["employments_id"])){
-    //         $count = $_GET['count'];
-    //         Employment::where('id','=',$_SESSION["employments_id"][$count])
-    //                 ->where('group_id','=',$groupId)
-    //                 ->delete();
-    //         return $this->getApproval($groupId);
-    //     }
-    // }
+    public function getApprovalFalse($groupId)
+    {
+        session_start();
+        if(!empty($_SESSION["employments_id"])){
+            $count = $_GET['count'];
+            Employment::where('id','=',$_SESSION["employments_id"][$count])
+                    ->where('group_id','=',$groupId)
+                    ->delete();
+            return $this->getApproval($groupId);
+        }
+    }
 
     /**
      * 申請追加データベース処理
@@ -355,14 +402,14 @@ class GroupController extends BaseController
     }
 
     /**
-     * db登録
+     *  チャットdb登録
      * @param  [type] $request  [description]
      * @param  [type] $date     [description]
      * @param  [type] $category [description]
      */
     public function createChat($request, $date)
     {
-      $chat = Chat::create([
+      Chat::create([
           'user_id' => Auth::user()->id,
           'group_id' => $request->id,
           'date' => $date,

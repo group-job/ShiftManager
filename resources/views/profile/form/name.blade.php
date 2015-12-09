@@ -23,7 +23,7 @@
                                {!! Form::text('user_name', null, ['class' => 'form-control', 'id' => 'input-name'  ]) !!}
                              </div>
                              {{-- {!! Form::button('変更', ['class' => 'btn btn-primary form-control', 'id' => 'button-name', 'data-loading-text' => '変更中']) !!} --}}
-                             <input type="button" class="btn btn-primary  col-lg-2 col-lg-offset-2" id="button-name" data-loading-text="変更中" value="住所変更">
+                             <input type="button" class="btn btn-primary  col-lg-2 col-lg-offset-2" id="button-name" data-loading-text="変更中" value="氏名変更">
                              {{-- {!! Form::close() !!} --}}
                      </div>
                      <br />

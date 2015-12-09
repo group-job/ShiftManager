@@ -20,7 +20,6 @@ class PersonalController extends BaseController
     $myShifts = Auth::user()->shifts;
     $calendarEvents = array();
     foreach ($myShifts as $value) {
-
       $myShiftFlg = ($value->group->manager_id === $value->user_id);
       $calendarEvents[] = array(
         //カレンダーイベントクリック時処理などに利用
@@ -39,16 +38,10 @@ class PersonalController extends BaseController
       );
     }
     $calendarEventsJson = json_encode($calendarEvents);
-    $employments = Auth::user()->employments;
-    $joiningGroups = null;
-    foreach ($employments as $value) {
-      $joiningGroups[] = Group::find($value->group_id);
-    }
-    $managingGroups = Auth::user()->groups;
     //$calendarEventsJsonは personal.home内のpart-create-calendar.blade.phpに渡す
     // dd(Session::get('errorMessage'));
     // Session::reflash();
-    return view('personal.home',compact('calendarEventsJson','managingGroups','joiningGroups'));
+    return view('personal.home',compact('calendarEventsJson'));
   }
 
 // =============================ヘルプ===========================================

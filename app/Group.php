@@ -8,13 +8,17 @@ class Group extends Model
 {
     protected $fillable = ['group_name', 'manager_id'];
 
-    public function tasks()
+    public function shifts()
     {
       return $this->hasMany(Shift::class);
     }
     public function employments()
     {
       return $this->hasMany(Employment::class);
+    }
+    public function joiningEmployments()
+    {
+      return $this->hasMany(Employment::class)->where('start_date','!=', '0000-00-00');
     }
     public function rates()
     {
@@ -30,6 +34,6 @@ class Group extends Model
       return $this->hasMany(Chat::class);
     }
 
-    
+
 
 }

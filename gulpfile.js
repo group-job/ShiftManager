@@ -35,20 +35,23 @@ elixir(function(mix) {
       'home.scss',
       'group.scss',
       'invite.scss',
-      'apply.scss'
+      'apply.scss',
+      // 'scheduler.css'
     ]); // app.scssをコンパイルして、public/css/app.css に出力
-
        // Bootstrapのフォントを public/fonts/bootstrapディレクトリにコピー
        mix.copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts/bootstrap');
 
        // jquery.jsと bootstrap.jsを結合して、public/js/app.jsに出力
        mix.scripts([
-            paths.jquery + "dist/jquery.js",
-            paths.bootstrap + "javascripts/bootstrap.js",
+
+
             // paths.moment+"src/moment.js",
             "resources/assets/fullcalendar/moment.min.js", //bowerでいれたmoment.jsがなぜかエラーはくので
+            paths.jquery + "dist/jquery.js",
+            paths.bootstrap + "javascripts/bootstrap.js",
             paths.fullcalendar + "dist/fullcalendar.js",
             paths.scheduler + "dist/scheduler.js",
+            // paths.js+'scheduler.js',
             paths.alertify + "alertify.js",
             paths.tooltipster+"js/jquery.tooltipster.min.js",
             paths.js+'app.js',
@@ -57,9 +60,14 @@ elixir(function(mix) {
         //jsファイルわけ
         mix.scripts([
           'profile.js'
-        ],'public/js/profile.js')
+        ],'public/js/profile.js');
+
 
         mix.scripts([
           'chat.js'
         ],'public/js/chat.js')
+
+        mix.scripts([
+          'infomation.js'
+        ],'public/js/infomation.js')
 });

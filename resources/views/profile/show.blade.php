@@ -34,14 +34,6 @@
     </td>
   </tr>
   <tr>
-    <td>
-      画像：
-    </td>
-    <td>
-      ここに画像
-    </td>
-  </tr>
-  <tr>
     <td colspan="2">
       {!! link_to('profile/edit', 'アカウント情報を変更する') !!}
     </td>

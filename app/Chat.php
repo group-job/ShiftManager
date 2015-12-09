@@ -24,8 +24,10 @@ class Chat extends Model
     {
       $query->where('group_id','=',$request->id)
             ->where('chat_category', '=', $request->category);
-
     }
 
-
+    public function confirmations()
+    {
+      return $this->hasMany(Confirmation::class);
+    }
 }

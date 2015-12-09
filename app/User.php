@@ -18,16 +18,15 @@ class User extends Model implements AuthenticatableContract,
     protected $table = 'users';
     protected $guarded = ['id'];
     protected $hidden = ['password', 'remember_token'];
-    public function scopeMyProfile($query)
-    {
-      $query->where('id','=',1);
-    }
 
     public function employments()
     {
       return $this->hasMany(Employment::class);
     }
-
+    public function joiningEmployments()
+    {
+      return $this->hasMany(Employment::class)->where('start_date','!=', '0000-00-00');
+    }
     public function shifts()
    {
        return $this->hasMany(Shift::class);
