@@ -14,7 +14,7 @@ class ProfileController extends BaseController
     {
       \Session::put('user_name', 'きみや');
       \Session::put('user_id', '1');
-      $my_profile = User::find();
+      $my_profile = User::find(1);
       // foreach ($my_profile as $key => $value) {
       //   echo $value["name"];
       // }
@@ -33,7 +33,7 @@ class ProfileController extends BaseController
     // public function store(ProfileRequest $request)
     public function postStore(Request $request)
     {
-      $user = User::myProfile()->find(1);
+      $user = User::find(1);
       // var_dump($user);
       // $value = $_REQUEST['value'];
       $user->update($request->all());
