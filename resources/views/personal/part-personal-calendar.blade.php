@@ -239,17 +239,17 @@
     //=======================================================fullcalendar描画処理
     //========================各ボタン、ウィンドウリセット==========================
     $('div').click(function(event){
-      // alert(this.id+"/"+this.className);
-        if (this.className === "fc-button-group" || this.className === "fc-content" || this.id === "side-menu") {
-          $('.togglable').hide();
-        }
-        else if(this.id === "calendar"  || this.id === "div-edit-shift" || this.id ==="div-add-shift" || this.className === "fc-day-grid-container"){
-          event.stopPropagation();
-        }
-        else if (this.id === "contents-space" || this.id === "title-space"){
-          event.stopPropagation();
-          $('.togglable').hide();
-        }
+      alert(this.id+"/"+this.className);
+      if (this.className === "fc-button-group" || this.className === "fc-content" || this.id === "side-menu" || this.className === "fc-toolbar" ||this.id === "title-space") {
+        $('.togglable').hide();
+      }
+      else if(this.id === "calendar"  || this.id === "div-edit-shift" || this.id ==="div-add-shift" || this.className === "fc-day-grid-container"){
+        event.stopPropagation();
+      }
+      else if (this.id === "contents-space" || this.id === "title-space"){
+        event.stopPropagation();
+        $('.togglable').hide();
+      }
     });
   });
   // ===========================テスト===========================================

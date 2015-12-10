@@ -206,7 +206,7 @@ $(document).ready(function() {
   //=======================================================scheduler描画処理
   //========================各ボタン、ウィンドウリセット==========================
   $('div').click(function(event){
-    // alert(this.id+"/"+this.className);
+    alert(this.id+"/"+this.className);
       if (this.className === "fc-button-group" || this.className === "fc-content" || this.id === "side-menu") {
         $('.togglable').hide();
       }
