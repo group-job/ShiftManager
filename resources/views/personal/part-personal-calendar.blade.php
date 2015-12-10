@@ -239,7 +239,7 @@
     //=======================================================fullcalendar描画処理
     //========================各ボタン、ウィンドウリセット==========================
     $('div').click(function(event){
-      alert(this.id+"/"+this.className);
+      // alert(this.id+"/"+this.className);
       if (this.className === "fc-button-group" || this.className === "fc-content" || this.id === "side-menu" || this.className === "fc-toolbar" ||this.id === "title-space") {
         $('.togglable').hide();
       }
