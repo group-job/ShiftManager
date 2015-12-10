@@ -11,8 +11,6 @@ use App\Employment;
 use App\Http\Requests\GroupRequest;
 use Auth;
 use Session;
-
-
 class GroupCreateController extends BaseController
 {
   /**
@@ -24,7 +22,6 @@ class GroupCreateController extends BaseController
       // dd(Auth::user()->employments);
       return view('groupcreate.create');
   }
-
   /**
 * 作成ボタンをおした時の処理
 * @param  GroupRequest

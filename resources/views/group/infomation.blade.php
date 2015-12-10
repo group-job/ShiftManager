@@ -14,7 +14,7 @@
 
 @section('tab-space')
 <script>
-  var groupId = {{ $groupId }};
+  var groupId = {{ $group->id }};
 </script>
 <script type="text/javascript" src="/js/infomation.js"></script>
   <br>

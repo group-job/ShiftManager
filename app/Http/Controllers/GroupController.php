@@ -31,13 +31,15 @@ class GroupController extends BaseController
   {
     $group = Group::find($groupId);
     if (isset($group)) {
-        $groupName = $group->group_name;
+        // $groupName = $group->group_name;
     }else{
       // Session::put('errorMessage', '指定されたグループは存在しません') ;
       $view = redirect('/personal/home');
       return $view;
       }
-    $this->compact = compact('groupId','groupName');
+      $groupName = "aaaaa";
+      $groupId = 1;
+    $this->compact = compact('group');
     }
 
   public function commonParams($groupId)
@@ -57,6 +59,7 @@ class GroupController extends BaseController
      * @return [type]          [description]
      */
      public function getShift($groupId){
+      //  dd(!$this->checkGroup($groupId));
        if (!$this->checkGroup($groupId)) {
          Session::flash('errorMessage', '指定されたグループは存在しません') ;
          return redirect('/personal/home');
@@ -69,13 +72,14 @@ class GroupController extends BaseController
              //カレンダーイベントクリック時処理などに利用
              'id' => $value->id,
              'status' => $value->status,
-            //  'date' => $value->date,
-            //  'start_time' =>date('G:i', strtotime($value->start_time)),
-            //  'end_time' =>date('G:i', strtotime($value->end_time)),
+             'date' => $value->date,
+             'start_time' =>date('G:i', strtotime($value->start_time)),
+             'end_time' =>date('G:i', strtotime($value->end_time)),
              'note' => $value->note,
+             'name' => $value->user->name,
              //ここから下カレンダー描画に必要
              'resourceId' =>$value->user_id,
-             'className' => 'event-status'.$value->status,
+             'className' => ['event-status'.$value->status,'schedule-event'],
              'title' => $value->group->group_name,
              'start' => $value->date.'T'.$value->start_time,
              'end' => $value->date.'T'.$value->end_time,
@@ -123,13 +127,12 @@ class GroupController extends BaseController
        if (!$this->checkGroup($groupId)) {
          Session::flash('errorMessage', '指定されたグループは存在しません') ;
          return redirect('/personal/home');
-       }else {
+       }else{
          $commonParams = $this->commonParams($groupId);
          if (Auth::user()->id === Group::find($groupId)->manager_id) {
            //管理グループ
            $group = Group::find($groupId);
-           echo "管理グループ";
-           return view('group.settings',$commonParams,compact('calendarEventsJson','group'));
+           return view('group.settings',$commonParams,compact('group'));
          }else{
            Session::flash('errorMessage', '指定されたグループへのアクセス権がありません') ;
            return redirect('/personal/home');
@@ -248,16 +251,40 @@ class GroupController extends BaseController
               $chat = Chat::log($request)->get();
           }
       $chatLog = array();
+      $checkPerson = array();
+      $check = true;
       foreach ($chat as $value) {
+        // if (isset($value->confirmations)) {
+                foreach ($value->confirmations as  $param){
+                  $person = User::find($param->user_id);
+                  array_push($checkPerson,$person->name);
+                  // $count = 0;
+                  //   if(Auth::user()->id == $param->user_id ){
+                  //     $count++;
+                  //   }else{
+                  //   }
+                  //   if ($count > 0) {
+                  //     $check = false;
+                  //   }
+                    if (isset($person)) {
+                      $check = false;
+                    }
+                }
+
+              // }
+
         $chatParams  = array(
           'id'   => $value->id,
           'text' => $value->text,
           'name' => $value->user->name,
           'date' => substr($value->date, 0, 10),
           'time' => substr($value->date, 11, 5),
-          'check' => $value->confirmations,
+          // 'check' => $value->confirmations,
+          'check' => $check,
+          'checkPerson' => $checkPerson,
         );
         array_push($chatLog, $chatParams);
+        $checkPerson = array();
       }
       return $chatLog;
     }

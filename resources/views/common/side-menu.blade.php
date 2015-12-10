@@ -38,15 +38,15 @@
     </li>
     {{-- 管理グループリストアイテム --}}
       <div id="collapse-managing-group" class="collapse list-item">
-        @if(isset($manager_groups))
-          @foreach($manager_groups as $value)
+        @if(isset($manage_groups))
+          @foreach($manage_groups as $value)
             <li> <a href="/group/{{ $value->id }}/shift">{{ $value->group_name }}</a></li>
           @endforeach
         @endif
       </div>
 
     <li>
-      <div class="glyphicon glyphicon-plus" style="float:left;"></div><a href="/group_create/edit">グループ追加</a>
+      <div class="glyphicon glyphicon-plus" style="float:left;"></div><a href="/groupcreate/edit">グループ追加</a>
     </li>
   </ul>
   {{-- end of #side-menu-content --}}

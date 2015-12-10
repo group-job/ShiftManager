@@ -18,7 +18,7 @@ class BaseController extends Controller
     //管理グループ取得
     $manager_group = Auth::user()->groups;
     if (isset($manager_group)) {
-        View::share('manager_groups',$manager_group);
+        View::share('manage_groups',$manager_group);
     }
 
     //雇用取得

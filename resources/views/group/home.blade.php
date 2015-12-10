@@ -17,11 +17,11 @@
   <div class="row">{{-- タイトル --}}
     <ul class="nav nav-tabs">
       <li><a href="/group/{{ $group->id or 'グループId' }}/shift">シフト表</a></li>
-      <li><a href="/group/{{ $groupId->id or 'グループId' }}/infomation">連絡ボード</a></li>
-      <li><a href="/group/{{ $groupId->id or 'グループId' }}/chat">チャット</a></li>
+      <li><a href="/group/{{ $group->id or 'グループId' }}/infomation">連絡ボード</a></li>
+      <li><a href="/group/{{ $group->id or 'グループId' }}/chat">チャット</a></li>
       @if(isset($group))
         @if(Auth::user()->id === $group->manager_id)
-          <li><a href="/group/{{ $groupId or 'グループId' }}/setting">設定</a></li>
+          <li><a href="/group/{{ $group->id or 'グループId' }}/setting">設定</a></li>
         @endif
       @endif
       {{-- <li class="active"><a href="/group/{{ $groupId }}/join-shift" data-toggle="tab">設定</a></li> --}}

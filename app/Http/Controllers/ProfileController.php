@@ -7,21 +7,12 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Http\Requests\ProfileRequst;
+use Auth;
 
 class ProfileController extends BaseController
 {
     public function getShow()
     {
-      \Session::put('user_name', 'きみや');
-      \Session::put('user_id', '1');
-      $my_profile = User::find(1);
-      // foreach ($my_profile as $key => $value) {
-      //   echo $value["name"];
-      // }
-      // die($my_profile);
-      //   // die($manage_group);
-      //   return $manage_group
-      // \Session::put('user_name');
       return view('profile.show',compact('my_profile'));
     }
 
@@ -33,7 +24,7 @@ class ProfileController extends BaseController
     // public function store(ProfileRequest $request)
     public function postStore(Request $request)
     {
-      $user = User::find(1);
+      $user = User::find(Auth::user()->id);
       // var_dump($user);
       // $value = $_REQUEST['value'];
       $user->update($request->all());

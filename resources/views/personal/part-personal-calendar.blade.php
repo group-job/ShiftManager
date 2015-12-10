@@ -115,7 +115,7 @@
       },
 
       // ------------------イベントクリック時処理----------------------------------
-      eventClick: function(calEvent, jsEvent, view) {
+     eventClick: function(calEvent, jsEvent, view) {
         // 可視状態のフォーム非表示
         $('.fc-event').tooltipster('hide');
         $('.togglable').hide();

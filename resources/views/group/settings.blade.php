@@ -12,7 +12,7 @@
         </th>
       <td>
         <input type="text" name="name" value="">
-        <input type="button" name="name" value="変更" class="btn btn-primary">
+        <input type="button" name="name" value="変更" class="btn btn-primary" onclick="location.href = 'edit-name'">
       </td>
     </tr>
     <tr>
