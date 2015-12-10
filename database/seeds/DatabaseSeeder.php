@@ -134,8 +134,16 @@ DB::table('shifts')->insert([
   DB::table('rates')->insert([
       'user_id' => '1',
       'group_id' => '2',
-      'rate' => '32000',
+      'rate' => '3200',
       'start_date' => '2015-10-10',
+      'end_date' => '',
+      'rate_category' => '0',
+  ]);
+  DB::table('rates')->insert([
+      'user_id' => '1',
+      'group_id' => '3',
+      'rate' => '1600',
+      'start_date' => '2015-11-20',
       'end_date' => '',
       'rate_category' => '0',
   ]);
