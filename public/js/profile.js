@@ -36,8 +36,7 @@ jQuery(document).ready(function () {
       "store",
       {
         '_token': $('meta[newpassword=csrf-token]').attr('content'),
-        type: "password",
-        value: document.getElementById("input-new-password").value,
+        'password': document.getElementById("input-new-password").value,
       },
       function (data) {
         // $('#alert').html("氏名を" + data + "に変更しました");

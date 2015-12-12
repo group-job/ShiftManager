@@ -43,26 +43,26 @@ class SalaryController extends BaseController
         foreach(Auth::user()->rates as $value1){
           if($value1->group_id==$value && ( strcmp($value1->end_date,'0000-00-00') || ($value1->end_date < date("Y-m", strtotime("+1 month")))))
           {
-            $salary_arry[$cnt][0]=$value1->group->group_name;
-            $salary_arry[$cnt][]=$value1->rate;
+            $salary_arry[$value][0]=$value1->group->group_name;
+            $salary_arry[$value][]=$value1->rate;
             switch($value1->rate_category){
              case(0):
-               $salary_arry[$cnt][]="時給";
+               $salary_arry[$value][]="時給";
                break;
              case(1):
-               $salary_arry[$cnt][]="日給";
+               $salary_arry[$value][]="日給";
                break;
              case(2):
-               $salary_arry[$cnt][]="月給";
+               $salary_arry[$value][]="月給";
                break;
             }
-            $salary_arry[$cnt][]=$value1->start_date;
+            $salary_arry[$value][]=$value1->start_date;
             switch(strcmp($value1->end_date,'0000-00-00')){
              case(false):
-               $salary_arry[$cnt][]="未入力";
+               $salary_arry[$value][]="未入力";
                break;
              case(true):
-               $salary_arry[$cnt][]=$value1->end_date;
+               $salary_arry[$value][]=$value1->end_date;
                break;
             }
               $cnt+=1;
@@ -70,7 +70,11 @@ class SalaryController extends BaseController
         }
         //$cnt+=1;
     }
-    //dd($salary_arry);
+    // foreach($salary_arry as $value2 => $chk)
+    // {
+    //   dd($chk);
+    // }
+    ($salary_arry);
     return $salary_arry;
   }
   
