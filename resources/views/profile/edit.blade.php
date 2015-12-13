@@ -13,7 +13,7 @@
 <tbody>
   <tr>
     <td colspan="2">
-      <h1>{{ Session::get('user_name')}}さんのアカウント情報変更</h1>
+    <h1>アカウント情報変更</h1>
     </td>
   </tr>
   <tr>

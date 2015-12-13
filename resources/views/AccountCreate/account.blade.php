@@ -22,7 +22,8 @@
     <td>
       {!! Form::text('name', null, ['class' => 'form-control']) !!}
     </td>
-  </tr>
+  </tr>    <h1>アカウント情報変更</h1>
+
 {{-- 電話番号 --}}
   <tr>
     <td class="col-md-6">

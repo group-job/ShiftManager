@@ -6,7 +6,7 @@
 <tbody>
   <tr>
     <td colspan="2">
-      <h1>{{ Auth::user()->name }}さんのアカウント情報</h1>
+      <h1>アカウント情報</h1>
     </td>
   </tr>
   <tr>
