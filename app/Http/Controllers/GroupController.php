@@ -157,11 +157,6 @@ class GroupController extends BaseController
      */
      public function getApproval($groupId='default'){
        $this->params($groupId);
-       if(!empty($_SESSION['employments_id'])){
-           unset($_SESSION['employments_id']);
-           $_SESSION["employments_id"] = array();
-           session_destroy();
-       }
        $employments = Employment::join('users','employments.user_id','=','users.id')
                 ->where('employments.group_id','=',$groupId)
                 ->where('start_date','=','0000-00-00')
