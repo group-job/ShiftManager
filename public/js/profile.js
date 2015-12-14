@@ -27,8 +27,12 @@ jQuery(document).ready(function () {
       },
       function (data) {
       });
-  document.getElementById("input-email").value ='';
-  document.getElementById("input-email2").value ='';
+  if(document.getElementById("input-email").value != document.getElementById("input-email2").value){
+      alert("新しいメールアドレスの入力が正しくありません");
+  }else{
+      document.getElementById("input-email").value ='';
+      document.getElementById("input-email2").value ='';
+  }
   });
 
   //パスワード変更処理
