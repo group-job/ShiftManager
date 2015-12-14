@@ -7160,13 +7160,17 @@ body {
 .modal-content {
   background-color: #d6e1e3; }
 
+#personal-home-title {
+  position: relative;
+  left: 55px; }
+
 #calendar {
   width: 1000px;
   position: relative;
   top: -20px; }
-
-.fc-center {
-  position: relative; }
+  #calendar .fc-center {
+    position: relative;
+    left: -100px; }
 
 /* 日曜日 */
 .fc-sun {
@@ -7318,7 +7322,7 @@ body {
 
 #manager-scheduler {
   width: 800px;
-  height: 400px;
+  height: 500px;
   margin: 50px 50px 70px 30px; }
 
 .theme-event-detail-tooltip {

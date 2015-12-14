@@ -8,7 +8,7 @@ $(document).ready(function() {
   $('#manager-scheduler').fullCalendar({
     schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
     resourceAreaWidth: 150,
-    height:300,
+    height:500,
     defaultDate: '2015-12-11',
     titleFormat: {
       month: 'YYYY年 M月', // 2014年9月
@@ -18,7 +18,7 @@ $(document).ready(function() {
     dayNamesShort: ['日', '月', '火', '水', '木', '金', '土'],
     timeFormat: 'H:mm',
     editable: true,
-    aspectRatio: 1.5,
+    aspectRatio: 1.0,
     scrollTime: '00:30',
     header: {
       left: 'promptResource today prev,next',

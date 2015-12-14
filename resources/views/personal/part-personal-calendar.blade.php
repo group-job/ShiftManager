@@ -13,7 +13,7 @@
                // title, prev, next, prevYear, nextYear, today
                left: 'prev,next today',
                center: 'title',
-               right: 'month,agendaWeek'
+               right: ''
            },
       aspectRatio: 1.9,
       buttonText: {

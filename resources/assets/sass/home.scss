@@ -15,6 +15,10 @@
 .modal-content{
   background-color:$modal-color;
 }
+#personal-home-title{
+  position: relative;
+  left: 55px;
+}
 
 // ---------------------------カレンダーのスタイル上書き----------------------------
 #calendar{
@@ -22,11 +26,12 @@
   position: relative;
   top: -20px;
   // left: -100px;
+  .fc-center{
+    position: relative;
+    left: -100px;
+  }
 }
-.fc-center{
-  position: relative;
-  // left: -100px;;
-}
+
 /* 日曜日 */
 .fc-sun {
   color: red;

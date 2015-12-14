@@ -13,6 +13,7 @@ class ProfileController extends BaseController
 {
     public function getShow()
     {
+      
       return view('profile.show',compact('my_profile'));
     }
 
