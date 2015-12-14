@@ -27,7 +27,8 @@ jQuery(document).ready(function () {
       },
       function (data) {
       });
-      document.getElementById("input-email").value ='';
+  document.getElementById("input-email").value ='';
+  document.getElementById("input-email2").value ='';
   });
 
   //パスワード変更処理

@@ -17,6 +17,7 @@ class SalaryController extends BaseController
   public function getList()
   {
     $salary_arry=$this->getRate();
+    $this->getShiftTime();
     return view('salary.list',compact('salary_arry'));
   }
 
@@ -68,13 +69,7 @@ class SalaryController extends BaseController
               $cnt+=1;
           }
         }
-        //$cnt+=1;
     }
-    // foreach($salary_arry as $value2 => $chk)
-    // {
-    //   dd($chk);
-    // }
-    ($salary_arry);
     return $salary_arry;
   }
   
@@ -82,8 +77,14 @@ class SalaryController extends BaseController
     $result_array;
     foreach(Auth::user()->shifts as $value)
     {
-      
+      $result_array[]=$value->group_id;
+      $result_array[]=$value->date;
+      $result_array[]=$value->start_time;
+      $result_time=(strtotime($value->end_time) - strtotime($value->start_time))/(60*60);
+      $result_array[]=floor($result_time);
+      $result_array[]=$value->status;
     }
+    //dd($result_array);
     return $result_array; 
   }
   
