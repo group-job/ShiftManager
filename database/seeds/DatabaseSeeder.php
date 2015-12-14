@@ -15,22 +15,32 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
       DB::table('users')->insert([
-         'name' => 'kimiy',
+         'name' => 'やすなが',
          'email' => '0',
          'password' => bcrypt('0'),
      ]);
      DB::table('users')->insert([
-        'name' => 'ussy',
+        'name' => 'うっしー',
         'email' => '1',
         'password' => bcrypt('1'),
     ]);
     DB::table('users')->insert([
-       'name' => 'masu',
+       'name' => 'ますやま',
        'email' => '2',
        'password' => bcrypt('2'),
    ]);
+   DB::table('users')->insert([
+      'name' => 'ながとも',
+      'email' => '3',
+      'password' => bcrypt('2'),
+  ]);
+  DB::table('users')->insert([
+     'name' => 'よしかわ',
+     'email' => '4',
+     'password' => bcrypt('2'),
+ ]);
      DB::table('groups')->insert([
-        'group_name' => 'きみやの管理グループ1',
+        'group_name' => 'やすながの管理グループ1',
         'manager_id' => '1',
     ]);
     DB::table('groups')->insert([
@@ -41,87 +51,59 @@ class DatabaseSeeder extends Seeder
       'group_name' => 'ますやまの管理グループ1',
       'manager_id' => '3',
   ]);
-
-   DB::table('shifts')->insert([
-      'user_id' => '1',
-      'group_id' => '2',
-      'date' => '2015-12-14',
-      'start_time' => '10:30',
-      'end_time' => '10:30',
-      'status' => '1',
-      'note' => 'きみやの仮グループシフト',
-  ]);
-  DB::table('shifts')->insert([
-     'user_id' => '1',
-     'group_id' => '2',
-     'date' => '2015-12-15',
-     'start_time' => '10:30',
-     'end_time' => '10:30',
-     'status' => '2',
-     'note' => 'きみやの確定グループシフト',
- ]);
  DB::table('shifts')->insert([
     'user_id' => '1',
     'group_id' => '1',
-    'date' => '2015-12-16',
+    'date' => '2015-12-9',
     'start_time' => '10:30',
     'end_time' => '10:30',
     'status' => '2',
-    'note' => 'きみやの個人シフト',
+    'note' => 'やすながの個人シフト',
 ]);
    DB::table('shifts')->insert([
       'user_id' => '1',
       'group_id' => '2',
       'date' => '2015-12-16',
-      'start_time' => '18:30',
+      'start_time' => '9:00',
       'end_time' => '18:30',
       'status' => '0',
-      'note' => 'きみやのグループ申請シフト',
+      'note' => 'やすながの申請シフト',
   ]);
-  DB::table('shifts')->insert([
-     'user_id' => '2',
-     'group_id' => '1',
-     'date' => '2015-12-11',
-     'start_time' => '02:30',
-     'end_time' => '05:30',
-     'status' => '0',
-     'note' => 'うっしーの申請グループシフト',
- ]);
  DB::table('shifts')->insert([
-    'user_id' => '2',
-    'group_id' => '1',
-    'date' => '2015-12-11',
+    'user_id' => '1',
+    'group_id' => '2',
+    'date' => '2015-12-16',
     'start_time' => '06:30',
-    'end_time' => '09:30',
+    'end_time' => '08:30',
     'status' => '1',
-    'note' => 'うっしーの仮グループシフト',
+    'note' => 'やすながの仮グループシフト',
 ]);
 DB::table('shifts')->insert([
-   'user_id' => '2',
-   'group_id' => '1',
-   'date' => '2015-12-12',
+   'user_id' => '1',
+   'group_id' => '2',
+   'date' => '2015-12-17',
    'start_time' => '09:30',
-   'end_time' => '18:30',
+   'end_time' => '13:30',
    'status' => '2',
-   'note' => 'うっしーの確定グループシフト',
+   'note' => 'やすながの確定シフト',
 ]);
 DB::table('shifts')->insert([
    'user_id' => '3',
-   'group_id' => '1',
-   'date' => '2015-12-11',
+   'group_id' => '2',
+   'date' => '2015-12-16',
    'start_time' => '05:30',
    'end_time' => '08:30',
    'status' => '2',
-   'note' => 'masuの確定グループシフト',
+   'note' => 'ますやまの確定グループシフト',
 ]);
 DB::table('shifts')->insert([
    'user_id' => '3',
-   'group_id' => '1',
-   'date' => '2015-12-11',
+   'group_id' => '2',
+   'date' => '2015-12-16',
    'start_time' => '02:30',
    'end_time' => '05:00',
    'status' => '3',
-   'note' => 'masuの削除依頼グループシフト',
+   'note' => 'ますやまの削除依頼グループシフト',
 ]);
    DB::table('rates')->insert([
       'user_id' => '1',
@@ -161,17 +143,24 @@ DB::table('shifts')->insert([
 ]);
  DB::table('chats')->insert([
     'group_id' => '2',
-    'user_id' => '1',
-    'date' => '2015-11-11',
+    'user_id' => '5',
+    'date' => '2015-12-11 10:00',
     'chat_category' => '0',
-    'text' => 'きみやがうっしーのグループでチャット',
+    'text' => '彼女とデートするのでクリスマスは休みます。',
 ]);
 DB::table('chats')->insert([
    'group_id' => '2',
    'user_id' => '1',
-   'date' => '2015-11-11',
+   'date' => '2015-12-11 10:30',
+   'chat_category' => '0',
+   'text' => '爆発してください!!',
+]);
+DB::table('chats')->insert([
+   'group_id' => '2',
+   'user_id' => '1',
+   'date' => '2015-12-11',
    'chat_category' => '1',
-   'text' => 'きみやがうっしーのグループで連絡',
+   'text' => 'オーナーがクビになりました',
 ]);
 DB::table('confirmations')->insert([ //うっしーがきみ屋の連絡を確認
    'user_id' => '2',
