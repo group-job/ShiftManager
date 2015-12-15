@@ -98,14 +98,7 @@
             alertify.danger('シフトの作成に失敗しました');
           }
       });
-
-        // var title = prompt('Event Title:');
-        // var eventData;
-        // if (title) {
-        //   // stick? = true
-        // }
-        // $('#calendar').fullCalendar('unselect');
-      },
+    },
 
       //------------------イベントマウスオーバー時処理-------------------------------
       eventMouseover:function( event, jsEvent, view ) {

@@ -514,4 +514,11 @@ class GroupController extends BaseController
       $shift->delete();
     }
   }
+  public function postAddShift($groupId){
+    $shift = Input::except('_token');
+    $shift['group_id'] = $groupId;
+    $shift['status'] = 1;
+    $newShift = Shift::create($shift);
+    return $newShift['id'];
+  }
 }

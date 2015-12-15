@@ -9,7 +9,7 @@ $(document).ready(function() {
     schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
     resourceAreaWidth: 150,
     height:400,
-    defaultDate: '2015-12-16',
+    defaultDate: '2015-12-17',
     titleFormat: {
       month: 'YYYY年 M月', // 2014年9月
       week: 'YYYY年 M月 D日',
@@ -50,6 +50,47 @@ $(document).ready(function() {
     resourceLabelText: 'メンバー',
     resources:{!!$calendarUsersJson!!},
     events:{!!$calendarEventsJson!!},
+    // -----------------------日付クリック処理----------------------------------
+    dayClick: function(date, jsEvent, view, resourceObj) {
+        // 可視状態のフォーム非表示
+        $('.fc-event').tooltipster('hide');
+        $('.togglable').hide();
+        //フォーム初期化
+        $("#input-name-add-shift").html(resourceObj.title);
+        $("#input-user-id-add-shift").val(resourceObj.id);
+        $("#input-date-add-shift").val();
+        //フォーム表示処理
+        $("#div-add-shift").css('top',jsEvent.pageY-205+"px");
+        $("#div-add-shift").css('left',jsEvent.pageX-285+"px");
+        $("#div-add-shift").show("fast");
+        // 登録されているイベントハンドラを削除。 イベント複数回クリック対策
+        $("#btn-add-add-shift").unbind('click');
+        //変更/申請ボタンクリック時処理
+        $("#btn-add-add-shift").on('click', function(event) {
+          var shiftId = postCync($(this).closest("form"),true);
+          console.log(shiftId);
+          if (shiftId !== null){
+            eventData = {
+              resourceId:resourceObj.id,
+               title: $("#input-note-add-shift").val(),
+               start:$("#input-date-add-shift").val()+"T"+$("#input-start-time-add-shift").val(),
+               end: $("#input-date-add-shift").val()+"T"+$("#input-end-time-add-shift").val(),
+               date: $("#input-date-add-shift").val(),
+               start_time : $("#input-start-time-add-shift").val(),
+               end_time : $("#input-end-time-add-shift").val(),
+               className: ['event-status1','schedule-event'],
+               note: $("#input-note-add-shift").val(),
+               status: 1,
+               id: shiftId,
+            };
+            $('#manager-scheduler').fullCalendar('renderEvent', eventData, true);
+            alertify.success('シフトを作成しました');
+          }else {
+            alertify.danger('シフトの作成に失敗しました');
+          }
+      });
+    },
+
     // ------------------イベントクリック時処理----------------------------------
     eventClick: function(calEvent, jsEvent, view) {
        // 可視状態のフォーム非表示
@@ -201,7 +242,7 @@ $(document).ready(function() {
       // console.log(this.id+"/"+this.className);
       if (this.className === "fc-bg" ){
         $('.togglable').hide();
-      }else if (this.className === "fc-view-container" || this.id === "div-edit-shift") {
+      }else if (this.className === "fc-view-container" || this.id === "div-edit-shift" || this.id === "div-add-shift") {
         event.stopPropagation();
       }else if (this.id === "contents-space" ||this.id==="title-space" || this.id === "side-menu"){
         $('.togglable').hide();

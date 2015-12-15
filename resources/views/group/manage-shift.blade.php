@@ -91,5 +91,39 @@ $(document).ready(function() {
       <button type="button" id="btn-delete-edit-shift" class="btn btn-calendar btn-danger col-md-offset-2 col-md-3">削除</button>
     </form>
   </div>
-
+  {{-- 仮シフト作成フォーム --}}
+  <div id="div-add-shift" class="togglable">
+    <form id="form-add-shift" action = "/group/{{$group->id}}/add-shift" method="post">
+      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+      <table>
+        <tr>
+          <td>名前:</td>
+          <td>
+            <span id="input-name-edit-shift"></span>
+            <input id="input-user-id-add-shift" type="hidden" name="user_id">
+          </select>
+          </td>
+        </tr>
+        <tr>
+          <td>日付:</td>
+          <td><input type="date" id="input-date-add-shift" name="date" required min="2015-01-01" max="2030-12-31"></td>
+        </tr>
+        <tr>
+          <td>開始時間</td>
+          {{-- TODO デザイン変更--}}
+          <td><input type="time" name="start_time"  id="input-start-time-add-shift" required></td>
+        </tr>
+        <tr>
+          <td>終了時間</td>
+          {{-- TODO デザイン変更--}}
+          <td><input type="time" name="end_time" id="input-end-time-add-shift" ></td>
+        </tr>
+        <tr>
+          <td>備考</td>
+          <td><input type="text" name="note" id="input-note-add-shift" ></td>
+        </tr>
+      </table>
+      <button type="button" id="btn-add-add-shift" class="btn btn-calendar btn-success col-md-offset-5 col-md-3">追加</button>
+    </form>
+  </div>
 @endsection
