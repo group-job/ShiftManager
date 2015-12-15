@@ -27,9 +27,13 @@ jQuery(document).ready(function () {
         'email': document.getElementById("input-email").value,
       },
       function (data) {
-      }
-  );
-  document.getElementById("input-email").value ='';
+      });
+  if(document.getElementById("input-email").value != document.getElementById("input-email2").value){
+      alert("新しいメールアドレスの入力が正しくありません");
+  }else{
+      document.getElementById("input-email").value ='';
+      document.getElementById("input-email2").value ='';
+  }
   });
 
   //パスワード変更処理
@@ -38,8 +42,7 @@ jQuery(document).ready(function () {
       "store",
       {
         '_token': $('meta[newpassword=csrf-token]').attr('content'),
-        type: "password",
-        value: document.getElementById("input-new-password").value,
+        'password': document.getElementById("input-new-password").value,
       },
       function (data) {
         // $('#alert').html("氏名を" + data + "に変更しました");

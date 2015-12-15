@@ -11,17 +11,27 @@
   <th>
     今月の給料
   </th>
-  <tr>
-    <td>
-      {{ $salary_arry[0][0] }}
-    </td>
-    <td>
-       {{ $salary_arry[0][1] }}円({{ $salary_arry[0][2] }})
-    </td>
-    <td>
-      30000
-    </td>
-  </tr>
+  <th>
+    先月の給料
+  </th>
+  @foreach ($salary_arry as $value => $ctk)
+    @for ($count = 1; $count < count($ctk) ; $count=$count+4)
+    <tr>
+      <td>
+        {{ $ctk[0] }}
+      </td>
+      <td>
+         {{ $ctk[$count] }}円({{ $ctk[$count+1] }})
+      </td>
+      <td>
+        未実装
+      </td>
+      <td>
+        未実装
+      </td>
+    </tr>
+    @endfor
+  @endforeach
 </tbody>
 
 </table>

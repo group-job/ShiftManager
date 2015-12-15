@@ -1,6 +1,6 @@
 <!-- レイアウトの継承 -->
 @extends('common.layout')
-<!--<link rel="stylesheets" type="text/scss" href="resources/assets/sass/home.scss">-->
+<link rel="stylesheets" type="text/scss" href="resources/assets/sass/home.scss">
 @section('title')
 ヘルプ
 @stop

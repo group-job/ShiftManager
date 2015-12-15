@@ -1,10 +1,10 @@
 @extends('salary.home')
   @section('tab-space')
   <div class="row">
-    @foreach ($salary_arry as $value)
-    <a data-toggle="collapse" href="#collapse-sample{{$value[0]}}"><span class="caret"></span>{{ $value[0] }}</a>
+    @foreach ($salary_arry as $value => $ctk)
+    <a data-toggle="collapse" href="#collapse-sample{{ $ctk[0] }}"><span class="caret"></span>{{ $ctk[0] }}</a>
     {{-- マイメニューリストアイテム --}}
-      <div id="collapse-sample{{$value[0]}}" class="collapse list-item">
+      <div id="collapse-sample{{ $ctk[0] }}" class="collapse list-item">
         {{--@include('salary.manager-table')--}}
         {{-- テーブル作成 --}}
         <table class="table-bordered">
@@ -48,24 +48,26 @@
               </form>
             </tr>
             {{-- フォーム終了 --}}
+            @for ($count = 1; $count < count($ctk) ; $count=$count+4)
             <tr>
               <td>
-                {{ $value[2] }}
+                {{ $ctk[$count+1] }}
               </td>
               <td>
-                {{ $value[1] }}円
+                {{ $ctk[$count] }}
               </td>
               <td>
-                {{ $value[3] }}
+                {{ $ctk[$count+2] }}
               </td>
               <td>
-                {{ $value[4] }}
+                {{ $ctk[$count+3] }}
               </td>
               <td>
                 <input type="button" name="name" value="変更">
                 <input type="button" name="name" value="削除">
               </td>
             </tr>
+            @endfor
           </tbody>
         </table>
       </div>

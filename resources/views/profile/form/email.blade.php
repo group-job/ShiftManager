@@ -9,7 +9,7 @@
         <div class="panel-body">{{-- パネルボデー --}}
             <div class="row">
                 <label class="control-label  col-lg-3">現在のメールアドレス</label>
-                <label for="input-email" class="col-lg-9  control-label" id="nowemail">{{ Session::get('user_name')}}</label>
+                <label for="input-email" class="col-lg-9  control-label" id="nowemail">{{ Session::get('user_email')}}</label>
             </div>
             <div class="form-group">
                 <div class="row">
