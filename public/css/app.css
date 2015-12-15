@@ -7502,18 +7502,24 @@ button.close {
   margin: 0;
   padding: 0; }
 
+h1 {
+  font-size: 3em;
+  font-weight: 500; }
+
 body {
-  background-color: #fafafa; }
+  background-color: #fbe9dd; }
 
 .navbar-inverse {
-  color: #fafafa;
-  background-color: #3e2916; }
+  color: #fbe9dd;
+  border: 1px 0 solid black;
+  background-color: #3e2916;
+  border-radius: 0; }
 
 #title-space {
   height: 100px; }
 
 #side-menu {
-  background-color: #ffa861;
+  background-color: #fba864;
   position: relative;
   top: -20px;
   left: -15px;
@@ -7535,7 +7541,7 @@ body {
       color: black;
       text-decoration: none; }
     #side-menu-content li :hover {
-      background-color: #ff8c2e; }
+      background-color: #fa8c32; }
   #side-menu-content .list-item li {
     margin: 0;
     list-style-type: square; }
@@ -7563,6 +7569,13 @@ body {
 #personal-home-title {
   position: relative;
   left: 55px; }
+
+#personal-space {
+  position: relative;
+  top: -80px;
+  background-color: #fcfcfc;
+  padding: 40px 20px 25px;
+  margin-right: 5px; }
 
 #calendar {
   width: 1000px;
@@ -7684,6 +7697,29 @@ body {
   background: red; }
 
 @charset "UTF-8";
+#group-tab {
+  margin-left: 7px; }
+
+.nav .selected a {
+  background-color: #f97e19; }
+
+.nav li a {
+  color: black;
+  border-collapse: separate;
+  background-color: #fba864;
+  border: 1px solid #8f4304;
+  border-radius: 5px 5px 0 0; }
+
+#group-tab-contents {
+  height: 500px;
+  position: relative;
+  top: 17px;
+  left: -15px;
+  margin-right: 5px;
+  padding: 0 5px;
+  background-color: #fcfcfc;
+  border: 1px solid #4d4d4d; }
+
 #manager-calendar {
   width: 250px;
   margin-top: 100px;
@@ -7722,7 +7758,7 @@ body {
 
 #manager-scheduler {
   width: 800px;
-  height: 500px;
+  height: 400px;
   margin: 50px 50px 70px 30px; }
 
 .theme-event-detail-tooltip {

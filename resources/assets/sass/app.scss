@@ -17,17 +17,22 @@
   padding: 0;
 
 }
+h1{
+  font-size: 3em;
+  font-weight: 500;
+}
 body{
   background-color: $main-contents-bg-color;
 }
 .navbar-inverse{
   color: $main-contents-bg-color;
+  border: 1px 0 solid black;
   background-color: $navbar-background;
+  border-radius:0 ;
 }
 #title-space{
   height: 100px;
 }
-
 #side-menu{
   background-color: $side-menu-base-color;
   // bootstrapのパディング分を補正

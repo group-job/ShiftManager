@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
          'password' => bcrypt('0'),
      ]);
      DB::table('users')->insert([
-        'name' => 'うっしー',
+        'name' => 'きみや',
         'email' => '1',
         'password' => bcrypt('1'),
     ]);
@@ -35,20 +35,20 @@ class DatabaseSeeder extends Seeder
       'password' => bcrypt('2'),
   ]);
   DB::table('users')->insert([
-     'name' => 'よしかわ',
+     'name' => 'うっしー',
      'email' => '4',
      'password' => bcrypt('2'),
  ]);
      DB::table('groups')->insert([
-        'group_name' => 'やすながの管理グループ1',
+        'group_name' => 'ラウンドツー',
         'manager_id' => '1',
     ]);
     DB::table('groups')->insert([
-       'group_name' => 'うっしーの管理グループ1',
+     'group_name' => 'きみや商事',
        'manager_id' => '2',
    ]);
    DB::table('groups')->insert([
-      'group_name' => 'ますやまの管理グループ1',
+      'group_name' => 'マクド',
       'manager_id' => '3',
   ]);
  DB::table('shifts')->insert([
@@ -136,17 +136,23 @@ DB::table('shifts')->insert([
      'end_date' => '',
  ]);
  DB::table('employments')->insert([
-    'group_id' => '3',
-    'user_id' => '1',
+    'group_id' => '2',
+    'user_id' => '3',
     'start_date' => '2015-11-1',
     'end_date' => '',
+]);
+DB::table('employments')->insert([
+   'group_id' => '2',
+   'user_id' => '4',
+   'start_date' => '2015-11-1',
+   'end_date' => '',
 ]);
  DB::table('chats')->insert([
     'group_id' => '2',
     'user_id' => '5',
     'date' => '2015-12-11 10:00',
     'chat_category' => '0',
-    'text' => '彼女とデートするのでクリスマスは休みます。',
+    'text' => '彼女できました。',
 ]);
 DB::table('chats')->insert([
    'group_id' => '2',

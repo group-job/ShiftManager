@@ -4,6 +4,9 @@
   @parent
   <script>
     var groupId = {{ $group->id }};
+    $(document).ready(function() {
+      $("#chat-tab").addClass("selected");
+    });
   </script>
   <script type="text/javascript" src="/js/chat.js"></script>
 @endsection

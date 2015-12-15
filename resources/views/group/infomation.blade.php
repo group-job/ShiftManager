@@ -15,6 +15,9 @@
 @section('tab-space')
 <script>
   var groupId = {{ $group->id }};
+  $(document).ready(function() {
+    $("#information-tab").addClass("selected");
+  });
 </script>
 <script type="text/javascript" src="/js/infomation.js"></script>
   <br>

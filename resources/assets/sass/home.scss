@@ -19,8 +19,15 @@
   position: relative;
   left: 55px;
 }
-
+#personal-space{
+  position: relative;
+  top: -80px;
+  background-color: $tabspace-background;
+  padding: 40px 20px 25px;
+  margin-right: 5px;
+}
 // ---------------------------カレンダーのスタイル上書き----------------------------
+
 #calendar{
   width: 1000px;
   position: relative;

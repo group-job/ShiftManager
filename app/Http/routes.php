@@ -22,6 +22,7 @@
   Route::group(['middleware' => 'auth'], function(){
     Route::controller('personal', 'PersonalController');
     Route::controller('group/{groupId}', 'GroupController');
+    Route::controller('group', 'GroupController');
     Route::controller('groupcreate', 'GroupCreateController');
     Route::controller('profile', 'ProfileController');
     Route::controller('salary', 'SalaryController');
