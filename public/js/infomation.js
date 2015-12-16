@@ -17,16 +17,16 @@ function show(){
     },
     function (data) {
       if(data != null){
-      var chatLog = "<div class='row col-lg-offset-1 col-lg-10' style=''>";
+      var chatLog ="<div class='row col-lg-offset-1 col-lg-10'>";
       for (var i = 0; i < data.length; i++) {
         if (i == 0) {
-          chatLog += "<div class='text-center container col-lg-12'>"+data[i]["date"]+"</div><br>";
+          chatLog += "<div class='text-center chat-date col-lg-offset-3' style='margin-top: 10px;margin-bottom: 10px;'>"+data[i]["date"]+"</div><br>";
         }
-        chatLog += "<div class='container col-lg-10 col-lg-offset-1' style='margin-top: 5px;'>"+
-                    data[i]["time"]+"<span style='margin-right: 20px;'></span><span class='label-info'>"
+
+        chatLog += "<div class='col-lg-10' style='margin-top: 5px;'><span class = 'col-lg-2'>"+
+                    data[i]["time"]+"</span><span class = 'col-lg-3'>"
                     +data[i]["name"]+
-                    "</span><span style='margin-right: 20px;'></span><span class='label-success'>"+data[i]["text"]+"</span>";
-        // TODO: 連絡ボード用のボタンを追加　idを指定し、同じ関数からnameの値を参照できる関数を探す。
+                    "</span><span class = 'chat-hukidashi'>"+data[i]["text"]+"</span>";
         if (data[i]["check"]) {
           chatLog += "<input type='button' class='btn btn-primary' value='確認' id ="+ data[i]["id"] +" onclick = 'check(this)'>";
         }else{
@@ -46,7 +46,7 @@ function show(){
 
         if (i != data.length - 1) {
           if(data[i]["date"] != data[i + 1]["date"]){
-            chatLog += "<div class='text-center text-center row col-lg-12'>"+data[i + 1]["date"]+"</div>";
+            chatLog += "<div class='text-center chat-date col-lg-offset-3' style='margin-top: 10px;margin-bottom: 10px;'>"+data[i + 1]["date"]+"</div><br>";
           }
         }
       }
