@@ -15,10 +15,10 @@ $(document).ready(function() {
 @endsection
 @section('tab-space')
   <div class="row" >
-    <div class="col-md-3">
+    {{-- <div class="col-md-3">
       <div id='manager-calendar'></div>
-    </div>
-    <div class="col-md-9">
+    </div> --}}
+    <div class="col-md-offset-1 col-md-9">
       <div id="manager-scheduler"></div>
     </div>
   </div>
