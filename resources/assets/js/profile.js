@@ -22,7 +22,7 @@ jQuery(document).ready(function () {
     $.post(
       "store",
       {
-        '_token': $('meta[newemail=csrf-token]').attr('content'),
+        '_token': $('meta[email=csrf-token]').attr('content'),
         'email': document.getElementById("input-email").value,
       },
       function (data) {
@@ -40,7 +40,7 @@ jQuery(document).ready(function () {
     $.post(
       "store",
       {
-        '_token': $('meta[newpassword=csrf-token]').attr('content'),
+        '_token': $('meta[password=csrf-token]').attr('content'),
         'password': document.getElementById("input-new-password").value,
       },
       function (data) {

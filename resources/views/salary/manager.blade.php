@@ -48,7 +48,7 @@
               </form>
             </tr>
             {{-- フォーム終了 --}}
-            @for ($count = 1; $count < count($ctk) ; $count=$count+4)
+            @for ($count = 2; $count < count($ctk) ; $count=$count+4)
             <tr>
               <td>
                 {{ $ctk[$count+1] }}

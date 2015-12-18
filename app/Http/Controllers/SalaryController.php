@@ -17,7 +17,7 @@ class SalaryController extends BaseController
   public function getList()
   {
     $salary_arry=$this->getRate();
-    $this->getShiftTime();
+   // $this->getShiftTime();
     return view('salary.list',compact('salary_arry'));
   }
 
@@ -45,6 +45,7 @@ class SalaryController extends BaseController
           if($value1->group_id==$value && ( strcmp($value1->end_date,'0000-00-00') || ($value1->end_date < date("Y-m", strtotime("+1 month")))))
           {
             $salary_arry[$value][0]=$value1->group->group_name;
+            $salary_arry[$value][1]=$value1->group_id;
             $salary_arry[$value][]=$value1->rate;
             switch($value1->rate_category){
              case(0):
@@ -73,7 +74,7 @@ class SalaryController extends BaseController
     return $salary_arry;
   }
   
-  private function getShiftTime(){//編集中
+  private function getShiftTime(){//編集中 シフトの時間を取得する
     $result_array;
     foreach(Auth::user()->shifts as $value)
     {
@@ -84,15 +85,29 @@ class SalaryController extends BaseController
       $result_array[]=floor($result_time);
       $result_array[]=$value->status;
     }
-    //dd($result_array);
+    $salary_arry=$this->getSalary();
+    dd($result_array);
     return $result_array; 
   }
   
-  private function getSalary(){//編集中
+  private function getSalary(){//編集中　シフトの金額を計算する。
     $result_array;
     $rate=$this->getRate();
-    dd($rate[3]);
+    //dd($rate);
     
+    return $result_array;
+  }
+  
+  private function getshort(){//編集中　getRateで取得した表を短縮する
+    $result_array;
+    $rate=$this->getRate();
+    foreach($rate as $value)
+    {
+      foreach ($value as $result)
+      {
+       dd($result); 
+      }
+    }
     return $result_array;
   }
   

@@ -11,7 +11,8 @@
             <div class="panel-body">{{-- パネルボデー --}}
               <div class="row">
 					           <label class="control-label  col-lg-3">現在の氏名</label>
-					          <label for="input-address" class="col-lg-9  control-label" id="nowaddress">{{ Session::get('user_name')}}</label>
+					          <!--<label for="input-address" class="col-lg-9  control-label" id="nowaddress">{{ Session::get('user_name')}}</label>-->
+					          <label class="control-label  col-lg-3">きみや</label>
 				      </div>
 					    <div class="row">
 					           <div class="form-group">
