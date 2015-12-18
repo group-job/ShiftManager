@@ -16,6 +16,17 @@ class Group extends Model
     {
       return $this->hasMany(Employment::class);
     }
+    //グループに所属するユーザーのコレクションを取得
+    public function scopeUsers($query,$userId)
+    {
+        $employments = Group::find($userId)->joiningEmployments;
+        $users = array();
+        foreach ($employments as $value) {
+          $users[] = $value->user;
+        }
+        return $users;
+    }
+
     public function joiningEmployments()
     {
       return $this->hasMany(Employment::class)->where('start_date','!=', '0000-00-00');
@@ -24,7 +35,7 @@ class Group extends Model
     {
       return $this->hasMany(Rate::class);
     }
-   public function user()
+   public function manager()
     {
       return $this->belongsTo(User::class,'manager_id');
     }

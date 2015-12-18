@@ -1,4 +1,13 @@
 @extends('group.home')
+@section('modify-js')
+  @parent
+  <script>
+    $(document).ready(function() {
+      $("#setting-tab").addClass("selected");
+    });
+  </script>
+  <script type="text/javascript" src="/js/chat.js"></script>
+@endsection
 
 @section('tab-space')
 

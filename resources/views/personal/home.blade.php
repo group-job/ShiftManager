@@ -11,9 +11,6 @@
 @parent
 @include('personal.part-personal-calendar')
 @endsection
-@section('title-space')
-<div id="personal-home-title" class="col-md-offset-4 col-md-4"><h1>マイシフト</h1></div>
-@stop
 @section('contents-space')
 {{-- メッセージ --}}
 @if (Session::has('errorMessage'))
@@ -21,16 +18,18 @@
     alertify.error("{!!Session::get('errorMessage')!!}");
   </script>
 @endif
+<div id="personal-space">
 {{-- カレンダー --}}
-<div id='calendar'>
-{{-- カレンダーイベントの凡例 --}}
-  <div class="col-md-offset-2">
-    <ul id="explanatory-notes">
-      <li><div class="circle" id="circle0"></div>希望</li>
-      <li><div class="circle" id="circle1"></div>仮確定</li>
-      <li><div class="circle" id="circle2"></div>確定</li>
-      <li><div class="circle" id="circle3"><span class="circle-text">赤文字</span></div>削除依頼中</li>
-    </ul>
+  <div id='calendar'>
+  {{-- カレンダーイベントの凡例 --}}
+    <div class="col-md-offset-2">
+      <ul id="explanatory-notes">
+        <li><div class="circle" id="circle0"></div>希望</li>
+        <li><div class="circle" id="circle1"></div>仮確定</li>
+        <li><div class="circle" id="circle2"></div>確定</li>
+        <li><div class="circle" id="circle3"><span class="circle-text">赤文字</span></div>削除依頼中</li>
+      </ul>
+    </div>
   </div>
 </div>
 {{-- 削除依頼ボタンのフォーム --}}
@@ -96,14 +95,14 @@
         <td>勤務先:</td>
         <td>
           <select id="input-group-add-shift" name="group_id">
-            @if(isset($join_groups))
-              @foreach($join_groups as $key => $value)
-              <option class="option-joining-group-add-shift" value="{{$value->id}}">{{$value->group_name}}</option>
-              @endforeach
-            @endif
             @if(isset($manage_groups))
               @foreach($manage_groups as $key => $value)
               <option class="option-managing-group-add-shift" value="{{$value->id}}">{{$value->group_name}}</option>
+              @endforeach
+            @endif
+            @if(isset($join_groups))
+              @foreach($join_groups as $key => $value)
+              <option class="option-joining-group-add-shift" value="{{$value->id}}">{{$value->group_name}}</option>
               @endforeach
             @endif
           </select>

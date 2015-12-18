@@ -98,18 +98,14 @@
             alertify.danger('シフトの作成に失敗しました');
           }
       });
-
-        // var title = prompt('Event Title:');
-        // var eventData;
-        // if (title) {
-        //   // stick? = true
-        // }
-        // $('#calendar').fullCalendar('unselect');
-      },
+    },
 
       //------------------イベントマウスオーバー時処理-------------------------------
       eventMouseover:function( event, jsEvent, view ) {
         //イベントの詳細を表示するよ
+        if(event.note == null ){
+          event.note = "";
+        }
         content = "<p>勤務先:"+event.title+"</p><p>開始時刻:"+event.start_time+"</p><p>終了時刻:"+event.end_time+"</p><p>備考:"+event.note+"</p>";
         $('.fc-event').tooltipster('content',$(content));
       },

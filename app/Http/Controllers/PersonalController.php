@@ -19,23 +19,25 @@ class PersonalController extends BaseController
     //マイシフト取得
     $myShifts = Auth::user()->shifts;
     $calendarEvents = array();
-    foreach ($myShifts as $value) {
-      $myShiftFlg = ($value->group->manager_id === $value->user_id);
-      $calendarEvents[] = array(
-        //カレンダーイベントクリック時処理などに利用
-        'shift_id' => $value->id,
-        'my_shift_flg' =>$myShiftFlg,
-        'status' => $value->status,
-        'date' => $value->date,
-        'start_time' =>date('G:i', strtotime($value->start_time)),
-        'end_time' =>date('G:i', strtotime($value->end_time)),
-        'note' => $value->note,
-        //ここから下カレンダー描画に必要
-        'className' => 'event-status'.$value->status,
-        'title' => $value->group->group_name,
-        'start' => $value->date.'T'.$value->start_time,
-        'end' => $value->date.'T'.$value->end_time,
-      );
+    if($myShifts->count() !== 0){
+      foreach ($myShifts as $value) {
+        $myShiftFlg = ($value->group->manager_id === $value->user_id);
+        $calendarEvents[] = array(
+          //カレンダーイベントクリック時処理などに利用
+          'shift_id' => $value->id,
+          'my_shift_flg' =>$myShiftFlg,
+          'status' => $value->status,
+          'date' => $value->date,
+          'start_time' =>date('G:i', strtotime($value->start_time)),
+          'end_time' =>date('G:i', strtotime($value->end_time)),
+          'note' => $value->note,
+          //ここから下カレンダー描画に必要
+          'className' => 'event-status'.$value->status,
+          'title' => $value->group->group_name,
+          'start' => $value->date.'T'.$value->start_time,
+          'end' => $value->date.'T'.$value->end_time,
+        );
+      }
     }
     $calendarEventsJson = json_encode($calendarEvents);
     //$calendarEventsJsonは personal.home内のpart-create-calendar.blade.phpに渡す

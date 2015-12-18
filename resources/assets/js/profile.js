@@ -19,6 +19,7 @@ jQuery(document).ready(function () {
 
   //メールアドレス変更処理
   $("#button-email").click(function (event) {
+    console.log('kimiya');
     $.post(
       "store",
       {

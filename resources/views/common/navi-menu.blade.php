@@ -5,7 +5,7 @@
     <div class="navbar-header">
 
       {{-- タイトルなどのテキスト --}}
-      <a class="navbar-brand" href="/">ロゴ</a>
+      <a class="navbar-brand" href="/"></a>
     </div>
     <div class="navbar-right">
       @section('navbar-right')
