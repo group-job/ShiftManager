@@ -15,7 +15,7 @@
     先月の給料
   </th>
   @foreach ($salary_arry as $value => $ctk)
-    @for ($count = 2; $count < count($ctk) ; $count=$count+4)
+    @for ($count = 3; $count < count($ctk) ; $count=$count+5)
     <tr>
       <td>
         {{ $ctk[0] }}

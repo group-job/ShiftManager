@@ -26,7 +26,7 @@ class ProfileController extends BaseController
     public function postStore(Request $request)
     {
       $user = User::find(Auth::user()->id);
-      // var_dump($user);
+      var_dump($request);
       // $value = $_REQUEST['value'];
       $user->update($request->all());
       // \Session::put('user_name', $request['name']);

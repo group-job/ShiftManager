@@ -20,20 +20,20 @@ jQuery(document).ready(function () {
   //メールアドレス変更処理
   $("#button-email").click(function (event) {
     console.log('kimiya');
+    if(document.getElementById("input-email").value != document.getElementById("input-email2").value){
+        alert("新しいメールアドレスの入力が正しくありません");
+    }else{
     $.post(
       "store",
       {
-        '_token': $('meta[email=csrf-token]').attr('content'),
+        '_token': $('meta[name=csrf-token]').attr('content'),
         'email': document.getElementById("input-email").value,
       },
       function (data) {
       });
-  if(document.getElementById("input-email").value != document.getElementById("input-email2").value){
-      alert("新しいメールアドレスの入力が正しくありません");
-  }else{
       document.getElementById("input-email").value ='';
       document.getElementById("input-email2").value ='';
-  }
+    }
   });
 
   //パスワード変更処理
@@ -41,7 +41,7 @@ jQuery(document).ready(function () {
     $.post(
       "store",
       {
-        '_token': $('meta[password=csrf-token]').attr('content'),
+        '_token': $('meta[name=csrf-token]').attr('content'),
         'password': document.getElementById("input-new-password").value,
       },
       function (data) {
