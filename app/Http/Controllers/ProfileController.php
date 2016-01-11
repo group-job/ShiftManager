@@ -28,7 +28,17 @@ class ProfileController extends BaseController
       $user = User::find(Auth::user()->id);
       var_dump($request);
       // $value = $_REQUEST['value'];
-      $user->update($request->all());
+      //パスワードの変更についての処理を追記 2016/01/08
+      if(!empty($request->input('oldpassword')) && !empty($request->input('password'))){
+        //現在のパスワードが一致しているかチェック
+        if(Auth::attempt(['id' => $user->id, 'password' => $request->input('oldpassword')])){
+          //パスワードの変更の場合は下記1行のSQLを実行
+          $user->update(['password' => bcrypt($request->input('password'))]);
+        }
+      }else{
+        //パスワード以外の変更処理
+        $user->update($request->all());
+      }
       // \Session::put('user_name', $request['name']);
     }
 

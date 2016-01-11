@@ -12,7 +12,7 @@
               <div class="row">
 					           <label class="control-label  col-lg-3">現在の氏名</label>
 					          <!--<label for="input-address" class="col-lg-9  control-label" id="nowaddress">{{ Session::get('user_name')}}</label>-->
-					          <label class="control-label  col-lg-3">きみや</label>
+					          <label class="control-label  col-lg-3">{{ Auth::user()->name }}</label>
 				      </div>
 					    <div class="row">
 					           <div class="form-group">

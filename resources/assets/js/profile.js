@@ -38,18 +38,33 @@ jQuery(document).ready(function () {
 
   //パスワード変更処理
   $("#button-password").click(function (event) {
+    var updateflg = true;
+    if(document.getElementById("input-now-password").value.length == 0 || document.getElementById("input-new-password").value.length == 0 || document.getElementById("input-new-password2").value.length == 0){
+      updateflg = false;
+    }else{
+      // if(document.getElementById("input-now-password").value != {{ $user->password }}){
+      //   updateflg = false;
+      // }
+      if(document.getElementById("input-new-password").value != document.getElementById("input-new-password2").value){
+        updateflg = false;
+      }
+    }
+    if(updateflg == false){
+        alert("入力内容が正しくありません");
+    }else{
     $.post(
       "store",
       {
         '_token': $('meta[name=csrf-token]').attr('content'),
         'password': document.getElementById("input-new-password").value,
+        'oldpassword': document.getElementById("input-now-password").value,
       },
       function (data) {
-        // $('#alert').html("氏名を" + data + "に変更しました");
-        // $('#nowname').html(data);
-        // $('#sessionName').html(data);
-      }
-  );
+      document.getElementById("input-now-password").value ='';
+      document.getElementById("input-new-password").value ='';
+      document.getElementById("input-new-password2").value ='';
+      });
+    }
   });
 
   // // 画像変更処理
