@@ -18,7 +18,7 @@ class SalaryController extends BaseController
   {
     $salary_arry=$this->getRate();
     //$this->getShiftTime();
-    $this->getshort($salary_arry);
+    //$this->getshort($salary_arry);
     return view('salary.list',compact('salary_arry'));
   }
 
